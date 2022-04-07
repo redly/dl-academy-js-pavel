@@ -1,4 +1,4 @@
-/* Общие стили для директории со списком заданий */ 
+/* Общие стили */ 
 
 @font-face {
     font-family: 'Graphik';
@@ -16,56 +16,11 @@ body {
     padding: 0;
 }
 
-.homework-list {
-    width: max-content;
-    list-style: none;
-    margin: 0;
-    padding: 0;
-}
-
-    .homework-list__item {
-        font-family: 'Courier New', Courier, monospace;
-        font-weight: bold;
-        margin: 30px;
-        padding: 20px;
-    }
-
-    .homework-list__link {
-        border: solid 2px black;
-        color: black;
-        margin: 30px;
-        padding: 20px;
-        text-decoration: none;
-    }
-
-        .homework-list__link:hover {
-            background-color: black;
-            border: solid 2px white;
-            color: yellow; 
-        }
-
-/* Стили для задания 05 */ 
-
 .container {
     max-width: 960px;
     padding: 0 20px;
     margin: 0 auto;
 }
-
-.header {
-    padding: 20px 0;
-}
-
-    .header__container {
-        display: flex;
-        flex-direction: row;
-        justify-content: flex-end;
-        align-items: center;
-    }
-
-    .header__btn {
-        margin: 0 10px;
-    }
 
 .content {
     padding: 20px 0;
@@ -86,11 +41,45 @@ body {
     .btn:disabled {
         color: grey;
         background-color: rgba(100, 100, 122, 0.2);
-        cursor: default;
+        cursor: no-drop;
     }
 
     .btn:hover:not(.btn:disabled) {
         background-color: rgba(100, 100, 122, 0.3);
+    }
+
+/* Стили для директории со списком заданий */
+
+.homework {
+    width: max-content;
+}
+
+    .homework__list {
+        list-style: none;
+        margin: 0;
+        padding: 0;
+    }
+
+        .homework__list-item {
+            margin: 30px;
+            padding: 20px;
+        }
+
+/* Стили для задания 05 */ 
+
+.header {
+    padding: 20px 0;
+}
+
+    .header__container {
+        display: flex;
+        flex-direction: row;
+        justify-content: flex-end;
+        align-items: center;
+    }
+
+    .header__btn {
+        margin: 0 10px;
     }
 
 .body-scroll-btn {
@@ -109,7 +98,7 @@ body {
 
 .popup {
     display: none;
-    background-color: rgba(125, 151, 218, 0.8);
+    background-color: rgba(255, 255, 255, 0.9);
     width: 100%;
     height: 100%;
     position: fixed;
@@ -148,7 +137,8 @@ body {
         }
     
 .contacts-form {
-    background-color: #e5eaf8;
+    background-color: rgba(246, 246, 246, 0.99);
+    border: solid 2.5px #070707;
     width: 680px;
     padding: 42px 40px;
 }
@@ -190,12 +180,20 @@ body {
     .contacts-form__field {
         border-radius: 0;
         outline: none;
-        border: 1px solid #c7c1c1;
+        border: 2px solid #c7c1c1;
         width: 100%;
         height: 50px;
 
         /* padding: 0 18px; */
     }
+
+        .contacts-form__field--error {
+            border: 2px solid red;
+        }
+
+        .contacts-form__field--right {
+            border: 2px solid green;
+        }
 
     .contacts-form__textarea {
         resize: none;

@@ -76,7 +76,7 @@ function getText(index) {
     "Автором языка стал " + developersValue.name + " - " + developersValue.work + ".\nФайлы программ, написанных на " +
     dataValue.name + " могут иметь расширения " + filenameExtensionsArr.join(", ") + ".\n" +
     dataValue.name + " испытал влияние " + dataValue.influencedBy.length + " языков программирования: " + dataValue.influencedBy.join(", ") + ".\n" +
-    dataValue.name + " повлиял на " + sliceArr(affectedByArr) + ".";
+    dataValue.name + " повлиял на " + sliceArr(affectedByArr) + ".\n";
 
     /*
     let text1 = `${dataValue.name} - язык программирования выпущенный в ${dataValue.year} году.

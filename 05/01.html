@@ -146,18 +146,18 @@
         <div class="popup__body container">
             <div class="popup__content">
                 <div class="contacts-form contacts-form--width--half">
-                    <form class="contacts-form__content" action="https://echo.htmlacademy.ru/" method="get">
+                    <form class="contacts-form__content js-contactForm">
                         <div class="contacts-form__group">
                             <label class="contacts-form__label" for="email-form-first">Email</label>
-                            <input class="contacts-form__field" type="email" id="email-form-first">
+                            <input class="contacts-form__field" type="email" id="email-form-first" name="email">
                         </div>
 
                         <div class="contacts-form__group">
                             <label class="contacts-form__label" for="password-form-first">Password</label>
-                            <input class="contacts-form__field" type="password" id="password-form-first">
+                            <input class="contacts-form__field" type="password" id="password-form-first" name="password">
                         </div>
 
-                        <input class="btn" type="submit" value="Sign in" disabled>
+                        <input class="btn js-submit" type="submit" value="Sign in">
                     </form>
                 </div>
 
@@ -168,7 +168,7 @@
                         -5.72611e-08 1.30998C-4.21593e-08 0.964491 0.115271 0.647806 0.374637 0.388689C0.893369 -0.129545 1.70029 -0.129545 2.21902 
                         0.388689L7.4928 5.65738L12.7666 0.38869C13.2853 -0.129545 14.0922 -0.129545 14.611 0.38869C15.1297 0.906924 15.1297 1.71304 
                         14.611 2.23127L9.33718 7.5L14.611 12.7687C15.1297 13.287 15.1297 14.0931 14.611 14.6113C14.0922 15.1295 13.2853 15.1295 12.7666 
-                        14.6113L7.4928 9.34258L2.21902 14.6113Z" fill="white"/>
+                        14.6113L7.4928 9.34258L2.21902 14.6113Z" fill="rgba(130, 130, 130, 1)"/>
                     </svg>
                 </a>
             </div>
@@ -179,45 +179,45 @@
         <div class="popup__body container">
             <div class="popup__content">
                 <div class="contacts-form">
-                    <form class="contacts-form__content" action="https://echo.htmlacademy.ru/" method="get">
+                    <form class="contacts-form__content js-contactForm">
                         <div class="contacts-form__group">
                             <label class="contacts-form__label" for="email-form-second">Email</label>
-                            <input class="contacts-form__field" type="email" id="email-form-second">
+                            <input class="contacts-form__field" type="email" id="email-form-second" name="email">
                         </div>
 
                         <div class="contacts-form__row">
                             <div class="contacts-form__group contacts-form__group--width--half">
                                 <label class="contacts-form__label" for="name-form-second">Name</label>
-                                <input class="contacts-form__field" type="text" id="name-form-second">
+                                <input class="contacts-form__field" type="text" id="name-form-second" name="name">
                             </div>
 
                             <div class="contacts-form__group contacts-form__group--width--half">
                                 <label class="contacts-form__label" for="surname-form-second">Surname</label>
-                                <input class="contacts-form__field" type="text" id="surname-form-second">
+                                <input class="contacts-form__field" type="text" id="surname-form-second" name="name">
                             </div>
                         </div>
 
                         <div class="contacts-form__row">
                             <div class="contacts-form__group contacts-form__group--width--half">
                                 <label class="contacts-form__label" for="password-form-second">Password</label>
-                                <input class="contacts-form__field" type="password" id="password-form-second">
+                                <input class="contacts-form__field password" type="password" id="password-form-second" name="password">
                             </div>
 
                             <div class="contacts-form__group contacts-form__group--width--half">
                                 <label class="contacts-form__label" for="repeat-password-form-second">Repeat password</label>
-                                <input class="contacts-form__field" type="password" id="repeat-password-form-second">
+                                <input class="contacts-form__field password-repeat" type="password" id="repeat-password-form-second" name="">
                             </div>
                         </div>
 
                         <div class="contacts-form__row">
                             <div class="contacts-form__group contacts-form__group--width--half">
                                 <label class="contacts-form__label" for="location-form-second">Location</label>
-                                <input class="contacts-form__field" type="text" id="location-form-second">
+                                <input class="contacts-form__field" type="text" id="location-form-second" name="location">
                             </div>
 
                             <div class="contacts-form__group contacts-form__group--width--half">
                                 <label class="contacts-form__label" for="age-form-second">Age</label>
-                                <input class="contacts-form__field" type="text" id="age-form-second">
+                                <input class="contacts-form__field" type="number" id="age-form-second" name="age">
                             </div>
                         </div>
 
@@ -229,8 +229,7 @@
                             </label>
                         </div>
 
-                        <input class="btn" type="submit" value="Sing up" disabled>
-
+                        <input class="btn js-submit" type="submit" value="Sing up" disabled>
                     </form>
                 </div>
 
@@ -241,7 +240,7 @@
                         -5.72611e-08 1.30998C-4.21593e-08 0.964491 0.115271 0.647806 0.374637 0.388689C0.893369 -0.129545 1.70029 -0.129545 2.21902 
                         0.388689L7.4928 5.65738L12.7666 0.38869C13.2853 -0.129545 14.0922 -0.129545 14.611 0.38869C15.1297 0.906924 15.1297 1.71304 
                         14.611 2.23127L9.33718 7.5L14.611 12.7687C15.1297 13.287 15.1297 14.0931 14.611 14.6113C14.0922 15.1295 13.2853 15.1295 
-                        12.7666 14.6113L7.4928 9.34258L2.21902 14.6113Z" fill="white"/>
+                        12.7666 14.6113L7.4928 9.34258L2.21902 14.6113Z" fill="rgba(130, 130, 130, 1)"/>
                     </svg>
                 </a>
             </div>
@@ -252,34 +251,34 @@
         <div class="popup__body container">
             <div class="popup__content">
                 <div class="contacts-form">
-                    <form class="contacts-form__content" action="https://echo.htmlacademy.ru/" method="get">
+                    <form class="contacts-form__content js-contactForm" action="https://echo.htmlacademy.ru/" method="get">
                         <div class="contacts-form__row">
                             <div class="contacts-form__group contacts-form__group--width--half">
                                 <label class="contacts-form__label" for="name-form-third">What is your name?</label>
-                                <input class="contacts-form__field" type="text" id="name-form-third">
+                                <input class="contacts-form__field" type="text" id="name-form-third" name="name">
                             </div>
 
                             <div class="contacts-form__group contacts-form__group--width--half">
                                 <label class="contacts-form__label" for="subject-form-third">Message subject</label>
-                                <input class="contacts-form__field" type="text" id="subject-form-third">
+                                <input class="contacts-form__field" type="text" id="subject-form-third" name="subject">
                             </div>
                         </div>
 
                         <div class="contacts-form__row">
                             <div class="contacts-form__group contacts-form__group--width--half">
                                 <label class="contacts-form__label" for="email-form-third">Your email</label>
-                                <input class="contacts-form__field" type="email" id="email-form-third">
+                                <input class="contacts-form__field" type="email" id="email-form-third" name="email">
                             </div>
 
                             <div class="contacts-form__group contacts-form__group--width--half">
                                 <label class="contacts-form__label" for="phone-form-third">Your mobile phone</label>
-                                <input class="contacts-form__field" type="tel" id="phone-form-third">
+                                <input class="contacts-form__field" type="tel" id="phone-form-third" name="phone">
                             </div>
                         </div>
 
                         <div class="contacts-form__group">
                             <label class="contacts-form__label" for="message-form-third">What do you want to discuss with me?</label>
-                            <textarea class="contacts-form__field contacts-form__textarea" id="message-form-third"></textarea>
+                            <textarea class="contacts-form__field contacts-form__textarea" id="message-form-third" name="message"></textarea>
                         </div>
 
                         <div class="contacts-form__group contacts-form__checkbox">
@@ -290,8 +289,7 @@
                             </label>
                         </div>
 
-                        <input class="btn" type="submit" value="Send" disabled>
-
+                        <input class="btn js-submit" type="submit" value="Send" disabled>
                     </form>
                 </div>
 
@@ -302,7 +300,7 @@
                         -5.72611e-08 1.30998C-4.21593e-08 0.964491 0.115271 0.647806 0.374637 0.388689C0.893369 -0.129545 1.70029 -0.129545 2.21902 
                         0.388689L7.4928 5.65738L12.7666 0.38869C13.2853 -0.129545 14.0922 -0.129545 14.611 0.38869C15.1297 0.906924 15.1297 1.71304 
                         14.611 2.23127L9.33718 7.5L14.611 12.7687C15.1297 13.287 15.1297 14.0931 14.611 14.6113C14.0922 15.1295 13.2853 15.1295 
-                        12.7666 14.6113L7.4928 9.34258L2.21902 14.6113Z" fill="white"/>
+                        12.7666 14.6113L7.4928 9.34258L2.21902 14.6113Z" fill="rgba(130, 130, 130, 1)"/>
                     </svg>
                 </a>
             </div>
