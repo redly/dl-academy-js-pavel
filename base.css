@@ -96,7 +96,7 @@ body {
         display: block;
     }
 
-.popup {
+.modal {
     display: none;
     background-color: rgba(255, 255, 255, 0.9);
     width: 100%;
@@ -107,32 +107,32 @@ body {
     z-index: 10;
 }
 
-    .popup--is-active {
+    .modal--is-open {
         display: block;
     }
 
-    .popup__body {
+    .modal__body {
         min-height: 100%;
         display: flex;
         justify-content: center;
     }
 
-    .popup__content {
+    .modal__content {
         position: relative;
         margin-top: 113px;
     }
 
-    .popup__btn-close {
+    .modal__btn-close {
         position: absolute;
         right: -25px;
         top: 0;
     }
 
-        .popup__btn-close:hover {
+        .modal__btn-close:hover {
             opacity: 0.5;
         }
 
-        .popup__btn-close:active {
+        .modal__btn-close:active {
             opacity: 0.2;
         }
     

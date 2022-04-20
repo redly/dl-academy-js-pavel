@@ -1,40 +1,53 @@
-let userInt = prompt('Введите любое целое число');
+function isNumber(num) {
+    if (isNaN(num) || num === '' || num <= 0) {
+        return false;
+    }
 
-function checkUserInt() {
-    while (isNaN(userInt) || userInt === '' || userInt === ' ' || userInt <= 0) {
-        if (userInt === null) {
+    return true;
+}
+
+function isNull(num) {
+    if (num === null) {
+        return true;
+    }
+    
+    return false;
+}
+
+function getUserInput(msg) {
+    let userNum = prompt(msg);
+
+    while (isNumber(userNum) === false) {
+        if (isNull(userNum) === true) {
             return;
         }
         alert('Введите корректное число');
-        userInt = prompt('Введите любое целое число');
+        userNum = prompt(msg);
     }
-    return userInt;
+
+    return userNum;
 }
 
-checkUserInt();
+/* 
+    Функция возведения в степень для задания
+    Но более простой и лучший вариант через Math.pow
+*/
 
-let userPow = prompt('Введите степень в которую нужно возвести число');
+function calculatePow(num, pow) {
+    let result = num;
 
-function checkUserPow() {
-    while (isNaN(userPow) || userPow === '' || userPow === ' ' || userPow <= 0) {
-        if (userPow === null) {
-            return;
-        }
-        alert('Введите корректное число');
-        userPow = prompt('Введите любое целое число');
+    for (let i = 1; i < pow; i++) {
+        result *= num;
     }
-    return userPow;
+
+    return result;
 }
 
-checkUserPow();
+const userNum = getUserInput('Введите любое целое число');
+const userPow = getUserInput('Введите степень в которую нужно возвести число');
 
-function getPow(userInt, userPow) {
-    let result = userInt;
+const result = calculatePow(userNum, userPow);
 
-    for (let i = 1; i < userPow; i++) {
-        result *= userInt;
-    }
-    console.log(result);
-}
+console.log(result);
 
-getPow(userInt, userPow);
+console.log(Math.pow(userNum, userPow)); // Если оба значения null то выводит NaN

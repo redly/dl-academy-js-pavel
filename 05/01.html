@@ -12,9 +12,9 @@
 <body>
     <header class="header">
         <div class="header__container container">
-            <a href="#" class="header__btn btn">Sign in</a>
-            <a href="#" class="header__btn btn">Register</a>
-            <a href="#" class="header__btn btn">Send message</a>
+            <a href="#" class="header__btn btn js-modalOpen" data-modal="signInModal">Sign in</a>
+            <a href="#" class="header__btn btn js-modalOpen" data-modal="registerModal">Register</a>
+            <a href="#" class="header__btn btn js-modalOpen" data-modal="sendMsgModal">Send message</a>
         </div>
     </header>
 
@@ -142,26 +142,26 @@
 
     <button class="body-scroll-btn btn js-scrollToUpBtn">Наверх</button>
 
-    <div class="popup js-showPopup">
-        <div class="popup__body container">
-            <div class="popup__content">
+    <div class="modal" id="signInModal">
+        <div class="modal__body container">
+            <div class="modal__content">
                 <div class="contacts-form contacts-form--width--half">
                     <form class="contacts-form__content js-contactForm">
                         <div class="contacts-form__group">
                             <label class="contacts-form__label" for="email-form-first">Email</label>
-                            <input class="contacts-form__field" type="email" id="email-form-first" name="email">
+                            <input class="contacts-form__field js-validFormField" type="email" id="email-form-first" name="email">
                         </div>
 
                         <div class="contacts-form__group">
                             <label class="contacts-form__label" for="password-form-first">Password</label>
-                            <input class="contacts-form__field" type="password" id="password-form-first" name="password">
+                            <input class="contacts-form__field js-validFormField" type="password" id="password-form-first" name="password">
                         </div>
 
-                        <input class="btn js-submit" type="submit" value="Sign in">
+                        <input class="btn js-submitBtn" type="submit" value="Sign in">
                     </form>
                 </div>
 
-                <a href="#" class="popup__btn-close">
+                <a href="#" class="modal__btn-close js-modalClose">
                     <svg width="15" height="15" viewBox="0 0 15 15" fill="none">
                         <path d="M2.21902 14.6113C1.70029 15.1295 0.893368 15.1295 0.374636 14.6113C0.11527 14.3522 -6.13512e-07 14.0355 -5.9841e-07 
                         13.69C-5.83308e-07 13.3445 0.11527 13.0278 0.374636 12.7687L5.64841 7.5L0.374637 2.23127C0.115271 1.97215 -7.23629e-08 1.65547 
@@ -175,65 +175,65 @@
         </div>
     </div>
 
-    <div class="popup js-showPopup">
-        <div class="popup__body container">
-            <div class="popup__content">
+    <div class="modal" id="registerModal">
+        <div class="modal__body container">
+            <div class="modal__content">
                 <div class="contacts-form">
                     <form class="contacts-form__content js-contactForm">
                         <div class="contacts-form__group">
                             <label class="contacts-form__label" for="email-form-second">Email</label>
-                            <input class="contacts-form__field" type="email" id="email-form-second" name="email">
+                            <input class="contacts-form__field js-validFormField" type="email" id="email-form-second" name="email">
                         </div>
 
                         <div class="contacts-form__row">
                             <div class="contacts-form__group contacts-form__group--width--half">
                                 <label class="contacts-form__label" for="name-form-second">Name</label>
-                                <input class="contacts-form__field" type="text" id="name-form-second" name="name">
+                                <input class="contacts-form__field js-validFormField" type="text" id="name-form-second" name="name">
                             </div>
 
                             <div class="contacts-form__group contacts-form__group--width--half">
                                 <label class="contacts-form__label" for="surname-form-second">Surname</label>
-                                <input class="contacts-form__field" type="text" id="surname-form-second" name="name">
+                                <input class="contacts-form__field js-validFormField" type="text" id="surname-form-second" name="name">
                             </div>
                         </div>
 
                         <div class="contacts-form__row">
                             <div class="contacts-form__group contacts-form__group--width--half">
                                 <label class="contacts-form__label" for="password-form-second">Password</label>
-                                <input class="contacts-form__field password" type="password" id="password-form-second" name="password">
+                                <input class="contacts-form__field password js-validFormField" type="password" id="password-form-second" name="password">
                             </div>
 
                             <div class="contacts-form__group contacts-form__group--width--half">
                                 <label class="contacts-form__label" for="repeat-password-form-second">Repeat password</label>
-                                <input class="contacts-form__field password-repeat" type="password" id="repeat-password-form-second" name="">
+                                <input class="contacts-form__field password-repeat js-validFormField" type="password" id="repeat-password-form-second" name="">
                             </div>
                         </div>
 
                         <div class="contacts-form__row">
                             <div class="contacts-form__group contacts-form__group--width--half">
                                 <label class="contacts-form__label" for="location-form-second">Location</label>
-                                <input class="contacts-form__field" type="text" id="location-form-second" name="location">
+                                <input class="contacts-form__field js-validFormField" type="text" id="location-form-second" name="location">
                             </div>
 
                             <div class="contacts-form__group contacts-form__group--width--half">
                                 <label class="contacts-form__label" for="age-form-second">Age</label>
-                                <input class="contacts-form__field" type="number" id="age-form-second" name="age">
+                                <input class="contacts-form__field js-validFormField" type="number" id="age-form-second" name="age">
                             </div>
                         </div>
 
                         <div class="contacts-form__group contacts-form__checkbox">
-                            <input class="custom-checkbox custom-checkbox--padding" type="checkbox" id="consent-form-second">
+                            <input class="custom-checkbox custom-checkbox--padding js-approvedCheckbox" type="checkbox" id="consent-form-second">
                             <label class="contacts-form__label" for="consent-form-second">
                                 By clicking on the button, you consent to the processing
                                 of your personal data
                             </label>
                         </div>
 
-                        <input class="btn js-submit" type="submit" value="Sing up" disabled>
+                        <input class="btn js-submitBtn" type="submit" value="Sing up" disabled>
                     </form>
                 </div>
 
-                <a href="#" class="popup__btn-close">
+                <a href="#" class="modal__btn-close js-modalClose">
                     <svg width="15" height="15" viewBox="0 0 15 15" fill="none">
                         <path d="M2.21902 14.6113C1.70029 15.1295 0.893368 15.1295 0.374636 14.6113C0.11527 14.3522 -6.13512e-07 14.0355 -5.9841e-07 
                         13.69C-5.83308e-07 13.3445 0.11527 13.0278 0.374636 12.7687L5.64841 7.5L0.374637 2.23127C0.115271 1.97215 -7.23629e-08 1.65547 
@@ -247,53 +247,53 @@
         </div>
     </div>
 
-    <div class="popup js-showPopup">
-        <div class="popup__body container">
-            <div class="popup__content">
+    <div class="modal" id="sendMsgModal">
+        <div class="modal__body container">
+            <div class="modal__content">
                 <div class="contacts-form">
                     <form class="contacts-form__content js-contactForm" action="https://echo.htmlacademy.ru/" method="get">
                         <div class="contacts-form__row">
                             <div class="contacts-form__group contacts-form__group--width--half">
                                 <label class="contacts-form__label" for="name-form-third">What is your name?</label>
-                                <input class="contacts-form__field" type="text" id="name-form-third" name="name">
+                                <input class="contacts-form__field js-validFormField" type="text" id="name-form-third" name="name">
                             </div>
 
                             <div class="contacts-form__group contacts-form__group--width--half">
                                 <label class="contacts-form__label" for="subject-form-third">Message subject</label>
-                                <input class="contacts-form__field" type="text" id="subject-form-third" name="subject">
+                                <input class="contacts-form__field js-validFormField" type="text" id="subject-form-third" name="subject">
                             </div>
                         </div>
 
                         <div class="contacts-form__row">
                             <div class="contacts-form__group contacts-form__group--width--half">
                                 <label class="contacts-form__label" for="email-form-third">Your email</label>
-                                <input class="contacts-form__field" type="email" id="email-form-third" name="email">
+                                <input class="contacts-form__field js-validFormField" type="email" id="email-form-third" name="email">
                             </div>
 
                             <div class="contacts-form__group contacts-form__group--width--half">
                                 <label class="contacts-form__label" for="phone-form-third">Your mobile phone</label>
-                                <input class="contacts-form__field" type="tel" id="phone-form-third" name="phone">
+                                <input class="contacts-form__field js-validFormField" type="tel" id="phone-form-third" name="phone">
                             </div>
                         </div>
 
                         <div class="contacts-form__group">
                             <label class="contacts-form__label" for="message-form-third">What do you want to discuss with me?</label>
-                            <textarea class="contacts-form__field contacts-form__textarea" id="message-form-third" name="message"></textarea>
+                            <textarea class="contacts-form__field contacts-form__textarea js-validFormField" id="message-form-third" name="message"></textarea>
                         </div>
 
                         <div class="contacts-form__group contacts-form__checkbox">
-                            <input class="custom-checkbox custom-checkbox--padding" type="checkbox" id="consent-form-third">
+                            <input class="custom-checkbox custom-checkbox--padding js-approvedCheckbox" type="checkbox" id="consent-form-third">
                             <label class="contacts-form__label" for="consent-form-third">
                                 By clicking on the button, you consent to the processing
                                 of your personal data
                             </label>
                         </div>
 
-                        <input class="btn js-submit" type="submit" value="Send" disabled>
+                        <input class="btn js-submitBtn" type="submit" value="Send" disabled>
                     </form>
                 </div>
 
-                <a href="#" class="popup__btn-close">
+                <a href="#" class="modal__btn-close js-modalClose">
                     <svg width="15" height="15" viewBox="0 0 15 15" fill="none">
                         <path d="M2.21902 14.6113C1.70029 15.1295 0.893368 15.1295 0.374636 14.6113C0.11527 14.3522 -6.13512e-07 14.0355 -5.9841e-07 
                         13.69C-5.83308e-07 13.3445 0.11527 13.0278 0.374636 12.7687L5.64841 7.5L0.374637 2.23127C0.115271 1.97215 -7.23629e-08 1.65547 

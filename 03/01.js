@@ -1,16 +1,33 @@
+function isNumber(num) {
+    if (isNaN(num) || num === '' || num <= 0) {
+        return false;
+    };
+
+    return true;
+}
+
+function isNull(num) {
+    if (num === null) {
+        return true;
+    };
+    
+    return false;
+}
+
 function checkUserAge() {
-    const age = prompt("Укажите ваш возраст...");
-    if (isNaN(age) || age === '' || age === ' ') {
-        alert(`Вы ввели " ${age} "! Пожалуйста введите корректный возраст!`);
-        checkUserAge();
-    } else if (age < 18 && age !== null) {
-        alert(`Если ваш возраст ${age} лет, то вы не можете продолжить!`);
-        checkUserAge();
-    } else if (age === null) {
+    let userAge = prompt("Укажите ваш возраст...");
+
+    if (isNull(userAge) === true) {
         return;
-    } else {
+    } else if (isNumber(userAge) === false) {
+        alert(`Вы ввели "${userAge}"! Пожалуйста введите корректный возраст!`);
+        checkUserAge();
+    } else if (userAge < 18) {
+        alert(`Если ваш возраст ${userAge} лет, то вы не сможете продолжить!`);
+        checkUserAge();
+    } else if (userAge >= 18) {
         alert('Отлично, можете продолжать!');
-    }
+    };
 }
 
 checkUserAge();

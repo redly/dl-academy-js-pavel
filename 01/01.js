@@ -1,42 +1,45 @@
-let defaultUser = {name: 'My name is...', surname:'My surname is...', age: 18};
+const defaultUser = {
+    name: 'My name is...', 
+    surname:'My surname is...', 
+    age: 'My age is...',
+};
 
-function userToConsole() {
-    let userName = prompt('Hello, dear User! Please answer, what is your name?', defaultUser.name);
+const questions = {
+    userName: {
+        question: 'Hello, dear User! Please answer, what is your name?',
+        errorMessage: 'Please, enter your name',
+        defaultAnswer: defaultUser.name
+    },
+    userSurname: {
+        question: 'OK, what is your surname?',
+        errorMessage: 'Please, enter your surname',
+        defaultAnswer: defaultUser.surname
+    },
+    userAge: {
+        question: 'Very well, what is your age?',
+        errorMessage: 'Please, enter your age',
+        defaultAnswer: defaultUser.age
+    },
+};
 
-    while (userName === '' || userName === defaultUser.name) {
-        alert('Please, enter your name');
-        userName = prompt('Hello, dear User! Please answer, what is your name?', defaultUser.name);
+function customPrompt({ question, errorMessage, defaultAnswer }) {
+    let answer = prompt(question, defaultAnswer);
+
+    while (answer === '' || answer === defaultAnswer) {
+        alert(errorMessage);
+        answer = prompt(question, defaultAnswer);
     }
 
-    if (userName === null) {
-        return;
-    }
-
-    let userSurname = prompt(`OK, ${userName}, what is your surname?`, defaultUser.surname);
-
-    while (userSurname === '' || userSurname === defaultUser.surname) {
-        alert('Please, enter your surname');
-        userSurname = prompt(`OK, ${userName}, what is your surname?`, defaultUser.surname);
-    }
-
-    if (userSurname === null) {
-        return;
-    }
-
-    let userAge = prompt(`Very well, ${userName} ${userSurname}, what is your age?`, defaultUser.age);
-
-    while (userAge === '' || userAge <= 0) {
-        alert('Please, enter your age');
-        userAge = prompt(`Very well, ${userName} ${userSurname}, what is your age?`, defaultUser.age);
-    }
-
-    if (userAge === null) {
-        return;
-    }
-
-    let user = {userName, userSurname, userAge};
-
-    console.log(user);
+    return answer;
 }
 
-userToConsole();
+let answers = {};
+
+Object.keys(questions).forEach((key) => {
+    answers[key] = customPrompt(questions[key]);
+    if (answers[key] === null) {
+        return;
+    }
+});
+
+console.log(answers);

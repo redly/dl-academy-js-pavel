@@ -6,18 +6,18 @@ const developers = [
     {
         index: 0,
         name: "Брендан Эйх",
-        work: "специалист в области информатики, программист, технический директор"
+        work: "специалист в области информатики, программист, технический директор",
     },
     {
         index: 2,
         name: "Джеймс Гослинг",
-        work: "специалист в области информационных технологий"
+        work: "специалист в области информационных технологий",
     },
     {
         index: 3,
         name: "Бьёрн Страуструп",
-        work: "программист"
-    }
+        work: "программист",
+    },
 ];
 
 // data - ЯП про которые должны быть рассказы
@@ -52,46 +52,37 @@ const data = [
         influencedBy: ["C++", "Си", "Ада", "Simula 67", "Smalltalk", "Objective-C", "Object Pascal", "Оберон", "Eiffel", "Модула-3", "Mesa", "Симула", "C#", "UCSD Pascal"],
         affectedBy: ["Ada", "C", "Modula-2", "Simula"],
         developerIndex: 3,
-    }
+    },
 ];
 
 function getText(index) {
     let dataValue = data.find(item => item.developerIndex === index);
     let developersValue = developers.find(item => item.index === index);
 
+    // Почему-то не срабатывает этот метод
+    // let filenameExtensions = dataValue.filenameExtensions.split(', ').map((item) => `.${item}`).join(', ');
+
     let filenameExtensionsStr = dataValue.filenameExtensions;
     let filenameExtensionsArr = filenameExtensionsStr.split(", ");
     filenameExtensionsArr.forEach((element, index) => filenameExtensionsArr[index] = `.${element}`);
 
     let affectedByArr = dataValue.affectedBy;
+
     function sliceArr(arr) {
         if (arr.length > 4) {
             return arr.slice(0, 4).join(", ") + " и другие языки программирования";
-        } else {
-            return arr.join(", ");
-        };
-    };
+        }
 
-    let text = dataValue.name + " - язык программирования выпущенный в " + dataValue.year + " году.\n" + 
-    "Автором языка стал " + developersValue.name + " - " + developersValue.work + ".\nФайлы программ, написанных на " +
-    dataValue.name + " могут иметь расширения " + filenameExtensionsArr.join(", ") + ".\n" +
-    dataValue.name + " испытал влияние " + dataValue.influencedBy.length + " языков программирования: " + dataValue.influencedBy.join(", ") + ".\n" +
-    dataValue.name + " повлиял на " + sliceArr(affectedByArr) + ".\n";
+        return arr.join(", ");
+    }
 
-    /*
-    let text1 = `${dataValue.name} - язык программирования выпущенный в ${dataValue.year} году.
-    Автором языка стал ${developersValue.name} - ${developersValue.work}.
-    Файлы программ, написанных на ${dataValue.name}, могут иметь расширения ${filenameExtensionsArr.join(", ")}.
-    ${dataValue.name} испытал влияние ${dataValue.influencedBy.length} языков программирования: ${dataValue.influencedBy.join(", ")}.
-    ${dataValue.name} повлиял на ${sliceArr(affectedByArr)}.`;
-    */
-
+    let text = `${dataValue.name} - язык программирования выпущенный в ${dataValue.year} году.` + 
+    `Автором языка стал ${developersValue.name} - ${developersValue.work}.` +
+    `Файлы программ, написанных на ${dataValue.name}, могут иметь расширения ${filenameExtensionsArr.join(", ")}.` +
+    `${dataValue.name} испытал влияние ${dataValue.influencedBy.length} языков программирования: ${dataValue.influencedBy.join(", ")}.` +
+    `${dataValue.name} повлиял на ${sliceArr(affectedByArr)}.\n`;
+    
     return text;
-    // return text1;
-}
-
-function logger(value1, value2, value3) {
-    console.log(value1, value2, value3);
 }
 
 function counter() {
@@ -101,14 +92,16 @@ function counter() {
         i--;
         if (i <= 0) {
             clearTimeout(timerId);
-        };
+        }
     }, 1000);
 }
 
-function showText(logger) {
+function showText() {
     alert("Информация будет выведена в консоль через 10 секунд");
-    setTimeout(() => { logger(getText(0), getText(2), getText(3)); }, 11000);
+    setTimeout(() => {
+        console.log(getText(0), getText(2), getText(3));
+    }, 11000);
     counter();
 }
 
-showText(logger);
+showText();

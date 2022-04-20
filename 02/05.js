@@ -1,34 +1,47 @@
-let rand = Math.floor(1 + Math.random() * 10);
-let userNum = prompt('Угадайте число от 1 до 10');
+function isNumber(num) {
+    if (isNaN(num) || num === '' || num <= 0) {
+        return false;
+    }
 
-function checkUserNum() {
-    while (isNaN(userNum) || userNum === '' || userNum === ' ' || userNum <= 0) {
-        if (userNum === null) {
+    return true;
+}
+
+function isNull(num) {
+    if (num === null) {
+        return true;
+    }
+    
+    return false;
+}
+
+function getUserInput(msg) {
+    let userNum = prompt(msg);
+
+    while (isNumber(userNum) === false) {
+        if (isNull(userNum) === true) {
             return;
         }
         alert('Введите корректное число');
-        userNum = prompt('Угадайте число от 1 до 10');
+        userNum = prompt(msg);
     }
+
+    return userNum;
 }
 
-checkUserNum();
+function guessNum(num) {
+    let rand = Math.floor(1 + Math.random() * 10);
 
-function guessNum() {
-    while (userNum != rand) {
-        if (userNum === null) {
+    while (num != rand) {
+        if (isNull(num) === true) {
             return;
         }
-        if (userNum < rand) {
-            alert('Вы ввели число меньше загаданного');
-            userNum = prompt('Угадайте число от 1 до 10');
-        }
-
-        if (userNum > rand) {
-            alert('Вы ввели число больше загаданного');
-            userNum = prompt('Угадайте число от 1 до 10');
-        } 
+        alert(`Вы ввели число ${num < rand ? 'меньше' : 'больше'} загаданного`);
+        num = prompt('Угадайте число от 1 до 10');
     }
+
     return alert(`Вы угадали, это число - ${rand}!`);
 }
 
-guessNum();
+const userInput = getUserInput('Угадайте число от 1 до 10');
+
+guessNum(userInput);
