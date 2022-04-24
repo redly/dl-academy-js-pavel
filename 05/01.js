@@ -58,16 +58,6 @@ document.addEventListener('keydown', (evt) => {
 
 // Валидация форм
 
-const regExp = {
-    email: /^[0-9a-z-\.]+\@[0-9a-z-]{2,}\.[a-z]{2,}$/i,
-    phone: /^(\s*)?(\+)?([-_():=+]?\d[- _():=+]?){10,14}(\s*)?$/,
-    password: /^[0-9a-z]+/i,
-    name: /^([a-zа-яё]+[\s]{0,1}[a-zа-яё]+[\s]{0,1}[a-zа-яё]+)$/i,
-    location: /^[a-zа-яё\-]+/i,
-    subject: /^(?=[a-zа-яё0-9])[a-zа-яё0-9\s]{0,49}[a-zа-яё0-9]$/i,
-    message: /^(?=[a-zа-яё0-9])[a-zа-яё0-9\s]{0,299}[a-zа-яё0-9]$/i,
-};
-
 const forms = document.querySelectorAll('.js-contactForm');
 
 if (forms) {
@@ -76,9 +66,6 @@ if (forms) {
 
         // Валидация чекбокса
 
-        // Думаю здесь уместно добавить валидацию чекбоксов,
-        // если их будет несколько в форме и учесть что они могут быть 
-        // связаны с определенной кнопкой отправки данных
         const approvedCheckboxes = form.querySelectorAll('.js-approvedCheckbox');
 
         if (approvedCheckboxes) {
@@ -87,6 +74,10 @@ if (forms) {
 
                 if (submitBtn) {
                     checkbox.addEventListener('click', () => {
+
+                        // Не сработало
+                        // submitBtn.setAttribute('disabled', !checkbox.checked);
+
                         if (checkbox.checked) {
                             submitBtn.removeAttribute('disabled');
                         } else {
@@ -101,48 +92,31 @@ if (forms) {
 
         const inputs = form.querySelectorAll('.js-validFormField');
 
-        function addElement (className, color, text) {
+        function addElement(className, text) {
             const element = document.createElement('span');
+
             if (element) {
-                element.className = className;
-                element.style.color = color;
-                element.style.fontSize  = '14px';
+                element.className = `form-message ${className}`;
                 element.innerText = text;
 
                 return element;
             }
         }
     
-        function delElement () {
-            const errorElement = form.querySelectorAll('.error');
-            const rightElement = form.querySelectorAll('.right');
+        function delElement() {
+            const removeElement = form.querySelectorAll('.form-message, .error, .right');
     
-            if (errorElement) {
-                errorElement.forEach((element) => {
+            if (removeElement) {
+                removeElement.forEach((element) => {
                     element.remove();
                 });
-            }
-
-            if (rightElement) {
-                rightElement.forEach((element) => {
-                    element.remove();
-                });
-            }
+            }    
     
             if (inputs) {
                 inputs.forEach((element) => {
-                    element.classList.remove('contacts-form__field--error');
-                    element.classList.remove('contacts-form__field--right');
+                    element.classList.remove('contacts-form__field--error', 'contacts-form__field--right');
                 });
             }
-        }
-
-        function isNumber(num) {
-            if (isNaN(num) || num === '' || num <= 0) {
-                return false;
-            }
-        
-            return true;
         }
 
         form.addEventListener('submit', (evt) => {
@@ -152,120 +126,121 @@ if (forms) {
 
             if (inputs) {
                 inputs.forEach((input) => {
-                    function restyleInputToError () {
-                        input.classList.add('contacts-form__field--error');
+                    function addClassToInput(className) {
+                        input.classList.add(className);
                     }
-        
-                    function restyleInputToRight () {
-                        input.classList.add('contacts-form__field--right');
-                    }
-        
-                    function validField () {
-                        const element = addElement('right', 'green', 'All right');
+
+                    function validateField(className, text) {
+                        const element = addElement(className, text);
+                        
                         input.parentElement.insertAdjacentElement('beforeend', element);
-                        restyleInputToRight();
+
+                        if (className === 'error') {
+                            addClassToInput('contacts-form__field--error');
+                        } else  if (className === 'right') {
+                            addClassToInput('contacts-form__field--right');
+                        }
                     }
-        
+
+                    function validateInput(regExp, text) {    
+                        if (regExp === false) {
+                            validateField('error', text);
+                        } else {
+                            validateField('right', messages.right);
+                        }
+                    }
+
+                    const messages = {
+                        right: 'All right',
+                        empty: 'This field is required',
+                        email: 'Please enter a valid email address (your entry is not in the format "somebody@example.com")',
+                        password: {
+                            isFalse: 'Your password must contain letters and numbers',
+                            repeat: 'Passwords do not match. Please check the identity of the passwords in both fields',
+                        },
+                        name: 'Your name must contain only letters',
+                        phone: 'Please enter a valid phone number (your entry is not in the format "+7 977 777 77 77")',
+                        location: 'Please enter a valid location address (your entry is not in the format "Saint-Petersburg" or "Moscow")',
+                        age: 'Please enter a correct age',
+                        subject: 'Your subject should not contain more than 50 characters',
+                        message: 'Your message should not contain more than 300 characters',
+                    };
+
+                    // В функцию validateField() не получается добавить деструктурированные объекты
+                    // в качестве параметров
+
+                    /*
+                    const errorMessages = {
+                        emptyInput: invalidFields.empty,
+                        invalidEmail: invalidFields.email,
+                        invalidPassword: {
+                            falsePassword: invalidFields.password.isFalse,
+                            repeatPassword: invalidFields.password.repeat,
+                        },
+                        invalidName: invalidFields.name,
+                        invalidPhone: invalidFields.phone,
+                        invalidLocation: invalidFields.location,
+                        invalidAge: invalidFields.age,
+                        invalidSubject: invalidFields.subject,
+                        invalidMessage: invalidFields.message,
+                    };
+                    */
+
+                    const regExp = {
+                        email: /^[0-9a-z-\.]+\@[0-9a-z-]{2,}\.[a-z]{2,}$/i,
+                        phone: /^(\s*)?(\+)?([-_():=+]?\d[- _():=+]?){10,14}(\s*)?$/,
+                        password: /^[0-9a-z]+/i,
+                        name: /^([a-zа-яё]+[\s]{0,1}[a-zа-яё]+[\s]{0,1}[a-zа-яё]+)$/i,
+                        location: /^[a-zа-яё\-]+/i,
+                        subject: /^(?=[a-zа-яё0-9])[a-zа-яё0-9\s]{0,49}[a-zа-яё0-9]$/i,
+                        message: /^(?=[a-zа-яё0-9])[a-zа-яё0-9\s]{0,299}[a-zа-яё0-9]$/i,
+                    };
+
+                    const regExpTest = {
+                        validEmail: regExp.email.test(input.value),
+                        validPhone: regExp.phone.test(input.value),
+                        validPassword: regExp.password.test(input.value),
+                        validName: regExp.name.test(input.value),
+                        validLocation: regExp.location.test(input.value),
+                        validSubject: regExp.subject.test(input.value),
+                        validMessage: regExp.message.test(input.value),
+                    };
+
                     if (!input.value) {
-                        const element = addElement('error', 'red', 'This field is required');
-                        input.parentElement.insertAdjacentElement('beforeend', element);
-                        restyleInputToError();
+                        validateField('error', messages.empty);
                     } else if (input.name === 'email') {
-                        const validEmail = regExp.email.test(input.value);
-        
-                        if (validEmail == false) {
-                            const element = addElement('error', 'red', 'Please enter a valid email address (your entry is not in the format "somebody@example.com")');
-                            input.parentElement.insertAdjacentElement('beforeend', element);
-                            restyleInputToError();
-                        } else if (validEmail == true) {
-                            validField();
-                        }
+
+                        // Правильно ли передавать в параметры функции вызов свойства объекта?
+                        validateInput(regExpTest.validEmail, messages.email);
                     } else if (input.name === 'password') {
-                        const validPassword = regExp.password.test(input.value);
-        
-                        if (validPassword == false) {
-                            const element = addElement('error', 'red', 'Your password must contain letters and numbers');
-                            input.parentElement.insertAdjacentElement('beforeend', element);
-                            restyleInputToError();
-                        } else if (validPassword == true) {
-                            validField();
-                        }
-        
-                        // Валидация совпадения паролей
-        
+                        validateInput(regExpTest.validPassword, messages.password.isFalse);                    
+                    } else if (input.name === 'password-repeat') {
                         const password = form.querySelector('.password');
                         const passwordRepeat = form.querySelector('.password-repeat');
         
                         if (passwordRepeat) {
                             if (passwordRepeat.value !== password.value && passwordRepeat.value !== '') {
-                                const element = addElement('error', 'red', 'Passwords do not match. Please check the identity of the passwords in both fields');
-                                passwordRepeat.parentElement.insertAdjacentElement('beforeend', element);
-                                passwordRepeat.classList.add('contacts-form__field--error');
+                                validateField('error', messages.password.repeat);
                             } else if (passwordRepeat.value === password.value && passwordRepeat.value !== '') {
-                                const element = addElement('right', 'green', 'All right');
-                                passwordRepeat.parentElement.insertAdjacentElement('beforeend', element);
-                                passwordRepeat.classList.add('contacts-form__field--right');
+                                validateField('right', messages.right);
                             }
                         }
-                        
                     } else if (input.name === 'name') {
-                        const validName = regExp.name.test(input.value);
-        
-                        if (validName == false) {
-                            const element = addElement('error', 'red', 'Your name must contain only letters');
-                            input.parentElement.insertAdjacentElement('beforeend', element);
-                            restyleInputToError();
-                        } else if (validName == true) {
-                            validField();
-                        }
+                        validateInput(regExpTest.validName, messages.name);
                     } else if (input.name === 'location') {
-                        const validLocation = regExp.location.test(input.value);
-        
-                        if (validLocation == false) {
-                            const element = addElement('error', 'red', 'Please enter a valid location address (your entry is not in the format "Saint-Petersburg" or "Moscow")');
-                            input.parentElement.insertAdjacentElement('beforeend', element);
-                            restyleInputToError();
-                        } else if (validLocation == true) {
-                            validField();
-                        }
+                        validateInput(regExpTest.validLocation, messages.location);
                     } else if (input.name === 'age') {
                         if (isNumber(input.value) === false) {
-                            const element = addElement('error', 'red', 'Please enter a correct age');
-                            input.parentElement.insertAdjacentElement('beforeend', element);
-                            restyleInputToError();
-                        } else if (input.value > 0) {
-                            validField();
+                            validateField('error', messages.age);
+                        } else {
+                            validateField('right', messages.right);
                         }
                     } else if (input.name === 'phone') {
-                        const validPhone = regExp.phone.test(input.value);
-        
-                        if (validPhone == false) {
-                            const element = addElement('error', 'red', 'Please enter a valid phone number (your entry is not in the format "+7 977 777 77 77")');
-                            input.parentElement.insertAdjacentElement('beforeend', element);
-                            restyleInputToError();
-                        } else if (validPhone == true) {
-                            validField();
-                        }
+                        validateInput(regExpTest.validPhone, messages.phone);
                     } else if (input.name === 'subject') {
-                        const validSubject = regExp.subject.test(input.value);
-        
-                        if (validSubject == false) {
-                            const element = addElement('error', 'red', 'Your subject should not contain more than 50 characters');
-                            input.parentElement.insertAdjacentElement('beforeend', element);
-                            restyleInputToError();
-                        } else if (validSubject == true) {
-                            validField();
-                        }
+                        validateInput(regExpTest.validSubject, messages.subject);
                     } else if (input.name === 'message') {
-                        const validMessage = regExp.message.test(input.value);
-        
-                        if (validMessage == false) {
-                            const element = addElement('error', 'red', 'Your message should not contain more than 300 characters');
-                            input.parentElement.insertAdjacentElement('beforeend', element);
-                            restyleInputToError();
-                        } else if (validMessage == true) {
-                            validField();
-                        }
+                        validateInput(regExpTest.validMessage, messages.message);
                     }
                 });
             }

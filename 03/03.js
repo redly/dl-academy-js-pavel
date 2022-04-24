@@ -4,12 +4,6 @@ function addCreator(a) {
     };
 }
 
-/* 
-    Поменял название переменной, 
-    так как chrome ругается на add
-*/
-
-// const add = addCreator(5);
 const addNum = addCreator(5);
 
 console.log(addNum(5)); // 10

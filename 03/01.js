@@ -1,19 +1,3 @@
-function isNumber(num) {
-    if (isNaN(num) || num === '' || num <= 0) {
-        return false;
-    };
-
-    return true;
-}
-
-function isNull(num) {
-    if (num === null) {
-        return true;
-    };
-    
-    return false;
-}
-
 function checkUserAge() {
     let userAge = prompt("Укажите ваш возраст...");
 

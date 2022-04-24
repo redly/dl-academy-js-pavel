@@ -210,3 +210,14 @@ body {
     .custom-checkbox {
         margin-right: 10px;
     }
+
+.form-message {
+    font-size: 14px;
+}
+    .error {
+        color: red;
+    }
+    
+    .right {
+        color: green;
+    }

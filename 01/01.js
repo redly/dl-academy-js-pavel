@@ -37,7 +37,7 @@ let answers = {};
 
 Object.keys(questions).forEach((key) => {
     answers[key] = customPrompt(questions[key]);
-    if (answers[key] === null) {
+    if (isNull(answers[key]) === true) {
         return;
     }
 });

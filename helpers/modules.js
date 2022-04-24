@@ -1,4 +1,4 @@
-export function isNumber(num) {
+function isNumber(num) {
     if (isNaN(num) || num === '' || num <= 0) {
         return false;
     }
@@ -6,7 +6,7 @@ export function isNumber(num) {
     return true;
 }
 
-export function isNull(num) {
+function isNull(num) {
     if (num === null) {
         return true;
     }
@@ -14,7 +14,7 @@ export function isNull(num) {
     return false;
 }
 
-export function getUserInput(msg) {
+function getUserInput(msg) {
     let userNum = prompt(msg);
 
     while (isNumber(userNum) === false) {
