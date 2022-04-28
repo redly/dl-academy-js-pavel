@@ -1,0 +1,313 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title>Настройка сайта для поисковиков и скринридеров — Инструменты — Дока</title>
+
+    <link rel="stylesheet" href="/base.css">
+    <link rel="preload" href="/05/fonts/graphik/graphik-regular.woff2" as="font" type="font/woff2" crossorigin="anonymous">
+</head>
+<body>
+    <header class="header">
+        <div class="header__container container">
+            <a href="#" class="header__btn btn js-modalOpen" data-modal="signInModal">Sign in</a>
+            <a href="#" class="header__btn btn js-modalOpen" data-modal="registerModal">Register</a>
+            <a href="#" class="header__btn btn js-modalOpen" data-modal="sendMsgModal">Send message</a>
+        </div>
+    </header>
+
+    <main class="content">
+        <div class="container">
+            <h1>Настройка сайта для поисковиков и скринридеров</h1>
+
+            <h2>Кратко</h2>
+            <p>
+                Современный сайт — это не только интерфейс пользователя. 
+                Чтобы сайт «взлетел» нужно многое добавить после реализации макета в вёрстке. 
+                Наряду с быстродействием, оптимизацией загрузки контента и кода, 
+                важно уделить внимание настройке сайта под поисковые системы и социальные сети, 
+                отработать вариант использования сайта с помощью скринридеров и другое.
+            </p>
+            <p>
+                Для этого необходимо разобраться с тем, как различные сервисы, службы, 
+                приложения «читают» сайт, как подготовить его для них и как сделать это правильно.
+            </p>
+
+            <h2>Поисковые системы</h2>
+            <p>
+                Наверняка вы слышали про SEO — поисковую оптимизацию (Search Engine Optimization), 
+                суть которой заключается в том, чтобы вы сначала появились в поисковом индексе Yandex, Google, Bing 
+                и прочих поисковых системах, а потом стали приближаться к первой странице выдачи по определённым поисковым запросам пользователей. 
+                Процесс такой оптимизации состоит из двух больших этапов:
+            </p>
+            <ol>
+                <li>
+                    Настройка сайта, которая нужна, чтобы сайт стал доступен в индексе.
+                </li>
+                <li>
+                    Оптимизация контента сайта и добавление ссылок на него со сторонних ресурсов.
+                </li>
+            </ol>
+            <p>
+                Разберём особенности первого этапа и рассмотрим, что нужно, чтобы сайт был максимально удобным для чтения поисковой системой.
+            </p>
+
+            <h3>Чтение сайта</h3>
+            <p>
+                Поисковики регулярно индексируют сайты. Как правило, индексация проходит в несколько этапов:
+            </p>
+            <ol>
+                <li>
+                    Обнаружение новых ссылок.
+                </li>
+                <li>
+                    Индексация страниц.
+                </li>
+                <li>
+                    Определение поведения пользователя на странице.
+                </li>
+                <li>
+                    Постоянное обновление индекса страницы.
+                </li>
+            </ol>
+            <p>
+                На первом этапе работает специальная программа, которая вносит в базу данных поисковика новые и проверяет старые ссылки. 
+                Если программа обнаруживает новую ссылку, то она выполняет несколько действий: 
+                проверяет её на спам, на обнаружение вредоносных программ, нормализует, проверяет на дубликаты и так далее. 
+                Если ссылка прошла все проверки, то она будет добавлена в базу данных поисковой системы.
+            </p>
+            <p>
+                По адресам страниц из базы данных регулярно заходит поисковый робот (веб-паук, веб-краулер), 
+                основной функцией которого является составить поисковый индекс.
+            </p>
+            <p>
+                <b>Индексация</b> — это составление статистического отчёта о содержимом страницы по определённым правилам. 
+                На основе этого отчёта и ряда других факторов определяется положение страницы в рейтинге релевантности по тому или иному поисковому запросу пользователя. 
+                Современные поисковые системы содержат тысячи критериев для определения этого положения относительно других страниц. 
+                Важно подготовить каждую страницу для встречи с поисковым ботом, результаты этой встречи сильно повлияют на популярность вашего сайта.
+            </p>
+            <p>
+                Попасть в индекс — это только первый шаг. Рейтинг страницы в интернете всё время меняется. 
+                На положение страницы в рейтинге оказывают влияние не только количество страниц, которые ссылаются на вашу страницу, но и контент. 
+                Большое значение имеет и поведение пользователя на странице. Чем больше пользователь взаимодействует со страницей, тем лучше. 
+                Поэтому важно уделять внимание содержимому, дизайну и пользовательскому опыту.
+            </p>
+            <p>
+                Веб-краулер регулярно проходит по существующим адресам в базе и проверяет наличие страницы или ответ сервера при запросе страницы. 
+                Если статус страницы корректен, но содержимое изменилось, то бот производит индексацию и заново обновляет информацию о странице в базе данных. 
+                Период проверок меняется, как правило, в зависимости от популярности страницы.
+            </p>
+
+            <h3>Как начать</h3>
+            <blockquote>
+                Необходимо помнить, что все наши подсказки являются лишь инструментами для поисковой системы, 
+                которые дают возможность анализировать контент сайта и красиво представлять его в поисковой выдаче. 
+                Конечное решение, создавать красивую карточку выдачи или нет, повышать или понижать сайт в рейтинге или нет, 
+                поисковая система принимает на основании своего алгоритма.
+            </blockquote>
+            <h4>Семантика</h4>
+            <p>
+                При формировании веса слов в индексе страницы поисковый робот опирается не только на частоту их употребления, но и на теги, 
+                внутри которых эти слова употреблены. Заголовкам, как правило, отдаётся наибольший вес (для поисковиков имеет значения заголовки первых трёх уровней). 
+                Затем идут ссылки (анализируется текст внутри &lt;a&gt;&lt;/a&gt; и атрибут title), описания картинок (атрибут alt в теге &lt;img&gt;), 
+                выделенный текст (парные теги &lt;strong&gt;, &lt;b&gt;, &lt;em&gt;, &lt;i&gt;, &lt;mark&gt;, &lt;u&gt; и прочие). 
+                Алгоритм определения весов у каждого поисковика свой, но выделенный текст анализируется особым образом.
+            </p>
+            <p>
+                Имеет значение структура тегов. Например, будет иметь значение, каким образом расставлены секции (&lt;section&gt;) внутри текста статьи (например, &lt;article&gt;), 
+                для формирования структурированного текста. Весовые коэффициенты имеют огромное значение в ранжировании, они влияют на положение страницы в поисковой выдаче.
+            </p>
+            <h3>Мета-описание</h3>
+            <p>
+                Мета-описание — это информация, которая не отображается браузером, 
+                но помогает поисковым системам понять общую тематику страницы и правильно отобразить сайт (сформировать сниппет) в результатах выдачи. 
+                Мета-описание страницы указывается в специальных тегах в шапке страницы внутри секции &lt;head&gt;. Наиболее важными для поискового робота являются два тега: 
+                тег заголовка страницы &lt;title&gt; и
+                мета-тег описания страницы &lt;meta name="description" content="..."&gt;. В атрибуте content содержится краткое описание страницы.
+            </p>
+            <p>
+                Особым классом мета-тегов являются теги, которые позволяют красиво отобразить ссылку на вашу страницу в социальных сетях и мессенджерах. 
+                Необходимости в таких тегах нет. Любой современный мессенджер или социальная сеть сформирует минимальный сниппет на основе заголовка страницы и краткого описания. 
+                Но специальные теги позволяют настроить отображение намного тоньше.
+            </p>
+            <p>
+                Для пользователей очень важно как выглядит ссылка. 
+                Количество переходов на ваш сайт из социальных сетей учитывается поисковыми системами через подключение специальных скриптов, например, 
+                Google Analytics или Яндекс Метрика. Эти переходы используется поисковой системой для определения рейтинга сайта в поисковой выдаче.
+            </p>
+        </div>
+    </main>
+
+    <button class="body-scroll-btn btn js-scrollToUpBtn">Наверх</button>
+
+    <div class="modal" id="signInModal">
+        <div class="modal__body container">
+            <div class="modal__content">
+                <div class="contacts-form contacts-form--width--half">
+                    <form class="contacts-form__content js-contactForm">
+                        <div class="contacts-form__group">
+                            <label class="contacts-form__label" for="email-form-first">Email</label>
+                            <input class="contacts-form__field js-validFormField" type="email" id="email-form-first" name="email">
+                        </div>
+
+                        <div class="contacts-form__group">
+                            <label class="contacts-form__label" for="password-form-first">Password</label>
+                            <input class="contacts-form__field js-validFormField" type="password" id="password-form-first" name="password">
+                        </div>
+
+                        <input class="btn js-submitBtn" type="submit" value="Sign in">
+                    </form>
+                </div>
+
+                <a href="#" class="modal__btn-close js-modalClose">
+                    <svg width="15" height="15" viewBox="0 0 15 15" fill="none">
+                        <path d="M2.21902 14.6113C1.70029 15.1295 0.893368 15.1295 0.374636 14.6113C0.11527 14.3522 -6.13512e-07 14.0355 -5.9841e-07 
+                        13.69C-5.83308e-07 13.3445 0.11527 13.0278 0.374636 12.7687L5.64841 7.5L0.374637 2.23127C0.115271 1.97215 -7.23629e-08 1.65547 
+                        -5.72611e-08 1.30998C-4.21593e-08 0.964491 0.115271 0.647806 0.374637 0.388689C0.893369 -0.129545 1.70029 -0.129545 2.21902 
+                        0.388689L7.4928 5.65738L12.7666 0.38869C13.2853 -0.129545 14.0922 -0.129545 14.611 0.38869C15.1297 0.906924 15.1297 1.71304 
+                        14.611 2.23127L9.33718 7.5L14.611 12.7687C15.1297 13.287 15.1297 14.0931 14.611 14.6113C14.0922 15.1295 13.2853 15.1295 12.7666 
+                        14.6113L7.4928 9.34258L2.21902 14.6113Z" fill="rgba(130, 130, 130, 1)"/>
+                    </svg>
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal" id="registerModal">
+        <div class="modal__body container">
+            <div class="modal__content">
+                <div class="contacts-form">
+                    <form class="contacts-form__content js-contactForm">
+                        <div class="contacts-form__group">
+                            <label class="contacts-form__label" for="email-form-second">Email</label>
+                            <input class="contacts-form__field js-validFormField" type="email" id="email-form-second" name="email">
+                        </div>
+
+                        <div class="contacts-form__row">
+                            <div class="contacts-form__group contacts-form__group--width--half">
+                                <label class="contacts-form__label" for="name-form-second">Name</label>
+                                <input class="contacts-form__field js-validFormField" type="text" id="name-form-second" name="name">
+                            </div>
+
+                            <div class="contacts-form__group contacts-form__group--width--half">
+                                <label class="contacts-form__label" for="surname-form-second">Surname</label>
+                                <input class="contacts-form__field js-validFormField" type="text" id="surname-form-second" name="name">
+                            </div>
+                        </div>
+
+                        <div class="contacts-form__row">
+                            <div class="contacts-form__group contacts-form__group--width--half">
+                                <label class="contacts-form__label" for="password-form-second">Password</label>
+                                <input class="contacts-form__field password js-validFormField" type="password" id="password-form-second" name="password">
+                            </div>
+
+                            <div class="contacts-form__group contacts-form__group--width--half">
+                                <label class="contacts-form__label" for="repeat-password-form-second">Repeat password</label>
+                                <input class="contacts-form__field password-repeat js-validFormField" type="password" id="repeat-password-form-second" name="password-repeat">
+                            </div>
+                        </div>
+
+                        <div class="contacts-form__row">
+                            <div class="contacts-form__group contacts-form__group--width--half">
+                                <label class="contacts-form__label" for="location-form-second">Location</label>
+                                <input class="contacts-form__field js-validFormField" type="text" id="location-form-second" name="location">
+                            </div>
+
+                            <div class="contacts-form__group contacts-form__group--width--half">
+                                <label class="contacts-form__label" for="age-form-second">Age</label>
+                                <input class="contacts-form__field js-validFormField" type="number" id="age-form-second" name="age">
+                            </div>
+                        </div>
+
+                        <div class="contacts-form__group contacts-form__checkbox">
+                            <input class="custom-checkbox custom-checkbox--padding js-approvedCheckbox" type="checkbox" id="consent-form-second">
+                            <label class="contacts-form__label" for="consent-form-second">
+                                By clicking on the button, you consent to the processing
+                                of your personal data
+                            </label>
+                        </div>
+
+                        <input class="btn js-submitBtn" type="submit" value="Sing up" disabled>
+                    </form>
+                </div>
+
+                <a href="#" class="modal__btn-close js-modalClose">
+                    <svg width="15" height="15" viewBox="0 0 15 15" fill="none">
+                        <path d="M2.21902 14.6113C1.70029 15.1295 0.893368 15.1295 0.374636 14.6113C0.11527 14.3522 -6.13512e-07 14.0355 -5.9841e-07 
+                        13.69C-5.83308e-07 13.3445 0.11527 13.0278 0.374636 12.7687L5.64841 7.5L0.374637 2.23127C0.115271 1.97215 -7.23629e-08 1.65547 
+                        -5.72611e-08 1.30998C-4.21593e-08 0.964491 0.115271 0.647806 0.374637 0.388689C0.893369 -0.129545 1.70029 -0.129545 2.21902 
+                        0.388689L7.4928 5.65738L12.7666 0.38869C13.2853 -0.129545 14.0922 -0.129545 14.611 0.38869C15.1297 0.906924 15.1297 1.71304 
+                        14.611 2.23127L9.33718 7.5L14.611 12.7687C15.1297 13.287 15.1297 14.0931 14.611 14.6113C14.0922 15.1295 13.2853 15.1295 
+                        12.7666 14.6113L7.4928 9.34258L2.21902 14.6113Z" fill="rgba(130, 130, 130, 1)"/>
+                    </svg>
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal" id="sendMsgModal">
+        <div class="modal__body container">
+            <div class="modal__content">
+                <div class="contacts-form">
+                    <form class="contacts-form__content js-contactForm" action="https://echo.htmlacademy.ru/" method="get">
+                        <div class="contacts-form__row">
+                            <div class="contacts-form__group contacts-form__group--width--half">
+                                <label class="contacts-form__label" for="name-form-third">What is your name?</label>
+                                <input class="contacts-form__field js-validFormField" type="text" id="name-form-third" name="name">
+                            </div>
+
+                            <div class="contacts-form__group contacts-form__group--width--half">
+                                <label class="contacts-form__label" for="subject-form-third">Message subject</label>
+                                <input class="contacts-form__field js-validFormField" type="text" id="subject-form-third" name="subject">
+                            </div>
+                        </div>
+
+                        <div class="contacts-form__row">
+                            <div class="contacts-form__group contacts-form__group--width--half">
+                                <label class="contacts-form__label" for="email-form-third">Your email</label>
+                                <input class="contacts-form__field js-validFormField" type="email" id="email-form-third" name="email">
+                            </div>
+
+                            <div class="contacts-form__group contacts-form__group--width--half">
+                                <label class="contacts-form__label" for="phone-form-third">Your mobile phone</label>
+                                <input class="contacts-form__field js-validFormField" type="tel" id="phone-form-third" name="phone">
+                            </div>
+                        </div>
+
+                        <div class="contacts-form__group">
+                            <label class="contacts-form__label" for="message-form-third">What do you want to discuss with me?</label>
+                            <textarea class="contacts-form__field contacts-form__textarea js-validFormField" id="message-form-third" name="message"></textarea>
+                        </div>
+
+                        <div class="contacts-form__group contacts-form__checkbox">
+                            <input class="custom-checkbox custom-checkbox--padding js-approvedCheckbox" type="checkbox" id="consent-form-third">
+                            <label class="contacts-form__label" for="consent-form-third">
+                                By clicking on the button, you consent to the processing
+                                of your personal data
+                            </label>
+                        </div>
+
+                        <input class="btn js-submitBtn" type="submit" value="Send" disabled>
+                    </form>
+                </div>
+
+                <a href="#" class="modal__btn-close js-modalClose">
+                    <svg width="15" height="15" viewBox="0 0 15 15" fill="none">
+                        <path d="M2.21902 14.6113C1.70029 15.1295 0.893368 15.1295 0.374636 14.6113C0.11527 14.3522 -6.13512e-07 14.0355 -5.9841e-07 
+                        13.69C-5.83308e-07 13.3445 0.11527 13.0278 0.374636 12.7687L5.64841 7.5L0.374637 2.23127C0.115271 1.97215 -7.23629e-08 1.65547 
+                        -5.72611e-08 1.30998C-4.21593e-08 0.964491 0.115271 0.647806 0.374637 0.388689C0.893369 -0.129545 1.70029 -0.129545 2.21902 
+                        0.388689L7.4928 5.65738L12.7666 0.38869C13.2853 -0.129545 14.0922 -0.129545 14.611 0.38869C15.1297 0.906924 15.1297 1.71304 
+                        14.611 2.23127L9.33718 7.5L14.611 12.7687C15.1297 13.287 15.1297 14.0931 14.611 14.6113C14.0922 15.1295 13.2853 15.1295 
+                        12.7666 14.6113L7.4928 9.34258L2.21902 14.6113Z" fill="rgba(130, 130, 130, 1)"/>
+                    </svg>
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <script src="/helpers/modules.js"></script>
+    <script src="/05/01.js"></script>
+</body>
+</html>
