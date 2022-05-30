@@ -1,0 +1,31 @@
+@import "_variables.base";
+@import "_mixins";
+
+/*
+    Import fonts
+*/
+@import "_fonts";
+
+/*
+    Import vendor libraries
+*/
+@import "vendor/_normalize";
+
+/*
+    Import utils classes and base styles
+*/
+@import "_utils";
+@import "_base";
+
+/*
+    Import partial elements
+*/
+/*
+@import "partials/btn";
+@import "partials/title";
+*/
+
+/*
+    Import all other blocks
+*/
+@import "common/container";

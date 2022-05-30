@@ -1,0 +1,34 @@
+/* Сброс стилей списков */
+
+@mixin no-list {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+/* Сброс стандартной стилизации кнопок */
+
+@mixin btn-reset {
+    border: none;
+    border-radius: 0;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+/* Сброс стандартной стилизации input */
+
+@mixin input-reset {
+    border: none;
+    border-radius: 0;
+    outline: none;
+}
+
+/* Скрытие стилей для стандартных фильтров */
+
+@mixin custom-filters-hidden {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    overflow: hidden;
+    clip: rect(0 0 0 0);
+}
