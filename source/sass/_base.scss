@@ -1,0 +1,29 @@
+html {
+    box-sizing: border-box;
+    -webkit-text-size-adjust: none;
+    -webkit-tap-highlight-color: transparent;
+}
+
+*,
+*::before,
+*::after {
+    box-sizing: inherit;
+}
+
+body {
+    /*
+    color: ;
+    font-family: ;
+    font-size: ;
+    line-height: ;
+    */
+
+    margin: 0;
+    padding: 0;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+.img {
+    max-width: 100%;
+}

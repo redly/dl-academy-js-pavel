@@ -1,0 +1,7 @@
+{
+    "name": "Design Life Kids",
+    "icons": [
+        { "source": "/icon-192.png", "type": "image/png", "sizes": "192x192" },
+        { "source": "/icon-512.png", "type": "image/png", "sizes": "512x512" }
+    ]
+}
