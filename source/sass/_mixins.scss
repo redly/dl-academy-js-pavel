@@ -1,3 +1,10 @@
+/* Общая стилизация заголовков */
+
+@mixin titles-common {
+    font-weight: $font-weight-bold;
+    margin: 0;
+}
+
 /* Сброс стилей списков */
 
 @mixin no-list {
