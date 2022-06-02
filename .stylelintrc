@@ -3,6 +3,11 @@
     "rules": {
         "declaration-no-important": null,
         "property-no-vendor-prefix": null,
+        "font-family-name-quotes": null,
+        "function-url-quotes": null,
+        "string-quotes": null,
+        "color-hex-case": "lower",
+        "color-hex-length": null,
         "value-keyword-case": [
             "lower", {
                 "ignoreProperties": ["/^\\$/"]
