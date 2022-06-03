@@ -16,8 +16,6 @@
 /* Сброс стандартной стилизации кнопок */
 
 @mixin btn-reset {
-    border: none;
-    border-radius: 0;
     text-decoration: none;
     cursor: pointer;
 }
