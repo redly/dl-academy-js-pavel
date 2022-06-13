@@ -3,6 +3,7 @@
     <head>
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="description" content="Future front-end developer 32 years old from Togliatti">
 
         <link rel="icon" href="img/favicons/favicon.ico" sizes="any">
         <link rel="icon" href="img/favicons/icon.svg" type="image/svg+xml">
@@ -12,12 +13,54 @@
         <link rel="preload" href="js/script.js" as="script">
         <link rel="stylesheet" href="css/style.min.css">
 
-        <title></title>
+        <title>Front-end web developer | Pavel Krasulin</title>
     </head>
     <body>
-        <header></header>
+        <header class="header">
+            <div class="container">
+                <nav class="header__menu menu" id="navMenu">
+                    <button class="menu__btn-cross menu-btn js-menuClose" type="button">
+                        <svg class="menu-btn__icon" aria-hidden="true" viewBox="0 0 26 26" fill="none">
+                            <!--<use href="img/icons/sprite-menu.svg#cross"></use>-->
+                            <rect x="3.37256" width="32" height="4" rx="2" transform="rotate(45 3.37256 0)"/>
+                            <rect x="0.543945" y="22.6289" width="32" height="4" rx="2" transform="rotate(-45 0.543945 22.6289)"/>
+                        </svg>
+                    </button>
 
-        <main></main>
+                    <div class="menu__scrollable">
+                        <div class="menu__container">
+                            <ul class="menu__list">
+                                <li class="menu__item">
+                                    <a class="menu__link menu__link--current" href="">Home</a>
+                                </li>
+                                <li class="menu__item">
+                                    <a class="menu__link" href="">My blog</a>
+                                </li>
+                                <li class="menu__item">
+                                    <a class="menu__link" href="">Sign in</a>
+                                </li>
+                                <li class="menu__item">
+                                    <a class="menu__link" href="">Register</a>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </nav>
+            </div>
+        </header>
+
+        <main>
+            <!-- Временная заглушка для функционала появляющегося меню -->
+            <div class="container">
+                <button class="menu-btn js-menuOpen" type="button" data-menu="navMenu">
+                    <svg class="menu-btn__icon" aria-hidden="true" viewBox="0 0 32 20" fill="none">
+                        <rect y="6.10352e-05" width="32" height="4" rx="2"/>
+                        <rect y="8.00006" width="32" height="4" rx="2"/>
+                        <rect y="16.0001" width="32" height="4" rx="2"/>
+                    </svg>
+                </button>
+            </div>
+        </main>
 
         <footer></footer>
 
