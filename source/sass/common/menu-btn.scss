@@ -21,5 +21,12 @@
         &:hover {
             fill: $color-grey;
         }
+
+        &--menu {
+            @media (max-width: $mobile-max-width) {
+                width: 32px;
+                height: 20px;
+            }
+        }
     }
 }

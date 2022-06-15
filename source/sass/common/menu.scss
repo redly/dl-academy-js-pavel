@@ -3,7 +3,7 @@
         display: none;
         flex-direction: column;
         justify-content: center;
-        background-color: ($color-white-sand + fc);
+        background-color: $color-white-sand-transparent;
     }
 
     @media (min-width: $tablet-min-width) {

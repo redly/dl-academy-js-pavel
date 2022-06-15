@@ -10,6 +10,7 @@
         <link rel="apple-touch-icon" href="img/favicons/apple-touch-icon.png">
         <link rel="manifest" href="img/favicons/manifest.webmanifest">
 
+        <link rel="preload" href="fonts/gilroy/gilroy-medium.woff2" as="font" type="font/woff2" crossorigin="anonymous">
         <link rel="preload" href="js/script.js" as="script">
         <link rel="stylesheet" href="css/style.min.css">
 
@@ -49,17 +50,30 @@
             </div>
         </header>
 
-        <main>
-            <!-- Временная заглушка для функционала появляющегося меню -->
-            <div class="container">
-                <button class="menu-btn js-menuOpen" type="button" data-menu="navMenu">
-                    <svg class="menu-btn__icon" aria-hidden="true" viewBox="0 0 32 20" fill="none">
-                        <rect y="6.10352e-05" width="32" height="4" rx="2"/>
-                        <rect y="8.00006" width="32" height="4" rx="2"/>
-                        <rect y="16.0001" width="32" height="4" rx="2"/>
-                    </svg>
-                </button>
-            </div>
+        <main class="content">
+            <section class="main-slider">
+                <div class="container">
+                    <div class="main-slider__header">
+                        <h1 class="main-slider__title title-h1">
+                            Pavel Krasulin
+                        </h1>
+
+                        <div class="main-slider__row">
+                            <p class="main-slider__text">
+                                Future front-end developer 32 years old, Tolyatti
+                            </p>
+
+                            <button class="main-slider__btn-menu menu-btn js-menuOpen" type="button" data-menu="navMenu">
+                                <svg class="menu-btn__icon menu-btn__icon--menu" aria-hidden="true" viewBox="0 0 32 20" fill="none">
+                                    <rect y="6.10352e-05" width="32" height="4" rx="2"/>
+                                    <rect y="8.00006" width="32" height="4" rx="2"/>
+                                    <rect y="16.0001" width="32" height="4" rx="2"/>
+                                </svg>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </section>
         </main>
 
         <footer></footer>
