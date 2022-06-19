@@ -48,22 +48,48 @@ const scripts = () => {
 // Images
 
 const optimizeImages = () => {
-    return gulp.src('source/img/**/*.{png,jpg}')
+    return gulp.src([
+        'source/img/**/*.{png,jpg}',
+        'source/img/**/**/*.{png,jpg}',
+        'source/img/**/**/**/*.{png,jpg}'
+        ])
         .pipe(squoosh())
         .pipe(gulp.dest('build/img'))
 };
 
 const copyImages = () => {
-    return gulp.src('source/img/**/*.{png,jpg}')
+    return gulp.src([
+        'source/img/**/*.{png,jpg}',
+        'source/img/**/**/*.{png,jpg}',
+        'source/img/**/**/**/*.{png,jpg}'
+        ])
         .pipe(gulp.dest('build/img'))
 };
 
 // WebP
 
 const createWebp = () => {
-    return gulp.src('source/img/**/*.{png,jpg}')
+    return gulp.src([
+        'source/img/**/*.{png,jpg}',
+        'source/img/**/**/*.{png,jpg}',
+        'source/img/**/**/**/*.{png,jpg}'
+        ])
         .pipe(squoosh({
         webp: {}
+        }))
+        .pipe(gulp.dest('build/img'))
+};
+
+// Avif
+
+const createAvif = () => {
+    return gulp.src([
+        'source/img/**/*.{png,jpg}',
+        'source/img/**/**/*.{png,jpg}',
+        'source/img/**/**/**/*.{png,jpg}'
+        ])
+        .pipe(squoosh({
+        avif: {}
         }))
         .pipe(gulp.dest('build/img'))
 };
@@ -94,7 +120,7 @@ const sprite = () => {
 const copy = (done) => {
     gulp.src([
         'source/fonts/**/*.{woff2,woff}',
-        'source/*.ico',
+        'source/img/favicons/*.ico',
         'source/img/favicons/manifest.webmanifest'
     ], {
         base: 'source'
@@ -150,7 +176,8 @@ export const build = gulp.series(
     scripts,
     svg,
     sprite,
-    createWebp
+    createWebp,
+    createAvif
     )
 );
 
@@ -164,7 +191,8 @@ export default gulp.series(
     scripts,
     svg,
     sprite,
-    createWebp
+    createWebp,
+    createAvif
     ),
     gulp.series(
         server,
