@@ -53,4 +53,19 @@
     &__btn-menu {
         margin: 9px 0 0 30px;
     }
+
+    &__slider {
+        @media (max-width: $mobile-max-width) {
+            margin: 33px 0 0 0;
+        }
+
+        @media (min-width: $tablet-min-width) {
+            margin: 36px 0 0 0;
+        }
+    }
+
+    &__slide {
+        overflow: hidden;
+        max-height: 465px;
+    }
 }
