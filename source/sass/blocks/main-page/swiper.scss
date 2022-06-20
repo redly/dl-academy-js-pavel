@@ -1,0 +1,52 @@
+/* Кастомизация для слайдеров swiper js */
+
+/**
+    * 1. Main-slider
+    * 2. Portfolio-slider
+*/
+
+/* 1. Main-slider
+    =================
+*/
+
+/* Кнопки */
+
+.main-slider-btn-custom {
+    position: static;
+    width: auto;
+    height: auto;
+    margin: 0;
+    z-index: 2;
+}
+
+.main-slider-btn-custom.swiper-button-disabled .main-slider__slider-icon {
+    opacity: 0.3;
+}
+
+.main-slider-btn-custom::after,
+.swiper-rtl .main-slider-btn-custom::after {
+    content: '';
+}
+
+/* Пагинация */
+
+.main-slider-pagination-custom {
+    position: static;
+    z-index: 2;
+
+    @media (max-width: $mobile-max-width) {
+        margin: 0 0 7px;
+    }
+}
+
+.main-slider-pagination-custom .swiper-pagination-bullet {
+    background: $color-black;
+    opacity: 0.1;
+    width: 10px;
+    height: 10px;
+    margin: 0 3.5px;
+}
+
+.main-slider-pagination-custom .swiper-pagination-bullet-active {
+    opacity: 1;
+}
