@@ -80,7 +80,7 @@ const createWebp = () => {
         .pipe(gulp.dest('build/img'))
 };
 
-// Avif
+// AVIF
 
 const createAvif = () => {
     return gulp.src([

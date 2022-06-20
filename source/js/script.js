@@ -34,3 +34,24 @@ window.addEventListener('resize', () => {
         }
     }
 });
+
+/* Инициализация swiper js */
+
+const sliders = document.querySelectorAll('.swiper');
+
+if (sliders) {
+
+    sliders.forEach((item, index) => {
+        item.classList.add('swiper' + index);
+    })
+
+    const mainSwiper = new Swiper('.swiper0', {
+        pagination: {
+            el: '.swiper-pagination',
+        },
+        navigation: {
+            nextEl: '.swiper-button-next',
+            prevEl: '.swiper-button-prev',
+        },
+    });
+}

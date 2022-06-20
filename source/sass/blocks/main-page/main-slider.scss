@@ -56,16 +56,46 @@
 
     &__slider {
         @media (max-width: $mobile-max-width) {
-            margin: 33px 0 0 0;
+            margin: 33px 0 0;
         }
 
         @media (min-width: $tablet-min-width) {
-            margin: 36px 0 0 0;
+            margin: 36px 0 0;
         }
     }
 
     &__slide {
         overflow: hidden;
         max-height: 465px;
+    }
+
+    &__slider-nav {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: center;
+        margin: 30px 0 0;
+
+        @media (max-width: $mobile-max-width) {
+            align-items: flex-end;
+        }
+
+        @media (min-width: $tablet-min-width) and (max-width: $tablet-max-width) {
+            margin: 40px 0 0;
+        }
+    }
+
+    &__slider-btn {
+        @include btn-reset;
+
+        background-color: transparent;
+
+        &:hover {
+            opacity: 0.6;
+        }
+    }
+
+    &__slider-icon {
+        display: block;
     }
 }

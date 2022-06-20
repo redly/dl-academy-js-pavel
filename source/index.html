@@ -12,6 +12,8 @@
 
         <link rel="preload" href="fonts/gilroy/gilroy-medium.woff2" as="font" type="font/woff2" crossorigin="anonymous">
         <link rel="preload" href="js/script.js" as="script">
+
+        <link rel="stylesheet" href="https://unpkg.com/swiper@8.2.4/swiper-bundle.min.css">
         <link rel="stylesheet" href="css/style.min.css">
 
         <title>Front-end web developer | Pavel Krasulin</title>
@@ -201,10 +203,25 @@
                             </div>
                         </div>
 
-                        <div class="swiper-pagination"></div>
+                        <div class="main-slider__slider-nav">
+                            <button class="main-slider__slider-btn swiper-button-prev main-slider-btn-custom" type="button">
+                                <svg class="main-slider__slider-icon" width="42" height="42" viewBox="0 0 42 42" fill="none">
+                                    <rect x="40.75" y="40.75" width="39.5" height="39.5" rx="19.75" transform="rotate(-180 40.75 40.75)" stroke="#070707" stroke-width="2.5"/>
+                                    <rect x="24.5791" y="32.6992" width="16.5512" height="3" rx="1.5" transform="rotate(-135 24.5791 32.6992)" fill="#070707"/>
+                                    <rect x="26.7002" y="11.4199" width="16.5512" height="3" rx="1.5" transform="rotate(135 26.7002 11.4199)" fill="#070707"/>
+                                </svg>
+                            </button>
 
-                        <div class="swiper-button-prev"></div>
-                        <div class="swiper-button-next"></div>
+                            <div class="main-slider__slider-pagination swiper-pagination main-slider-pagination-custom"></div>
+
+                            <button class="main-slider__slider-btn swiper-button-next main-slider-btn-custom" type="button">
+                                <svg class="main-slider__slider-icon" width="42" height="42" viewBox="0 0 42 42" fill="none">
+                                    <rect x="1.25" y="1.25024" width="39.5" height="39.5" rx="19.75" stroke="#070707" stroke-width="2.5"/>
+                                    <rect x="17.4209" y="9.30103" width="16.5512" height="3" rx="1.5" transform="rotate(45 17.4209 9.30103)" fill="#070707"/>
+                                    <rect x="15.2998" y="30.5803" width="16.5512" height="3" rx="1.5" transform="rotate(-45 15.2998 30.5803)" fill="#070707"/>
+                                </svg>
+                            </button>
+                        </div>
                     </div>
                 </div>
             </section>
@@ -212,6 +229,7 @@
 
         <footer></footer>
 
-        <script src="/js/script.js"></script>
+        <script src="https://unpkg.com/swiper@8.2.4/swiper-bundle.min.js"></script>
+        <script src="js/script.js"></script>
     </body>
 </html>
