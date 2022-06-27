@@ -1,0 +1,106 @@
+.about {
+    background-color: $color-white-sand;
+
+    @media (max-width: $mobile-max-width) {
+        padding: 40px 0;
+    }
+
+    @media (min-width: $tablet-min-width) {
+        padding: 60px 0 62px;
+    }
+
+    &__title {
+        text-align: center;
+
+        @media (max-width: $mobile-max-width) {
+            margin: 0 0 30px;
+        }
+
+        @media (min-width: $tablet-min-width) {
+            margin: 0 0 50px;
+        }
+    }
+
+    &__col {
+        display: flex;
+        flex-direction: column;
+        max-width: 578px;
+        margin: 0 auto;
+    }
+
+    &__cell {
+        border: 2.5px solid $color-black;
+        max-width: 478px;
+        padding: 15px;
+        margin: 0 0 40px;
+        position: relative;
+
+        /* Вариант наложения двух треугольников разного размера друг на друга */
+
+        &::before,
+        &::after {
+            content: '';
+            border-style: solid;
+            width: 0;
+            height: 0;
+            position: absolute;
+        }
+
+        &--triangle-border {
+            &::before {
+                border-width: 20px;
+                border-color: $color-black transparent transparent transparent;
+                right: 22px;
+                bottom: -41px;
+            }
+
+            &:nth-child(even)::before {
+                right: auto;
+                left: 22px;
+            }
+        }
+
+        &--triangle-background {
+            &::after {
+                border-width: 18px;
+                border-color: $color-white-sand transparent transparent transparent;
+                right: 24px;
+                bottom: -36px;
+            }
+
+            &:nth-child(even)::after {
+                right: auto;
+                left: 24px;
+            }
+        }
+
+        /* Вариант квадрата с рамками снизу */
+
+        /*
+        &::after {
+            content: '';
+            background-color: $color-white-sand;
+            border-left: 2.5px solid $color-black;
+            border-bottom: 2.5px solid $color-black;
+            width: 30px;
+            height: 30px;
+            position: absolute;
+            right: 22px;
+            bottom: -17.5px;
+            transform: rotate(-45deg);
+        }
+        */
+
+        &:nth-child(even) {
+            align-self: flex-end;
+        }
+
+        &:last-child {
+            margin: 0 0 20px;
+        }
+    }
+
+    &__text {
+        margin: 0;
+    }
+}
