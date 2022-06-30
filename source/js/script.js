@@ -55,3 +55,17 @@ if (sliders) {
         },
     });
 }
+
+/* Добавление индикатора процентов для progress-bar */
+
+const progress = document.querySelectorAll('.js-createPercent');
+
+if (progress) {
+    progress.forEach(item => {
+        const value = item.value;
+        const element = document.createElement('span');
+        element.className = 'progress-bar__percent';
+        element.innerText = `${value}%`;
+        item.parentElement.insertAdjacentElement('afterbegin', element);
+    });
+}

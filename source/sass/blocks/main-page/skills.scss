@@ -1,0 +1,83 @@
+.skills {
+    @media (max-width: $mobile-max-width) {
+        padding: 40px 0 0;
+    }
+
+    @media (min-width: $tablet-min-width) {
+        padding: 60px 0 20px;
+    }
+
+    &__title {
+        text-align: center;
+
+        @media (max-width: $mobile-max-width) {
+            margin: 0 0 10px;
+        }
+
+        @media (min-width: $tablet-min-width) {
+            margin: 0 0 20px;
+        }
+    }
+
+    &__text {
+        text-align: center;
+
+        @media (max-width: $mobile-max-width) {
+            margin: 0 0 40px;
+        }
+
+        @media (min-width: $tablet-min-width) {
+            margin: 0 0 50px;
+        }
+    }
+
+    &__list {
+        @include no-list;
+
+        display: flex;
+        flex-direction: row;
+        flex-wrap: wrap;
+    }
+
+    &__item {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        margin: 0 20px 40px 0;
+
+        @media (max-width: $mobile-max-width) {
+            width: calc(50% - 10px);
+        }
+
+        @media (min-width: $tablet-min-width) {
+            width: calc(25% - 15px);
+        }
+
+        @media (min-width: $desktop-width) {
+            width: calc(20% - 20px);
+            margin: 0 25px 40px 0;
+        }
+
+        &:nth-child(even) {
+            @media (max-width: $mobile-max-width) {
+                margin: 0 0 40px;
+            }
+        }
+
+        &:nth-child(4n+4) {
+            @media (min-width: $tablet-min-width) and (max-width: $tablet-max-width) {
+                margin: 0 0 40px;
+            }
+        }
+
+        &:nth-child(5n+5) {
+            @media (min-width: $desktop-width) {
+                margin: 0 0 40px;
+            }
+        }
+    }
+
+    &__item-icon {
+        margin: 0 0 20px;
+    }
+}
