@@ -37,18 +37,24 @@ window.addEventListener('resize', () => {
 
 /* Инициализация swiper js */
 
-const sliders = document.querySelectorAll('.swiper');
+const mainSlider = document.querySelector('.swiper-main-slider');
 
-if (sliders) {
-
-    sliders.forEach((item, index) => {
-        item.classList.add('swiper' + index);
-    })
-
-    const mainSwiper = new Swiper('.swiper0', {
+if (mainSlider) {
+    const mainSwiper = new Swiper('.swiper-main-slider', {
         pagination: {
             el: '.swiper-pagination',
         },
+        navigation: {
+            nextEl: '.swiper-button-next',
+            prevEl: '.swiper-button-prev',
+        },
+    });
+}
+
+const porfolioSlider = document.querySelector('.swiper-portfolio-slider');
+
+if (porfolioSlider) {
+    const portfolioSwiper = new Swiper('.swiper-portfolio-slider', {
         navigation: {
             nextEl: '.swiper-button-next',
             prevEl: '.swiper-button-prev',

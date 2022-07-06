@@ -71,7 +71,7 @@
                         </div>
                     </div>
 
-                    <div class="main-slider__slider swiper">
+                    <div class="main-slider__slider swiper swiper-main-slider">
                         <div class="swiper-wrapper">
                             <div class="main-slider__slide swiper-slide">
                                 <picture>
@@ -200,7 +200,7 @@
                         </div>
 
                         <div class="main-slider__slider-nav">
-                            <button class="main-slider__slider-btn swiper-button-prev main-slider-btn-custom" type="button">
+                            <button class="slider-btn swiper-button-prev main-slider-btn-custom" type="button">
                                 <svg class="main-slider__slider-icon" aria-hidden="true">
                                     <use xlink:href="img/sprite.svg#icon-btn-prev"></use>
                                 </svg>
@@ -208,7 +208,7 @@
 
                             <div class="main-slider__slider-pagination swiper-pagination main-slider-pagination-custom"></div>
 
-                            <button class="main-slider__slider-btn swiper-button-next main-slider-btn-custom" type="button">
+                            <button class="slider-btn swiper-button-next main-slider-btn-custom" type="button">
                                 <svg class="main-slider__slider-icon" aria-hidden="true">
                                     <use xlink:href="img/sprite.svg#icon-btn-next"></use>
                                 </svg>
@@ -325,6 +325,136 @@
                             </div>
                         </li>
                     </ul>
+                </div>
+            </section>
+
+            <section class="portfolio-slider">
+                <div class="container">
+                    <h2 class="portfolio-slider__title title-h2">
+                        Portfolio
+                    </h2>
+
+                    <div class="portfolio-slider__slider swiper swiper-portfolio-slider">
+                        <div class="swiper-wrapper">
+                            <div class="swiper-slide">
+                                <picture>
+                                    <source srcset="img/blocks/main-page/site-main-page-mobile@1x.avif, img/blocks/main-page/site-main-page-mobile@2x.avif 2x"
+                                            media="(max-width: 666px)"
+                                            type="image/avif">
+                                    <source srcset="img/blocks/main-page/site-main-page-mobile@1x.webp, img/blocks/main-page/site-main-page-mobile@2x.webp 2x"
+                                        media="(max-width: 666px)"
+                                        type="image/webp">
+                                    <source srcset="img/blocks/main-page/site-main-page-mobile@1x.jpg, img/blocks/main-page/site-main-page-mobile@2x.jpg 2x"
+                                        media="(max-width: 666px)">
+                                    <source srcset="img/blocks/main-page/site-main-page-tablet@1x.avif 1x, img/blocks/main-page/site-main-page-tablet@2x.avif 2x"
+                                        media="(max-width: 1023px)"
+                                        type="image/avif">
+                                    <source srcset="img/blocks/main-page/site-main-page-tablet@1x.webp 1x, img/blocks/main-page/site-main-page-tablet@2x.webp 2x"
+                                        media="(max-width: 1023px)"
+                                        type="image/webp">
+                                    <source srcset="img/blocks/main-page/site-main-page-tablet@1x.jpg 1x, img/blocks/main-page/site-main-page-tablet.jpg 2x"
+                                        media="(max-width: 1023px)">
+                                    <source srcset="img/blocks/main-page/site-main-page-desktop@1x.avif 1x, img/blocks/main-page/site-main-page-desktop@2x.avif 2x"
+                                        type="image/avif">
+                                    <source srcset="img/blocks/main-page/site-main-page-desktop@1x.webp 1x, img/blocks/main-page/site-main-page-desktop.webp 2x"
+                                        type="image/webp">
+                                    <img src="img/blocks/main-page/site-main-page-desktop@1x.jpg"
+                                        srcset="img/blocks/main-page/site-main-page-desktop@2x.jpg 2x"
+                                        width="1200"
+                                        height="604"
+                                        loading="lazy"
+                                        decoding="async"
+                                        alt="">
+                                </picture>
+                            </div>
+                            <div class="swiper-slide">
+                                <picture>
+                                    <source srcset="img/blocks/main-page/site-toys-page-mobile@1x.avif, img/blocks/main-page/site-toys-page-mobile@2x.avif 2x"
+                                        media="(max-width: 666px)"
+                                        type="image/avif">
+                                    <source srcset="img/blocks/main-page/site-toys-page-mobile@1x.webp, img/blocks/main-page/site-toys-page-mobile@2x.webp 2x"
+                                        media="(max-width: 666px)"
+                                        type="image/webp">
+                                    <source srcset="img/blocks/main-page/site-toys-page-mobile@1x.jpg, img/blocks/main-page/site-toys-page-mobile@2x.jpg 2x"
+                                        media="(max-width: 666px)">
+                                    <source srcset="img/blocks/main-page/site-toys-page-tablet@1x.avif 1x, img/blocks/main-page/site-toys-page-tablet@2x.avif 2x"
+                                        media="(max-width: 1023px)"
+                                        type="image/avif">
+                                    <source srcset="img/blocks/main-page/site-toys-page-tablet@1x.webp 1x, img/blocks/main-page/site-toys-page-tablet@2x.webp 2x"
+                                        media="(max-width: 1023px)"
+                                        type="image/webp">
+                                    <source srcset="img/blocks/main-page/site-toys-page-tablet@1x.jpg 1x, img/blocks/main-page/site-toys-page-tablet.jpg 2x"
+                                        media="(max-width: 1023px)">
+                                    <source srcset="img/blocks/main-page/site-toys-page-desktop@1x.avif 1x, img/blocks/main-page/site-toys-page-desktop@2x.avif 2x"
+                                        type="image/avif">
+                                    <source srcset="img/blocks/main-page/site-toys-page-desktop@1x.webp 1x, img/blocks/main-page/site-toys-page-desktop.webp 2x"
+                                        type="image/webp">
+                                    <img src="img/blocks/main-page/site-toys-page-desktop@1x.jpg"
+                                        srcset="img/blocks/main-page/site-toys-page-desktop@2x.jpg 2x"
+                                        width="1200"
+                                        height="604"
+                                        loading="lazy"
+                                        decoding="async"
+                                        alt="">
+                                </picture>
+                            </div>
+                            <div class="swiper-slide">
+                                <picture>
+                                    <source srcset="img/blocks/main-page/site-blog-page-mobile@1x.avif, img/blocks/main-page/site-blog-page-mobile@2x.avif 2x"
+                                        media="(max-width: 666px)"
+                                        type="image/avif">
+                                    <source srcset="img/blocks/main-page/site-blog-page-mobile@1x.webp, img/blocks/main-page/site-blog-page-mobile@2x.webp 2x"
+                                        media="(max-width: 666px)"
+                                        type="image/webp">
+                                    <source srcset="img/blocks/main-page/site-blog-page-mobile@1x.jpg, img/blocks/main-page/site-blog-page-mobile@2x.jpg 2x"
+                                        media="(max-width: 666px)">
+                                    <source srcset="img/blocks/main-page/site-blog-page-tablet@1x.avif 1x, img/blocks/main-page/site-blog-page-tablet@2x.avif 2x"
+                                        media="(max-width: 1023px)"
+                                        type="image/avif">
+                                    <source srcset="img/blocks/main-page/site-blog-page-tablet@1x.webp 1x, img/blocks/main-page/site-blog-page-tablet@2x.webp 2x"
+                                        media="(max-width: 1023px)"
+                                        type="image/webp">
+                                    <source srcset="img/blocks/main-page/site-blog-page-tablet@1x.jpg 1x, img/blocks/main-page/site-blog-page-tablet.jpg 2x"
+                                        media="(max-width: 1023px)">
+                                    <source srcset="img/blocks/main-page/site-blog-page-desktop@1x.avif 1x, img/blocks/main-page/site-blog-page-desktop@2x.avif 2x"
+                                        type="image/avif">
+                                    <source srcset="img/blocks/main-page/site-blog-page-desktop@1x.webp 1x, img/blocks/main-page/site-blog-page-desktop.webp 2x"
+                                        type="image/webp">
+                                    <img src="img/blocks/main-page/site-blog-page-desktop@1x.jpg"
+                                        srcset="img/blocks/main-page/site-blog-page-desktop@2x.jpg 2x"
+                                        width="1200"
+                                        height="604"
+                                        loading="lazy"
+                                        decoding="async"
+                                        alt="">
+                                </picture>
+                            </div>
+                        </div>
+
+                        <button class="slider-btn swiper-button-prev portfolio-slider-btn-custom" type="button">
+                            <svg class="portfolio-slider__icon" aria-hidden="true">
+                                <use xlink:href="img/sprite.svg#icon-portfolio-btn-prev"></use>
+                            </svg>
+                        </button>
+                        <button class="slider-btn swiper-button-next portfolio-slider-btn-custom" type="button">
+                            <svg class="portfolio-slider__icon" aria-hidden="true">
+                                <use xlink:href="img/sprite.svg#icon-portfolio-btn-next"></use>
+                            </svg>
+                        </button>
+
+                        <div class="portfolio-slider__description slider-description">
+                            <div class="slider-description__container">
+                                <h3 class="slider-description__title">
+                                    <a class="slider-description__link" href="">Learning site for DL Academy courses</a>
+                                </h3>
+
+                                <p class="slider-description__text">
+                                    A simple multi-page static site. The design layout was in Figma. HTML and CSS were used.
+                                    The site is responsive and cross-browser, but without adding interactivity via JavaScript.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </section>
         </main>

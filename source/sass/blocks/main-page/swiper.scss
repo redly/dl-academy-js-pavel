@@ -50,3 +50,41 @@
 .main-slider-pagination-custom .swiper-pagination-bullet-active {
     opacity: 1;
 }
+
+/* 1. Portfolio-slider
+    =================
+*/
+
+/* Кнопки */
+
+.portfolio-slider-btn-custom {
+    width: auto;
+    height: auto;
+}
+
+.portfolio-slider-btn-custom.swiper-button-prev {
+    left: 15px;
+    right: auto;
+
+    @media (min-width: $tablet-min-width) {
+        left: 30px;
+    }
+}
+
+.portfolio-slider-btn-custom.swiper-button-next {
+    right: 15px;
+    left: auto;
+
+    @media (min-width: $tablet-min-width) {
+        right: 30px;
+    }
+}
+
+.portfolio-slider-btn-custom.swiper-button-disabled .portfolio-slider__slider-icon {
+    opacity: 0.3;
+}
+
+.portfolio-slider-btn-custom::after,
+.swiper-rtl .portfolio-slider-btn-custom::after {
+    content: '';
+}

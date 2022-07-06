@@ -85,16 +85,6 @@
         }
     }
 
-    &__slider-btn {
-        @include btn-reset;
-
-        background-color: transparent;
-
-        &:hover {
-            opacity: 0.6;
-        }
-    }
-
     &__slider-icon {
         width: 42px;
         height: 42px;
