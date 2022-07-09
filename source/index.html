@@ -22,7 +22,7 @@
         <header class="header">
             <div class="container">
                 <nav class="header__menu menu" id="navMenu">
-                    <button class="menu__btn-cross menu-btn js-menuClose" type="button">
+                    <button class="menu__btn-cross menu-btn js-toggleMenu" type="button" data-menu="navMenu">
                         <svg class="menu-btn__icon" aria-hidden="true">
                             <use xlink:href="img/sprite.svg#icon-btn-cross"></use>
                         </svg>
@@ -63,7 +63,7 @@
                                 Future front-end developer 32 years old, Tolyatti
                             </p>
 
-                            <button class="main-slider__btn-menu menu-btn js-menuOpen" type="button" data-menu="navMenu">
+                            <button class="main-slider__btn-menu menu-btn js-toggleMenu" type="button" data-menu="navMenu">
                                 <svg class="menu-btn__icon menu-btn__icon--menu" aria-hidden="true">
                                     <use xlink:href="img/sprite.svg#icon-btn-menu"></use>
                                 </svg>
@@ -272,7 +272,8 @@
                             <div class="progress-bar">
                                 <label class="progress-bar__label" for="progress-bar-html">HTML 5</label>
                                 <div class="progress-bar__container">
-                                    <progress class="progress-bar__progress js-createPercent" id="progress-bar-html" value="90" max="100"></progress>
+                                    <span class="progress-bar__percent">90%</span>
+                                    <progress class="progress-bar__progress" id="progress-bar-html" value="90" max="100"></progress>
                                 </div>
                             </div>
                         </li>
@@ -284,7 +285,8 @@
                             <div class="progress-bar">
                                 <label class="progress-bar__label" for="progress-bar-css">CSS/SCSS</label>
                                 <div class="progress-bar__container">
-                                    <progress class="progress-bar__progress js-createPercent" id="progress-bar-css" value="85" max="100"></progress>
+                                    <span class="progress-bar__percent">85%</span>
+                                    <progress class="progress-bar__progress" id="progress-bar-css" value="85" max="100"></progress>
                                 </div>
                             </div>
                         </li>
@@ -296,7 +298,8 @@
                             <div class="progress-bar">
                                 <label class="progress-bar__label" for="progress-bar-js">JavaScript</label>
                                 <div class="progress-bar__container">
-                                    <progress class="progress-bar__progress js-createPercent" id="progress-bar-js" value="50" max="100"></progress>
+                                    <span class="progress-bar__percent">50%</span>
+                                    <progress class="progress-bar__progress" id="progress-bar-js" value="50" max="100"></progress>
                                 </div>
                             </div>
                         </li>
@@ -308,7 +311,8 @@
                             <div class="progress-bar">
                                 <label class="progress-bar__label" for="progress-bar-git">Git/GitHub</label>
                                 <div class="progress-bar__container">
-                                    <progress class="progress-bar__progress js-createPercent" id="progress-bar-git" value="75" max="100"></progress>
+                                    <span class="progress-bar__percent">75%</span>
+                                    <progress class="progress-bar__progress" id="progress-bar-git" value="75" max="100"></progress>
                                 </div>
                             </div>
                         </li>
@@ -320,7 +324,8 @@
                             <div class="progress-bar">
                                 <label class="progress-bar__label" for="progress-bar-figma">Figma</label>
                                 <div class="progress-bar__container">
-                                    <progress class="progress-bar__progress js-createPercent" id="progress-bar-figma" value="80" max="100"></progress>
+                                    <span class="progress-bar__percent">80%</span>
+                                    <progress class="progress-bar__progress" id="progress-bar-figma" value="80" max="100"></progress>
                                 </div>
                             </div>
                         </li>

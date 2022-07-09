@@ -1,37 +1,22 @@
 /* Скрипт для открытия меню в мобильной версии */
 
-const menuOpenBtn = document.querySelector('.js-menuOpen');
-const menuCloseBtn = document.querySelector('.js-menuClose');
+const menuBtns = document.querySelectorAll('.js-toggleMenu');
 
-if (menuOpenBtn) {
-    menuOpenBtn.addEventListener('click', (evt) => {
-        const menuId = evt.currentTarget.dataset.menu;
+menuBtns?.forEach((btn) => {
+    btn.addEventListener('click', (evt) => {
+        const menuId = evt.currentTarget.dataset?.menu;
         const menu = document.getElementById(menuId);
 
-        if (menu) {
-            menu.classList.add('menu--visible');
-        }
+        menu?.classList.toggle('menu--visible');
     });
-}
-
-if (menuCloseBtn) {
-    menuCloseBtn.addEventListener('click', (evt) => {
-        const menu = evt.currentTarget.parentNode;
-
-        if (menu) {
-            menu.classList.remove('menu--visible');
-        }
-    });
-}
+});
 
 window.addEventListener('resize', () => {
     const mmObj = window.matchMedia("(min-width: 768px)");
     const menu = document.querySelector('.menu--visible');
 
     if (mmObj.matches) {
-        if (menu) {
-            menu.classList.remove('menu--visible');
-        }
+        menu?.classList.remove('menu--visible');
     }
 });
 
@@ -59,19 +44,5 @@ if (porfolioSlider) {
             nextEl: '.swiper-button-next',
             prevEl: '.swiper-button-prev',
         },
-    });
-}
-
-/* Добавление индикатора процентов для progress-bar */
-
-const progress = document.querySelectorAll('.js-createPercent');
-
-if (progress) {
-    progress.forEach(item => {
-        const value = item.value;
-        const element = document.createElement('span');
-        element.className = 'progress-bar__percent';
-        element.innerText = `${value}%`;
-        item.parentElement.insertAdjacentElement('afterbegin', element);
     });
 }

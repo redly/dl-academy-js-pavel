@@ -1,6 +1,6 @@
 html {
     box-sizing: border-box;
-    -webkit-text-size-adjust: none;
+    text-size-adjust: none; /* stylelintrc не пропускает с префиксои -webkit это свойство */
     -webkit-tap-highlight-color: transparent;
 }
 

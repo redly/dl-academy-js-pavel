@@ -1,9 +1,6 @@
 .about {
     background-color: $color-white-sand;
-
-    @media (max-width: $mobile-max-width) {
-        padding: 40px 0;
-    }
+    padding: 40px 0;
 
     @media (min-width: $tablet-min-width) {
         padding: 60px 0 62px;
@@ -11,10 +8,7 @@
 
     &__title {
         text-align: center;
-
-        @media (max-width: $mobile-max-width) {
-            margin: 0 0 30px;
-        }
+        margin: 0 0 30px;
 
         @media (min-width: $tablet-min-width) {
             margin: 0 0 50px;
@@ -29,7 +23,7 @@
     }
 
     &__cell {
-        border: 2.5px solid $color-black;
+        border: 2px solid $color-black;
         max-width: 478px;
         padding: 15px;
         margin: 0 0 40px;
@@ -37,51 +31,48 @@
 
         /* Вариант наложения двух треугольников разного размера друг на друга */
 
-        &::before,
-        &::after {
-            content: '';
+        &::before {
+            content: "";
             border-style: solid;
+            border-width: 20px;
+            border-color: $color-black transparent transparent transparent;
             width: 0;
             height: 0;
             position: absolute;
+            right: 22px;
+            bottom: -40px;
         }
 
-        &--triangle-border {
-            &::before {
-                border-width: 20px;
-                border-color: $color-black transparent transparent transparent;
-                right: 22px;
-                bottom: -41px;
-            }
-
-            &:nth-child(even)::before {
-                right: auto;
-                left: 22px;
-            }
+        &::after {
+            content: "";
+            border-style: solid;
+            border-width: 18px;
+            border-color: $color-white-sand transparent transparent transparent;
+            width: 0;
+            height: 0;
+            position: absolute;
+            right: 24px;
+            bottom: -35px;
         }
 
-        &--triangle-background {
-            &::after {
-                border-width: 18px;
-                border-color: $color-white-sand transparent transparent transparent;
-                right: 24px;
-                bottom: -36px;
-            }
+        &:nth-child(even)::before {
+            right: auto;
+            left: 22px;
+        }
 
-            &:nth-child(even)::after {
-                right: auto;
-                left: 24px;
-            }
+        &:nth-child(even)::after {
+            right: auto;
+            left: 24px;
         }
 
         /* Вариант квадрата с рамками снизу */
 
         /*
         &::after {
-            content: '';
+            content: "";
             background-color: $color-white-sand;
-            border-left: 2.5px solid $color-black;
-            border-bottom: 2.5px solid $color-black;
+            border-left: 2px solid $color-black;
+            border-bottom: 2px solid $color-black;
             width: 30px;
             height: 30px;
             position: absolute;

@@ -1,10 +1,5 @@
 .menu {
-    @media (max-width: $mobile-max-width) {
-        display: none;
-        flex-direction: column;
-        justify-content: center;
-        background-color: $color-white-sand-transparent;
-    }
+    display: none;
 
     @media (min-width: $tablet-min-width) {
         display: block;
@@ -12,6 +7,9 @@
 
     &--visible {
         display: flex;
+        flex-direction: column;
+        justify-content: center;
+        background-color: $color-white-sand-transparent;
     }
 
     &__scrollable {
@@ -59,11 +57,8 @@
         @include no-list;
 
         display: flex;
-
-        @media (max-width: $mobile-max-width) {
-            flex-direction: column;
-            align-items: flex-end;
-        }
+        flex-direction: column;
+        align-items: flex-end;
 
         @media (min-width: $tablet-min-width) {
             flex-direction: row;
@@ -72,9 +67,7 @@
     }
 
     &__item {
-        @media (max-width: $mobile-max-width) {
-            margin: 0 0 40px 0;
-        }
+        margin: 0 0 40px 0;
 
         @media (min-width: $tablet-min-width) {
             margin: 0 20px 0 0;
@@ -93,11 +86,12 @@
 
     &__link {
         color: $color-grey;
+        font-size: $font-size-title-two;
         font-weight: $font-weight-bold;
         text-decoration: none;
 
-        @media (max-width: $mobile-max-width) {
-            font-size: $font-size-title-two;
+        @media (min-width: $tablet-min-width) {
+            font-size: $font-size-text;
         }
 
         &:hover:not(.menu__link--current) {

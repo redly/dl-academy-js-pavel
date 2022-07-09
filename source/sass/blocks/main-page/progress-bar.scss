@@ -17,10 +17,7 @@
         justify-content: space-between;
         align-items: center;
         width: 100%;
-
-        @media (max-width: $mobile-max-width) {
-            max-width: 130px;
-        }
+        max-width: 130px;
 
         @media (min-width: $tablet-min-width) {
             max-width: 147px;
@@ -38,16 +35,11 @@
     }
 
     &__progress {
-        -webkit-appearance: none;
-        -moz-appearance: none;
         appearance: none;
         border: none;
+        max-width: 94px;
         height: 9px;
         margin: 0 0 0 5px;
-
-        @media (max-width: $mobile-max-width) {
-            max-width: 94px;
-        }
 
         @media (min-width: $tablet-min-width) {
             max-width: 111px;

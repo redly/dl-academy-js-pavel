@@ -4,16 +4,16 @@
     display: inline-flex;
     align-items: center;
     vertical-align: top;
-    background: $color-white;
+    background-color: $color-white;
     border-radius: 30px;
-    border: 2.5px solid $color-black;
+    border: 2px solid $color-black;
     color: $color-black;
     font-family: $font-family-base;
     font-weight: $font-weight-bold;
     font-size: $font-size-text;
     line-height: calc(22 / 18);
     max-width: 280px;
-    padding: 10px 19px;
+    padding: 10px 20px;
 
     /*
     text-overflow: ellipsis;
@@ -22,7 +22,7 @@
     min-height: 40px;
     */
 
-    transition: background 300ms ease-in;
+    transition: background-color 300ms ease-in;
 
     &--black-and-long {
         background: $color-black;
@@ -31,7 +31,7 @@
 
         &:hover:not(.btn:disabled),
         &:focus {
-            background: $color-white;
+            background-color: $color-white;
             color: $color-black;
         }
 
@@ -41,12 +41,12 @@
     }
 
     &--bg--white-sand {
-        background: $color-white-sand;
+        background-color: $color-white-sand;
     }
 
     &:hover:not(.btn:disabled, .btn--black-and-long),
     &:focus:not(.btn--black-and-long) {
-        background: $color-black;
+        background-color: $color-black;
         color: $color-white;
     }
 
@@ -55,7 +55,7 @@
     }
 
     &:disabled {
-        border: 2.5px solid $color-mercury;
+        border: 2px solid $color-mercury;
         color: $color-mercury;
         cursor: no-drop;
     }

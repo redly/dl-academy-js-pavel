@@ -1,31 +1,25 @@
 .menu-btn {
-    @media (max-width: $mobile-max-width) {
-        @include btn-reset;
+    @include btn-reset;
 
-        display: block;
-        background-color: transparent;
-    }
+    display: block;
+    background-color: transparent;
 
     @media (min-width: $tablet-min-width) {
         display: none;
     }
 
     &__icon {
-        @media (max-width: $mobile-max-width) {
-            fill: $color-black;
-            width: 26px;
-            height: 26px;
-        }
+        fill: $color-black;
+        width: 26px;
+        height: 26px;
 
         &:hover {
             fill: $color-grey;
         }
 
         &--menu {
-            @media (max-width: $mobile-max-width) {
-                width: 32px;
-                height: 20px;
-            }
+            width: 32px;
+            height: 20px;
         }
     }
 }
