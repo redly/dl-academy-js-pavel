@@ -1,8 +1,8 @@
 .skills {
-    padding: 40px 0 0;
+    padding: 40px 0 40px;
 
     @media (min-width: $tablet-min-width) {
-        padding: 60px 0 20px;
+        padding: 60px 0 60px;
     }
 
     &__title {
@@ -29,42 +29,25 @@
         display: flex;
         flex-direction: row;
         flex-wrap: wrap;
+        gap: 40px 20px;
+
+        @media (min-width: $desktop-width) {
+            gap: 40px 25px;
+        }
     }
 
     &__item {
         display: flex;
         flex-direction: column;
         align-items: center;
-        width: calc(50% - 10px);
-        margin: 0 20px 40px 0;
+        width: calc((100% / 2) - 10px);
 
         @media (min-width: $tablet-min-width) {
-            width: calc(25% - 15px);
+            width: calc((100% / 4) - 15px);
         }
 
         @media (min-width: $desktop-width) {
-            width: calc(20% - 20px);
-            margin: 0 25px 40px 0;
-        }
-
-        &:nth-child(even) {
-            margin: 0 0 40px;
-
-            @media (min-width: $tablet-min-width) {
-                margin: 0 20px 40px 0;
-            }
-        }
-
-        &:nth-child(4n+4) {
-            @media (min-width: $tablet-min-width) and (max-width: $tablet-max-width) {
-                margin: 0 0 40px;
-            }
-        }
-
-        &:nth-child(5n+5) {
-            @media (min-width: $desktop-width) {
-                margin: 0 0 40px;
-            }
+            width: calc((100% / 5) - 20px);
         }
     }
 
