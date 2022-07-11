@@ -13,7 +13,7 @@
     font-size: $font-size-text;
     line-height: calc(22 / 18);
     max-width: 280px;
-    padding: 10px 20px;
+    padding: 8px 17px;
 
     /*
     text-overflow: ellipsis;
@@ -27,7 +27,7 @@
     &--black-and-long {
         background: $color-black;
         color: $color-white;
-        padding: 10px 29px;
+        padding: 8px 27px;
 
         &:hover:not(.btn:disabled),
         &:focus {
