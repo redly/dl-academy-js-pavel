@@ -31,7 +31,7 @@
 /* Пагинация */
 
 .main-slider-pagination-custom {
-    margin: 0 0 7px;
+    margin: 0 0 2px;
     position: static;
     z-index: 2;
 
@@ -40,15 +40,15 @@
     }
 }
 
-.main-slider-pagination-custom .swiper-pagination-bullet {
+.main-slider-pagination-custom.swiper-pagination-bullets .swiper-pagination-bullet {
     background-color: $color-black;
     opacity: 0.1;
     width: 10px;
     height: 10px;
-    margin: 0 3.5px;
+    margin: 0 3px;
 }
 
-.main-slider-pagination-custom .swiper-pagination-bullet-active {
+.main-slider-pagination-custom.swiper-pagination-bullets .swiper-pagination-bullet-active {
     opacity: 1;
 }
 

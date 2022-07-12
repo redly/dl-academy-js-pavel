@@ -25,8 +25,8 @@
     &__cell {
         border: 2px solid $color-black;
         max-width: 478px;
-        padding: 15px;
-        margin: 0 0 40px;
+        padding: 13px 12px;
+        margin: 0 0 39px;
         position: relative;
 
         /* Вариант наложения двух треугольников разного размера друг на друга */
@@ -34,25 +34,25 @@
         &::before {
             content: "";
             border-style: solid;
-            border-width: 20px;
+            border-width: 22px;
             border-color: $color-black transparent transparent transparent;
             width: 0;
             height: 0;
             position: absolute;
-            right: 22px;
-            bottom: -40px;
+            right: 20px;
+            bottom: -44px;
         }
 
         &::after {
             content: "";
             border-style: solid;
-            border-width: 18px;
+            border-width: 20px;
             border-color: $color-white-sand transparent transparent transparent;
             width: 0;
             height: 0;
             position: absolute;
-            right: 24px;
-            bottom: -35px;
+            right: 22px;
+            bottom: -39px;
         }
 
         &:nth-child(even)::before {
