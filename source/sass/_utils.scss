@@ -3,7 +3,9 @@
 }
 
 .u-hidden {
-    display: none !important;
+    /* display: none !important; */
+
+    display: none;
 }
 
 .visually-hidden:not(:focus):not(:active) {

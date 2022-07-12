@@ -1,0 +1,9 @@
+.slider-btn {
+    @include btn-reset;
+
+    background-color: transparent;
+
+    &:hover {
+        opacity: 0.6;
+    }
+}

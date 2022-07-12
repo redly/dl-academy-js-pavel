@@ -1,10 +1,32 @@
-/*
+/* Gilroy regular */
+
 @font-face {
-    font-family: 'Open Sans';
-    font-weight: 400;
+    font-family: "Gilroy"; /* stylelintrc не пропускает без кавычек здесь */
+    font-weight: $font-weight-regular;
     font-display: swap;
     src:
-        url('../fonts/open-sans/open-sans-regular.woff2') format('woff2'),
-        url('../fonts/open-sans/open-sans-regular.woff') format('woff');
+        url("../fonts/gilroy/gilroy-regular.woff2") format("woff2"),
+        url("../fonts/gilroy/gilroy-regular.woff") format("woff");
 }
-*/
+
+/* Gilroy medium */
+
+@font-face {
+    font-family: "Gilroy";
+    font-weight: $font-weight-medium;
+    font-display: swap;
+    src:
+        url("../fonts/gilroy/gilroy-medium.woff2") format("woff2"),
+        url("../fonts/gilroy/gilroy-medium.woff") format("woff");
+}
+
+/* Gilroy bold */
+
+@font-face {
+    font-family: "Gilroy";
+    font-weight: $font-weight-bold;
+    font-display: swap;
+    src:
+        url("../fonts/gilroy/gilroy-bold.woff2") format("woff2"),
+        url("../fonts/gilroy/gilroy-bold.woff") format("woff");
+}

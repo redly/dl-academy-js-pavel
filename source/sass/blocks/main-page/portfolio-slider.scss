@@ -1,0 +1,33 @@
+.portfolio-slider {
+    background-color: $color-white-sand;
+    padding: 40px 0;
+    position: relative;
+
+    @media (min-width: $tablet-min-width) {
+        padding: 60px 0;
+    }
+
+    &__title {
+        text-align: center;
+        margin: 0 0 30px;
+
+        @media (min-width: $tablet-min-width) {
+            margin: 0 0 50px;
+        }
+    }
+
+    &__slider {
+        max-height: 604px;
+    }
+
+    &__icon {
+        width: 25px;
+        height: 42px;
+    }
+
+    &__description {
+        position: absolute;
+        bottom: 0;
+        z-index: 2;
+    }
+}

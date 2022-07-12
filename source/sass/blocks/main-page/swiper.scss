@@ -1,0 +1,91 @@
+/* Кастомизация для слайдеров swiper js */
+
+/**
+    * 1. Main-slider
+    * 2. Portfolio-slider
+*/
+
+/* 1. Main-slider
+    =================
+*/
+
+/* Кнопки */
+
+.main-slider-btn-custom {
+    margin: 0;
+    position: static;
+    width: auto;
+    height: auto;
+    z-index: 2;
+}
+
+.main-slider-btn-custom.swiper-button-disabled .main-slider__slider-icon {
+    opacity: 0.3;
+}
+
+.main-slider-btn-custom::after,
+.swiper-rtl .main-slider-btn-custom::after {
+    content: "";
+}
+
+/* Пагинация */
+
+.main-slider-pagination-custom {
+    margin: 0 0 2px;
+    position: static;
+    z-index: 2;
+
+    @media (min-width: $tablet-min-width) {
+        margin: 0;
+    }
+}
+
+.main-slider-pagination-custom.swiper-pagination-bullets .swiper-pagination-bullet {
+    background-color: $color-black;
+    opacity: 0.1;
+    width: 10px;
+    height: 10px;
+    margin: 0 3px;
+}
+
+.main-slider-pagination-custom.swiper-pagination-bullets .swiper-pagination-bullet-active {
+    opacity: 1;
+}
+
+/* 1. Portfolio-slider
+    =================
+*/
+
+/* Кнопки */
+
+.portfolio-slider-btn-custom {
+    width: auto;
+    height: auto;
+}
+
+.portfolio-slider-btn-custom.swiper-button-prev {
+    left: 15px;
+    right: auto;
+
+    @media (min-width: $tablet-min-width) {
+        left: 30px;
+    }
+}
+
+.portfolio-slider-btn-custom.swiper-button-next {
+    right: 15px;
+    left: auto;
+
+    @media (min-width: $tablet-min-width) {
+        right: 30px;
+    }
+}
+
+.portfolio-slider-btn-custom.swiper-button-disabled .portfolio-slider__slider-icon {
+    opacity: 0.3;
+}
+
+.portfolio-slider-btn-custom::after,
+.swiper-rtl .portfolio-slider-btn-custom::after {
+    content: "";
+}

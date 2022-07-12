@@ -1,8 +1,6 @@
 {
     "extends": "stylelint-config-htmlacademy",
     "rules": {
-        "declaration-no-important": null,
-        "property-no-vendor-prefix": null,
         "value-keyword-case": [
             "lower", {
                 "ignoreProperties": ["/^\\$/"]

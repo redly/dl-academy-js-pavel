@@ -1,0 +1,97 @@
+.about {
+    background-color: $color-white-sand;
+    padding: 40px 0;
+
+    @media (min-width: $tablet-min-width) {
+        padding: 60px 0 62px;
+    }
+
+    &__title {
+        text-align: center;
+        margin: 0 0 30px;
+
+        @media (min-width: $tablet-min-width) {
+            margin: 0 0 50px;
+        }
+    }
+
+    &__col {
+        display: flex;
+        flex-direction: column;
+        max-width: 578px;
+        margin: 0 auto;
+    }
+
+    &__cell {
+        border: 2px solid $color-black;
+        max-width: 478px;
+        padding: 13px 12px;
+        margin: 0 0 39px;
+        position: relative;
+
+        /* Вариант наложения двух треугольников разного размера друг на друга */
+
+        &::before {
+            content: "";
+            border-style: solid;
+            border-width: 22px;
+            border-color: $color-black transparent transparent transparent;
+            width: 0;
+            height: 0;
+            position: absolute;
+            right: 20px;
+            bottom: -44px;
+        }
+
+        &::after {
+            content: "";
+            border-style: solid;
+            border-width: 20px;
+            border-color: $color-white-sand transparent transparent transparent;
+            width: 0;
+            height: 0;
+            position: absolute;
+            right: 22px;
+            bottom: -39px;
+        }
+
+        &:nth-child(even)::before {
+            right: auto;
+            left: 22px;
+        }
+
+        &:nth-child(even)::after {
+            right: auto;
+            left: 24px;
+        }
+
+        /* Вариант квадрата с рамками снизу */
+
+        /*
+        &::after {
+            content: "";
+            background-color: $color-white-sand;
+            border-left: 2px solid $color-black;
+            border-bottom: 2px solid $color-black;
+            width: 30px;
+            height: 30px;
+            position: absolute;
+            right: 22px;
+            bottom: -17.5px;
+            transform: rotate(-45deg);
+        }
+        */
+
+        &:nth-child(even) {
+            align-self: flex-end;
+        }
+
+        &:last-child {
+            margin: 0 0 20px;
+        }
+    }
+
+    &__text {
+        margin: 0;
+    }
+}

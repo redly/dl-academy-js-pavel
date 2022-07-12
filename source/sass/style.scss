@@ -20,12 +20,23 @@
 /*
     Import partial elements
 */
-/*
 @import "partials/btn";
-@import "partials/title";
-*/
+@import "partials/titles";
+
 
 /*
     Import all other blocks
 */
 @import "common/container";
+@import "common/header";
+@import "common/menu";
+@import "common/menu-btn";
+@import "common/footer";
+@import "blocks/main-page/main-slider";
+@import "blocks/main-page/swiper";
+@import "blocks/main-page/about";
+@import "blocks/main-page/skills";
+@import "blocks/main-page/progress-bar";
+@import "blocks/main-page/portfolio-slider";
+@import "blocks/main-page/slider-btn";
+@import "blocks/main-page/slider-description";

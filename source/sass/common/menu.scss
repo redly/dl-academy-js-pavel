@@ -1,0 +1,110 @@
+.menu {
+    display: none;
+
+    @media (min-width: $tablet-min-width) {
+        display: block;
+    }
+
+    &--visible {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        background-color: $color-white-sand-transparent;
+    }
+
+    &__scrollable {
+        @media (max-width: $mobile-max-width) {
+            display: flex;
+            flex-direction: column;
+            overflow-x: hidden;
+            max-height: 100%;
+            padding: 50px 0;
+        }
+
+        @media (min-width: $tablet-min-width) {
+            border-bottom: 1px solid $color-grey;
+            padding: 0 0 30px 0;
+        }
+
+        @media (min-width: $desktop-width) {
+            padding: 0 0 32px 0;
+        }
+    }
+
+    &__container {
+        @media (max-width: $mobile-max-width) {
+            display: flex;
+            flex-direction: row-reverse;
+            flex-grow: 1;
+            align-items: center;
+            padding: 0 20px;
+        }
+    }
+
+    &__btn-cross {
+        position: absolute;
+        top: 50px;
+        right: 13px;
+        z-index: 4;
+
+        @media (orientation: landscape) {
+            right: auto;
+            left: 13px;
+        }
+    }
+
+    &__list {
+        @include no-list;
+
+        display: flex;
+        flex-direction: column;
+        align-items: flex-end;
+
+        @media (min-width: $tablet-min-width) {
+            flex-direction: row;
+            justify-content: flex-end;
+        }
+    }
+
+    &__item {
+        margin: 0 0 40px 0;
+
+        @media (min-width: $tablet-min-width) {
+            margin: 0 20px 0 0;
+        }
+
+        &:first-child {
+            @media (min-width: $tablet-min-width) {
+                flex-grow: 1;
+                margin: 0 20px 0 10px;
+            }
+        }
+
+        &:last-child {
+            margin: 0;
+        }
+    }
+
+    &__link {
+        color: $color-grey;
+        font-size: $font-size-title-two;
+        font-weight: $font-weight-bold;
+        text-decoration: none;
+
+        @media (min-width: $tablet-min-width) {
+            font-size: $font-size-text;
+        }
+
+        &:hover:not(.menu__link--current) {
+            color: $color-black;
+        }
+
+        &:focus {
+            color: $color-black;
+        }
+
+        &--current {
+            color: $color-black;
+        }
+    }
+}

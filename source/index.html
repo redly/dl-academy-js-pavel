@@ -3,24 +3,515 @@
     <head>
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="description" content="Future front-end developer 32 years old from Togliatti">
 
         <link rel="icon" href="img/favicons/favicon.ico" sizes="any">
         <link rel="icon" href="img/favicons/icon.svg" type="image/svg+xml">
         <link rel="apple-touch-icon" href="img/favicons/apple-touch-icon.png">
         <link rel="manifest" href="img/favicons/manifest.webmanifest">
 
+        <link rel="preload" href="fonts/gilroy/gilroy-medium.woff2" as="font" type="font/woff2" crossorigin="anonymous">
         <link rel="preload" href="js/script.js" as="script">
+
+        <link rel="stylesheet" href="https://unpkg.com/swiper@8.2.4/swiper-bundle.min.css">
         <link rel="stylesheet" href="css/style.min.css">
 
-        <title></title>
+        <title>Front-end web developer | Pavel Krasulin</title>
     </head>
     <body>
-        <header></header>
+        <header class="header">
+            <div class="container">
+                <nav class="header__menu menu" id="navMenu">
+                    <button class="menu__btn-cross menu-btn js-toggleMenu" type="button" data-menu="navMenu">
+                        <svg class="menu-btn__icon" aria-hidden="true">
+                            <use xlink:href="img/sprite.svg#icon-btn-cross"></use>
+                        </svg>
+                    </button>
 
-        <main></main>
+                    <div class="menu__scrollable">
+                        <div class="menu__container">
+                            <ul class="menu__list">
+                                <li class="menu__item">
+                                    <a class="menu__link menu__link--current" href="">Home</a>
+                                </li>
+                                <li class="menu__item">
+                                    <a class="menu__link" href="">My blog</a>
+                                </li>
+                                <li class="menu__item">
+                                    <a class="menu__link" href="">Sign in</a>
+                                </li>
+                                <li class="menu__item">
+                                    <a class="menu__link" href="">Register</a>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </nav>
+            </div>
+        </header>
 
-        <footer></footer>
+        <main class="content">
+            <section class="main-slider">
+                <div class="container">
+                    <div class="main-slider__header">
+                        <h1 class="main-slider__title title-h1">
+                            Pavel Krasulin
+                        </h1>
 
-        <script src="/js/script.js"></script>
+                        <div class="main-slider__row">
+                            <p class="main-slider__text">
+                                Future front-end developer 32 years old, Tolyatti
+                            </p>
+
+                            <button class="main-slider__btn-menu menu-btn js-toggleMenu" type="button" data-menu="navMenu">
+                                <svg class="menu-btn__icon menu-btn__icon--menu" aria-hidden="true">
+                                    <use xlink:href="img/sprite.svg#icon-btn-menu"></use>
+                                </svg>
+                            </button>
+                        </div>
+                    </div>
+
+                    <div class="main-slider__slider swiper swiper-main-slider">
+                        <div class="swiper-wrapper">
+                            <div class="main-slider__slide swiper-slide">
+                                <picture>
+                                    <source srcset="img/blocks/main-page/pavel-gates-mobile@1x.avif, img/blocks/main-page/pavel-gates-mobile@2x.avif 2x"
+                                        media="(max-width: 666px)"
+                                        type="image/avif">
+                                    <source srcset="img/blocks/main-page/pavel-gates-mobile@1x.webp, img/blocks/main-page/pavel-gates-mobile@2x.webp 2x"
+                                        media="(max-width: 666px)"
+                                        type="image/webp">
+                                    <source srcset="img/blocks/main-page/pavel-gates-mobile@1x.jpg, img/blocks/main-page/pavel-gates-mobile@2x.jpg 2x"
+                                        media="(max-width: 666px)">
+                                    <source srcset="img/blocks/main-page/pavel-gates-tablet@1x.avif 1x, img/blocks/main-page/pavel-gates-tablet@2x.avif 2x"
+                                        media="(max-width: 1023px)"
+                                        type="image/avif">
+                                    <source srcset="img/blocks/main-page/pavel-gates-tablet@1x.webp 1x, img/blocks/main-page/pavel-gates-tablet@2x.webp 2x"
+                                        media="(max-width: 1023px)"
+                                        type="image/webp">
+                                    <source srcset="img/blocks/main-page/pavel-gates-tablet@1x.jpg 1x, img/blocks/main-page/pavel-gates-tablet.jpg 2x"
+                                        media="(max-width: 1023px)">
+                                    <source srcset="img/blocks/main-page/pavel-gates-desktop@1x.avif 1x, img/blocks/main-page/pavel-gates-desktop@2x.avif 2x"
+                                        type="image/avif">
+                                    <source srcset="img/blocks/main-page/pavel-gates-desktop@1x.webp 1x, img/blocks/main-page/pavel-gates-desktop.webp 2x"
+                                        type="image/webp">
+                                    <img src="img/blocks/main-page/pavel-gates-desktop@1x.jpg"
+                                        srcset="img/blocks/main-page/pavel-gates-desktop@2x.jpg 2x"
+                                        width="1200"
+                                        height="465"
+                                        loading="lazy"
+                                        decoding="async"
+                                        alt="">
+                                </picture>
+                            </div>
+                            <div class="main-slider__slide swiper-slide">
+                                <picture>
+                                    <source srcset="img/blocks/main-page/pavel-beach-mobile@1x.avif, img/blocks/main-page/pavel-beach-mobile@2x.avif 2x"
+                                        media="(max-width: 666px)"
+                                        type="image/avif">
+                                    <source srcset="img/blocks/main-page/pavel-beach-mobile@1x.webp, img/blocks/main-page/pavel-beach-mobile@2x.webp 2x"
+                                        media="(max-width: 666px)"
+                                        type="image/webp">
+                                    <source srcset="img/blocks/main-page/pavel-beach-mobile@1x.jpg, img/blocks/main-page/pavel-beach-mobile@2x.jpg 2x"
+                                        media="(max-width: 666px)">
+                                    <source srcset="img/blocks/main-page/pavel-beach-tablet@1x.avif 1x, img/blocks/main-page/pavel-beach-tablet@2x.avif 2x"
+                                        media="(max-width: 1023px)"
+                                        type="image/avif">
+                                    <source srcset="img/blocks/main-page/pavel-beach-tablet@1x.webp 1x, img/blocks/main-page/pavel-beach-tablet@2x.webp 2x"
+                                        media="(max-width: 1023px)"
+                                        type="image/webp">
+                                    <source srcset="img/blocks/main-page/pavel-beach-tablet@1x.jpg 1x, img/blocks/main-page/pavel-beach-tablet.jpg 2x"
+                                        media="(max-width: 1023px)">
+                                    <source srcset="img/blocks/main-page/pavel-beach-desktop@1x.avif 1x, img/blocks/main-page/pavel-beach-desktop@2x.avif 2x"
+                                        type="image/avif">
+                                    <source srcset="img/blocks/main-page/pavel-beach-desktop@1x.webp 1x, img/blocks/main-page/pavel-beach-desktop.webp 2x"
+                                        type="image/webp">
+                                    <img src="img/blocks/main-page/pavel-beach-desktop@1x.jpg"
+                                        srcset="img/blocks/main-page/pavel-beach-desktop@2x.jpg 2x"
+                                        width="1200"
+                                        height="465"
+                                        loading="lazy"
+                                        decoding="async"
+                                        alt="">
+                                </picture>
+                            </div>
+                            <div class="main-slider__slide swiper-slide">
+                                <picture>
+                                    <source srcset="img/blocks/main-page/pavel-hill-mobile@1x.avif, img/blocks/main-page/pavel-hill-mobile@2x.avif 2x"
+                                        media="(max-width: 666px)"
+                                        type="image/avif">
+                                    <source srcset="img/blocks/main-page/pavel-hill-mobile@1x.webp, img/blocks/main-page/pavel-hill-mobile@2x.webp 2x"
+                                        media="(max-width: 666px)"
+                                        type="image/webp">
+                                    <source srcset="img/blocks/main-page/pavel-hill-mobile@1x.jpg, img/blocks/main-page/pavel-hill-mobile@2x.jpg 2x"
+                                        media="(max-width: 666px)">
+                                    <source srcset="img/blocks/main-page/pavel-hill-tablet@1x.avif 1x, img/blocks/main-page/pavel-hill-tablet@2x.avif 2x"
+                                        media="(max-width: 1023px)"
+                                        type="image/avif">
+                                    <source srcset="img/blocks/main-page/pavel-hill-tablet@1x.webp 1x, img/blocks/main-page/pavel-hill-tablet@2x.webp 2x"
+                                        media="(max-width: 1023px)"
+                                        type="image/webp">
+                                    <source srcset="img/blocks/main-page/pavel-hill-tablet@1x.jpg 1x, img/blocks/main-page/pavel-hill-tablet.jpg 2x"
+                                        media="(max-width: 1023px)">
+                                    <source srcset="img/blocks/main-page/pavel-hill-desktop@1x.avif 1x, img/blocks/main-page/pavel-hill-desktop@2x.avif 2x"
+                                        type="image/avif">
+                                    <source srcset="img/blocks/main-page/pavel-hill-desktop@1x.webp 1x, img/blocks/main-page/pavel-hill-desktop.webp 2x"
+                                        type="image/webp">
+                                    <img src="img/blocks/main-page/pavel-hill-desktop@1x.jpg"
+                                        srcset="img/blocks/main-page/pavel-hill-desktop@2x.jpg 2x"
+                                        width="1200"
+                                        height="465"
+                                        loading="lazy"
+                                        decoding="async"
+                                        alt="">
+                                </picture>
+                            </div>
+                            <div class="main-slider__slide swiper-slide">
+                                <picture>
+                                    <source srcset="img/blocks/main-page/pavel-books-mobile@1x.avif, img/blocks/main-page/pavel-books-mobile@2x.avif 2x"
+                                        media="(max-width: 666px)"
+                                        type="image/avif">
+                                    <source srcset="img/blocks/main-page/pavel-books-mobile@1x.webp, img/blocks/main-page/pavel-books-mobile@2x.webp 2x"
+                                        media="(max-width: 666px)"
+                                        type="image/webp">
+                                    <source srcset="img/blocks/main-page/pavel-books-mobile@1x.jpg, img/blocks/main-page/pavel-books-mobile@2x.jpg 2x"
+                                        media="(max-width: 666px)">
+                                    <source srcset="img/blocks/main-page/pavel-books-tablet@1x.avif 1x, img/blocks/main-page/pavel-books-tablet@2x.avif 2x"
+                                        media="(max-width: 1023px)"
+                                        type="image/avif">
+                                    <source srcset="img/blocks/main-page/pavel-books-tablet@1x.webp 1x, img/blocks/main-page/pavel-books-tablet@2x.webp 2x"
+                                        media="(max-width: 1023px)"
+                                        type="image/webp">
+                                    <source srcset="img/blocks/main-page/pavel-books-tablet@1x.jpg 1x, img/blocks/main-page/pavel-books-tablet.jpg 2x"
+                                        media="(max-width: 1023px)">
+                                    <source srcset="img/blocks/main-page/pavel-books-desktop@1x.avif 1x, img/blocks/main-page/pavel-books-desktop@2x.avif 2x"
+                                        type="image/avif">
+                                    <source srcset="img/blocks/main-page/pavel-books-desktop@1x.webp 1x, img/blocks/main-page/pavel-books-desktop.webp 2x"
+                                        type="image/webp">
+                                    <img src="img/blocks/main-page/pavel-books-desktop@1x.jpg"
+                                        srcset="img/blocks/main-page/pavel-books-desktop@2x.jpg 2x"
+                                        width="1200"
+                                        height="465"
+                                        loading="lazy"
+                                        decoding="async"
+                                        alt="">
+                                </picture>
+                            </div>
+                        </div>
+
+                        <div class="main-slider__slider-nav">
+                            <button class="slider-btn swiper-button-prev main-slider-btn-custom" type="button">
+                                <svg class="main-slider__slider-icon" aria-hidden="true">
+                                    <use xlink:href="img/sprite.svg#icon-btn-prev"></use>
+                                </svg>
+                            </button>
+
+                            <div class="main-slider__slider-pagination swiper-pagination main-slider-pagination-custom"></div>
+
+                            <button class="slider-btn swiper-button-next main-slider-btn-custom" type="button">
+                                <svg class="main-slider__slider-icon" aria-hidden="true">
+                                    <use xlink:href="img/sprite.svg#icon-btn-next"></use>
+                                </svg>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section class="about">
+                <div class="container">
+                    <h2 class="about__title title-h2">
+                        About me
+                    </h2>
+
+                    <div class="about__col">
+                        <div class="about__cell">
+                            <p class="about__text">
+                                Aliquam tortor molestie turpis est tristique.
+                                Congue diam orci amet quis semper ut.
+                                Vitae aenean nibh facilisis urna, ultricies euismod nunc.
+                                Commodo fringilla sit hendrerit consequat. Vel ac elit vel sagittis.
+                            </p>
+                        </div>
+
+                        <div class="about__cell">
+                            <p class="about__text">
+                                Tincidunt id quis pellentesque rutrum pretium.
+                                Egestas aliquam dictum ipsum nisl, sed pulvinar.
+                                Commodo elit sed a fermentum non justo. Etiam platea consectetur.
+                            </p>
+                        </div>
+
+                        <div class="about__cell">
+                            <p class="about__text">
+                                Quam ipsum odio tellus etiam aliquam dolor ut hendrerit.
+                                Felis risus nec vitae nunc ultricies placerat.
+                                Nullam nec felis eu id dolor pellentesque tristique.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section class="skills">
+                <div class="container">
+                    <h2 class="skills__title title-h2">
+                        Skills
+                    </h2>
+
+                    <p class="skills__text">
+                        I work in such programs as
+                    </p>
+
+                    <ul class="skills__list">
+                        <li class="skills__item">
+                            <svg class="skills__item-icon" width="79" height="90">
+                                <use xlink:href="img/sprite.svg#icon-skills-html"></use>
+                            </svg>
+
+                            <div class="progress-bar">
+                                <label class="progress-bar__label" for="progress-bar-html">HTML 5</label>
+                                <div class="progress-bar__container">
+                                    <span class="progress-bar__percent">90%</span>
+                                    <progress class="progress-bar__progress" id="progress-bar-html" value="90" max="100"></progress>
+                                </div>
+                            </div>
+                        </li>
+                        <li class="skills__item">
+                            <svg class="skills__item-icon" width="79" height="90">
+                                <use xlink:href="img/sprite.svg#icon-skills-css"></use>
+                            </svg>
+
+                            <div class="progress-bar">
+                                <label class="progress-bar__label" for="progress-bar-css">CSS/SCSS</label>
+                                <div class="progress-bar__container">
+                                    <span class="progress-bar__percent">85%</span>
+                                    <progress class="progress-bar__progress" id="progress-bar-css" value="85" max="100"></progress>
+                                </div>
+                            </div>
+                        </li>
+                        <li class="skills__item">
+                            <svg class="skills__item-icon" width="68" height="90">
+                                <use xlink:href="img/sprite.svg#icon-skills-js"></use>
+                            </svg>
+
+                            <div class="progress-bar">
+                                <label class="progress-bar__label" for="progress-bar-js">JavaScript</label>
+                                <div class="progress-bar__container">
+                                    <span class="progress-bar__percent">50%</span>
+                                    <progress class="progress-bar__progress" id="progress-bar-js" value="50" max="100"></progress>
+                                </div>
+                            </div>
+                        </li>
+                        <li class="skills__item">
+                            <svg class="skills__item-icon" width="90" height="90">
+                                <use xlink:href="img/sprite.svg#icon-skills-git"></use>
+                            </svg>
+
+                            <div class="progress-bar">
+                                <label class="progress-bar__label" for="progress-bar-git">Git/GitHub</label>
+                                <div class="progress-bar__container">
+                                    <span class="progress-bar__percent">75%</span>
+                                    <progress class="progress-bar__progress" id="progress-bar-git" value="75" max="100"></progress>
+                                </div>
+                            </div>
+                        </li>
+                        <li class="skills__item">
+                            <svg class="skills__item-icon" width="60" height="90">
+                                <use xlink:href="img/sprite.svg#icon-skills-figma"></use>
+                            </svg>
+
+                            <div class="progress-bar">
+                                <label class="progress-bar__label" for="progress-bar-figma">Figma</label>
+                                <div class="progress-bar__container">
+                                    <span class="progress-bar__percent">80%</span>
+                                    <progress class="progress-bar__progress" id="progress-bar-figma" value="80" max="100"></progress>
+                                </div>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+            </section>
+
+            <section class="portfolio-slider">
+                <div class="container">
+                    <h2 class="portfolio-slider__title title-h2">
+                        Portfolio
+                    </h2>
+
+                    <div class="portfolio-slider__slider swiper swiper-portfolio-slider">
+                        <div class="swiper-wrapper">
+                            <div class="swiper-slide">
+                                <picture>
+                                    <source srcset="img/blocks/main-page/site-main-page-mobile@1x.avif, img/blocks/main-page/site-main-page-mobile@2x.avif 2x"
+                                            media="(max-width: 666px)"
+                                            type="image/avif">
+                                    <source srcset="img/blocks/main-page/site-main-page-mobile@1x.webp, img/blocks/main-page/site-main-page-mobile@2x.webp 2x"
+                                        media="(max-width: 666px)"
+                                        type="image/webp">
+                                    <source srcset="img/blocks/main-page/site-main-page-mobile@1x.jpg, img/blocks/main-page/site-main-page-mobile@2x.jpg 2x"
+                                        media="(max-width: 666px)">
+                                    <source srcset="img/blocks/main-page/site-main-page-tablet@1x.avif 1x, img/blocks/main-page/site-main-page-tablet@2x.avif 2x"
+                                        media="(max-width: 1023px)"
+                                        type="image/avif">
+                                    <source srcset="img/blocks/main-page/site-main-page-tablet@1x.webp 1x, img/blocks/main-page/site-main-page-tablet@2x.webp 2x"
+                                        media="(max-width: 1023px)"
+                                        type="image/webp">
+                                    <source srcset="img/blocks/main-page/site-main-page-tablet@1x.jpg 1x, img/blocks/main-page/site-main-page-tablet.jpg 2x"
+                                        media="(max-width: 1023px)">
+                                    <source srcset="img/blocks/main-page/site-main-page-desktop@1x.avif 1x, img/blocks/main-page/site-main-page-desktop@2x.avif 2x"
+                                        type="image/avif">
+                                    <source srcset="img/blocks/main-page/site-main-page-desktop@1x.webp 1x, img/blocks/main-page/site-main-page-desktop.webp 2x"
+                                        type="image/webp">
+                                    <img src="img/blocks/main-page/site-main-page-desktop@1x.jpg"
+                                        srcset="img/blocks/main-page/site-main-page-desktop@2x.jpg 2x"
+                                        width="1200"
+                                        height="604"
+                                        loading="lazy"
+                                        decoding="async"
+                                        alt="">
+                                </picture>
+                            </div>
+                            <div class="swiper-slide">
+                                <picture>
+                                    <source srcset="img/blocks/main-page/site-toys-page-mobile@1x.avif, img/blocks/main-page/site-toys-page-mobile@2x.avif 2x"
+                                        media="(max-width: 666px)"
+                                        type="image/avif">
+                                    <source srcset="img/blocks/main-page/site-toys-page-mobile@1x.webp, img/blocks/main-page/site-toys-page-mobile@2x.webp 2x"
+                                        media="(max-width: 666px)"
+                                        type="image/webp">
+                                    <source srcset="img/blocks/main-page/site-toys-page-mobile@1x.jpg, img/blocks/main-page/site-toys-page-mobile@2x.jpg 2x"
+                                        media="(max-width: 666px)">
+                                    <source srcset="img/blocks/main-page/site-toys-page-tablet@1x.avif 1x, img/blocks/main-page/site-toys-page-tablet@2x.avif 2x"
+                                        media="(max-width: 1023px)"
+                                        type="image/avif">
+                                    <source srcset="img/blocks/main-page/site-toys-page-tablet@1x.webp 1x, img/blocks/main-page/site-toys-page-tablet@2x.webp 2x"
+                                        media="(max-width: 1023px)"
+                                        type="image/webp">
+                                    <source srcset="img/blocks/main-page/site-toys-page-tablet@1x.jpg 1x, img/blocks/main-page/site-toys-page-tablet.jpg 2x"
+                                        media="(max-width: 1023px)">
+                                    <source srcset="img/blocks/main-page/site-toys-page-desktop@1x.avif 1x, img/blocks/main-page/site-toys-page-desktop@2x.avif 2x"
+                                        type="image/avif">
+                                    <source srcset="img/blocks/main-page/site-toys-page-desktop@1x.webp 1x, img/blocks/main-page/site-toys-page-desktop.webp 2x"
+                                        type="image/webp">
+                                    <img src="img/blocks/main-page/site-toys-page-desktop@1x.jpg"
+                                        srcset="img/blocks/main-page/site-toys-page-desktop@2x.jpg 2x"
+                                        width="1200"
+                                        height="604"
+                                        loading="lazy"
+                                        decoding="async"
+                                        alt="">
+                                </picture>
+                            </div>
+                            <div class="swiper-slide">
+                                <picture>
+                                    <source srcset="img/blocks/main-page/site-blog-page-mobile@1x.avif, img/blocks/main-page/site-blog-page-mobile@2x.avif 2x"
+                                        media="(max-width: 666px)"
+                                        type="image/avif">
+                                    <source srcset="img/blocks/main-page/site-blog-page-mobile@1x.webp, img/blocks/main-page/site-blog-page-mobile@2x.webp 2x"
+                                        media="(max-width: 666px)"
+                                        type="image/webp">
+                                    <source srcset="img/blocks/main-page/site-blog-page-mobile@1x.jpg, img/blocks/main-page/site-blog-page-mobile@2x.jpg 2x"
+                                        media="(max-width: 666px)">
+                                    <source srcset="img/blocks/main-page/site-blog-page-tablet@1x.avif 1x, img/blocks/main-page/site-blog-page-tablet@2x.avif 2x"
+                                        media="(max-width: 1023px)"
+                                        type="image/avif">
+                                    <source srcset="img/blocks/main-page/site-blog-page-tablet@1x.webp 1x, img/blocks/main-page/site-blog-page-tablet@2x.webp 2x"
+                                        media="(max-width: 1023px)"
+                                        type="image/webp">
+                                    <source srcset="img/blocks/main-page/site-blog-page-tablet@1x.jpg 1x, img/blocks/main-page/site-blog-page-tablet.jpg 2x"
+                                        media="(max-width: 1023px)">
+                                    <source srcset="img/blocks/main-page/site-blog-page-desktop@1x.avif 1x, img/blocks/main-page/site-blog-page-desktop@2x.avif 2x"
+                                        type="image/avif">
+                                    <source srcset="img/blocks/main-page/site-blog-page-desktop@1x.webp 1x, img/blocks/main-page/site-blog-page-desktop.webp 2x"
+                                        type="image/webp">
+                                    <img src="img/blocks/main-page/site-blog-page-desktop@1x.jpg"
+                                        srcset="img/blocks/main-page/site-blog-page-desktop@2x.jpg 2x"
+                                        width="1200"
+                                        height="604"
+                                        loading="lazy"
+                                        decoding="async"
+                                        alt="">
+                                </picture>
+                            </div>
+                        </div>
+
+                        <button class="slider-btn swiper-button-prev portfolio-slider-btn-custom" type="button">
+                            <svg class="portfolio-slider__icon" aria-hidden="true">
+                                <use xlink:href="img/sprite.svg#icon-portfolio-btn-prev"></use>
+                            </svg>
+                        </button>
+                        <button class="slider-btn swiper-button-next portfolio-slider-btn-custom" type="button">
+                            <svg class="portfolio-slider__icon" aria-hidden="true">
+                                <use xlink:href="img/sprite.svg#icon-portfolio-btn-next"></use>
+                            </svg>
+                        </button>
+
+                        <div class="portfolio-slider__description slider-description">
+                            <div class="slider-description__container">
+                                <h3 class="slider-description__title">
+                                    <a class="slider-description__link" href="">Learning site for DL Academy courses</a>
+                                </h3>
+
+                                <p class="slider-description__text">
+                                    A simple multi-page static site. The design layout was in Figma. HTML and CSS were used.
+                                    The site is responsive and cross-browser, but without adding interactivity via JavaScript.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </main>
+
+        <footer class="footer">
+            <div class="container">
+                <h2 class="footer__title title-h2">
+                    Contacts
+                </h2>
+
+                <div class="footer__col">
+                    <p class="footer__text">
+                        Want to know more or just chat? You are welcome!
+                    </p>
+
+                    <a class="footer__btn btn btn--black-and-long" href="">Send message</a>
+
+                    <ul class="footer__list">
+                        <li class="footer__item">
+                            <a class="footer__item-link btn" href="">Instagram</a>
+                        </li>
+                        <li class="footer__item">
+                            <a class="footer__item-link btn" href="">Vk</a>
+                        </li>
+                        <li class="footer__item">
+                            <a class="footer__item-link btn" href="">Telegram</a>
+                        </li>
+                        <li class="footer__item">
+                            <a class="footer__item-link btn" href="">Mail</a>
+                        </li>
+                        <li class="footer__item">
+                            <a class="footer__item-link btn" href="">GitHub</a>
+                        </li>
+                        <li class="footer__item">
+                            <a class="footer__item-link btn" href="">Phone</a>
+                        </li>
+                    </ul>
+
+                    <div class="footer__bottom">
+                        <p class="footer__bottom-text">
+                            Design by
+                            <a class="footer__bottom-link" href="">DL Academy</a>
+                        </p>
+                        <p class="footer__bottom-text">
+                            Program code from Pavel
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </footer>
+
+        <script src="https://unpkg.com/swiper@8.2.4/swiper-bundle.min.js"></script>
+        <script src="js/script.js"></script>
     </body>
 </html>

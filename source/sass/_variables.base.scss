@@ -1,19 +1,40 @@
+/* Font System Stack */
+
 $font-system-sans-serif-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
 $font-system-serif-family: "Apple Garamond", "Baskerville", "Times New Roman", "Droid Serif", "Times", "Source Serif Pro", serif;
 $font-system-mono-family: SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
 
-/*
-$font-family-base: "Open Sans", $font-system-sans-serif-family;
-$font-family-title: "Montserrat", $font-system-sans-serif-family;
-$font-family-subtitle: "Crimson Text", $font-system-serif-family;
+/* Fonts */
 
-$line-height-base: calc(22 / 16);
+$font-family-base: Gilroy, $font-system-sans-serif-family;
 
-$color-black: #1e0606;
-$color-white: #fff;
-$color-custom-filters: #c29974;
+$font-size-text: 18px;
+$font-size-text-small: 14px;
+$font-size-title-one: 47px;
+$font-size-title-two: 34px;
+$font-size-title-three: 24px;
 
-$tablet-width: 768px;
-$desktop-width: 1440px;
-$mobile-width-only: 767px;
-*/
+$font-weight-regular: 400;
+$font-weight-medium: 500;
+$font-weight-bold: 700;
+
+$line-height-base: calc(21.5 / 18);
+
+/* Colors */
+
+$color-black: #070707;
+$color-grey: #828282;
+$color-mercury: #e5e5e5;
+$color-white-sand: #f6f6f6;
+$color-white-sand-transparent: #f6f6f6fc;
+$color-white: #ffffff;
+$color-error: #eb3617;
+$color-right: #03bc3c;
+
+/* Media */
+
+$mobile-min-width: 320px;
+$mobile-max-width: 767px;
+$tablet-min-width: 768px;
+$tablet-max-width: 1280px;
+$desktop-width: 1281px;

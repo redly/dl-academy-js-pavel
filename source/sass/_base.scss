@@ -1,6 +1,6 @@
 html {
     box-sizing: border-box;
-    -webkit-text-size-adjust: none;
+    text-size-adjust: none; /* stylelintrc не пропускает с префиксои -webkit это свойство */
     -webkit-tap-highlight-color: transparent;
 }
 
@@ -11,19 +11,19 @@ html {
 }
 
 body {
-    /*
-    color: ;
-    font-family: ;
-    font-size: ;
-    line-height: ;
-    */
-
+    color: $color-black;
+    font-family: $font-family-base;
+    font-size: $font-size-text;
+    font-weight: $font-weight-medium;
+    line-height: $line-height-base;
     margin: 0;
     padding: 0;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
 }
 
-.img {
+img {
+    display: block;
     max-width: 100%;
+    height: auto;
 }
