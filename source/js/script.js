@@ -11,11 +11,12 @@ menuBtns?.forEach((btn) => {
     });
 });
 
-window.addEventListener('resize', () => {
-    const mmObj = window.matchMedia("(min-width: 768px)");
+const mediaQueryList = window.matchMedia('(min-width: 768px)');
+
+mediaQueryList.addEventListener('change', evt => {
     const menu = document.querySelector('.menu--visible');
 
-    if (mmObj.matches) {
+    if (evt.matches) {
         menu?.classList.remove('menu--visible');
     }
 });
