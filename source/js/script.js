@@ -237,3 +237,15 @@ forms?.forEach((form) => {
         });
     });
 });
+
+// Fixed кнопка scroll-btn-up
+
+const scrollBtn = document.querySelector('.js-scrollToUpBtn');
+
+window.addEventListener('scroll', () => {
+    scrollBtn?.classList.toggle('scroll-btn-up--is-active', (window.scrollY > 1000));
+});
+
+scrollBtn?.addEventListener('click', () => {
+    window.scrollTo(0, 0);
+});
