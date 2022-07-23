@@ -27,13 +27,20 @@ const mainSlider = document.querySelector('.swiper-main-slider');
 
 if (mainSlider) {
     const mainSwiper = new Swiper('.swiper-main-slider', {
+        initialSlide: Number(localStorage.getItem('activeSlide')) || 0,
+
         pagination: {
             el: '.swiper-pagination',
+            clickable: true,
         },
         navigation: {
             nextEl: '.swiper-button-next',
             prevEl: '.swiper-button-prev',
         },
+    });
+
+    mainSwiper?.on('activeIndexChange', function () {
+        localStorage.setItem('activeSlide', mainSwiper.realIndex);
     });
 }
 
