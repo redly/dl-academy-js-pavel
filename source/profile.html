@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="description" content="Profile page with general information about the user">
+
+        <link rel="icon" href="img/favicons/favicon.ico" sizes="any">
+        <link rel="icon" href="img/favicons/icon.svg" type="image/svg+xml">
+        <link rel="apple-touch-icon" href="img/favicons/apple-touch-icon.png">
+        <link rel="manifest" href="img/favicons/manifest.webmanifest">
+
+        <link rel="preload" href="fonts/gilroy/gilroy-medium.woff2" as="font" type="font/woff2" crossorigin="anonymous">
+        <link rel="preload" href="js/script.js" as="script">
+
+        <link rel="stylesheet" href="css/style.min.css">
+
+        <title>My Profile</title>
+    </head>
+    <body>
+        <header class="header">
+            <div class="container">
+                <nav class="header__menu menu" id="navMenu">
+                    <button class="menu__btn-cross menu-btn js-toggleMenu" type="button" data-menu="navMenu">
+                        <svg class="menu-btn__icon" aria-hidden="true">
+                            <use xlink:href="img/sprite.svg#icon-btn-cross"></use>
+                        </svg>
+                    </button>
+
+                    <div class="menu__scrollable">
+                        <div class="menu__container">
+                            <ul class="menu__list">
+                                <li class="menu__item">
+                                    <a class="menu__link" href="index.html">Home</a>
+                                </li>
+                                <li class="menu__item">
+                                    <a class="menu__link" href="">My blog</a>
+                                </li>
+                                <li class="menu__item">
+                                    <a class="menu__link menu__link--current" href="">My profile</a>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </nav>
+            </div>
+        </header>
+
+        <main class="content">
+            <section class="profile">
+                <div class="container">
+                    <div class="profile__header">
+                        <h1 class="profile__title title-h1">
+                            My profile
+                        </h1>
+
+                        <button class="profile__btn-menu menu-btn js-toggleMenu" type="button" data-menu="navMenu">
+                            <svg class="menu-btn__icon menu-btn__icon--menu" aria-hidden="true">
+                                <use xlink:href="img/sprite.svg#icon-btn-menu"></use>
+                            </svg>
+                        </button>
+                    </div>
+
+                    <div class="profile__content">
+                        <div class="profile__img">
+                            <img src="img/blocks/profile-page/user-picture.jpg"
+                                width="320"
+                                height="450"
+                                loading="lazy"
+                                decoding="async"
+                                alt="User picture">
+                        </div>
+
+                        <div class="profile__col">
+                            <ul class="profile__data">
+                                <li class="profile__data-item">
+                                    <span class="profile__data-key">Name:</span>
+                                    <span class="profile__data-value"></span>
+                                </li>
+                                <li class="profile__data-item">
+                                    <span class="profile__data-key">Surname:</span>
+                                    <span class="profile__data-value"></span>
+                                </li>
+                                <li class="profile__data-item">
+                                    <span class="profile__data-key">Email:</span>
+                                    <span class="profile__data-value"></span>
+                                </li>
+                                <li class="profile__data-item">
+                                    <span class="profile__data-key">Password:</span>
+                                    <span class="profile__data-value"></span>
+                                </li>
+                                <li class="profile__data-item">
+                                    <span class="profile__data-key">Location:</span>
+                                    <span class="profile__data-value"></span>
+                                </li>
+                                <li class="profile__data-item">
+                                    <span class="profile__data-key">Age:</span>
+                                    <span class="profile__data-value"></span>
+                                </li>
+                            </ul>
+
+                            <ul class="profile__changes">
+                                <li class="profile__changes-item">
+                                    <a class="btn" href="">Change password</a>
+                                </li>
+                                <li class="profile__changes-item">
+                                    <a class="btn" href="">Change other data</a>
+                                </li>
+                                <li class="profile__changes-item">
+                                    <a class="btn" href="">Delete account</a>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </main>
+
+        <script src="js/script.js"></script>
+    </body>
+</html>
