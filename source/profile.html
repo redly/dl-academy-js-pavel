@@ -101,10 +101,10 @@
 
                             <ul class="profile__changes">
                                 <li class="profile__changes-item">
-                                    <a class="btn" href="">Change password</a>
+                                    <a class="btn js-toggleModal" href="" data-modal="changePasswordModal">Change password</a>
                                 </li>
                                 <li class="profile__changes-item">
-                                    <a class="btn" href="">Change other data</a>
+                                    <a class="btn js-toggleModal" href="" data-modal="changeDataModal">Change other data</a>
                                 </li>
                                 <li class="profile__changes-item">
                                     <a class="btn" href="">Delete account</a>
@@ -115,6 +115,118 @@
                 </div>
             </section>
         </main>
+
+        <div class="modal" id="changePasswordModal">
+            <div class="modal__scrollable">
+                <div class="modal__container">
+                    <div class="modal__content modal__content--width--small">
+                        <div class="contacts-form contacts-form">
+                            <form class="contacts-form__content js-contactForm" action="https://echo.htmlacademy.ru/" method="post">
+                                <div class="contacts-form__group">
+                                    <label class="contacts-form__label" for="old-password-form-first">
+                                        Old password
+                                        <span class="contacts-form__required">*</span>
+                                    </label>
+                                    <input class="contacts-form__field js-validFormField" type="password" id="old-password-form-first" name="password" required>
+                                </div>
+
+                                <div class="contacts-form__group">
+                                    <label class="contacts-form__label" for="new-password-form-first">
+                                        New password
+                                        <span class="contacts-form__required">*</span>
+                                    </label>
+                                    <input class="contacts-form__field js-validFormField" type="password" id="new-password-form-first" name="password" required>
+                                </div>
+
+                                <div class="contacts-form__group">
+                                    <label class="contacts-form__label" for="repeat-password-form-first">
+                                        Repeat new password
+                                        <span class="contacts-form__required">*</span>
+                                    </label>
+                                    <input class="contacts-form__field js-validFormField" type="password" id="repeat-password-form-first" name="password" required>
+                                </div>
+
+                                <input class="contacts-form__submit-btn btn js-submitBtn" type="submit" value="Change password">
+                            </form>
+                        </div>
+
+                        <a class="modal__btn-close modal__btn-close--right js-toggleModal" href="" data-modal="changePasswordModal">
+                            <svg class="modal__icon" aria-hidden="true">
+                                <use xlink:href="img/sprite.svg#icon-btn-cross"></use>
+                            </svg>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="modal" id="changeDataModal">
+            <div class="modal__scrollable">
+                <div class="modal__container">
+                    <div class="modal__content">
+                        <div class="contacts-form">
+                            <form class="contacts-form__content js-contactForm" action="https://echo.htmlacademy.ru/" method="post">
+                                <div class="contacts-form__group">
+                                    <label class="contacts-form__label" for="email-form-second">
+                                        Email
+                                    </label>
+                                    <input class="contacts-form__field js-validFormField" type="email" id="email-form-second" name="email">
+                                </div>
+
+                                <div class="contacts-form__row">
+                                    <div class="contacts-form__group contacts-form__group--width--half">
+                                        <label class="contacts-form__label" for="name-form-second">
+                                            Name
+                                        </label>
+                                        <input class="contacts-form__field js-validFormField" type="text" id="name-form-second" name="name">
+                                    </div>
+
+                                    <div class="contacts-form__group contacts-form__group--width--half">
+                                        <label class="contacts-form__label" for="surname-form-second">
+                                            Surname
+                                        </label>
+                                        <input class="contacts-form__field js-validFormField" type="text" id="surname-form-second" name="name">
+                                    </div>
+                                </div>
+
+                                <div class="contacts-form__row">
+                                    <div class="contacts-form__group contacts-form__group--width--half">
+                                        <label class="contacts-form__label" for="location-form-second">
+                                            Location
+                                        </label>
+                                        <input class="contacts-form__field js-validFormField" type="text" id="location-form-second" name="location">
+                                    </div>
+
+                                    <div class="contacts-form__group contacts-form__group--width--half">
+                                        <label class="contacts-form__label" for="age-form-second">
+                                            Age
+                                        </label>
+                                        <input class="contacts-form__field contacts-form__field--type--number js-validFormField" type="number" id="age-form-second" name="age">
+                                    </div>
+                                </div>
+
+                                <div class="contacts-form__row">
+                                    <div class="contacts-form__group contacts-form__group--width--half">
+                                        <label class="contacts-form__label" for="picture-form-second">
+                                            Profile picture
+                                        </label>
+                                        <input class="contacts-form__field contacts-form__field--type--file" type="file" id="picture-form-second" name="file">
+                                    </div>
+                                </div>
+
+                                <input class="contacts-form__submit-btn btn js-submitBtn" type="submit" value="Submit changes">
+                            </form>
+                        </div>
+
+                        <a class="modal__btn-close js-toggleModal" href="" data-modal="changeDataModal">
+                            <svg class="modal__icon" aria-hidden="true">
+                                <use xlink:href="img/sprite.svg#icon-btn-cross"></use>
+                            </svg>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
 
         <script src="js/script.js"></script>
     </body>

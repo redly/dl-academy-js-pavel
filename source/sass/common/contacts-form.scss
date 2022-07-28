@@ -1,17 +1,10 @@
 .contacts-form {
     background-color: $color-white;
-    border: 2px solid $color-black;
     width: 100%;
-    padding: 40px;
 
-    @media (min-width: $desktop-width) {
-        width: 680px;
-    }
-
-    &--width--small {
-        @media (min-width: $desktop-width) {
-            width: 370px;
-        }
+    @media (min-width: $tablet-min-width) {
+        border: 2px solid $color-black;
+        padding: 40px;
     }
 
     &__content {
@@ -24,12 +17,8 @@
         margin: 0 0 20px;
 
         &--width--half {
-            @media (orientation: landscape) {
-                width: 50%;
-            }
-
             @media (min-width: $tablet-min-width) {
-                width: 50%;
+                width: calc(50% - 10px);
             }
         }
 
@@ -41,10 +30,6 @@
     &__row {
         display: flex;
         flex-direction: column;
-
-        @media (orientation: landscape) {
-            flex-direction: row;
-        }
 
         @media (min-width: $tablet-min-width) {
             flex-direction: row;
@@ -92,12 +77,12 @@
             margin: 0;
         }
 
-        &[type="number"] {
+        &--type--number {
             appearance: textfield;
         }
 
-        &[type="number"]:hover,
-        &[type="number"]:focus {
+        &--type--number:hover,
+        &--type--number:focus {
             appearance: number-input;
         }
     }
