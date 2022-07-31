@@ -68,7 +68,8 @@
                                 height="450"
                                 loading="lazy"
                                 decoding="async"
-                                alt="User picture">
+                                alt="User picture"
+                                id="profilePicture">
                         </div>
 
                         <div class="profile__col">
@@ -170,7 +171,10 @@
                                     <label class="contacts-form__label" for="email-form-second">
                                         Email
                                     </label>
-                                    <input class="contacts-form__field js-validFormField" type="email" id="email-form-second" name="email">
+                                    <input class="contacts-form__field js-validFormField"
+                                        type="email"
+                                        id="email-form-second"
+                                        name="email">
                                 </div>
 
                                 <div class="contacts-form__row">
@@ -178,14 +182,20 @@
                                         <label class="contacts-form__label" for="name-form-second">
                                             Name
                                         </label>
-                                        <input class="contacts-form__field js-validFormField" type="text" id="name-form-second" name="name">
+                                        <input class="contacts-form__field js-validFormField"
+                                            type="text"
+                                            id="name-form-second"
+                                            name="name">
                                     </div>
 
                                     <div class="contacts-form__group contacts-form__group--width--half">
                                         <label class="contacts-form__label" for="surname-form-second">
                                             Surname
                                         </label>
-                                        <input class="contacts-form__field js-validFormField" type="text" id="surname-form-second" name="name">
+                                        <input class="contacts-form__field js-validFormField"
+                                            type="text"
+                                            id="surname-form-second"
+                                            name="name">
                                     </div>
                                 </div>
 
@@ -194,23 +204,35 @@
                                         <label class="contacts-form__label" for="location-form-second">
                                             Location
                                         </label>
-                                        <input class="contacts-form__field js-validFormField" type="text" id="location-form-second" name="location">
+                                        <input class="contacts-form__field js-validFormField"
+                                            type="text"
+                                            id="location-form-second"
+                                            name="location">
                                     </div>
 
                                     <div class="contacts-form__group contacts-form__group--width--half">
                                         <label class="contacts-form__label" for="age-form-second">
                                             Age
                                         </label>
-                                        <input class="contacts-form__field contacts-form__field--type--number js-validFormField" type="number" id="age-form-second" name="age">
+                                        <input class="contacts-form__field contacts-form__field--type--number js-validFormField"
+                                            type="number"
+                                            id="age-form-second"
+                                            name="age">
                                     </div>
                                 </div>
 
                                 <div class="contacts-form__row">
                                     <div class="contacts-form__group contacts-form__group--width--half">
-                                        <label class="contacts-form__label" for="picture-form-second">
+                                        <input class="contacts-form__field contacts-form__field--type--file custom-file js-setFileName"
+                                            type="file"
+                                            id="picture-form-second"
+                                            name="profile-picture"
+                                            accept="image/*"
+                                            data-img="profilePicture">
+                                        <label class="contacts-form__label custom-file__label" for="picture-form-second">
                                             Profile picture
+                                            <span class="custom-file__name">Choose file...</span>
                                         </label>
-                                        <input class="contacts-form__field contacts-form__field--type--file" type="file" id="picture-form-second" name="file">
                                     </div>
                                 </div>
 
