@@ -250,6 +250,47 @@
             </div>
         </div>
 
+        <div class="modal modal__successfully" id="formSuccessfullyModal">
+            <div class="modal__scrollable">
+                <div class="modal__container">
+                    <div class="modal__content modal__content--width--message-successfully">
+                        <div class="modal__message">
+                            <h3 class="modal__title modal__title--successfully title-h3">
+                                Form has been sent successfully
+                            </h3>
+                        </div>
+
+                        <a class="modal__btn-close modal__btn-close--right-message js-toggleModal" href="" data-modal="formSuccessfullyModal">
+                            <svg class="modal__icon" aria-hidden="true">
+                                <use xlink:href="img/sprite.svg#icon-btn-cross"></use>
+                            </svg>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="modal modal__error" id="formErrorModal">
+            <div class="modal__scrollable">
+                <div class="modal__container">
+                    <div class="modal__content modal__content--width--message-error">
+                        <div class="modal__message">
+                            <h3 class="modal__title modal__title--error title-h3">
+                                The form was sent but the server transmits an error:
+                                “The form was sent but the server transmits an error”
+                            </h3>
+                        </div>
+
+                        <a class="modal__btn-close modal__btn-close--right-message js-toggleModal" href="" data-modal="formErrorModal">
+                            <svg class="modal__icon" aria-hidden="true">
+                                <use xlink:href="img/sprite.svg#icon-btn-cross"></use>
+                            </svg>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
         <script src="js/script.js"></script>
     </body>
 </html>

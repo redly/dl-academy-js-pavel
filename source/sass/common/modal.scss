@@ -49,6 +49,7 @@
             кнопка была после нее.
         */
 
+        align-items: center;
         width: 100%;
         max-width: 370px;
         margin: 0 auto;
@@ -62,6 +63,30 @@
             @media (min-width: $tablet-min-width) {
                 max-width: 370px;
             }
+        }
+
+        &--width--message-successfully {
+            max-width: 220px;
+        }
+
+        &--width--message-error {
+            max-width: 475px;
+        }
+    }
+
+    &__message {
+        text-align: center;
+    }
+
+    &__title {
+        margin: 0;
+
+        &--successfully {
+            color: $color-green;
+        }
+
+        &--error {
+            color: $color-red;
         }
     }
 
@@ -84,6 +109,19 @@
             @media (min-width: $tablet-min-width) {
                 top: 0;
                 right: -35px;
+            }
+        }
+
+        &--right-message {
+            position: fixed;
+            top: 20px;
+            left: 20px;
+
+            @media (min-width: $tablet-min-width) {
+                position: absolute;
+                top: 0;
+                left: auto;
+                right: -45px;
             }
         }
     }
