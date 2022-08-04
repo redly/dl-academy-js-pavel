@@ -37,7 +37,7 @@
                                     <a class="menu__link menu__link--current" href="">My blog</a>
                                 </li>
                                 <li class="menu__item">
-                                    <a class="menu__link" href="">My profile</a>
+                                    <a class="menu__link" href="profile.html">My profile</a>
                                 </li>
                             </ul>
                         </div>
@@ -46,7 +46,21 @@
             </div>
         </header>
 
-        <main class="content"></main>
+        <main class="content">
+            <div class="content__header">
+                <div class="content__wrapper container">
+                    <h1 class="content__title title-h1">
+                        My blog
+                    </h1>
+
+                    <button class="content__btn-menu menu-btn js-toggleMenu" type="button" data-menu="navMenu">
+                        <svg class="menu-btn__icon menu-btn__icon--menu" aria-hidden="true">
+                            <use xlink:href="img/sprite.svg#icon-btn-menu"></use>
+                        </svg>
+                    </button>
+                </div>
+            </div>
+        </main>
 
         <footer class="footer footer--bg--wild-sand">
             <div class="container">

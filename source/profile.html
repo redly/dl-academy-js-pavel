@@ -34,7 +34,7 @@
                                     <a class="menu__link" href="index.html">Home</a>
                                 </li>
                                 <li class="menu__item">
-                                    <a class="menu__link" href="">My blog</a>
+                                    <a class="menu__link" href="blog.html">My blog</a>
                                 </li>
                                 <li class="menu__item">
                                     <a class="menu__link menu__link--current" href="">My profile</a>
@@ -47,21 +47,27 @@
         </header>
 
         <main class="content">
+            <div class="content__header">
+                <div class="content__wrapper container">
+                    <h1 class="content__title title-h1">
+                        My profile
+                    </h1>
+
+                    <button class="content__btn-menu menu-btn js-toggleMenu" type="button" data-menu="navMenu">
+                        <svg class="menu-btn__icon menu-btn__icon--menu" aria-hidden="true">
+                            <use xlink:href="img/sprite.svg#icon-btn-menu"></use>
+                        </svg>
+                    </button>
+                </div>
+            </div>
+
             <section class="profile">
                 <div class="container">
-                    <div class="profile__header">
-                        <h1 class="profile__title title-h1">
-                            My profile
-                        </h1>
-
-                        <button class="profile__btn-menu menu-btn js-toggleMenu" type="button" data-menu="navMenu">
-                            <svg class="menu-btn__icon menu-btn__icon--menu" aria-hidden="true">
-                                <use xlink:href="img/sprite.svg#icon-btn-menu"></use>
-                            </svg>
-                        </button>
-                    </div>
-
                     <div class="profile__content">
+                        <h2 class="visually-hidden">
+                            Profile data
+                        </h2>
+
                         <div class="profile__img">
                             <img src="img/blocks/profile-page/user-picture.jpg"
                                 width="320"

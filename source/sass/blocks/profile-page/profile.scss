@@ -1,34 +1,4 @@
 .profile {
-    padding: 30px 0 40px;
-
-    @media (min-width: $tablet-min-width) {
-        padding: 20px 0 60px;
-    }
-
-    &__header {
-        display: flex;
-        flex-direction: row;
-        justify-content: space-between;
-        align-items: flex-start;
-        padding: 0 0 36px;
-
-        @media (min-width: $tablet-min-width) {
-            padding: 0 0 40px;
-        }
-    }
-
-    &__title {
-        max-width: 200px;
-
-        @media (min-width: $tablet-min-width) {
-            max-width: 100%;
-        }
-    }
-
-    &__btn-menu {
-        margin: 20px 0 0;
-    }
-
     &__content {
         display: flex;
         flex-direction: column;

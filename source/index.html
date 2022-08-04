@@ -51,27 +51,33 @@
         </header>
 
         <main class="content">
+            <div class="content__header content__header--main">
+                <div class="content__wrapper content__wrapper--main container">
+                    <h1 class="content__title content__title--main title-h1">
+                        Pavel Krasulin
+                    </h1>
+
+                    <div class="content__row">
+                        <p class="content__text">
+                            Future front-end developer 32 years old, Tolyatti
+                        </p>
+
+                        <button class="content__btn-menu menu-btn js-toggleMenu" type="button" data-menu="navMenu">
+                            <svg class="menu-btn__icon menu-btn__icon--menu" aria-hidden="true">
+                                <use xlink:href="img/sprite.svg#icon-btn-menu"></use>
+                            </svg>
+                        </button>
+                    </div>
+                </div>
+            </div>
+
             <section class="main-slider">
                 <div class="container">
-                    <div class="main-slider__header">
-                        <h1 class="main-slider__title title-h1">
-                            Pavel Krasulin
-                        </h1>
+                    <h2 class="visually-hidden">
+                        Main slider
+                    </h2>
 
-                        <div class="main-slider__row">
-                            <p class="main-slider__text">
-                                Future front-end developer 32 years old, Tolyatti
-                            </p>
-
-                            <button class="main-slider__btn-menu menu-btn js-toggleMenu" type="button" data-menu="navMenu">
-                                <svg class="menu-btn__icon menu-btn__icon--menu" aria-hidden="true">
-                                    <use xlink:href="img/sprite.svg#icon-btn-menu"></use>
-                                </svg>
-                            </button>
-                        </div>
-                    </div>
-
-                    <div class="main-slider__slider swiper swiper-main-slider">
+                    <div class="swiper swiper-main-slider">
                         <div class="swiper-wrapper">
                             <div class="main-slider__slide swiper-slide">
                                 <picture>
