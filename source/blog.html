@@ -60,6 +60,200 @@
                     </button>
                 </div>
             </div>
+
+            <section class="blog-filters">
+                <div class="container">
+                    <h2 class="visually-hidden">
+                        Blog filters
+                    </h2>
+
+                    <form class="blog-filters__form" action="https://echo.htmlacademy.ru/" method="get">
+                        <div class="blog-filters__col blog-filters__col--comments">
+                            <h3 class="blog-filters__title">
+                                Comments
+                            </h3>
+
+                            <ul class="blog-filters__list">
+                                <li class="blog-filters__item">
+                                    <input class="custom-checkbox" type="checkbox" id="comment-not-single" name="comment" value="not-a-single" checked>
+                                    <label for="comment-not-single">not a single</label>
+                                </li>
+                                <li class="blog-filters__item">
+                                    <input class="custom-checkbox" type="checkbox" id="comment-more-1" name="comment" value="more-1">
+                                    <label for="comment-more-1">more 1</label>
+                                </li>
+                                <li class="blog-filters__item">
+                                    <input class="custom-checkbox" type="checkbox" id="comment-more-50" name="comment" value="more-50">
+                                    <label for="comment-more-50">more 50</label>
+                                </li>
+                            </ul>
+                        </div>
+
+                        <div class="blog-filters__col blog-filters__col--views">
+                            <h3 class="blog-filters__title">
+                                Views
+                            </h3>
+
+                            <ul class="blog-filters__list">
+                                <li class="blog-filters__item">
+                                    <input class="custom-radio" type="radio" id="view-more-100" name="view" value="more-100">
+                                    <label for="view-more-100">more 100</label>
+                                </li>
+                                <li class="blog-filters__item">
+                                    <input class="custom-radio" type="radio" id="view-more-500" name="view" value="more-500" checked>
+                                    <label for="view-more-500">more 500</label>
+                                </li>
+                                <li class="blog-filters__item">
+                                    <input class="custom-radio" type="radio" id="view-more-1000" name="view" value="more-1000">
+                                    <label for="view-more-1000">more 1000</label>
+                                </li>
+                            </ul>
+                        </div>
+
+                        <div class="blog-filters__col blog-filters__col--sort-by">
+                            <h3 class="blog-filters__title">
+                                Sort by
+                            </h3>
+
+                            <ul class="blog-filters__list">
+                                <li class="blog-filters__item">
+                                    <input class="custom-radio" type="radio" id="sort-by-date" name="sort" value="date" checked>
+                                    <label for="sort-by-date">date</label>
+                                </li>
+                                <li class="blog-filters__item">
+                                    <input class="custom-radio" type="radio" id="sort-by-title" name="sort" value="title">
+                                    <label for="sort-by-title">title</label>
+                                </li>
+                                <li class="blog-filters__item">
+                                    <input class="custom-radio" type="radio" id="sort-by-views" name="sort" value="views">
+                                    <label for="sort-by-views">views</label>
+                                </li>
+                            </ul>
+                        </div>
+
+                        <div class="blog-filters__col blog-filters__col--how-show">
+                            <h3 class="blog-filters__title">
+                                How show?
+                            </h3>
+
+                            <ul class="blog-filters__list">
+                                <li class="blog-filters__item">
+                                    <input class="custom-radio" type="radio" id="show-more-5" name="show" value="more-5" checked>
+                                    <label for="show-more-5">more 5</label>
+                                </li>
+                                <li class="blog-filters__item">
+                                    <input class="custom-radio" type="radio" id="show-more-15" name="show" value="more-15">
+                                    <label for="show-more-15">more 15</label>
+                                </li>
+                            </ul>
+                        </div>
+
+                        <div class="blog-filters__col blog-filters__col--tags">
+                            <h3 class="blog-filters__title">
+                                Tags
+                            </h3>
+
+                            <ul class="blog-filters__list blog-filters__list--tags">
+                                <li class="blog-filters__item blog-filters__item--tag">
+                                    <input class="custom-checkbox custom-checkbox--tag custom-checkbox--border-color--blue"
+                                        type="checkbox"
+                                        id="color-blue"
+                                        name="color"
+                                        value="blue"
+                                        checked>
+                                    <label for="color-blue">
+                                        <span class="visually-hidden">blue</span>
+                                    </label>
+                                </li>
+                                <li class="blog-filters__item blog-filters__item--tag">
+                                    <input class="custom-checkbox custom-checkbox--tag custom-checkbox--border-color--azure"
+                                        type="checkbox"
+                                        id="color-azure"
+                                        name="color"
+                                        value="azure">
+                                    <label for="color-azure">
+                                        <span class="visually-hidden">azure</span>
+                                    </label>
+                                </li>
+                                <li class="blog-filters__item blog-filters__item--tag">
+                                    <input class="custom-checkbox custom-checkbox--tag custom-checkbox--border-color--yellow"
+                                        type="checkbox"
+                                        id="color-yellow"
+                                        name="color"
+                                        value="yellow">
+                                    <label for="color-yellow">
+                                        <span class="visually-hidden">yellow</span>
+                                    </label>
+                                </li>
+                                <li class="blog-filters__item blog-filters__item--tag">
+                                    <input class="custom-checkbox custom-checkbox--tag custom-checkbox--border-color--turquoise"
+                                        type="checkbox"
+                                        id="color-turquoise"
+                                        name="color"
+                                        value="turquoise">
+                                    <label for="color-turquoise">
+                                        <span class="visually-hidden">turquoise</span>
+                                    </label>
+                                </li>
+                                <li class="blog-filters__item blog-filters__item--tag">
+                                    <input class="custom-checkbox custom-checkbox--tag custom-checkbox--border-color--orange"
+                                        type="checkbox"
+                                        id="color-orange"
+                                        name="color"
+                                        value="orange">
+                                    <label for="color-orange">
+                                        <span class="visually-hidden">orange</span>
+                                    </label>
+                                </li>
+                                <li class="blog-filters__item blog-filters__item--tag">
+                                    <input class="custom-checkbox custom-checkbox--tag custom-checkbox--border-color--pink"
+                                        type="checkbox"
+                                        id="color-pink"
+                                        name="color"
+                                        value="pink"
+                                        checked>
+                                    <label for="color-pink">
+                                        <span class="visually-hidden">pink</span>
+                                    </label>
+                                </li>
+                                <li class="blog-filters__item blog-filters__item--tag">
+                                    <input class="custom-checkbox custom-checkbox--tag custom-checkbox--border-color--violet"
+                                        type="checkbox"
+                                        id="color-violet"
+                                        name="color"
+                                        value="violet">
+                                    <label for="color-violet">
+                                        <span class="visually-hidden">violet</span>
+                                    </label>
+                                </li>
+                                <li class="blog-filters__item blog-filters__item--tag">
+                                    <input class="custom-checkbox custom-checkbox--tag custom-checkbox--border-color--green"
+                                        type="checkbox"
+                                        id="color-green"
+                                        name="color"
+                                        value="green">
+                                    <label for="color-green">
+                                        <span class="visually-hidden">green</span>
+                                    </label>
+                                </li>
+                            </ul>
+                        </div>
+
+                        <div class="blog-filters__col blog-filters__col--reset">
+                            <div class="blog-filters__reset">
+                                <label class="blog-filters__reset-label" for="btn-reset">reset form</label>
+                                <button class="btn" type="reset" id="btn-reset">Apply</button>
+                            </div>
+                        </div>
+                    </form>
+
+                    <div class="blog-filters__search">
+                        <label class="visually-hidden" for="search-field">Search field</label>
+                        <input class="blog-filters__search-field" type="search" id="search-field" name="search">
+                        <button class="btn" type="submit">Search</button>
+                    </div>
+                </div>
+            </section>
         </main>
 
         <footer class="footer footer--bg--wild-sand">
