@@ -1,0 +1,61 @@
+.custom-radio {
+    @include custom-filters-hidden;
+
+    & + label {
+        display: inline-block;
+        cursor: pointer;
+        padding: 0 0 0 32px;
+        position: relative;
+
+        &::before {
+            @include custom-filters-visible;
+
+            border-radius: 100%;
+        }
+
+        &::after {
+            content: "";
+            border-radius: 100%;
+            height: 13px;
+            width: 13px;
+            position: absolute;
+            top: 6px;
+            left: 6px;
+        }
+    }
+
+    &:disabled + label {
+        opacity: 0.2;
+
+        &::before {
+            opacity: 0.2;
+        }
+    }
+
+    &:hover + label {
+        opacity: 0.6;
+
+        &::before {
+            opacity: 0.6;
+        }
+    }
+
+    &:focus + label {
+        opacity: 0.6;
+
+        &::before {
+            opacity: 0.6;
+        }
+    }
+
+    &:checked + label {
+        &::before {
+            opacity: 1;
+        }
+
+        &::after {
+            background: $color-black;
+            opacity: 1;
+        }
+    }
+}
