@@ -132,7 +132,7 @@ forms?.forEach((form) => {
         });
 
         inputs?.forEach((element) => {
-            element.classList.remove('contacts-form__field--error', 'contacts-form__field--right');
+            element.classList.remove('custom-form-field--error', 'custom-form-field--right');
         });
     }
 
@@ -152,9 +152,9 @@ forms?.forEach((form) => {
                 input.parentElement?.insertAdjacentElement('beforeend', element);
 
                 if (className === error) {
-                    addClassToInput('contacts-form__field--error');
+                    addClassToInput('custom-form-field--error');
                 } else  if (className === right) {
-                    addClassToInput('contacts-form__field--right');
+                    addClassToInput('custom-form-field--right');
                 }
             }
 

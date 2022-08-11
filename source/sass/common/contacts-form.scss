@@ -46,41 +46,6 @@
         color: $color-red;
     }
 
-    &__field {
-        @include custom-form-field;
-
-        &--error {
-            border: 2px solid $color-red;
-        }
-
-        &--right {
-            border: 2px solid $color-green;
-        }
-
-        &:hover {
-            border: 2px solid $color-grey;
-        }
-
-        &:focus {
-            border: 2px solid $color-black;
-        }
-
-        &::-webkit-outer-spin-button,
-        &::-webkit-inner-spin-button {
-            appearance: none;
-            margin: 0;
-        }
-
-        &--type--number {
-            appearance: textfield;
-        }
-
-        &--type--number:hover,
-        &--type--number:focus {
-            appearance: number-input;
-        }
-    }
-
     &__message {
         display: inline-block;
         font-size: 14px;
