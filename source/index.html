@@ -38,10 +38,10 @@
                                     <a class="menu__link" href="">My blog</a>
                                 </li>
                                 <li class="menu__item">
-                                    <a class="menu__link" href="">Sign in</a>
+                                    <a class="menu__link js-toggleModal" data-modal="signInModal" href="">Sign in</a>
                                 </li>
                                 <li class="menu__item">
-                                    <a class="menu__link" href="">Register</a>
+                                    <a class="menu__link js-toggleModal" data-modal="registerModal" href="">Register</a>
                                 </li>
                             </ul>
                         </div>
@@ -475,33 +475,33 @@
                         Want to know more or just chat? You are welcome!
                     </p>
 
-                    <a class="footer__btn btn btn--black-and-long" href="">Send message</a>
+                    <a class="footer__btn btn btn--black-and-long js-toggleModal" data-modal="sendMsgModal" href="">Send message</a>
 
                     <ul class="footer__list">
                         <li class="footer__item">
-                            <a class="footer__item-link btn" href="">Instagram</a>
+                            <a class="footer__item-link btn" href="https://www.instagram.com/krasulinpavel/" target="_blank" rel="noopener nofollow">Instagram</a>
                         </li>
                         <li class="footer__item">
-                            <a class="footer__item-link btn" href="">Vk</a>
+                            <a class="footer__item-link btn" href="https://vk.com/krasulinpavel" target="_blank" rel="noopener nofollow">Vk</a>
                         </li>
                         <li class="footer__item">
-                            <a class="footer__item-link btn" href="">Telegram</a>
+                            <a class="footer__item-link btn" href="https://t.me/krasulinpavel" target="_blank" rel="noopener nofollow">Telegram</a>
                         </li>
                         <li class="footer__item">
-                            <a class="footer__item-link btn" href="">Mail</a>
+                            <a class="footer__item-link btn" href="mailto:krasulinpavel@gmail.com">Mail</a>
                         </li>
                         <li class="footer__item">
-                            <a class="footer__item-link btn" href="">GitHub</a>
+                            <a class="footer__item-link btn" href="https://github.com/nylus-ark" target="_blank" rel="noopener nofollow">GitHub</a>
                         </li>
                         <li class="footer__item">
-                            <a class="footer__item-link btn" href="">Phone</a>
+                            <a class="footer__item-link btn" href="tel:89379875332">Phone</a>
                         </li>
                     </ul>
 
                     <div class="footer__bottom">
                         <p class="footer__bottom-text">
                             Design by
-                            <a class="footer__bottom-link" href="">DL Academy</a>
+                            <a class="footer__bottom-link" href="https://dlacademy.ru/" target="_blank" rel="noopener nofollow">DL Academy</a>
                         </p>
                         <p class="footer__bottom-text">
                             Program code from Pavel
@@ -510,6 +510,205 @@
                 </div>
             </div>
         </footer>
+
+        <button class="scroll-btn-up js-scrollToUpBtn" type="button">
+            <svg class="scroll-btn-up__icon" aria-hidden="true">
+                <use xlink:href="img/sprite.svg#icon-btn-up"></use>
+            </svg>
+        </button>
+
+        <div class="modal" id="signInModal">
+            <div class="modal__scrollable">
+                <div class="modal__container">
+                    <div class="modal__content">
+                        <div class="contacts-form contacts-form--width--small">
+                            <form class="contacts-form__content js-contactForm" action="https://echo.htmlacademy.ru/" method="get">
+                                <div class="contacts-form__group">
+                                    <label class="contacts-form__label" for="email-form-first">
+                                        Email
+                                        <span class="contacts-form__required">*</span>
+                                    </label>
+                                    <input class="contacts-form__field js-validFormField" type="email" id="email-form-first" name="email" required>
+                                </div>
+
+                                <div class="contacts-form__group">
+                                    <label class="contacts-form__label" for="password-form-first">
+                                        Password
+                                        <span class="contacts-form__required">*</span>
+                                    </label>
+                                    <input class="contacts-form__field js-validFormField" type="password" id="password-form-first" name="password" required>
+                                </div>
+
+                                <input class="contacts-form__submit-btn btn js-submitBtn" type="submit" value="Log in">
+                            </form>
+                        </div>
+
+                        <a class="modal__btn-close js-toggleModal" href="" data-modal="signInModal">
+                            <svg class="modal__icon" aria-hidden="true">
+                                <use xlink:href="img/sprite.svg#icon-btn-cross"></use>
+                            </svg>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="modal" id="registerModal">
+            <div class="modal__scrollable">
+                <div class="modal__container">
+                    <div class="modal__content">
+                        <div class="contacts-form">
+                            <form class="contacts-form__content js-contactForm" action="https://echo.htmlacademy.ru/" method="post">
+                                <div class="contacts-form__group">
+                                    <label class="contacts-form__label" for="email-form-second">
+                                        Email
+                                        <span class="contacts-form__required">*</span>
+                                    </label>
+                                    <input class="contacts-form__field js-validFormField" type="email" id="email-form-second" name="email" required>
+                                </div>
+
+                                <div class="contacts-form__row">
+                                    <div class="contacts-form__group contacts-form__group--width--half">
+                                        <label class="contacts-form__label" for="name-form-second">
+                                            Name
+                                            <span class="contacts-form__required">*</span>
+                                        </label>
+                                        <input class="contacts-form__field js-validFormField" type="text" id="name-form-second" name="name" required>
+                                    </div>
+
+                                    <div class="contacts-form__group contacts-form__group--width--half">
+                                        <label class="contacts-form__label" for="surname-form-second">
+                                            Surname
+                                            <span class="contacts-form__required">*</span>
+                                        </label>
+                                        <input class="contacts-form__field js-validFormField" type="text" id="surname-form-second" name="name" required>
+                                    </div>
+                                </div>
+
+                                <div class="contacts-form__row">
+                                    <div class="contacts-form__group contacts-form__group--width--half">
+                                        <label class="contacts-form__label" for="password-form-second">
+                                            Password
+                                            <span class="contacts-form__required">*</span>
+                                        </label>
+                                        <input class="contacts-form__field password js-validFormField" type="password" id="password-form-second" name="password" required>
+                                    </div>
+
+                                    <div class="contacts-form__group contacts-form__group--width--half">
+                                        <label class="contacts-form__label" for="repeat-password-form-second">
+                                            Repeat password
+                                            <span class="contacts-form__required">*</span>
+                                        </label>
+                                        <input class="contacts-form__field password-repeat js-validFormField" type="password" id="repeat-password-form-second" name="password-repeat" required>
+                                    </div>
+                                </div>
+
+                                <div class="contacts-form__row">
+                                    <div class="contacts-form__group contacts-form__group--width--half">
+                                        <label class="contacts-form__label" for="location-form-second">
+                                            Location
+                                            <span class="contacts-form__required">*</span>
+                                        </label>
+                                        <input class="contacts-form__field js-validFormField" type="text" id="location-form-second" name="location" required>
+                                    </div>
+
+                                    <div class="contacts-form__group contacts-form__group--width--half">
+                                        <label class="contacts-form__label" for="age-form-second">
+                                            Age
+                                            <span class="contacts-form__required">*</span>
+                                        </label>
+                                        <input class="contacts-form__field js-validFormField" type="number" id="age-form-second" name="age" required>
+                                    </div>
+                                </div>
+
+                                <div class="contacts-form__group contacts-form__checkbox">
+                                    <input class="custom-checkbox custom-checkbox--padding js-approvedCheckbox" type="checkbox" id="consent-form-second">
+                                    <label class="contacts-form__label" for="consent-form-second">
+                                        Clicking on the button, you consent to the processing
+                                        of your personal data
+                                    </label>
+                                </div>
+
+                                <input class="contacts-form__submit-btn btn js-submitBtn" type="submit" value="Sign up" disabled>
+                            </form>
+                        </div>
+
+                        <a class="modal__btn-close js-toggleModal" href="" data-modal="registerModal">
+                            <svg class="modal__icon" aria-hidden="true">
+                                <use xlink:href="img/sprite.svg#icon-btn-cross"></use>
+                            </svg>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="modal" id="sendMsgModal">
+            <div class="modal__container">
+                <div class="modal__content">
+                    <div class="contacts-form">
+                        <form class="contacts-form__content js-contactForm" action="https://echo.htmlacademy.ru/" method="post">
+                            <div class="contacts-form__row">
+                                <div class="contacts-form__group contacts-form__group--width--half">
+                                    <label class="contacts-form__label" for="name-form-third">
+                                        What is your name?
+                                        <span class="contacts-form__required">*</span>
+                                    </label>
+                                    <input class="contacts-form__field js-validFormField" type="text" id="name-form-third" name="name" required>
+                                </div>
+
+                                <div class="contacts-form__group contacts-form__group--width--half">
+                                    <label class="contacts-form__label" for="subject-form-third">
+                                        Message subject
+                                        <span class="contacts-form__required">*</span>
+                                    </label>
+                                    <input class="contacts-form__field js-validFormField" type="text" id="subject-form-third" name="subject" required>
+                                </div>
+                            </div>
+
+                            <div class="contacts-form__row">
+                                <div class="contacts-form__group contacts-form__group--width--half">
+                                    <label class="contacts-form__label" for="email-form-third">
+                                        Your email
+                                        <span class="contacts-form__required">*</span>
+                                    </label>
+                                    <input class="contacts-form__field js-validFormField" type="email" id="email-form-third" name="email" required>
+                                </div>
+
+                                <div class="contacts-form__group contacts-form__group--width--half">
+                                    <label class="contacts-form__label" for="phone-form-third">
+                                        Your mobile phone
+                                        <span class="contacts-form__required">*</span>
+                                    </label>
+                                    <input class="contacts-form__field js-validFormField" type="tel" id="phone-form-third" name="phone" required>
+                                </div>
+                            </div>
+
+                            <div class="contacts-form__group">
+                                <label class="contacts-form__label" for="message-form-third">What do you want to discuss with me?</label>
+                                <textarea class="contacts-form__field contacts-form__textarea js-validFormField" id="message-form-third" name="message"></textarea>
+                            </div>
+
+                            <div class="contacts-form__group contacts-form__checkbox">
+                                <input class="custom-checkbox custom-checkbox--padding js-approvedCheckbox" type="checkbox" id="consent-form-third">
+                                <label class="contacts-form__label" for="consent-form-third">
+                                    Clicking on the button, you consent to the processing
+                                    of your personal data
+                                </label>
+                            </div>
+
+                            <input class="contacts-form__submit-btn btn js-submitBtn" type="submit" value="Send" disabled>
+                        </form>
+                    </div>
+
+                    <a class="modal__btn-close js-toggleModal" href="" data-modal="sendMsgModal">
+                        <svg class="modal__icon" aria-hidden="true">
+                            <use xlink:href="img/sprite.svg#icon-btn-cross"></use>
+                        </svg>
+                    </a>
+                </div>
+            </div>
+        </div>
 
         <script src="https://unpkg.com/swiper@8.2.4/swiper-bundle.min.js"></script>
         <script src="js/script.js"></script>

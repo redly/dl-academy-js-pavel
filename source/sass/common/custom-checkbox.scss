@@ -1,0 +1,44 @@
+.custom-checkbox {
+    @include custom-filters-hidden;
+
+    & + label {
+        cursor: pointer;
+        opacity: 0.2;
+        padding: 0 0 0 29px;
+        position: relative;
+
+        &::before {
+            @include custom-filters-visible;
+        }
+
+        &:hover {
+            opacity: 0.6;
+        }
+
+        &:checked {
+            opacity: 1;
+        }
+    }
+
+    &--padding + label {
+        padding: 2px 0 0 34px;
+    }
+
+    &:disabled + label {
+        cursor: default;
+        opacity: 0.2;
+    }
+
+    &:focus + label {
+        opacity: 0.6;
+    }
+
+    &:checked + label {
+        opacity: 1;
+    }
+
+    &:checked + label::before {
+        background: $color-white url("../img/checkbox-checked.svg") no-repeat 100% 0;
+        background-size: 14px 14px;
+    }
+}

@@ -23,7 +23,6 @@
 @import "partials/btn";
 @import "partials/titles";
 
-
 /*
     Import all other blocks
 */
@@ -32,6 +31,10 @@
 @import "common/menu";
 @import "common/menu-btn";
 @import "common/footer";
+@import "common/modal";
+@import "common/contacts-form";
+@import "common/custom-checkbox";
+@import "common/scroll-btn-up";
 @import "blocks/main-page/main-slider";
 @import "blocks/main-page/swiper";
 @import "blocks/main-page/about";

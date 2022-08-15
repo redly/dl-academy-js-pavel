@@ -1,0 +1,21 @@
+.scroll-btn-up {
+    @include btn-reset;
+
+    display: none;
+    background-color: transparent;
+    filter: drop-shadow(0 0 10px rgba(0, 0, 0, 0.25));
+    position: fixed;
+    left: 30px;
+    bottom: 20px;
+    z-index: 2;
+
+    &--is-active {
+        display: block;
+    }
+
+    &__icon {
+        display: block;
+        width: 62px;
+        height: 62px;
+    }
+}
