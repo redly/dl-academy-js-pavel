@@ -1,0 +1,64 @@
+.blog-pagination {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+
+    &__list {
+        @include no-list;
+
+        display: flex;
+        flex-direction: row;
+        max-width: 160px;
+        margin: 0 auto;
+
+        @media (min-width: $tablet-min-width) {
+            max-width: 320px;
+        }
+
+        @media (min-width: $desktop-width) {
+            max-width: 500px;
+        }
+    }
+
+    &__item {
+        color: $color-mercury;
+        font-weight: $font-weight-bold;
+        margin: 0 5px;
+    }
+
+    &__link {
+        color: $color-mercury;
+        text-decoration: none;
+
+        &--current {
+            color: $color-black;
+            cursor: default;
+            pointer-events: none;
+        }
+
+        &:hover {
+            color: $color-black;
+        }
+
+        &:active {
+            color: $color-grey;
+        }
+    }
+
+    &__arrow {
+        &:hover {
+            opacity: 0.6;
+        }
+
+        &:active {
+            opacity: 0.3;
+        }
+    }
+
+    &__arrow-icon {
+        display: block;
+        width: 42px;
+        height: 42px;
+    }
+}
