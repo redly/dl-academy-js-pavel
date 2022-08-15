@@ -6,6 +6,8 @@
     }
 
     &__slide {
+        display: flex;
+        align-items: center;
         overflow: hidden;
         max-height: 465px;
     }
