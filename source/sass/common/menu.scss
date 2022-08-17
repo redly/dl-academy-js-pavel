@@ -89,13 +89,18 @@
         font-size: $font-size-title-two;
         font-weight: $font-weight-bold;
         text-decoration: none;
+        transition: color 0.5s;
 
         @media (min-width: $tablet-min-width) {
             font-size: $font-size-text;
         }
 
-        &:hover:not(.menu__link--current) {
+        &:hover {
             color: $color-black;
+        }
+
+        &:active {
+            color: $color-mercury;
         }
 
         &:focus {
@@ -104,6 +109,8 @@
 
         &--current {
             color: $color-black;
+            cursor: default;
+            pointer-events: none;
         }
     }
 }

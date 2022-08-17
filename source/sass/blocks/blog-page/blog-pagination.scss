@@ -30,6 +30,7 @@
     &__link {
         color: $color-mercury;
         text-decoration: none;
+        transition: color 0.5s;
 
         &--current {
             color: $color-black;
@@ -47,6 +48,8 @@
     }
 
     &__arrow {
+        transition: opacity 0.3s;
+
         &:hover {
             opacity: 0.6;
         }

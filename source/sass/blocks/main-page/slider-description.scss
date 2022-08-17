@@ -35,6 +35,10 @@
         &:hover {
             text-decoration: underline solid 1px;
         }
+
+        &:active {
+            color: $color-grey;
+        }
     }
 
     &__text {

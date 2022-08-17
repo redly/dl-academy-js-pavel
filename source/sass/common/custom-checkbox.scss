@@ -6,9 +6,12 @@
         cursor: pointer;
         padding: 0 0 0 32px;
         position: relative;
+        transition: opacity 0.4s;
 
         &::before {
             @include custom-filters-visible;
+
+            transition: opacity 0.3s;
         }
     }
 

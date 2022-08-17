@@ -22,7 +22,8 @@
     min-height: 40px;
     */
 
-    transition: background-color 300ms ease-in;
+    transition: background-color 0.3s, border-color 0.3s, color 0.3s;
+    /* .3s - такую запись stylelint не пропускает */
 
     &--black-and-long {
         background: $color-black;
