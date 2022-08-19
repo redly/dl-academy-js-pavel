@@ -5,11 +5,11 @@
         display: flex;
         flex-direction: row;
         flex-wrap: wrap;
-        gap: 25px 30px;
+        gap: 27px 20px;
         margin: 0 0 37px;
 
         @media (min-width: $tablet-min-width) {
-            gap: 30px 50px;
+            gap: 30px 53px;
             margin: 0 0 35px;
         }
 
@@ -19,10 +19,10 @@
     }
 
     &__col {
-        width: calc(100% / 2 - 15px);
+        width: calc(100% / 2 - 10px);
 
         @media (min-width: $tablet-min-width) {
-            min-width: 115px;
+            min-width: 111px;
             width: auto;
         }
 
@@ -91,7 +91,7 @@
     }
 
     &__item {
-        margin: 0 0 14px;
+        margin: 0 0 11px;
 
         &:last-child {
             margin: 0;
@@ -109,6 +109,7 @@
         flex-direction: column;
         align-items: center;
         max-width: fit-content;
+        margin: 10px 0 0;
 
         @media (min-width: $desktop-width) {
             margin: 19px 0 0;

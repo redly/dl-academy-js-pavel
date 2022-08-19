@@ -44,11 +44,11 @@
 /* Cтили для кастомных фильтров */
 
 @mixin custom-filters-visible {
-    background: $color-white;
+    background-color: $color-white;
     border: 2px solid $color-black;
     border-radius: 5px;
     content: "";
-    opacity: 0.2;
+    opacity: 0.1;
     width: 25px;
     height: 25px;
     position: absolute;
