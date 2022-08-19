@@ -1,7 +1,7 @@
 .custom-form-field {
     @include custom-form-field;
 
-    transition: border-color 0.3s;
+    transition: border-color 0.4s;
 
     &--error {
         border: 2px solid $color-red;

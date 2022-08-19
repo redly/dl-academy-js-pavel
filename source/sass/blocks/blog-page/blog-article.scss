@@ -84,6 +84,7 @@
         font-weight: $font-weight-bold;
         text-decoration: underline dashed 1px;
         text-underline-offset: 4px;
+        transition: color 0.2s;
 
         &:hover {
             text-decoration: underline solid 1px;

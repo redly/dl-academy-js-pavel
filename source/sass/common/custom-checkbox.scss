@@ -4,37 +4,41 @@
     & + label {
         display: inline-block;
         cursor: pointer;
-        padding: 0 0 0 32px;
+        padding: 2px 0 0 36px;
         position: relative;
-        transition: opacity 0.4s;
 
         &::before {
             @include custom-filters-visible;
 
-            transition: opacity 0.3s;
+            transition: opacity 0.4s;
         }
     }
 
-    &:disabled + label,
-    &:disabled + label::before {
+    &:disabled + label {
         cursor: default;
         opacity: 0.2;
-    }
 
-    &:hover + label,
-    &:hover + label::before {
-        opacity: 0.6;
-    }
-
-    &:focus + label,
-    &:focus + label::before {
-        opacity: 0.6;
+        &::before {
+            opacity: 0.3;
+        }
     }
 
     &:checked + label::before {
         background: $color-white url("../img/checkbox-checked.svg") no-repeat 50% 50%;
         background-size: 14px 15px;
         opacity: 1;
+    }
+
+    &:hover:not(.custom-checkbox:disabled) + label {
+        &::before {
+            opacity: 0.6;
+        }
+    }
+
+    &:focus + label {
+        &::before {
+            opacity: 0.6;
+        }
     }
 
     &--padding {
