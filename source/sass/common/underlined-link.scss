@@ -1,0 +1,92 @@
+.underlined-link {
+    position: relative;
+    transition: color 0.5s;
+
+    /*
+        Так как transition не поддерживает плавный переход
+        для text-decoration-style и border-bottom-style,
+        сделал решение с псевдоэлементами и transition с opacity.
+
+        Выглядит излишне, но теперь переходы по ссылкам
+        смотрятся плавно.
+    */
+
+    &::before {
+        border-bottom: $color-grey dashed 1px;
+        content: "";
+        width: 100%;
+        position: absolute;
+        bottom: -3px;
+        right: 0;
+        transition: opacity 0.5s;
+    }
+
+    &::after {
+        border-bottom: $color-grey solid 1px;
+        content: "";
+        opacity: 0;
+        width: 100%;
+        position: absolute;
+        bottom: -3px;
+        right: 0;
+        transition: opacity 0.5s, border-bottom-color 0.5s;
+    }
+
+    &:hover {
+        color: $color-black;
+
+        &::before {
+            opacity: 0;
+        }
+
+        &::after {
+            opacity: 1;
+        }
+    }
+
+    &:active {
+        color: $color-grey;
+
+        &::after {
+            border-bottom-color: $color-grey;
+        }
+    }
+
+    &--grey-to-black {
+        &::before {
+            border-bottom-color: $color-grey;
+        }
+
+        &::after {
+            border-bottom-color: $color-black;
+        }
+    }
+
+    &--black {
+        &::before {
+            border-bottom-color: $color-black;
+        }
+
+        &::after {
+            border-bottom-color: $color-black;
+        }
+    }
+
+    &--white {
+        &::before {
+            border-bottom-color: $color-white;
+        }
+
+        &::after {
+            border-bottom-color: $color-white;
+        }
+
+        &:hover {
+            color: $color-white;
+        }
+
+        &:active {
+            color: $color-grey;
+        }
+    }
+}
