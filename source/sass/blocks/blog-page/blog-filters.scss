@@ -6,11 +6,9 @@
         flex-direction: row;
         flex-wrap: wrap;
         gap: 27px 20px;
-        margin: 0 0 37px;
 
         @media (min-width: $tablet-min-width) {
             gap: 30px 53px;
-            margin: 0 0 35px;
         }
 
         @media (min-width: $desktop-width) {
@@ -63,6 +61,26 @@
         &--reset {
             @media (min-width: $desktop-width) {
                 order: 7;
+            }
+        }
+
+        &--search {
+            display: flex;
+            flex-direction: column;
+            align-items: flex-end;
+            width: 100%;
+            gap: 20px 0;
+            margin: 10px 0 0;
+
+            @media (min-width: $tablet-min-width) {
+                flex-direction: row;
+                align-items: center;
+                gap: 0 30px;
+                margin: 5px 0 0;
+            }
+
+            @media (min-width: $desktop-width) {
+                order: 8;
             }
         }
     }
@@ -120,18 +138,5 @@
         color: $color-mercury;
         font-size: $font-size-text-small;
         padding: 0 0 5px;
-    }
-
-    &__search {
-        display: flex;
-        flex-direction: column;
-        align-items: flex-end;
-        gap: 20px 0;
-
-        @media (min-width: $tablet-min-width) {
-            flex-direction: row;
-            align-items: center;
-            gap: 0 30px;
-        }
     }
 }
