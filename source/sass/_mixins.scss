@@ -16,6 +16,7 @@
 /* Сброс стандартной стилизации кнопок */
 
 @mixin btn-reset {
+    background-color: transparent;
     border: none;
     border-radius: 0;
     padding: 0;

@@ -22,7 +22,7 @@
         <header class="header">
             <div class="container">
                 <nav class="header__menu menu" id="navMenu">
-                    <button class="menu__btn-cross menu-btn js-toggleMenu" type="button" data-menu="navMenu">
+                    <button class="menu__btn-cross menu-btn js-toggleMenu" type="button" data-menu="navMenu" aria-label="Close menu">
                         <svg class="menu-btn__icon" aria-hidden="true">
                             <use xlink:href="img/sprite.svg#icon-btn-cross"></use>
                         </svg>
@@ -32,16 +32,16 @@
                         <div class="menu__container">
                             <ul class="menu__list">
                                 <li class="menu__item">
-                                    <a class="menu__link menu__link--current" href="">Home</a>
+                                    <span class="menu__link menu__link--current">Home</span>
                                 </li>
                                 <li class="menu__item">
                                     <a class="menu__link" href="blog.html">My blog</a>
                                 </li>
                                 <li class="menu__item">
-                                    <a class="menu__link js-toggleModal" data-modal="signInModal" href="">Sign in</a>
+                                    <a class="menu__link js-toggleModal" data-modal="signInModal" href="#signInModal">Sign in</a>
                                 </li>
                                 <li class="menu__item">
-                                    <a class="menu__link js-toggleModal" data-modal="registerModal" href="">Register</a>
+                                    <a class="menu__link js-toggleModal" data-modal="registerModal" href="#registerModal">Register</a>
                                 </li>
                             </ul>
                         </div>
@@ -62,7 +62,7 @@
                             Future front-end developer 32 years old, Tolyatti
                         </p>
 
-                        <button class="content__btn-menu menu-btn js-toggleMenu" type="button" data-menu="navMenu">
+                        <button class="content__btn-menu menu-btn js-toggleMenu" type="button" data-menu="navMenu" aria-label="Open menu">
                             <svg class="menu-btn__icon menu-btn__icon--menu" aria-hidden="true">
                                 <use xlink:href="img/sprite.svg#icon-btn-menu"></use>
                             </svg>
@@ -481,7 +481,7 @@
                         Want to know more or just chat? You are welcome!
                     </p>
 
-                    <a class="footer__btn btn btn--black-and-long js-toggleModal" data-modal="sendMsgModal" href="">Send message</a>
+                    <a class="footer__btn btn btn--black-and-long js-toggleModal" data-modal="sendMsgModal" href="#sendMsgModal">Send message</a>
 
                     <ul class="footer__list">
                         <li class="footer__item">
@@ -517,203 +517,275 @@
             </div>
         </footer>
 
-        <button class="scroll-btn-up js-scrollToUpBtn" type="button">
+        <button class="scroll-btn-up js-scrollToUpBtn" type="button" aria-label="Go to top">
             <svg class="scroll-btn-up__icon" aria-hidden="true">
                 <use xlink:href="img/sprite.svg#icon-btn-up"></use>
             </svg>
         </button>
 
-        <div class="modal" id="signInModal">
-            <div class="modal__scrollable">
-                <div class="modal__container">
-                    <div class="modal__content modal__content--width--small">
-                        <div class="contacts-form">
-                            <form class="contacts-form__content js-contactForm" action="https://echo.htmlacademy.ru/" method="get">
-                                <div class="contacts-form__group">
-                                    <label class="contacts-form__label" for="email-form-first">
-                                        Email
+        <div class="modal" id="signInModal" aria-hidden="true">
+            <div class="modal__scrollable" tabindex="-1">
+                <div class="modal__content modal__content--width--small" role="dialog" aria-modal="true" aria-labelledby="sign-in-modal-title">
+                    <h2 class="visually-hidden" id="sign-in-modal-title">
+                        Sign in modal
+                    </h2>
+
+                    <div class="contacts-form">
+                        <form class="contacts-form__content js-contactForm" action="https://echo.htmlacademy.ru/" method="get">
+                            <div class="contacts-form__group">
+                                <label class="contacts-form__label" for="email-form-first">
+                                    Email
+                                    <span class="contacts-form__required">*</span>
+                                </label>
+                                <input class="contacts-form__field js-validFormField"
+                                    type="email"
+                                    id="email-form-first"
+                                    name="email"
+                                    data-pattern="/^[a-zA-Z0-9.!#$%&’*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/"
+                                    data-message="Please enter a valid email address (your entry is not in the format &#34;somebody@example.com&#34; or &#34;somebody@local&#34;)"
+                                    required>
+                            </div>
+
+                            <div class="contacts-form__group">
+                                <label class="contacts-form__label" for="password-form-first">
+                                    Password
+                                    <span class="contacts-form__required">*</span>
+                                </label>
+                                <input class="custom-form-field js-validFormField"
+                                    type="password" id="password-form-first"
+                                    name="password"
+                                    required>
+                            </div>
+
+                            <input class="contacts-form__submit-btn btn js-submitBtn"
+                                type="submit"
+                                value="Log in">
+                        </form>
+                    </div>
+
+                    <button class="modal__btn-close modal__btn-close--right js-toggleModal" type="button" data-modal="signInModal" aria-label="Close modal">
+                        <svg class="modal__icon" aria-hidden="true">
+                            <use xlink:href="img/sprite.svg#icon-btn-cross"></use>
+                        </svg>
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <div class="modal" id="registerModal" aria-hidden="true">
+            <div class="modal__scrollable" tabindex="-1">
+                <div class="modal__content" role="dialog" aria-modal="true" aria-labelledby="register-modal-title">
+                    <h2 class="visually-hidden" id="register-modal-title">
+                        Register modal
+                    </h2>
+
+                    <div class="contacts-form">
+                        <form class="contacts-form__content js-contactForm" action="https://echo.htmlacademy.ru/" method="post">
+                            <div class="contacts-form__group">
+                                <label class="contacts-form__label" for="email-form-second">
+                                    Email
+                                    <span class="contacts-form__required">*</span>
+                                </label>
+                                <input class="custom-form-field js-validFormField"
+                                    type="email"
+                                    id="email-form-second"
+                                    name="email"
+                                    required>
+                            </div>
+
+                            <div class="contacts-form__row">
+                                <div class="contacts-form__group contacts-form__group--width--half">
+                                    <label class="contacts-form__label" for="name-form-second">
+                                        Name
                                         <span class="contacts-form__required">*</span>
                                     </label>
-                                    <input class="custom-form-field js-validFormField" type="email" id="email-form-first" name="email" required>
+                                    <input class="custom-form-field js-validFormField"
+                                        type="text" id="name-form-second"
+                                        name="name"
+                                        required>
                                 </div>
 
-                                <div class="contacts-form__group">
-                                    <label class="contacts-form__label" for="password-form-first">
+                                <div class="contacts-form__group contacts-form__group--width--half">
+                                    <label class="contacts-form__label" for="surname-form-second">
+                                        Surname
+                                        <span class="contacts-form__required">*</span>
+                                    </label>
+                                    <input class="custom-form-field js-validFormField"
+                                        type="text"
+                                        id="surname-form-second"
+                                        name="surname"
+                                        required>
+                                </div>
+                            </div>
+
+                            <div class="contacts-form__row">
+                                <div class="contacts-form__group contacts-form__group--width--half">
+                                    <label class="contacts-form__label" for="password-form-second">
                                         Password
                                         <span class="contacts-form__required">*</span>
                                     </label>
-                                    <input class="custom-form-field js-validFormField" type="password" id="password-form-first" name="password" required>
+                                    <input class="custom-form-field password js-validFormField"
+                                        type="password"
+                                        id="password-form-second"
+                                        name="password"
+                                        required>
                                 </div>
 
-                                <input class="contacts-form__submit-btn btn js-submitBtn" type="submit" value="Log in">
-                            </form>
-                        </div>
-
-                        <a class="modal__btn-close modal__btn-close--right js-toggleModal" href="" data-modal="signInModal">
-                            <svg class="modal__icon" aria-hidden="true">
-                                <use xlink:href="img/sprite.svg#icon-btn-cross"></use>
-                            </svg>
-                        </a>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <div class="modal" id="registerModal">
-            <div class="modal__scrollable">
-                <div class="modal__container">
-                    <div class="modal__content">
-                        <div class="contacts-form">
-                            <form class="contacts-form__content js-contactForm" action="https://echo.htmlacademy.ru/" method="post">
-                                <div class="contacts-form__group">
-                                    <label class="contacts-form__label" for="email-form-second">
-                                        Email
+                                <div class="contacts-form__group contacts-form__group--width--half">
+                                    <label class="contacts-form__label" for="repeat-password-form-second">
+                                        Repeat password
                                         <span class="contacts-form__required">*</span>
                                     </label>
-                                    <input class="custom-form-field js-validFormField" type="email" id="email-form-second" name="email" required>
+                                    <input class="custom-form-field password-repeat js-validFormField"
+                                        type="password"
+                                        id="repeat-password-form-second"
+                                        name="password-repeat"
+                                        required>
                                 </div>
+                            </div>
 
-                                <div class="contacts-form__row">
-                                    <div class="contacts-form__group contacts-form__group--width--half">
-                                        <label class="contacts-form__label" for="name-form-second">
-                                            Name
-                                            <span class="contacts-form__required">*</span>
-                                        </label>
-                                        <input class="custom-form-field js-validFormField" type="text" id="name-form-second" name="name" required>
-                                    </div>
-
-                                    <div class="contacts-form__group contacts-form__group--width--half">
-                                        <label class="contacts-form__label" for="surname-form-second">
-                                            Surname
-                                            <span class="contacts-form__required">*</span>
-                                        </label>
-                                        <input class="custom-form-field js-validFormField" type="text" id="surname-form-second" name="name" required>
-                                    </div>
-                                </div>
-
-                                <div class="contacts-form__row">
-                                    <div class="contacts-form__group contacts-form__group--width--half">
-                                        <label class="contacts-form__label" for="password-form-second">
-                                            Password
-                                            <span class="contacts-form__required">*</span>
-                                        </label>
-                                        <input class="custom-form-field password js-validFormField" type="password" id="password-form-second" name="password" required>
-                                    </div>
-
-                                    <div class="contacts-form__group contacts-form__group--width--half">
-                                        <label class="contacts-form__label" for="repeat-password-form-second">
-                                            Repeat password
-                                            <span class="contacts-form__required">*</span>
-                                        </label>
-                                        <input class="custom-form-field password-repeat js-validFormField" type="password" id="repeat-password-form-second" name="password-repeat" required>
-                                    </div>
-                                </div>
-
-                                <div class="contacts-form__row">
-                                    <div class="contacts-form__group contacts-form__group--width--half">
-                                        <label class="contacts-form__label" for="location-form-second">
-                                            Location
-                                            <span class="contacts-form__required">*</span>
-                                        </label>
-                                        <input class="custom-form-field js-validFormField" type="text" id="location-form-second" name="location" required>
-                                    </div>
-
-                                    <div class="contacts-form__group contacts-form__group--width--half">
-                                        <label class="contacts-form__label" for="age-form-second">
-                                            Age
-                                            <span class="contacts-form__required">*</span>
-                                        </label>
-                                        <input class="custom-form-field custom-form-field--type--number js-validFormField" type="number" id="age-form-second" name="age" required>
-                                    </div>
-                                </div>
-
-                                <div class="contacts-form__group contacts-form__checkbox">
-                                    <input class="custom-checkbox custom-checkbox--padding js-approvedCheckbox" type="checkbox" id="consent-form-second">
-                                    <label class="contacts-form__label" for="consent-form-second">
-                                        Clicking on the button, you consent to the processing
-                                        of your personal data
+                            <div class="contacts-form__row">
+                                <div class="contacts-form__group contacts-form__group--width--half">
+                                    <label class="contacts-form__label" for="location-form-second">
+                                        Location
+                                        <span class="contacts-form__required">*</span>
                                     </label>
+                                    <input class="custom-form-field js-validFormField"
+                                        type="text"
+                                        id="location-form-second"
+                                        name="location"
+                                        required>
                                 </div>
 
-                                <input class="contacts-form__submit-btn btn js-submitBtn" type="submit" value="Sign up" disabled>
-                            </form>
-                        </div>
+                                <div class="contacts-form__group contacts-form__group--width--half">
+                                    <label class="contacts-form__label" for="age-form-second">
+                                        Age
+                                        <span class="contacts-form__required">*</span>
+                                    </label>
+                                    <input class="custom-form-field custom-form-field--type--number js-validFormField"
+                                        type="number"
+                                        id="age-form-second"
+                                        name="age"
+                                        required>
+                                </div>
+                            </div>
 
-                        <a class="modal__btn-close js-toggleModal" href="" data-modal="registerModal">
-                            <svg class="modal__icon" aria-hidden="true">
-                                <use xlink:href="img/sprite.svg#icon-btn-cross"></use>
-                            </svg>
-                        </a>
+                            <div class="contacts-form__group contacts-form__checkbox">
+                                <input class="custom-checkbox custom-checkbox--padding js-approvedCheckbox"
+                                    type="checkbox"
+                                    id="consent-form-second">
+                                <label class="contacts-form__label" for="consent-form-second">
+                                    Clicking on the button, you consent to the processing
+                                    of your personal data
+                                </label>
+                            </div>
+
+                            <input class="contacts-form__submit-btn btn js-submitBtn"
+                                type="submit"
+                                value="Sign up"
+                                disabled>
+                        </form>
                     </div>
+
+                    <button class="modal__btn-close js-toggleModal" type="button" data-modal="registerModal" aria-label="Close modal">
+                        <svg class="modal__icon" aria-hidden="true">
+                            <use xlink:href="img/sprite.svg#icon-btn-cross"></use>
+                        </svg>
+                    </button>
                 </div>
             </div>
         </div>
 
-        <div class="modal" id="sendMsgModal">
-            <div class="modal__scrollable">
-                <div class="modal__container">
-                    <div class="modal__content">
-                        <div class="contacts-form">
-                            <form class="contacts-form__content js-contactForm" action="https://echo.htmlacademy.ru/" method="post">
-                                <div class="contacts-form__row">
-                                    <div class="contacts-form__group contacts-form__group--width--half">
-                                        <label class="contacts-form__label" for="name-form-third">
-                                            What is your name?
-                                            <span class="contacts-form__required">*</span>
-                                        </label>
-                                        <input class="custom-form-field js-validFormField" type="text" id="name-form-third" name="name" required>
-                                    </div>
+        <div class="modal" id="sendMsgModal" aria-hidden="true">
+            <div class="modal__scrollable" tabindex="-1">
+                <div class="modal__content" role="dialog" aria-modal="true" aria-labelledby="send-message-modal-title">
+                    <h2 class="visually-hidden" id="send-message-modal-title">
+                        Send message modal
+                    </h2>
 
-                                    <div class="contacts-form__group contacts-form__group--width--half">
-                                        <label class="contacts-form__label" for="subject-form-third">
-                                            Message subject
-                                            <span class="contacts-form__required">*</span>
-                                        </label>
-                                        <input class="custom-form-field js-validFormField" type="text" id="subject-form-third" name="subject" required>
-                                    </div>
-                                </div>
-
-                                <div class="contacts-form__row">
-                                    <div class="contacts-form__group contacts-form__group--width--half">
-                                        <label class="contacts-form__label" for="email-form-third">
-                                            Your email
-                                            <span class="contacts-form__required">*</span>
-                                        </label>
-                                        <input class="custom-form-field js-validFormField" type="email" id="email-form-third" name="email" required>
-                                    </div>
-
-                                    <div class="contacts-form__group contacts-form__group--width--half">
-                                        <label class="contacts-form__label" for="phone-form-third">
-                                            Your mobile phone
-                                            <span class="contacts-form__required">*</span>
-                                        </label>
-                                        <input class="custom-form-field js-validFormField" type="tel" id="phone-form-third" name="phone" required>
-                                    </div>
-                                </div>
-
-                                <div class="contacts-form__group">
-                                    <label class="contacts-form__label" for="message-form-third">What do you want to discuss with me?</label>
-                                    <textarea class="custom-form-field contacts-form__textarea js-validFormField" id="message-form-third" name="message"></textarea>
-                                </div>
-
-                                <div class="contacts-form__group contacts-form__checkbox">
-                                    <input class="custom-checkbox custom-checkbox--padding js-approvedCheckbox" type="checkbox" id="consent-form-third">
-                                    <label class="contacts-form__label" for="consent-form-third">
-                                        Clicking on the button, you consent to the processing
-                                        of your personal data
+                    <div class="contacts-form">
+                        <form class="contacts-form__content js-contactForm" action="https://echo.htmlacademy.ru/" method="post">
+                            <div class="contacts-form__row">
+                                <div class="contacts-form__group contacts-form__group--width--half">
+                                    <label class="contacts-form__label" for="name-form-third">
+                                        What is your name?
+                                        <span class="contacts-form__required">*</span>
                                     </label>
+                                    <input class="custom-form-field js-validFormField"
+                                        type="text"
+                                        id="name-form-third"
+                                        name="name" required>
                                 </div>
 
-                                <input class="contacts-form__submit-btn btn js-submitBtn" type="submit" value="Send" disabled>
-                            </form>
-                        </div>
+                                <div class="contacts-form__group contacts-form__group--width--half">
+                                    <label class="contacts-form__label" for="subject-form-third">
+                                        Message subject
+                                        <span class="contacts-form__required">*</span>
+                                    </label>
+                                    <input class="custom-form-field js-validFormField"
+                                        type="text"
+                                        id="subject-form-third"
+                                        name="subject"
+                                        required>
+                                </div>
+                            </div>
 
-                        <a class="modal__btn-close js-toggleModal" href="" data-modal="sendMsgModal">
-                            <svg class="modal__icon" aria-hidden="true">
-                                <use xlink:href="img/sprite.svg#icon-btn-cross"></use>
-                            </svg>
-                        </a>
+                            <div class="contacts-form__row">
+                                <div class="contacts-form__group contacts-form__group--width--half">
+                                    <label class="contacts-form__label" for="email-form-third">
+                                        Your email
+                                        <span class="contacts-form__required">*</span>
+                                    </label>
+                                    <input class="custom-form-field js-validFormField"
+                                        type="email"
+                                        id="email-form-third"
+                                        name="email"
+                                        required>
+                                </div>
+
+                                <div class="contacts-form__group contacts-form__group--width--half">
+                                    <label class="contacts-form__label" for="phone-form-third">
+                                        Your mobile phone
+                                        <span class="contacts-form__required">*</span>
+                                    </label>
+                                    <input class="custom-form-field js-validFormField"
+                                        type="tel"
+                                        id="phone-form-third"
+                                        name="phone"
+                                        required>
+                                </div>
+                            </div>
+
+                            <div class="contacts-form__group">
+                                <label class="contacts-form__label" for="message-form-third">What do you want to discuss with me?</label>
+                                <textarea class="custom-form-field contacts-form__textarea js-validFormField"
+                                    id="message-form-third"
+                                    name="message">
+                                </textarea>
+                            </div>
+
+                            <div class="contacts-form__group contacts-form__checkbox">
+                                <input class="custom-checkbox custom-checkbox--padding js-approvedCheckbox"
+                                    type="checkbox"
+                                    id="consent-form-third">
+                                <label class="contacts-form__label" for="consent-form-third">
+                                    Clicking on the button, you consent to the processing
+                                    of your personal data
+                                </label>
+                            </div>
+
+                            <input class="contacts-form__submit-btn btn js-submitBtn"
+                                type="submit"
+                                value="Send"
+                                disabled>
+                        </form>
                     </div>
+
+                    <button class="modal__btn-close js-toggleModal" type="button" data-modal="sendMsgModal" aria-label="Close modal">
+                        <svg class="modal__icon" aria-hidden="true">
+                            <use xlink:href="img/sprite.svg#icon-btn-cross"></use>
+                        </svg>
+                    </button>
                 </div>
             </div>
         </div>
