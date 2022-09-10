@@ -44,8 +44,6 @@
     }
 
     &__tags {
-        @include no-list;
-
         display: flex;
         gap: 5px;
         margin: 0 0 10px;
@@ -59,8 +57,6 @@
     }
 
     &__data {
-        @include no-list;
-
         display: flex;
         gap: 10px;
         margin: 0 0 15px;
