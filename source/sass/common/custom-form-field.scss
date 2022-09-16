@@ -11,6 +11,11 @@
         border: 2px solid $color-green;
     }
 
+    &--textarea {
+        resize: none;
+        height: 150px;
+    }
+
     &:hover {
         border: 2px solid $color-grey;
     }

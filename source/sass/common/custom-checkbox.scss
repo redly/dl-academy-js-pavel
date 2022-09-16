@@ -64,11 +64,13 @@
 
     &--padding {
         & + label {
-            opacity: 0.2;
+            opacity: 0.3;
             padding: 2px 0 0 34px;
+            transition: opacity 0.4s;
         }
 
         & + label::before {
+            opacity: 0.3;
             border-radius: 3px;
             width: 19px;
             height: 19px;
@@ -78,20 +80,31 @@
             opacity: 1;
         }
 
-        &:checked + label::before {
-            background-size: 13px 14px;
+        &:checked + label::after {
+            top: 1px;
+            left: 4px;
+        }
+
+        &:hover + label {
+            opacity: 0.7;
+        }
+
+        &:focus + label {
+            opacity: 0.7;
         }
     }
 
     &--tag {
         & + label {
-            display: inline;
-            padding: 0;
+            display: block;
+            /*
+                Сделал эти чекбоксы блочными так как элементы ведут себя непредсказуемо в firefox,
+                видимо из за абсолютного позиционирования во флексах
+            */
         }
 
         & + label::before {
             opacity: 1;
-            top: auto;
         }
     }
 
