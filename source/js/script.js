@@ -1,4 +1,4 @@
-/* Скрипт для открытия меню в мобильной версии */
+// Скрипт для открытия меню в мобильной версии
 
 const menuBtns = document.querySelectorAll('.js-toggleMenu');
 
@@ -21,7 +21,7 @@ mediaQueryList.addEventListener('change', (evt) => {
     }
 });
 
-/* Инициализация swiper js */
+// Инициализация swiper js
 
 const mainSlider = document.querySelector('.swiper-main-slider');
 
@@ -306,3 +306,132 @@ fileInputs?.forEach((input) => {
         */
     });
 });
+
+// Несброс фильтра при перезагрузке страницы для blog-filters
+
+function getParamsFromLocation() {
+    let searchParams = new URLSearchParams(location.search);
+
+    return {
+        page: Number(searchParams.get('page')) || 0,
+        comment: searchParams.getAll('comment'),
+        view: searchParams.get('view'),
+        sort: searchParams.get('sort'),
+        show: searchParams.get('show'),
+        color: searchParams.getAll('color'),
+        search: searchParams.get('search') || '',
+    };
+}
+
+function setDataToFilter(data) {
+    const form = document.forms.filter;
+
+    form?.elements.comment.forEach(checkbox => {
+        if (data.comment.includes(checkbox.value)) {
+            checkbox.checked = true;
+        }
+    });
+
+    form?.elements.view.forEach(radio => {
+        if (data.view === radio.value) {
+            radio.checked = true;
+        }
+    });
+
+    form?.elements.sort.forEach(radio => {
+        if (data.sort === radio.value) {
+            radio.checked = true;
+        }
+    });
+
+    form?.elements.show.forEach(radio => {
+        if (data.show === radio.value) {
+            radio.checked = true;
+        }
+    });
+
+    form?.elements.color.forEach(checkbox => {
+        if (data.color.includes(checkbox.value)) {
+            checkbox.checked = true;
+        }
+    });
+
+    if (form) {
+        form.elements.search.value = data.search;
+    }
+
+    // Такую запись не пропускает terser
+    // form?.elements.search.value = data.search;
+}
+
+function setSearchParams(data) {
+    let searchParams = new URLSearchParams();
+
+    if (data.page) {
+        searchParams.set('page', data.page);
+    } else {
+        searchParams.set('page', 0);
+    }
+
+    data.comment?.forEach(item => {
+        searchParams.append('comment', item);
+    });
+
+    if (data.view) {
+        searchParams.set('view', data.view);
+    }
+
+    if (data.sort) {
+        searchParams.set('sort', data.sort);
+    }
+
+    if (data.show) {
+        searchParams.set('show', data.show);
+    }
+
+    data.color?.forEach(item => {
+        searchParams.append('color', item);
+    });
+
+    searchParams.set('search', data.search);
+
+    history.replaceState(null, document.title, '?' + searchParams.toString());
+}
+
+(function() {
+    const form = document.forms.filter;
+
+    form?.addEventListener('submit', evt => {
+        evt.preventDefault();
+
+        let data = {
+            page: 0,
+        };
+
+        data.comment = [...form.elements.comment].filter(checkbox => checkbox.checked).map(checkbox => checkbox.value);
+        data.view = ([...form.elements.view].find(radio => radio.checked) || { value: null }).value;
+        data.sort = ([...form.elements.sort].find(radio => radio.checked) || { value: null }).value;
+        data.show = ([...form.elements.show].find(radio => radio.checked) || { value: null }).value;
+        data.color = [...form.elements.color].filter(checkbox => checkbox.checked).map(checkbox => checkbox.value);
+        data.search = form.elements.search.value;
+
+        setSearchParams(data);
+    });
+
+    const params = getParamsFromLocation();
+    setDataToFilter(params);
+
+    const links = document.querySelectorAll('.blog-pagination__link');
+    links[params.page]?.classList.add('blog-pagination__link--current');
+    links?.forEach((link, index) => {
+        link.addEventListener('click', (evt) => {
+            evt.preventDefault();
+            let searchParams = new URLSearchParams(location.search);
+            let params = getParamsFromLocation();
+            links[params.page]?.classList.remove('blog-pagination__link--current');
+            searchParams.set('page', index);
+            links[index].classList.add('blog-pagination__link--current');
+            history.replaceState(null, document.title, '?' + searchParams.toString());
+        });
+    });
+})();
