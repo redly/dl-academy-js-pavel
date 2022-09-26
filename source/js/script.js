@@ -326,31 +326,31 @@ function getParamsFromLocation() {
 function setDataToFilter(data) {
     const form = document.forms.filter;
 
-    form?.elements.comment.forEach(checkbox => {
+    form?.elements.comment?.forEach(checkbox => {
         if (data.comment.includes(checkbox.value)) {
             checkbox.checked = true;
         }
     });
 
-    form?.elements.view.forEach(radio => {
+    form?.elements.view?.forEach(radio => {
         if (data.view === radio.value) {
             radio.checked = true;
         }
     });
 
-    form?.elements.sort.forEach(radio => {
+    form?.elements.sort?.forEach(radio => {
         if (data.sort === radio.value) {
             radio.checked = true;
         }
     });
 
-    form?.elements.show.forEach(radio => {
+    form?.elements.show?.forEach(radio => {
         if (data.show === radio.value) {
             radio.checked = true;
         }
     });
 
-    form?.elements.color.forEach(checkbox => {
+    form?.elements.color?.forEach(checkbox => {
         if (data.color.includes(checkbox.value)) {
             checkbox.checked = true;
         }
@@ -435,3 +435,54 @@ function setSearchParams(data) {
         });
     });
 })();
+
+// Взаимодействие с сервером
+
+const BASE_URL = 'https://academy.directlinedev.com/api/';
+const xhr = new XMLHttpRequest();
+
+// Скрипт для получения тегов и их отрисовки
+
+// TODO: Добавить общую функцию для xhr запросов
+xhr.open('GET', `${BASE_URL}tags`);
+xhr.send();
+xhr.onload = () => {
+    if (xhr.status === 200) {
+        const serverResponse = JSON.parse(xhr.response);
+        const serverData = serverResponse.data;
+        const tagsList = document.querySelector('.blog-filters__list--tags');
+
+        serverData.forEach((tag) => {
+            const tagItem = createTag(tag);
+            tagsList.insertAdjacentHTML('beforeend', tagItem);
+        });
+        // TODO: Добавить preloader
+    } else {
+        alert(`Ошибка ${xhr.status}: ${xhr.statusText}`);
+        // TODO: Добавить обработчик ошибок
+    }
+}
+
+xhr.onerror = () => {
+    console.error('The data has arrived with error');
+}
+
+function createTag({ id, color, name }) {
+    // let checked = (id === 1 || id === 6) ? 'checked' : '';
+    const checked = id === 1 || id === 6 ? 'checked' : '';
+
+    return `
+        <li class="blog-filters__item blog-filters__item--tag">
+            <input class="custom-checkbox custom-checkbox--tag"
+                type="checkbox"
+                id="color-${id}"
+                name="color"
+                value="${id}"
+                ${checked}>
+            <label for="color-${id}"
+                style="--bg-color: ${color}">
+                <span class="visually-hidden">${name}</span>
+            </label>
+        </li>
+    `
+}
