@@ -438,38 +438,49 @@ function setSearchParams(data) {
 
 // Взаимодействие с сервером
 
-const BASE_URL = 'https://academy.directlinedev.com/api/';
-const xhr = new XMLHttpRequest();
+const BASE_URL = 'https://academy.directlinedev.com';
+
+const sendRequest = ({ method, url, headers, body = null, onload, onerror }) => {
+    const xhr = new XMLHttpRequest();
+    xhr.open(method, `${BASE_URL}/${url}`);
+
+    if (headers) {
+        xhr.setRequestHeader(headers.key, headers.value);
+    }
+
+    xhr.send(body);
+    xhr.onload = () => onload({ xhr });
+    xhr.onerror = () => onerror();
+};
 
 // Скрипт для получения тегов и их отрисовки
 
-// TODO: Добавить общую функцию для xhr запросов
-xhr.open('GET', `${BASE_URL}tags`);
-xhr.send();
-xhr.onload = () => {
-    if (xhr.status === 200) {
-        const serverResponse = JSON.parse(xhr.response);
-        const serverData = serverResponse.data;
-        const tagsList = document.querySelector('.blog-filters__list--tags');
+sendRequest({
+    method: 'GET',
+    url: 'api/tags',
+    onload: ({ xhr }) => {
+        if (xhr.status === 200) {
+            const serverResponse = JSON.parse(xhr.response);
+            const serverData = serverResponse.data;
+            const tagsList = document.querySelector('.blog-filters__list--tags');
 
-        serverData.forEach((tag) => {
-            const tagItem = createTag(tag);
-            tagsList.insertAdjacentHTML('beforeend', tagItem);
-        });
-        // TODO: Добавить preloader
-    } else {
-        alert(`Ошибка ${xhr.status}: ${xhr.statusText}`);
-        // TODO: Добавить обработчик ошибок
-    }
-}
-
-xhr.onerror = () => {
-    console.error('The data has arrived with error');
-}
+            serverData.forEach((tag) => {
+                const tagItem = createTag(tag);
+                tagsList?.insertAdjacentHTML('beforeend', tagItem);
+            });
+            // TODO: Добавить preloader
+        } else {
+            alert(`Ошибка ${xhr.status}: ${xhr.statusText}`);
+            // TODO: Добавить обработчик ошибок
+        }
+    },
+    onerror: () => {
+        console.error('The data has arrived with error');
+    },
+});
 
 function createTag({ id, color, name }) {
-    // let checked = (id === 1 || id === 6) ? 'checked' : '';
-    const checked = id === 1 || id === 6 ? 'checked' : '';
+    let checked = (id === 1 || id === 6) ? 'checked' : '';
 
     return `
         <li class="blog-filters__item blog-filters__item--tag">
