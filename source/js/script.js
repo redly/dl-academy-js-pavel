@@ -439,9 +439,12 @@ function setSearchParams(data) {
 // Взаимодействие с сервером
 
 const BASE_URL = 'https://academy.directlinedev.com';
+const preloader = document.querySelector('.js-preloader');
 
 const sendRequest = ({ method, url, headers, body = null, onload, onerror }) => {
     const xhr = new XMLHttpRequest();
+
+    preloader?.classList.remove('preloader--is-hidden');
     xhr.open(method, `${BASE_URL}/${url}`);
 
     if (headers) {
@@ -464,25 +467,26 @@ sendRequest({
             const serverData = serverResponse.data;
             const tagsList = document.querySelector('.blog-filters__list--tags');
 
+            preloader?.classList.add('preloader--is-hidden');
             serverData.forEach((tag) => {
                 const tagItem = createTag(tag);
                 tagsList?.insertAdjacentHTML('beforeend', tagItem);
             });
-            // TODO: Добавить preloader
+
         } else {
             alert(`Ошибка ${xhr.status}: ${xhr.statusText}`);
             // TODO: Добавить обработчик ошибок
         }
     },
     onerror: () => {
+        preloader?.classList.add('preloader--is-hidden');
         console.error('The data has arrived with error');
     },
 });
 
 function createTag({ id, color, name }) {
     let checked = (id === 1 || id === 6) ? 'checked' : '';
-
-    return `
+    let result = `
         <li class="blog-filters__item blog-filters__item--tag">
             <input class="custom-checkbox custom-checkbox--tag"
                 type="checkbox"
@@ -495,5 +499,7 @@ function createTag({ id, color, name }) {
                 <span class="visually-hidden">${name}</span>
             </label>
         </li>
-    `
+    `;
+
+    return result;
 }
