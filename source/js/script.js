@@ -469,7 +469,7 @@ sendRequest({
 
             preloader?.classList.add('preloader--is-hidden');
             serverData.forEach((tag) => {
-                const tagItem = createTag(tag);
+                const tagItem = createTagCheckbox(tag);
                 tagsList?.insertAdjacentHTML('beforeend', tagItem);
             });
 
@@ -484,7 +484,7 @@ sendRequest({
     },
 });
 
-function createTag({ id, color, name }) {
+function createTagCheckbox({ id, color, name }) {
     let checked = (id === 1 || id === 6) ? 'checked' : '';
     let result = `
         <li class="blog-filters__item blog-filters__item--tag">
@@ -499,6 +499,125 @@ function createTag({ id, color, name }) {
                 <span class="visually-hidden">${name}</span>
             </label>
         </li>
+    `;
+
+    return result;
+}
+
+// Скрипт для получения постов и их отрисовки
+
+sendRequest({
+    method: 'GET',
+    url: 'api/posts',
+    onload: ({ xhr }) => {
+        if (xhr.status === 200) {
+            const serverResponse = JSON.parse(xhr.response);
+            const serverData = serverResponse.data;
+            const postsList = document.querySelector('.blog-articles__content');
+
+            preloader?.classList.add('preloader--is-hidden');
+
+            serverData.forEach((post) => {
+                const postItem = createPost(post);
+                postsList?.insertAdjacentHTML('beforeend', postItem);
+            });
+        } else {
+            alert(`Ошибка ${xhr.status}: ${xhr.statusText}`);
+        }
+    },
+    onerror: () => {
+        preloader?.classList.add('preloader--is-hidden');
+        console.error('The data has arrived with error');
+    },
+});
+
+function createPost({ title, text, tags, date, views, commentsCount, ...rest }) {
+    // Универсальня функция для скрытия окончания подписи
+    // const sliceLabel = (data, label) => {
+    //     if (data === 1) {
+    //         let result = `${data} ${(label.slice(0, -1))}`;
+
+    //         return result;
+    //     }
+
+    //     return `${data} ${label}`;
+    // };
+
+    const postTags = function createTagsList() {
+        let tagsList = '';
+
+        tags.forEach((item) => {
+            let color = item.tag.color;
+            let tagItem = `
+                <span class="blog-article__tags-item" style="background-color: ${color}"></span>
+            `;
+
+            tagsList = tagsList + tagItem;
+        });
+
+        return tagsList;
+    };
+
+    const postDate = new Date(date);
+    const getDate = postDate.getDate() < 10 ? `0${postDate.getDate()}` : postDate.getDate();
+    const getMonth = postDate.getMonth() < 10 ? `0${(postDate.getMonth() + 1)}` : (postDate.getMonth() + 1);
+    const postDateToString = `${getDate}.${getMonth}.${postDate.getFullYear()}`;
+    const datetime = `${postDate.getFullYear()}-${getMonth}-${getDate}`;
+    // const postViews = sliceLabel(views, 'views');
+    // const postComments = sliceLabel(commentsCount, 'comments');
+
+    // Замена функции sliceLabel() на альтернативное решение
+    const postViews = views === 1 ? `${views} view` : `${views} views`;
+    const postComments = commentsCount === 1 ? `${commentsCount} comment` : `${commentsCount} comments`;
+
+    let result = `
+        <article class="blog-article">
+            <div class="blog-article__img">
+                <picture>
+                    <source srcset="${BASE_URL + rest.mobilePhotoUrl} 1x, ${BASE_URL + rest.mobile2xPhotoUrl} 2x"
+                        media="(max-width: 767px)">
+                    <source srcset="${BASE_URL + rest.tabletPhotoUrl} 1x, ${BASE_URL + rest.tablet2xPhotoUrl} 2x"
+                        media="(max-width: 1280px)">
+                    <img src="${BASE_URL + rest.desktopPhotoUrl}"
+                        srcset="${BASE_URL + rest.desktop2xPhotoUrl} 2x"
+                        width="320"
+                        height="236"
+                        loading="lazy"
+                        decoding="async"
+                        alt="">
+                </picture>
+            </div>
+
+            <div class="blog-article__col">
+                <div class="blog-article__tags">
+                    ${postTags()}
+                </div>
+
+                <div class="blog-article__data">
+                    <time class="blog-article__data-item" datetime="${datetime}">
+                        ${postDateToString}
+                    </time>
+                    <span class="blog-article__data-item">
+                        ${postViews}
+                    </span>
+                    <span class="blog-article__data-item">
+                        ${postComments}
+                    </span>
+                </div>
+
+                <h3 class="blog-article__title title-h3">
+                    ${title}
+                </h3>
+
+                <p class="blog-article__text">
+                    ${text}
+                </p>
+
+                <a class="blog-article__link underlined-link underlined-link--black" href="">
+                    Go to this post
+                </a>
+            </div>
+        </article>
     `;
 
     return result;
