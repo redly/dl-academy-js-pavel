@@ -468,11 +468,11 @@ sendRequest({
             const tagsList = document.querySelector('.blog-filters__list--tags');
 
             preloader?.classList.add('preloader--is-hidden');
+
             serverData.forEach((tag) => {
                 const tagItem = createTagCheckbox(tag);
                 tagsList?.insertAdjacentHTML('beforeend', tagItem);
             });
-
         } else {
             alert(`Ошибка ${xhr.status}: ${xhr.statusText}`);
             // TODO: Добавить обработчик ошибок
@@ -532,41 +532,20 @@ sendRequest({
 });
 
 function createPost({ title, text, tags, date, views, commentsCount, ...rest }) {
-    // Универсальня функция для скрытия окончания подписи
-    // const sliceLabel = (data, label) => {
-    //     if (data === 1) {
-    //         let result = `${data} ${(label.slice(0, -1))}`;
+    function getTagColor(color) {
+        let result = `
+            <span class="blog-article__tags-item" style="background-color: ${color}"></span>
+        `;
 
-    //         return result;
-    //     }
+        return result;
+    }
 
-    //     return `${data} ${label}`;
-    // };
-
-    const postTags = function createTagsList() {
-        let tagsList = '';
-
-        tags.forEach((item) => {
-            let color = item.tag.color;
-            let tagItem = `
-                <span class="blog-article__tags-item" style="background-color: ${color}"></span>
-            `;
-
-            tagsList = tagsList + tagItem;
-        });
-
-        return tagsList;
-    };
-
+    const postTags = tags.map((item) => getTagColor(item.tag.color)).join('');
     const postDate = new Date(date);
     const getDate = postDate.getDate() < 10 ? `0${postDate.getDate()}` : postDate.getDate();
     const getMonth = postDate.getMonth() < 10 ? `0${(postDate.getMonth() + 1)}` : (postDate.getMonth() + 1);
     const postDateToString = `${getDate}.${getMonth}.${postDate.getFullYear()}`;
     const datetime = `${postDate.getFullYear()}-${getMonth}-${getDate}`;
-    // const postViews = sliceLabel(views, 'views');
-    // const postComments = sliceLabel(commentsCount, 'comments');
-
-    // Замена функции sliceLabel() на альтернативное решение
     const postViews = views === 1 ? `${views} view` : `${views} views`;
     const postComments = commentsCount === 1 ? `${commentsCount} comment` : `${commentsCount} comments`;
 
@@ -590,7 +569,7 @@ function createPost({ title, text, tags, date, views, commentsCount, ...rest }) 
 
             <div class="blog-article__col">
                 <div class="blog-article__tags">
-                    ${postTags()}
+                    ${postTags}
                 </div>
 
                 <div class="blog-article__data">
