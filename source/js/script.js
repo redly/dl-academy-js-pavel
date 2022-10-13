@@ -95,11 +95,7 @@ forms?.forEach((form) => {
         checkbox.addEventListener('click', () => {
             const submitBtn = form.querySelector('.js-submitBtn');
 
-            if (checkbox.checked) {
-                submitBtn?.removeAttribute('disabled');
-            } else {
-                submitBtn?.setAttribute('disabled', true);
-            }
+            checkbox.checked ? submitBtn?.removeAttribute('disabled') : submitBtn?.setAttribute('disabled', true);
         });
     });
 
@@ -307,297 +303,460 @@ fileInputs?.forEach((input) => {
     });
 });
 
-// Несброс фильтра при перезагрузке страницы для blog-filters
-
-function getParamsFromLocation() {
-    let searchParams = new URLSearchParams(location.search);
-
-    return {
-        page: Number(searchParams.get('page')) || 0,
-        comment: searchParams.getAll('comment'),
-        view: searchParams.get('view'),
-        sort: searchParams.get('sort'),
-        show: searchParams.get('show'),
-        color: searchParams.getAll('color'),
-        search: searchParams.get('search') || '',
-    };
-}
-
-function setDataToFilter(data) {
-    const form = document.forms.filter;
-
-    form?.elements.comment?.forEach(checkbox => {
-        if (data.comment.includes(checkbox.value)) {
-            checkbox.checked = true;
-        }
-    });
-
-    form?.elements.view?.forEach(radio => {
-        if (data.view === radio.value) {
-            radio.checked = true;
-        }
-    });
-
-    form?.elements.sort?.forEach(radio => {
-        if (data.sort === radio.value) {
-            radio.checked = true;
-        }
-    });
-
-    form?.elements.show?.forEach(radio => {
-        if (data.show === radio.value) {
-            radio.checked = true;
-        }
-    });
-
-    form?.elements.color?.forEach(checkbox => {
-        if (data.color.includes(checkbox.value)) {
-            checkbox.checked = true;
-        }
-    });
-
-    if (form) {
-        form.elements.search.value = data.search;
-    }
-
-    // Такую запись не пропускает terser
-    // form?.elements.search.value = data.search;
-}
-
-function setSearchParams(data) {
-    let searchParams = new URLSearchParams();
-
-    if (data.page) {
-        searchParams.set('page', data.page);
-    } else {
-        searchParams.set('page', 0);
-    }
-
-    data.comment?.forEach(item => {
-        searchParams.append('comment', item);
-    });
-
-    if (data.view) {
-        searchParams.set('view', data.view);
-    }
-
-    if (data.sort) {
-        searchParams.set('sort', data.sort);
-    }
-
-    if (data.show) {
-        searchParams.set('show', data.show);
-    }
-
-    data.color?.forEach(item => {
-        searchParams.append('color', item);
-    });
-
-    searchParams.set('search', data.search);
-
-    history.replaceState(null, document.title, '?' + searchParams.toString());
-}
+// Полноценная логика работы фильтра и его несброс при перезагрузке страницы
 
 (function() {
+    // Получение search параметров из location
+    function getParamsFromLocation() {
+        let searchParams = new URLSearchParams(location.search);
+
+        return {
+            page: Number(searchParams.get('page')) || 0,
+            comments: searchParams.getAll('comments'),
+            views: searchParams.get('views'),
+            sortBy: searchParams.get('sortBy'),
+            howShow: searchParams.get('howShow'),
+            tags: searchParams.getAll('tags'),
+            search: searchParams.get('search') || '',
+        };
+    }
+
+    // Установка данных в форму
+    function setDataToFilter(data) {
+        const form = document.forms.filter;
+
+        form?.elements.comments?.forEach((checkbox) => {
+            if (data.comments.includes(checkbox.value)) {
+                checkbox.checked = true;
+            }
+        });
+
+        form?.elements.views?.forEach((radio) => {
+            if (data.views === radio.value) {
+                radio.checked = true;
+            }
+        });
+
+        form?.elements.sortBy?.forEach((radio) => {
+            if (data.sortBy === radio.value) {
+                radio.checked = true;
+            }
+        });
+
+        form?.elements.howShow?.forEach((radio) => {
+            if (data.howShow === radio.value) {
+                radio.checked = true;
+            }
+        });
+
+        form?.elements.tags?.forEach((checkbox) => {
+            if (data.tags.includes(checkbox.value)) {
+                checkbox.checked = true;
+            }
+        });
+
+        if (form) {
+            form.elements.search.value = data.search;
+        }
+    }
+
+    // Установка search параметров
+    function setSearchParams(data) {
+        let searchParams = new URLSearchParams();
+
+        if (data.page) {
+            searchParams.set('page', data.page);
+        } else {
+            searchParams.set('page', 0);
+        }
+
+        data.comments?.forEach((item) => {
+            searchParams.append('comments', item);
+        });
+
+        if (data.views) {
+            searchParams.set('views', data.views);
+        }
+
+        if (data.sortBy) {
+            searchParams.set('sortBy', data.sortBy);
+        }
+
+        if (data.howShow) {
+            searchParams.set('howShow', data.howShow);
+        }
+
+        data.tags?.forEach((item) => {
+            searchParams.append('tags', item);
+        });
+
+        searchParams.set('search', data.search);
+
+        history.replaceState(null, document.title, '?' + searchParams.toString());
+        localStorage.setItem('searchParams', searchParams.toString());
+    }
+
     const form = document.forms.filter;
 
-    form?.addEventListener('submit', evt => {
+    // Рендер постов при событии submit
+    form?.addEventListener('submit', (evt) => {
         evt.preventDefault();
 
         let data = {
             page: 0,
         };
 
-        data.comment = [...form.elements.comment].filter(checkbox => checkbox.checked).map(checkbox => checkbox.value);
-        data.view = ([...form.elements.view].find(radio => radio.checked) || { value: null }).value;
-        data.sort = ([...form.elements.sort].find(radio => radio.checked) || { value: null }).value;
-        data.show = ([...form.elements.show].find(radio => radio.checked) || { value: null }).value;
-        data.color = [...form.elements.color].filter(checkbox => checkbox.checked).map(checkbox => checkbox.value);
         data.search = form.elements.search.value;
+        data.tags = [...form.elements.tags].filter((checkbox) => checkbox.checked).map((checkbox) => checkbox.value);
+        data.views = ([...form.elements.views].find((radio) => radio.checked) || { value: null }).value;
+        data.comments = [...form.elements.comments].filter((checkbox) => checkbox.checked).map((checkbox) => checkbox.value);
+        data.howShow = ([...form.elements.howShow].find((radio) => radio.checked) || { value: null }).value;
+        data.sortBy = ([...form.elements.sortBy].find((radio) => radio.checked) || { value: null }).value;
 
+        getFilteredPosts(data);
         setSearchParams(data);
     });
 
-    const params = getParamsFromLocation();
-    setDataToFilter(params);
+    const BASE_URL = 'https://academy.directlinedev.com';
+    const preloader = document.querySelector('.js-preloader');
 
-    const links = document.querySelectorAll('.blog-pagination__link');
-    links[params.page]?.classList.add('blog-pagination__link--current');
-    links?.forEach((link, index) => {
-        link.addEventListener('click', (evt) => {
-            evt.preventDefault();
-            let searchParams = new URLSearchParams(location.search);
-            let params = getParamsFromLocation();
-            links[params.page]?.classList.remove('blog-pagination__link--current');
-            searchParams.set('page', index);
-            links[index].classList.add('blog-pagination__link--current');
-            history.replaceState(null, document.title, '?' + searchParams.toString());
-        });
+    // Общая функция для xhr запроса
+    const sendRequest = ({ method, url, searchParams, headers, body = null, onload, onerror }) => {
+        const xhr = new XMLHttpRequest();
+
+        preloader?.classList.remove('preloader--is-hidden');
+
+        xhr.open(method, `${BASE_URL}/${url}?${searchParams}`);
+
+        if (headers) {
+            xhr.setRequestHeader(headers.key, headers.value);
+        }
+
+        xhr.send(body);
+        xhr.onload = () => onload({ xhr });
+        xhr.onerror = () => onerror();
+    };
+
+    // Загрузка и рендер тегов в форме
+    sendRequest({
+        method: 'GET',
+        url: 'api/tags',
+        onload: ({ xhr }) => {
+            if (xhr.status === 200) {
+                const serverResponse = JSON.parse(xhr.response);
+                const serverData = serverResponse.data;
+                const tagsList = document.querySelector('.blog-filters__list--tags');
+
+                preloader?.classList.add('preloader--is-hidden');
+
+                serverData.forEach((tag) => {
+                    const tagItem = createTagCheckbox(tag);
+                    tagsList?.insertAdjacentHTML('beforeend', tagItem);
+                });
+
+                if (!location.search.length && localStorage.getItem('searchParams')) {
+                    location.search = localStorage.getItem('searchParams');
+                }
+
+                let params = getParamsFromLocation();
+
+                setDataToFilter(params);
+                getFilteredPosts(params);
+            } else {
+                // TODO: Добавить обработчик ошибок
+                alert(`Ошибка ${xhr.status}: ${xhr.statusText}`);
+            }
+        },
+        onerror: () => {
+            preloader?.classList.add('preloader--is-hidden');
+            console.error('The data has arrived with error');
+        },
     });
-})();
 
-// Взаимодействие с сервером
+    // Переключение страниц пагинации
+    function changeCurrentPage(page) {
+        const links = document.querySelectorAll('.blog-pagination__link');
+        let searchParams = new URLSearchParams(location.search);
+        let params = getParamsFromLocation();
 
-const BASE_URL = 'https://academy.directlinedev.com';
-const preloader = document.querySelector('.js-preloader');
+        links[params.page].classList.remove('blog-pagination__link--current');
+        searchParams.set('page', page);
+        links[page].classList.add('blog-pagination__link--current');
 
-const sendRequest = ({ method, url, headers, body = null, onload, onerror }) => {
-    const xhr = new XMLHttpRequest();
+        history.replaceState(null, document.title, '?' + searchParams.toString());
 
-    preloader?.classList.remove('preloader--is-hidden');
-    xhr.open(method, `${BASE_URL}/${url}`);
-
-    if (headers) {
-        xhr.setRequestHeader(headers.key, headers.value);
+        let updateParams = getParamsFromLocation();
+        getFilteredPosts(updateParams);
     }
 
-    xhr.send(body);
-    xhr.onload = () => onload({ xhr });
-    xhr.onerror = () => onerror();
-};
+    // Смена активной страницы при клике на стрелку пагинации
+    const paginationBtns = document.querySelectorAll('.js-paginationBtn');
 
-// Скрипт для получения тегов и их отрисовки
+    paginationBtns.forEach((btn) => {
+        btn?.addEventListener('click', (evt) => {
+            const direction = evt.currentTarget.dataset.direction;
+            let params = getParamsFromLocation();
 
-sendRequest({
-    method: 'GET',
-    url: 'api/tags',
-    onload: ({ xhr }) => {
-        if (xhr.status === 200) {
-            const serverResponse = JSON.parse(xhr.response);
-            const serverData = serverResponse.data;
-            const tagsList = document.querySelector('.blog-filters__list--tags');
+            direction === 'left' ? changeCurrentPage(params.page - 1) : changeCurrentPage(params.page + 1);
+        });
+    });
 
-            preloader?.classList.add('preloader--is-hidden');
+    const postsLimit = 5;
 
-            serverData.forEach((tag) => {
-                const tagItem = createTagCheckbox(tag);
-                tagsList?.insertAdjacentHTML('beforeend', tagItem);
-            });
-        } else {
-            alert(`Ошибка ${xhr.status}: ${xhr.statusText}`);
-            // TODO: Добавить обработчик ошибок
+    // Рендер отфильтрованных постов
+    function getFilteredPosts(params) {
+        let searchParams = new URLSearchParams();
+
+        searchParams.set('v', '1.0.0');
+
+        if (params.tags && Array.isArray(params.tags) && params.tags.length) {
+            searchParams.set('tags', JSON.stringify(params.tags));
         }
-    },
-    onerror: () => {
-        preloader?.classList.add('preloader--is-hidden');
-        console.error('The data has arrived with error');
-    },
-});
 
-function createTagCheckbox({ id, color, name }) {
-    let checked = (id === 1 || id === 6) ? 'checked' : '';
-    let result = `
-        <li class="blog-filters__item blog-filters__item--tag">
-            <input class="custom-checkbox custom-checkbox--tag"
-                type="checkbox"
-                id="color-${id}"
-                name="color"
-                value="${id}"
-                ${checked}>
-            <label for="color-${id}"
-                style="--bg-color: ${color}">
-                <span class="visually-hidden">${name}</span>
-            </label>
-        </li>
-    `;
+        let filter = {};
 
-    return result;
-}
-
-// Скрипт для получения постов и их отрисовки
-
-sendRequest({
-    method: 'GET',
-    url: 'api/posts',
-    onload: ({ xhr }) => {
-        if (xhr.status === 200) {
-            const serverResponse = JSON.parse(xhr.response);
-            const serverData = serverResponse.data;
-            const postsList = document.querySelector('.blog-articles__content');
-
-            preloader?.classList.add('preloader--is-hidden');
-
-            serverData.forEach((post) => {
-                const postItem = createPost(post);
-                postsList?.insertAdjacentHTML('beforeend', postItem);
-            });
-        } else {
-            alert(`Ошибка ${xhr.status}: ${xhr.statusText}`);
+        if (params.search) {
+            filter.title = params.search;
         }
-    },
-    onerror: () => {
-        preloader?.classList.add('preloader--is-hidden');
-        console.error('The data has arrived with error');
-    },
-});
 
-function createPost({ title, text, tags, date, views, commentsCount, ...rest }) {
-    function getTagColor(color) {
+        let currentPostsLimit = postsLimit;
+
+        if (Number(params.howShow)) {
+            currentPostsLimit = Number(params.howShow);
+        }
+
+        searchParams.set('limit', currentPostsLimit);
+
+        if (params.views) {
+            const viewsRange = (params.views).split('-');
+
+            filter.views = {
+                '$between': viewsRange,
+            };
+        }
+
+        if (params.comments.length) {
+            const commentsCountRange = [
+                params.comments[0].split('-')[0],
+                params.comments[params.comments.length - 1].split('-')[1],
+            ];
+
+            filter.commentsCount = {
+                '$between': commentsCountRange,
+            };
+        }
+
+        searchParams.set('filter', JSON.stringify(filter));
+
+        if (Number(params.page)) {
+            searchParams.set('offset', (Number(params.page)) * currentPostsLimit)
+        }
+
+        if (params.sortBy) {
+            searchParams.set('sort', JSON.stringify([params.sortBy, 'ASC']));
+        }
+
+        const paramsToString = searchParams.toString();
+
+        sendRequest({
+            method: 'GET',
+            url: 'api/posts',
+            searchParams: `${paramsToString}`,
+            onload: ({ xhr }) => {
+                if (xhr.status === 200) {
+                    const serverResponse = JSON.parse(xhr.response);
+                    const serverData = serverResponse.data;
+
+                    preloader?.classList.add('preloader--is-hidden');
+
+                    let postItem = '';
+
+                    serverData.forEach((post) => {
+                        postItem = postItem + createPost(post);
+                    });
+
+                    const postsList = document.querySelector('.blog-articles__content');
+
+                    if (postsList) {
+                        postsList.innerHTML = postItem;
+                    }
+
+                    const links = document.querySelector('.blog-pagination__list');
+
+                    if (links) {
+                        links.innerHTML = '';
+                    }
+
+                    getPaginationLinks(links, serverResponse, currentPostsLimit);
+                } else {
+                    alert(`Ошибка ${xhr.status}: ${xhr.statusText}`);
+                }
+            },
+            onerror: () => {
+                preloader?.classList.add('preloader--is-hidden');
+                console.error('The data has arrived with error');
+            },
+        });
+    }
+
+    // Получение ссылок пагинации
+    function getPaginationLinks(links, response, currentPostsLimit) {
+        const pageCount = Math.ceil(response.count / currentPostsLimit);
+
+        for (let i = 0; i < pageCount; i++) {
+            let link = сreatePaginationLink(i);
+            links?.insertAdjacentElement('beforeend', link);
+        }
+
+        setDisebledForPaginationArrows(pageCount);
+    }
+
+    // Создание ссылок пагинации
+    function сreatePaginationLink(page) {
+        const item = document.createElement('li');
+        item?.classList.add('blog-pagination__item');
+
+        const link = document.createElement('a');
+
+        link.href = `?page=${page}`;
+        link.title = `To page ${(page + 1)}`;
+        link.innerText = (page + 1);
+        link.classList.add('blog-pagination__link', 'js-paginationLink');
+
+        item.append(link);
+
+        let params = getParamsFromLocation();
+
+        if (page === Number(params.page)) {
+            link?.classList.add('blog-pagination__link--current');
+        }
+
+        link?.addEventListener('click', (evt) => {
+            evt.preventDefault();
+            changeCurrentPage(page);
+        });
+
+        return item;
+    }
+
+    // Disabled для стрелок пагинации
+    function setDisebledForPaginationArrows(pageCount) {
+        const [btnPrev, btnNext] = paginationBtns;
+        let params = getParamsFromLocation();
+
+        if (params.page > 0) {
+            btnPrev.removeAttribute('disabled');
+        }
+
+        if (params.page < (pageCount - 1)) {
+            btnNext.removeAttribute('disabled');
+        }
+
+        if (params.page === 0) {
+            btnPrev.setAttribute('disabled', '');
+        }
+
+        if (params.page === (pageCount - 1) || pageCount === 0) {
+            btnNext.setAttribute('disabled', '');
+        }
+    }
+
+    // Рендер одного тега в форме
+    function createTagCheckbox({
+        id,
+        color,
+        name,
+    }) {
         let result = `
-            <span class="blog-article__tags-item" style="background-color: ${color}"></span>
+            <li class="blog-filters__item blog-filters__item--tag">
+                <input class="custom-checkbox custom-checkbox--tag"
+                    type="checkbox"
+                    id="color-${id}"
+                    name="tags"
+                    value="${id}">
+                <label for="color-${id}"
+                    style="--bg-color: ${color}">
+                    <span class="visually-hidden">${name}</span>
+                </label>
+            </li>
         `;
 
         return result;
     }
 
-    const postTags = tags.map((item) => getTagColor(item.tag.color)).join('');
-    const postDate = new Date(date);
-    const getDate = postDate.getDate() < 10 ? `0${postDate.getDate()}` : postDate.getDate();
-    const getMonth = postDate.getMonth() < 10 ? `0${(postDate.getMonth() + 1)}` : (postDate.getMonth() + 1);
-    const postDateToString = `${getDate}.${getMonth}.${postDate.getFullYear()}`;
-    const datetime = `${postDate.getFullYear()}-${getMonth}-${getDate}`;
-    const postViews = views === 1 ? `${views} view` : `${views} views`;
-    const postComments = commentsCount === 1 ? `${commentsCount} comment` : `${commentsCount} comments`;
+    // Рендер одного поста
+    function createPost({
+        title,
+        text,
+        tags,
+        date,
+        views,
+        commentsCount,
+        photo,
+    }) {
+        const postTags = tags.map((tag) => {
+            const tagColor = tag.color;
+            return `<span class="blog-article__tags-item" style="background-color: ${tagColor}"></span>`;
+        }).join('');
+        const postDate = new Date(date);
+        const getDate = postDate.getDate() < 10 ? `0${postDate.getDate()}` : postDate.getDate();
+        const getMonth = postDate.getMonth() < 10 ? `0${(postDate.getMonth() + 1)}` : (postDate.getMonth() + 1);
+        const getYear = postDate.getFullYear();
+        const postDateToString = `${getDate}.${getMonth}.${getYear}`;
+        const datetime = `${getYear}-${getMonth}-${getDate}`;
+        const postViews = views === 1 ? `${views} view` : `${views} views`;
+        const postComments = commentsCount === 1 ? `${commentsCount} comment` : `${commentsCount} comments`;
 
-    let result = `
-        <article class="blog-article">
-            <div class="blog-article__img">
-                <picture>
-                    <source srcset="${BASE_URL + rest.mobilePhotoUrl} 1x, ${BASE_URL + rest.mobile2xPhotoUrl} 2x"
-                        media="(max-width: 767px)">
-                    <source srcset="${BASE_URL + rest.tabletPhotoUrl} 1x, ${BASE_URL + rest.tablet2xPhotoUrl} 2x"
-                        media="(max-width: 1280px)">
-                    <img src="${BASE_URL + rest.desktopPhotoUrl}"
-                        srcset="${BASE_URL + rest.desktop2xPhotoUrl} 2x"
-                        width="320"
-                        height="236"
-                        loading="lazy"
-                        decoding="async"
-                        alt="">
-                </picture>
-            </div>
-
-            <div class="blog-article__col">
-                <div class="blog-article__tags">
-                    ${postTags}
+        let result = `
+            <article class="blog-article">
+                <div class="blog-article__img">
+                    <picture>
+                        <source srcset="${BASE_URL + photo.mobilePhotoUrl} 1x, ${BASE_URL + photo.mobile2xPhotoUrl} 2x"
+                            media="(max-width: 767px)">
+                        <source srcset="${BASE_URL + photo.tabletPhotoUrl} 1x, ${BASE_URL + photo.tablet2xPhotoUrl} 2x"
+                            media="(max-width: 1280px)">
+                        <img src="${BASE_URL + photo.desktopPhotoUrl}"
+                            srcset="${BASE_URL + photo.desktop2xPhotoUrl} 2x"
+                            width="320"
+                            height="236"
+                            loading="lazy"
+                            decoding="async"
+                            alt="">
+                    </picture>
                 </div>
 
-                <div class="blog-article__data">
-                    <time class="blog-article__data-item" datetime="${datetime}">
-                        ${postDateToString}
-                    </time>
-                    <span class="blog-article__data-item">
-                        ${postViews}
-                    </span>
-                    <span class="blog-article__data-item">
-                        ${postComments}
-                    </span>
+                <div class="blog-article__col">
+                    <div class="blog-article__tags">
+                        ${postTags}
+                    </div>
+
+                    <div class="blog-article__data">
+                        <time class="blog-article__data-item" datetime="${datetime}">
+                            ${postDateToString}
+                        </time>
+                        <span class="blog-article__data-item">
+                            ${postViews}
+                        </span>
+                        <span class="blog-article__data-item">
+                            ${postComments}
+                        </span>
+                    </div>
+
+                    <h3 class="blog-article__title title-h3">
+                        ${title}
+                    </h3>
+
+                    <p class="blog-article__text">
+                        ${text}
+                    </p>
+
+                    <a class="blog-article__link underlined-link underlined-link--black" href="">
+                        Go to this post
+                    </a>
                 </div>
+            </article>
+        `;
 
-                <h3 class="blog-article__title title-h3">
-                    ${title}
-                </h3>
-
-                <p class="blog-article__text">
-                    ${text}
-                </p>
-
-                <a class="blog-article__link underlined-link underlined-link--black" href="">
-                    Go to this post
-                </a>
-            </div>
-        </article>
-    `;
-
-    return result;
-}
+        return result;
+    }
+})();
