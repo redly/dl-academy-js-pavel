@@ -553,12 +553,24 @@
             </div>
         </footer>
 
+        <div class="preloader preloader--is-hidden js-preloader" aria-hidden="true">
+            <div class="preloader__wrapper">
+                <span class="js-preloaderTitle"></span>
+                <div class="preloader__dots">
+                    <span class="preloader__dot"></span>
+                    <span class="preloader__dot"></span>
+                    <span class="preloader__dot"></span>
+                </div>
+            </div>
+        </div>
+
         <button class="scroll-btn-up js-scrollToUpBtn" type="button" aria-label="Go to top">
             <svg class="scroll-btn-up__icon" aria-hidden="true">
                 <use xlink:href="img/sprite.svg#icon-btn-up"></use>
             </svg>
         </button>
 
+        <!-- Форма для входа в профиль -->
         <div class="modal" id="signInModal" aria-hidden="true">
             <div class="modal__scrollable" tabindex="-1">
                 <div class="modal__content modal__content--width--small" role="dialog" aria-modal="true" aria-labelledby="sign-in-modal-title">
@@ -608,6 +620,7 @@
             </div>
         </div>
 
+        <!-- Форма регистрации пользователя -->
         <div class="modal" id="registerModal" aria-hidden="true">
             <div class="modal__scrollable" tabindex="-1">
                 <div class="modal__content" role="dialog" aria-modal="true" aria-labelledby="register-modal-title">
@@ -616,7 +629,7 @@
                     </h2>
 
                     <div class="contacts-form">
-                        <form class="contacts-form__content js-contactForm" action="https://echo.htmlacademy.ru/" method="post">
+                        <form class="contacts-form__content js-contactForm" name="registerForm" action="https://echo.htmlacademy.ru/" method="post">
                             <div class="contacts-form__group">
                                 <label class="contacts-form__label" for="email-form-second">
                                     Email
@@ -709,7 +722,8 @@
                             <div class="contacts-form__group contacts-form__checkbox">
                                 <input class="custom-checkbox custom-checkbox--padding js-approvedCheckbox"
                                     type="checkbox"
-                                    id="consent-form-second">
+                                    id="consent-form-second"
+                                    required>
                                 <label class="contacts-form__label" for="consent-form-second">
                                     Clicking on the button, you consent to the processing
                                     of your personal data
@@ -732,6 +746,7 @@
             </div>
         </div>
 
+        <!-- Форма отправки сообщения -->
         <div class="modal" id="sendMsgModal" aria-hidden="true">
             <div class="modal__scrollable" tabindex="-1">
                 <div class="modal__content" role="dialog" aria-modal="true" aria-labelledby="send-message-modal-title">
@@ -818,6 +833,53 @@
                     </div>
 
                     <button class="modal__btn-close js-toggleModal" type="button" data-modal="sendMsgModal" aria-label="Close modal">
+                        <svg class="modal__icon" aria-hidden="true">
+                            <use xlink:href="img/sprite.svg#icon-btn-cross"></use>
+                        </svg>
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Сообщение об успешной отправке формы -->
+        <div class="modal modal--sending-form js-toggleModalSuccessfully" id="formSuccessfullyModal" aria-hidden="true">
+            <div class="modal__scrollable" tabindex="-1">
+                <div class="modal__content modal__content--width--message-successfully" role="dialog" aria-modal="true" aria-labelledby="form-successfully-modal-title">
+                    <h2 class="visually-hidden" id="form-successfully-modal-title">
+                        Form successfully modal
+                    </h2>
+
+                    <div class="modal__message">
+                        <h3 class="modal__title modal__title--successfully title-h3">
+                            Form has been sent successfully
+                        </h3>
+                    </div>
+
+                    <button class="modal__btn-close modal__btn-close--right-message js-toggleModal" type="button" data-modal="formSuccessfullyModal" aria-label="Close modal">
+                        <svg class="modal__icon" aria-hidden="true">
+                            <use xlink:href="img/sprite.svg#icon-btn-cross"></use>
+                        </svg>
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Сообщение об ошибке при отправке формы -->
+        <div class="modal modal--sending-form js-toggleModalError" id="formErrorModal" aria-hidden="true">
+            <div class="modal__scrollable" tabindex="-1">
+                <div class="modal__content modal__content--width--message-error" role="dialog" aria-modal="true" aria-labelledby="form-error-modal-title">
+                    <h2 class="visually-hidden" id="form-error-modal-title">
+                        Form error modal
+                    </h2>
+
+                    <div class="modal__message">
+                        <h3 class="modal__title modal__title--error title-h3">
+                            <!-- The form was sent but the server transmits an error:
+                            “The form was sent but the server transmits an error” -->
+                        </h3>
+                    </div>
+
+                    <button class="modal__btn-close modal__btn-close--right-message js-toggleModal" type="button" data-modal="formErrorModal" aria-label="Close modal">
                         <svg class="modal__icon" aria-hidden="true">
                             <use xlink:href="img/sprite.svg#icon-btn-cross"></use>
                         </svg>

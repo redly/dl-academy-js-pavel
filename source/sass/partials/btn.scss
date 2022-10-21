@@ -51,7 +51,7 @@
         color: $color-white;
     }
 
-    &:active {
+    &:active:not(.btn:disabled, .btn--black-and-long) {
         opacity: 0.7;
     }
 

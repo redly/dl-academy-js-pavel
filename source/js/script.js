@@ -80,174 +80,6 @@ document.addEventListener('keydown', (evt) => {
     }
 });
 
-// Валидация форм
-
-const forms = document.querySelectorAll('.js-contactForm');
-
-forms?.forEach((form) => {
-    form.noValidate = true;
-
-    // Валидация чекбоксов
-
-    const approvedCheckboxes = form.querySelectorAll('.js-approvedCheckbox');
-
-    approvedCheckboxes?.forEach((checkbox) => {
-        checkbox.addEventListener('click', () => {
-            const submitBtn = form.querySelector('.js-submitBtn');
-
-            checkbox.checked ? submitBtn?.removeAttribute('disabled') : submitBtn?.setAttribute('disabled', true);
-        });
-    });
-
-    // Валидация инпутов
-
-    const inputs = form.querySelectorAll('.js-validFormField');
-
-    function delElement() {
-        const removeElement = form.querySelectorAll('.contacts-form__message, .contacts-form__message--error, .contacts-form__message--right');
-
-        removeElement?.forEach((element) => {
-            element.remove();
-        });
-
-        inputs?.forEach((element) => {
-            element.classList.remove('custom-form-field--error', 'custom-form-field--right');
-        });
-    }
-
-    form.addEventListener('submit', (evt) => {
-        evt.preventDefault();
-
-        delElement();
-
-        inputs?.forEach((input) => {
-            const formMsgClassNames = {
-                msg: 'contacts-form__message',
-                errorMsg: 'contacts-form__message--error',
-                rightMsg: 'contacts-form__message--right',
-            };
-
-            const formMsg = formMsgClassNames.msg;
-            const error = formMsgClassNames.errorMsg;
-            const right = formMsgClassNames.rightMsg;
-
-            const fieldClassNames = {
-                error: 'contacts-form__field--error',
-                right: 'contacts-form__field--right',
-            };
-
-            const errorField = fieldClassNames.error;
-            const rightField = fieldClassNames.right;
-
-            function validateField(className, text) {
-                // Создание подписи под полем
-                const element = document.createElement('span');
-
-                element.className = `${formMsg} ${className}`;
-                element.innerText = text;
-
-                input.parentElement?.insertAdjacentElement('beforeend', element);
-
-                // Окрашивание рамки поля в зависимости от подписи
-                if (className === error) {
-                    input.classList.add(errorField);
-                } else  if (className === right) {
-                    input.classList.add(rightField);
-                }
-            }
-
-            function validateInput(regExp, text) {
-                if (!input.value) {
-                    validateField(error, messages.empty);
-                } else if (regExp === false) {
-                    validateField(error, text);
-                } else {
-                    validateField(right, messages.right);
-                }
-            }
-
-            function isPositiveNumber(num) {
-                if (isNaN(num) || num === '' || num <= 0) {
-                    return false;
-                }
-
-                return true;
-            }
-
-            const messages = {
-                right: 'All right',
-                empty: 'This field is required',
-                email: 'Please enter a valid email address (your entry is not in the format "somebody@example.com" or "somebody@local")',
-                password: {
-                    isFalse: 'Your password must contain letters and numbers',
-                    repeat: 'Passwords do not match. Please check the identity of the passwords in both fields',
-                },
-                phone: 'Please enter a valid phone number (your entry is not in the format "+7 977 777 77 77")',
-                age: 'Please enter a correct age',
-            };
-
-            const regExp = {
-                email: /^[a-zA-Z0-9.!#$%&’*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/,
-                phone: /^(\s*)?(\+)?([-_():=+]?\d[- _():=+]?){10,14}(\s*)?$/,
-                password: /^[0-9a-z]+/i,
-            };
-
-            const regExpTest = {
-                validEmail: regExp.email.test(input.value),
-                validPhone: regExp.phone.test(input.value),
-                validPassword: regExp.password.test(input.value),
-            };
-
-            /*
-                Попробовал поместить проверки в data атрибуты,
-                но метод test() не работает с input.dataset.pattern например,
-                т.к. он возвращает строку, а не объект.
-            */
-
-            switch (input.type) {
-                case 'email':
-                    validateInput(regExpTest.validEmail, messages.email);
-                    break;
-                case 'password':
-                    if (input.name === 'password') {
-                        validateInput(regExpTest.validPassword, messages.password.isFalse);
-                    } else if (input.name === 'password-repeat') {
-                        const password = form.querySelector('.password');
-                        const passwordRepeat = form.querySelector('.password-repeat');
-
-                        if (!input.value) {
-                            validateField(error, messages.empty);
-                        } else if (passwordRepeat?.value !== password?.value && passwordRepeat?.value !== '') {
-                            validateField(error, messages.password.repeat);
-                        } else if (passwordRepeat?.value === password?.value && passwordRepeat?.value !== '') {
-                            validateField(right, messages.right);
-                        }
-                    }
-
-                    break;
-                case 'tel':
-                    validateInput(regExpTest.validPhone, messages.phone);
-                    break;
-                case 'number':
-                    if (input.name === 'age') {
-                        if (!input.value) {
-                            validateField(error, messages.empty);
-                        } else if (isPositiveNumber(input.value) === false) {
-                            validateField(error, messages.age);
-                        } else {
-                            validateField(right, messages.right);
-                        }
-                    }
-
-                    break;
-                default:
-                    validateInput();
-                    break;
-            }
-        });
-    });
-});
-
 // Fixed кнопка scroll-btn-up
 
 const scrollBtn = document.querySelector('.js-scrollToUpBtn');
@@ -263,7 +95,314 @@ scrollBtn?.addEventListener('click', () => {
     });
 });
 
-// Input file name
+// Валидация форм на стороне клиента
+
+const forms = document.querySelectorAll('.js-contactForm');
+const formMsgClassNames = {
+    msg: 'contacts-form__message',
+    errorMsg: 'contacts-form__message--error',
+    rightMsg: 'contacts-form__message--right',
+};
+const formMsg = formMsgClassNames.msg;
+const error = formMsgClassNames.errorMsg;
+const right = formMsgClassNames.rightMsg;
+const fieldClassNames = {
+    error: 'custom-form-field--error',
+    right: 'custom-form-field--right',
+};
+const errorField = fieldClassNames.error;
+const rightField = fieldClassNames.right;
+const messages = {
+    right: 'All right',
+    empty: 'This field is required',
+    email: 'Please enter a valid email address (your entry is not in the format "somebody@example.com" or "somebody@local")',
+    password: {
+        isFalse: 'Your password must contain letters and numbers',
+        repeat: 'Passwords do not match. Please check the identity of the passwords in both fields',
+    },
+    phone: 'Please enter a valid phone number (your entry is not in the format "+7 977 777 77 77")',
+    age: 'Please enter a correct age',
+};
+const regExp = {
+    email: /^[a-zA-Z0-9.!#$%&’*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/,
+    phone: /^(\s*)?(\+)?([-_():=+]?\d[- _():=+]?){10,14}(\s*)?$/,
+    password: /^[0-9a-z]+/i,
+};
+
+// Исходное значения счетчика для невалидных input
+let errorsCounter = 0;
+
+// Удаление элемента(подписи) и цвета рамки поля перед следующей валидацией
+function delElement(form, inputs) {
+    const removeElement = form.querySelectorAll('.contacts-form__message, .contacts-form__message--error, .contacts-form__message--right');
+
+    removeElement?.forEach((element) => {
+        element.remove();
+    });
+
+    inputs?.forEach((element) => {
+        element.classList.remove('custom-form-field--error', 'custom-form-field--right');
+    });
+
+    // Возврат счетчика в исходное значение при удалении элементов невалидных input
+    errorsCounter = 0;
+}
+
+// Создание подписи для input
+function validateField(input, className, text) {
+    const element = document.createElement('span');
+
+    element.className = `${formMsg} ${className}`;
+    element.innerText = text;
+
+    input.parentElement?.insertAdjacentElement('beforeend', element);
+
+    // Окрашивание рамки input в зависимости от подписи
+    if (className === error) {
+        input.classList.add(errorField);
+
+        // Каждый невалидный input увеличивает счетчик
+        errorsCounter++;
+    } else  if (className === right) {
+        input.classList.add(rightField);
+    }
+}
+
+forms?.forEach((form) => {
+    form.noValidate = true;
+
+    const inputs = form.querySelectorAll('.js-validFormField');
+    const approvedCheckboxes = form.querySelectorAll('.js-approvedCheckbox');
+
+    // Disabled для submit кнопки если чекбокс не выбран
+    approvedCheckboxes?.forEach((checkbox) => {
+        checkbox.addEventListener('click', () => {
+            const submitBtn = form.querySelector('.js-submitBtn');
+
+            checkbox.checked ? submitBtn?.removeAttribute('disabled') : submitBtn?.setAttribute('disabled', true);
+        });
+    });
+
+    // Валидация всех input в форме при клике на submit
+    form.addEventListener('submit', (evt) => {
+        evt.preventDefault();
+        delElement(form);
+
+        inputs?.forEach((input) => {
+            const regExpTest = {
+                validEmail: regExp.email.test(input.value),
+                validPhone: regExp.phone.test(input.value),
+                validPassword: regExp.password.test(input.value),
+            };
+
+            // Валидация input в зависимости от регулярного выражения
+            function validateInput(regExp, text) {
+                if (!input.value) {
+                    validateField(input, error, messages.empty);
+                } else if (regExp === false) {
+                    validateField(input, error, text);
+                } else {
+                    validateField(input, right, messages.right);
+                }
+            }
+
+            // Проверка input на положительное число
+            function isPositiveNumber(num) {
+                if (isNaN(num) || num === '' || num <= 0) {
+                    return false;
+                }
+
+                return true;
+            }
+
+            switch (input.type) {
+                case 'email':
+                    validateInput(regExpTest.validEmail, messages.email);
+                    break;
+                case 'password':
+                    if (input.name === 'password') {
+                        validateInput(regExpTest.validPassword, messages.password.isFalse);
+                    } else if (input.name === 'password-repeat') {
+                        const password = form.querySelector('.password');
+                        const passwordRepeat = form.querySelector('.password-repeat');
+
+                        if (!input.value) {
+                            validateField(input, error, messages.empty);
+                        } else if (passwordRepeat?.value !== password?.value && passwordRepeat?.value !== '') {
+                            validateField(input, error, messages.password.repeat);
+                        } else if (passwordRepeat?.value === password?.value && passwordRepeat?.value !== '') {
+                            validateField(input, right, messages.right);
+                        }
+                    }
+
+                    break;
+                case 'tel':
+                    validateInput(regExpTest.validPhone, messages.phone);
+                    break;
+                case 'number':
+                    if (input.name === 'age') {
+                        if (!input.value) {
+                            validateField(input, error, messages.empty);
+                        } else if (isPositiveNumber(input.value) === false) {
+                            validateField(input, error, messages.age);
+                        } else {
+                            validateField(input, right, messages.right);
+                        }
+                    }
+
+                    break;
+                default:
+                    validateInput();
+                    break;
+            }
+        });
+    });
+});
+
+// Отправка формы регистрации пользователя с последующей валидацией на сервере
+
+const registerForm = document.forms.registerForm;
+const registerModal = document.getElementById('registerModal');
+const onSuccessModal = document.querySelector('.js-toggleModalSuccessfully');
+const onErrorModal = document.querySelector('.js-toggleModalError');
+
+// Открытие/закрытие модального окна
+function interactionModal(modal) {
+    modal?.classList.toggle('modal--is-open');
+}
+
+// Функция обработки серверных запросов
+function sendData({ url, method, headers, body }) {
+    const settings = {
+        method,
+        body,
+        headers
+    };
+
+    return fetch(`${BASE_URL}/${url}`, settings);
+}
+
+// Логика регистрации пользователя
+function register(evt) {
+    evt.preventDefault();
+    const body = formFieldProcessing({ form: registerForm });
+
+    sendData({
+        url: 'api/users',
+        method: 'POST',
+        body: JSON.stringify(body),
+        headers: {
+            'Content-Type': 'application/json',
+        }
+    })
+    .then(response => response.json())
+    .then((response) => {
+        if (response.success) {
+            toggleLoader(sender);
+            interactionModal(registerModal);
+            interactionModal(onSuccessModal);
+        } else {
+            throw response;
+        }
+    })
+    .catch((err, response) => {
+        if (err.errors) {
+            toggleLoader(sender);
+            errorHandler(err.errors, registerForm);
+        } else {
+            errorModalHandler({ response });
+            toggleLoader(sender);
+            interactionModal(onErrorModal);
+        }
+    });
+}
+
+// Вставка текста ошибки в окно уведомления о результате отправки на сервер
+function errorModalHandler({ response }) {
+    const modalErrorTitle = onErrorModal.querySelector('.modal__title');
+    modalErrorTitle.innerText = `The form was sent but the server transmits an error: ${response.status}, ${response.statusText}`;
+}
+
+// Валидация input на стороне сервера
+function errorHandler(errors, formNode) {
+    if (Object.keys(errors).length) {
+        const inputsForm = formNode.querySelectorAll('.js-validFormField');
+        delElement(formNode, inputsForm);
+
+        Object.keys(errors).forEach((key) => {
+            const messageError = errors[key];
+            const input = formNode.elements[key];
+
+            validateField(input, error, messageError);
+        });
+    }
+}
+
+// Обработка полей форм
+function formFieldProcessing({ form, type = 'json' }) {
+    switch (type) {
+        case 'json':
+            const formInputs = form.querySelectorAll('.custom-form-field');
+            const body = {};
+
+            formInputs.forEach((input) => {
+                body[input.name] = input.value;
+            });
+
+            return body;
+            break;
+        case 'formData':
+            return new FormData(form);
+            break;
+        default:
+            return 'Вы передали какую-то дичь!';
+    }
+}
+
+// Сбор данных из формы
+function serializeForm(formNode) {
+    const { elements } = formNode;
+
+    Array.from(elements)
+        .filter((item) => !!item.name)
+        .map((element) => {
+            const { name, value } = element;
+
+            return { name, value };
+        });
+
+    // Сбор данных если нужно учесть значение checkbox
+    // const data = Array.from(elements)
+    //     .map((element) => {
+    //         const { name, type } = element;
+    //         const value = type === 'checkbox' ? element.checked : element.value;
+
+    //         return { name, value };
+    //     })
+    //     .filter((item) => !!item.name);
+}
+
+// Обработка данных перед отправкой
+async function handleFormSubmit(evt) {
+    evt.preventDefault();
+
+    /**
+        * Отправка данных на сервер происходит если валидация на клиенте завершена
+        * т.е. когда счетчик невалидных input обнулен
+        */
+    if (errorsCounter === 0) {
+        serializeForm(registerForm);
+        toggleLoader(sender);
+        register(evt);
+    }
+
+    return;
+}
+
+// Отправка данных формы на сервер
+registerForm?.addEventListener('submit', handleFormSubmit);
+
+// Логика работы кастомных input type="file" для изменения фото профиля
 
 const fileInputs = document.querySelectorAll('.js-setFileName');
 
@@ -295,18 +434,40 @@ fileInputs?.forEach((input) => {
 
         fileNameElement.innerText = checkName(fileName) || sliceName(fileName);
 
-        /*
-        if (file) {
-            const imageId = evt.currentTarget.dataset?.img;
-            const image = document.getElementById(imageId);
+        // if (file) {
+        //     const imageId = evt.currentTarget.dataset?.img;
+        //     const image = document.getElementById(imageId);
 
-            image.src = window.URL.createObjectURL(file);
-        }
-        */
+        //     image.src = window.URL.createObjectURL(file);
+        // }
     });
 });
 
-// Полноценная логика работы фильтра и его несброс при перезагрузке страницы
+// Взаимодейсвтие с сервером
+
+const BASE_URL = 'https://academy.directlinedev.com';
+const loaderTitle = {
+    load: 'Loading',
+    send: 'Sending',
+};
+const loader = loaderTitle.load;
+const sender = loaderTitle.send;
+
+// Показ/скрытие preloader
+function toggleLoader(title) {
+    const loader = document.querySelector('.js-preloader');
+
+    setTitleToLoader(loader, title);
+    loader?.classList.toggle('preloader--is-hidden');
+}
+
+// Установка заголовка для loader в зависимости от типа операции (load / send)
+function setTitleToLoader(loader, title) {
+    const loaderTitle = loader?.querySelector('.js-preloaderTitle');
+    loaderTitle.innerText = title;
+}
+
+// Полноценная логика работы фильтра постов и его несброс при перезагрузке страницы
 
 (function() {
     // Получение search параметров из location
@@ -420,14 +581,11 @@ fileInputs?.forEach((input) => {
         setSearchParams(data);
     });
 
-    const BASE_URL = 'https://academy.directlinedev.com';
-    const preloader = document.querySelector('.js-preloader');
-
     // Общая функция для xhr запроса
     const sendRequest = ({ method, url, searchParams, headers, body = null, onload, onerror }) => {
         const xhr = new XMLHttpRequest();
 
-        preloader?.classList.remove('preloader--is-hidden');
+        toggleLoader(loader);
 
         xhr.open(method, `${BASE_URL}/${url}?${searchParams}`);
 
@@ -450,7 +608,7 @@ fileInputs?.forEach((input) => {
                 const serverData = serverResponse.data;
                 const tagsList = document.querySelector('.blog-filters__list--tags');
 
-                preloader?.classList.add('preloader--is-hidden');
+                toggleLoader(loader);
 
                 serverData.forEach((tag) => {
                     const tagItem = createTagCheckbox(tag);
@@ -471,7 +629,7 @@ fileInputs?.forEach((input) => {
             }
         },
         onerror: () => {
-            preloader?.classList.add('preloader--is-hidden');
+            toggleLoader(loader);
             console.error('The data has arrived with error');
         },
     });
@@ -570,7 +728,7 @@ fileInputs?.forEach((input) => {
                     const serverResponse = JSON.parse(xhr.response);
                     const serverData = serverResponse.data;
 
-                    preloader?.classList.add('preloader--is-hidden');
+                    toggleLoader(loader);
 
                     let postItem = '';
 
@@ -596,7 +754,7 @@ fileInputs?.forEach((input) => {
                 }
             },
             onerror: () => {
-                preloader?.classList.add('preloader--is-hidden');
+                toggleLoader(loader);
                 console.error('The data has arrived with error');
             },
         });
@@ -648,28 +806,24 @@ fileInputs?.forEach((input) => {
         let params = getParamsFromLocation();
 
         if (params.page > 0) {
-            btnPrev.removeAttribute('disabled');
+            btnPrev?.removeAttribute('disabled');
         }
 
         if (params.page < (pageCount - 1)) {
-            btnNext.removeAttribute('disabled');
+            btnNext?.removeAttribute('disabled');
         }
 
         if (params.page === 0) {
-            btnPrev.setAttribute('disabled', '');
+            btnPrev?.setAttribute('disabled', '');
         }
 
         if (params.page === (pageCount - 1) || pageCount === 0) {
-            btnNext.setAttribute('disabled', '');
+            btnNext?.setAttribute('disabled', '');
         }
     }
 
     // Рендер одного тега в форме
-    function createTagCheckbox({
-        id,
-        color,
-        name,
-    }) {
+    function createTagCheckbox({ id, color, name }) {
         let result = `
             <li class="blog-filters__item blog-filters__item--tag">
                 <input class="custom-checkbox custom-checkbox--tag"
@@ -688,15 +842,7 @@ fileInputs?.forEach((input) => {
     }
 
     // Рендер одного поста
-    function createPost({
-        title,
-        text,
-        tags,
-        date,
-        views,
-        commentsCount,
-        photo,
-    }) {
+    function createPost({ title, text, tags, date, views, commentsCount, photo }) {
         const postTags = tags.map((tag) => {
             const tagColor = tag.color;
             return `<span class="blog-article__tags-item" style="background-color: ${tagColor}"></span>`;
