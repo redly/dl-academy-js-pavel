@@ -155,16 +155,16 @@ function validateField(input, className, text) {
     element.className = `${formMsg} ${className}`;
     element.innerText = text;
 
-    input.parentElement?.insertAdjacentElement('beforeend', element);
+    input?.parentElement?.insertAdjacentElement('beforeend', element);
 
     // Окрашивание рамки input в зависимости от подписи
     if (className === error) {
-        input.classList.add(errorField);
+        input?.classList.add(errorField);
 
         // Каждый невалидный input увеличивает счетчик
-        errorsCounter++;
+        errorsCounter += 1;
     } else  if (className === right) {
-        input.classList.add(rightField);
+        input?.classList.add(rightField);
     }
 }
 
@@ -341,21 +341,59 @@ function errorHandler(errors, formNode) {
 // Обработка полей форм
 function formFieldProcessing({ form, type = 'json' }) {
     switch (type) {
-        case 'json':
+        case 'json': {
             const formInputs = form.querySelectorAll('.custom-form-field');
-            const body = {};
 
-            formInputs.forEach((input) => {
-                body[input.name] = input.value;
-            });
+            switch (form) {
+                case registerForm: {
+                    const body = {};
 
-            return body;
+                    formInputs.forEach((input) => {
+                        body[input.name] = input.value;
+                    });
+
+                    return body;
+
+                    break;
+                }
+
+                case sendMsgForm: {
+                    const data = {};
+                    data.to = form.to.value;
+
+                    const body = {};
+
+                    formInputs.forEach((input) => {
+                        if (input.name !== 'to') {
+                            body[input.name] = input.value;
+                        }
+                    });
+
+                    data.body = JSON.stringify(body);
+
+                    return data;
+
+                    break;
+                }
+
+                default: {
+                    const body = {};
+
+                    formInputs.forEach((input) => {
+                        body[input.name] = input.value;
+                    });
+
+                    return body;
+                }
+            }
+
             break;
+        }
         case 'formData':
             return new FormData(form);
             break;
         default:
-            return 'Вы передали какую-то дичь!';
+            return 'Вы передали неверные данные!';
     }
 }
 
@@ -382,25 +420,66 @@ function serializeForm(formNode) {
     //     .filter((item) => !!item.name);
 }
 
-// Обработка данных перед отправкой
-async function handleFormSubmit(evt) {
+// Отправка данных формы registerForm на сервер
+registerForm?.addEventListener('submit', (evt) => {
     evt.preventDefault();
 
-    /**
-        * Отправка данных на сервер происходит если валидация на клиенте завершена
-        * т.е. когда счетчик невалидных input обнулен
-        */
     if (errorsCounter === 0) {
         serializeForm(registerForm);
         toggleLoader(sender);
         register(evt);
     }
+});
 
-    return;
+// Отправка сообщения пользователя
+
+const sendMsgForm = document.forms.sendMsgForm;
+const sendMsgModal = document.getElementById('sendMsgModal');
+
+function sendMsg(evt) {
+    evt.preventDefault();
+    const body = formFieldProcessing({ form: sendMsgForm });
+
+    sendData({
+        url: 'api/emails',
+        method: 'POST',
+        body: JSON.stringify(body),
+        headers: {
+            'Content-Type': 'application/json',
+        }
+    })
+    .then(response => response.json())
+    .then((response) => {
+        if (response.success) {
+            toggleLoader(sender);
+            interactionModal(sendMsgModal);
+            interactionModal(onSuccessModal);
+        } else {
+            throw response;
+        }
+    })
+    .catch((err, response) => {
+        if (err.errors) {
+            toggleLoader(sender);
+            errorHandler(err.errors, sendMsgForm);
+        } else {
+            errorModalHandler({ response });
+            toggleLoader(sender);
+            interactionModal(onErrorModal);
+        }
+    });
 }
 
-// Отправка данных формы на сервер
-registerForm?.addEventListener('submit', handleFormSubmit);
+// Отправка данных формы sendMsgForm на сервер
+sendMsgForm?.addEventListener('submit', (evt) => {
+    evt.preventDefault();
+
+    if (errorsCounter === 0) {
+        serializeForm(sendMsgForm);
+        toggleLoader(sender);
+        sendMsg(evt);
+    }
+});
 
 // Логика работы кастомных input type="file" для изменения фото профиля
 

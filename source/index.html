@@ -755,7 +755,7 @@
                     </h2>
 
                     <div class="contacts-form">
-                        <form class="contacts-form__content js-contactForm" action="https://echo.htmlacademy.ru/" method="post">
+                        <form class="contacts-form__content js-contactForm" name="sendMsgForm" action="https://echo.htmlacademy.ru/" method="post">
                             <div class="contacts-form__row">
                                 <div class="contacts-form__group contacts-form__group--width--half">
                                     <label class="contacts-form__label" for="name-form-third">
@@ -790,7 +790,7 @@
                                     <input class="custom-form-field js-validFormField"
                                         type="email"
                                         id="email-form-third"
-                                        name="email"
+                                        name="to"
                                         required>
                                 </div>
 
@@ -809,10 +809,9 @@
 
                             <div class="contacts-form__group">
                                 <label class="contacts-form__label" for="message-form-third">What do you want to discuss with me?</label>
-                                <textarea class="custom-form-field custom-form-field--textarea js-validFormField"
+                                <textarea class="custom-form-field custom-form-field--textarea"
                                     id="message-form-third"
-                                    name="message">
-                                </textarea>
+                                    name="message"></textarea>
                             </div>
 
                             <div class="contacts-form__group contacts-form__checkbox">
