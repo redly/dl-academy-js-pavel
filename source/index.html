@@ -37,10 +37,13 @@
                                 <li class="menu__item">
                                     <a class="menu__link" href="blog.html">My blog</a>
                                 </li>
-                                <li class="menu__item">
+                                <li class="menu__item u-hidden js-toggleMenuItem">
+                                    <a class="menu__link " href="profile.html">My profile</a>
+                                </li>
+                                <li class="menu__item js-toggleMenuItem">
                                     <a class="menu__link js-toggleModal" data-modal="signInModal" href="#signInModal">Sign in</a>
                                 </li>
-                                <li class="menu__item">
+                                <li class="menu__item js-toggleMenuItem">
                                     <a class="menu__link js-toggleModal" data-modal="registerModal" href="#registerModal">Register</a>
                                 </li>
                             </ul>
@@ -555,7 +558,7 @@
 
         <div class="preloader preloader--is-hidden js-preloader" aria-hidden="true">
             <div class="preloader__wrapper">
-                <span class="js-preloaderTitle"></span>
+                <span class="js-setPreloaderTitle"></span>
                 <div class="preloader__dots">
                     <span class="preloader__dot"></span>
                     <span class="preloader__dot"></span>
@@ -579,7 +582,7 @@
                     </h2>
 
                     <div class="contacts-form">
-                        <form class="contacts-form__content js-contactForm" action="https://echo.htmlacademy.ru/" method="get">
+                        <form class="contacts-form__content js-contactForm" name="signInForm" action="https://echo.htmlacademy.ru/" method="get">
                             <div class="contacts-form__group">
                                 <label class="contacts-form__label" for="email-form-first">
                                     Email

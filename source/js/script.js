@@ -295,7 +295,7 @@ function register(evt) {
             'Content-Type': 'application/json',
         }
     })
-    .then(response => response.json())
+    .then((response) => response.json())
     .then((response) => {
         if (response.success) {
             toggleLoader(sender);
@@ -311,15 +311,15 @@ function register(evt) {
             errorHandler(err.errors, registerForm);
         } else {
             errorModalHandler({ response });
-            toggleLoader(sender);
             interactionModal(onErrorModal);
+            toggleLoader(sender);
         }
     });
 }
 
 // Вставка текста ошибки в окно уведомления о результате отправки на сервер
 function errorModalHandler({ response }) {
-    const modalErrorTitle = onErrorModal.querySelector('.modal__title');
+    const modalErrorTitle = onErrorModal?.querySelector('.modal__title');
     modalErrorTitle.innerText = `The form was sent but the server transmits an error: ${response.status}, ${response.statusText}`;
 }
 
@@ -448,7 +448,7 @@ function sendMsg(evt) {
             'Content-Type': 'application/json',
         }
     })
-    .then(response => response.json())
+    .then((response) => response.json())
     .then((response) => {
         if (response.success) {
             toggleLoader(sender);
@@ -478,6 +478,79 @@ sendMsgForm?.addEventListener('submit', (evt) => {
         serializeForm(sendMsgForm);
         toggleLoader(sender);
         sendMsg(evt);
+    }
+});
+
+// Логика авторизации пользователя по токену
+
+const signInForm = document.forms.signInForm;
+const signInModal = document.getElementById('signInModal');
+const menuItems = document.querySelectorAll('.js-toggleMenuItem');
+
+// Обновление токена
+function updateToken() {
+    const token = localStorage.getItem("token");
+
+    toggleMenuItems(token);
+}
+
+// Скрыть/показать ссылки из меню
+function toggleMenuItems(token) {
+    if (token) {
+        menuItems?.forEach((item) => item.classList.toggle('u-hidden'));
+    }
+}
+
+// Обновление токена и перерисовка кнопок меню
+(function () {
+    updateToken();
+}());
+
+function signIn(evt) {
+    evt.preventDefault();
+    const body = formFieldProcessing({form: signInForm});
+
+    sendData({
+        url: "api/users/login",
+        method: "POST",
+        body: JSON.stringify(body),
+        headers: {
+            "Content-Type": "application/json"
+        }
+    })
+    .then((response) => response.json())
+    .then((response) => {
+        if (response.success) {
+            localStorage.setItem("token", response.data.token);
+            localStorage.setItem("userId", response.data.userId);
+            interactionModal(signInModal);
+            toggleLoader(sender);
+            updateToken();
+        } else {
+            throw response;
+        }
+    })
+    .catch((err) => {
+        if (err._message) {
+            toggleLoader(sender);
+
+            const errorMessage = {
+                'email': err._message,
+            };
+
+            errorHandler(errorMessage, signInForm);
+        }
+    });
+}
+
+// Отправка данных формы signInForm на сервер
+signInForm?.addEventListener('submit', (evt) => {
+    evt.preventDefault();
+
+    if (errorsCounter === 0) {
+        serializeForm(signInForm);
+        toggleLoader(sender);
+        signIn(evt);
     }
 });
 
@@ -542,13 +615,15 @@ function toggleLoader(title) {
 
 // Установка заголовка для loader в зависимости от типа операции (load / send)
 function setTitleToLoader(loader, title) {
-    const loaderTitle = loader?.querySelector('.js-preloaderTitle');
-    loaderTitle.innerText = title;
+    if (loader) {
+        const loaderTitle = loader?.querySelector('.js-setPreloaderTitle');
+        loaderTitle.innerText = title;
+    }
 }
 
 // Полноценная логика работы фильтра постов и его несброс при перезагрузке страницы
 
-(function() {
+(function () {
     // Получение search параметров из location
     function getParamsFromLocation() {
         let searchParams = new URLSearchParams(location.search);
@@ -987,4 +1062,4 @@ function setTitleToLoader(loader, title) {
 
         return result;
     }
-})();
+}());

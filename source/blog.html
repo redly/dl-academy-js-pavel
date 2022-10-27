@@ -36,8 +36,14 @@
                                 <li class="menu__item">
                                     <a class="menu__link menu__link--current" href="">My blog</a>
                                 </li>
-                                <li class="menu__item">
-                                    <a class="menu__link" href="profile.html">My profile</a>
+                                <li class="menu__item u-hidden js-toggleMenuItem">
+                                    <a class="menu__link " href="profile.html">My profile</a>
+                                </li>
+                                <li class="menu__item js-toggleMenuItem">
+                                    <a class="menu__link js-toggleModal" data-modal="signInModal" href="#signInModal">Sign in</a>
+                                </li>
+                                <li class="menu__item js-toggleMenuItem">
+                                    <a class="menu__link js-toggleModal" data-modal="registerModal" href="#registerModal">Register</a>
                                 </li>
                             </ul>
                         </div>
@@ -452,7 +458,7 @@
 
         <div class="preloader preloader--is-hidden js-preloader" aria-hidden="true">
             <div class="preloader__wrapper">
-                <span>Loading</span>
+                <span class="js-setPreloaderTitle"></span>
                 <div class="preloader__dots">
                     <span class="preloader__dot"></span>
                     <span class="preloader__dot"></span>
