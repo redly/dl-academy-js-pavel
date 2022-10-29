@@ -259,6 +259,32 @@ forms?.forEach((form) => {
     });
 });
 
+// Взаимодейсвтие с сервером
+
+const BASE_URL = 'https://academy.directlinedev.com';
+const loaderTitle = {
+    load: 'Loading',
+    send: 'Sending',
+};
+const loader = loaderTitle.load;
+const sender = loaderTitle.send;
+
+// Показ/скрытие preloader
+function toggleLoader(title) {
+    const loader = document.querySelector('.js-preloader');
+
+    setTitleToLoader(loader, title);
+    loader?.classList.toggle('preloader--is-hidden');
+}
+
+// Установка заголовка для loader в зависимости от типа операции (load / send)
+function setTitleToLoader(loader, title) {
+    if (loader) {
+        const loaderTitle = loader?.querySelector('.js-setPreloaderTitle');
+        loaderTitle.innerText = title;
+    }
+}
+
 // Отправка формы регистрации пользователя с последующей валидацией на сервере
 
 const registerForm = document.forms.registerForm;
@@ -515,7 +541,7 @@ function signIn(evt) {
         method: "POST",
         body: JSON.stringify(body),
         headers: {
-            "Content-Type": "application/json"
+            "Content-Type": "application/json",
         }
     })
     .then((response) => response.json())
@@ -553,6 +579,80 @@ signInForm?.addEventListener('submit', (evt) => {
         signIn(evt);
     }
 });
+
+// Логика отрисовки информации о пользователе на странице профиля
+
+(function renderProfileDataOnPage() {
+    // updateToken();
+    toggleLoader(loader);
+    getProfileData();
+
+    // Установка данных с сервера в информацию на странице профиля
+    function setProfileData({ photoUrl, name, surname, email, password, location, age }) {
+        const profileData = document.querySelector('.profile__content');
+        const profileDataList = profileData?.querySelectorAll('.js-setProfileData');
+
+        profileDataList?.forEach((item) => {
+            switch (item.dataset.profile) {
+                case 'photoUrl':
+                    item.src = `${BASE_URL}${photoUrl}`;
+                    break;
+                case 'name':
+                    item.innerText = name;
+                    break;
+                case 'surname':
+                    item.innerText = surname;
+                    break;
+                case 'email':
+                    item.innerText = email;
+                    break;
+                case 'password':
+                    // for (let i = 0; i < password.length; i++) {
+                    //     item.innerText += '*';
+                    // }
+
+                    item.innerText = password.replaceAll(/./gm, '*');
+                    break;
+                case 'location':
+                    item.innerText = location;
+                    break;
+                case 'age':
+                    item.innerText = age;
+                    break;
+                default:
+                    item.innerText = '';
+                    break;
+            }
+        });
+    }
+
+    // Получение данных пользователя с сервера
+    function getProfileData() {
+        sendData ({
+            url: `api/users/${localStorage.getItem('userId')}`,
+            method: 'GET',
+            headers: {
+                'x-access-token': localStorage.getItem('token')
+            },
+        })
+        .then((response) => response.json())
+        .then((response) => {
+            if(response.success) {
+                const data  = response.data;
+
+                setProfileData(data);
+                toggleLoader(loader);
+            } else {
+                throw response;
+            }
+        })
+        .catch((err) => {
+            console.error(err)
+            interactionModal(onErrorModal);
+            toggleLoader(loader);
+        })
+    }
+}());
 
 // Логика работы кастомных input type="file" для изменения фото профиля
 
@@ -594,32 +694,6 @@ fileInputs?.forEach((input) => {
         // }
     });
 });
-
-// Взаимодейсвтие с сервером
-
-const BASE_URL = 'https://academy.directlinedev.com';
-const loaderTitle = {
-    load: 'Loading',
-    send: 'Sending',
-};
-const loader = loaderTitle.load;
-const sender = loaderTitle.send;
-
-// Показ/скрытие preloader
-function toggleLoader(title) {
-    const loader = document.querySelector('.js-preloader');
-
-    setTitleToLoader(loader, title);
-    loader?.classList.toggle('preloader--is-hidden');
-}
-
-// Установка заголовка для loader в зависимости от типа операции (load / send)
-function setTitleToLoader(loader, title) {
-    if (loader) {
-        const loaderTitle = loader?.querySelector('.js-setPreloaderTitle');
-        loaderTitle.innerText = title;
-    }
-}
 
 // Полноценная логика работы фильтра постов и его несброс при перезагрузке страницы
 

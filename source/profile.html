@@ -70,6 +70,8 @@
 
                         <div class="profile__img">
                             <img src="img/blocks/profile-page/user-picture.jpg"
+                                class="js-setProfileData"
+                                data-profile="photoUrl"
                                 width="320"
                                 height="450"
                                 loading="lazy"
@@ -82,27 +84,27 @@
                             <ul class="profile__data">
                                 <li class="profile__data-item">
                                     <span class="profile__data-key">Name:</span>
-                                    <span class="profile__data-value"></span>
+                                    <span class="profile__data-value js-setProfileData" data-profile="name"></span>
                                 </li>
                                 <li class="profile__data-item">
                                     <span class="profile__data-key">Surname:</span>
-                                    <span class="profile__data-value"></span>
+                                    <span class="profile__data-value js-setProfileData" data-profile="surname"></span>
                                 </li>
                                 <li class="profile__data-item">
                                     <span class="profile__data-key">Email:</span>
-                                    <span class="profile__data-value"></span>
+                                    <span class="profile__data-value js-setProfileData" data-profile="email"></span>
                                 </li>
                                 <li class="profile__data-item">
                                     <span class="profile__data-key">Password:</span>
-                                    <span class="profile__data-value"></span>
+                                    <span class="profile__data-value js-setProfileData" data-profile="password"></span>
                                 </li>
                                 <li class="profile__data-item">
                                     <span class="profile__data-key">Location:</span>
-                                    <span class="profile__data-value"></span>
+                                    <span class="profile__data-value js-setProfileData" data-profile="location"></span>
                                 </li>
                                 <li class="profile__data-item">
                                     <span class="profile__data-key">Age:</span>
-                                    <span class="profile__data-value"></span>
+                                    <span class="profile__data-value js-setProfileData" data-profile="age"></span>
                                 </li>
                             </ul>
 
@@ -122,6 +124,17 @@
                 </div>
             </section>
         </main>
+
+        <div class="preloader preloader--is-hidden js-preloader" aria-hidden="true">
+            <div class="preloader__wrapper">
+                <span class="js-setPreloaderTitle"></span>
+                <div class="preloader__dots">
+                    <span class="preloader__dot"></span>
+                    <span class="preloader__dot"></span>
+                    <span class="preloader__dot"></span>
+                </div>
+            </div>
+        </div>
 
         <div class="modal" id="changePasswordModal">
             <div class="modal__scrollable" tabindex="-1">
@@ -282,7 +295,8 @@
             </div>
         </div>
 
-        <div class="modal modal__error" id="formErrorModal" aria-hidden="true">
+        <!-- Сообщение об ошибке при отправке формы -->
+        <div class="modal modal--sending-form js-toggleModalError" id="formErrorModal" aria-hidden="true">
             <div class="modal__scrollable" tabindex="-1">
                 <div class="modal__content modal__content--width--message-error" role="dialog" aria-modal="true" aria-labelledby="form-error-modal-title">
                     <h2 class="visually-hidden" id="form-error-modal-title">
