@@ -473,7 +473,8 @@
             </svg>
         </button>
 
-        <!-- <div class="modal" id="signInModal" aria-hidden="true">
+        <!-- Форма для входа в профиль -->
+        <div class="modal" id="signInModal" aria-hidden="true">
             <div class="modal__scrollable" tabindex="-1">
                 <div class="modal__content modal__content--width--small" role="dialog" aria-modal="true" aria-labelledby="sign-in-modal-title">
                     <h2 class="visually-hidden" id="sign-in-modal-title">
@@ -503,6 +504,7 @@
                                     type="password" id="password-form-first"
                                     name="password"
                                     required>
+                                <button class="contacts-form__password-control-btn js-togglePasswordView" type="button" data-password="password-form-first"></button>
                             </div>
 
                             <input class="contacts-form__submit-btn btn js-submitBtn"
@@ -518,9 +520,10 @@
                     </button>
                 </div>
             </div>
-        </div> -->
+        </div>
 
-        <!-- <div class="modal" id="registerModal" aria-hidden="true">
+        <!-- Форма регистрации пользователя -->
+        <div class="modal" id="registerModal" aria-hidden="true">
             <div class="modal__scrollable" tabindex="-1">
                 <div class="modal__content" role="dialog" aria-modal="true" aria-labelledby="register-modal-title">
                     <h2 class="visually-hidden" id="register-modal-title">
@@ -577,6 +580,7 @@
                                         id="password-form-second"
                                         name="password"
                                         required>
+                                    <button class="contacts-form__password-control-btn js-togglePasswordView" type="button" data-password="password-form-second"></button>
                                 </div>
 
                                 <div class="contacts-form__group contacts-form__group--width--half">
@@ -589,6 +593,7 @@
                                         id="repeat-password-form-second"
                                         name="password-repeat"
                                         required>
+                                    <button class="contacts-form__password-control-btn js-togglePasswordView" type="button" data-password="repeat-password-form-second"></button>
                                 </div>
                             </div>
 
@@ -642,8 +647,9 @@
                     </button>
                 </div>
             </div>
-        </div> -->
+        </div>
 
+        <!-- Форма отправки сообщения -->
         <div class="modal" id="sendMsgModal" aria-hidden="true">
             <div class="modal__scrollable" tabindex="-1">
                 <div class="modal__content" role="dialog" aria-modal="true" aria-labelledby="send-message-modal-title">
@@ -730,6 +736,53 @@
                     </div>
 
                     <button class="modal__btn-close js-toggleModal" type="button" data-modal="sendMsgModal" aria-label="Close modal">
+                        <svg class="modal__icon" aria-hidden="true">
+                            <use xlink:href="img/sprite.svg#icon-btn-cross"></use>
+                        </svg>
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Сообщение об успешной отправке формы -->
+        <div class="modal modal--sending-form js-toggleModalSuccessfully" id="formSuccessfullyModal" aria-hidden="true">
+            <div class="modal__scrollable" tabindex="-1">
+                <div class="modal__content modal__content--width--message-successfully" role="dialog" aria-modal="true" aria-labelledby="form-successfully-modal-title">
+                    <h2 class="visually-hidden" id="form-successfully-modal-title">
+                        Form successfully modal
+                    </h2>
+
+                    <div class="modal__message">
+                        <h3 class="modal__title modal__title--successfully title-h3">
+                            Form has been sent successfully
+                        </h3>
+                    </div>
+
+                    <button class="modal__btn-close modal__btn-close--right-message js-toggleModal" type="button" data-modal="formSuccessfullyModal" aria-label="Close modal">
+                        <svg class="modal__icon" aria-hidden="true">
+                            <use xlink:href="img/sprite.svg#icon-btn-cross"></use>
+                        </svg>
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Сообщение об ошибке при отправке формы -->
+        <div class="modal modal--sending-form js-toggleModalError" id="formErrorModal" aria-hidden="true">
+            <div class="modal__scrollable" tabindex="-1">
+                <div class="modal__content modal__content--width--message-error" role="dialog" aria-modal="true" aria-labelledby="form-error-modal-title">
+                    <h2 class="visually-hidden" id="form-error-modal-title">
+                        Form error modal
+                    </h2>
+
+                    <div class="modal__message">
+                        <h3 class="modal__title modal__title--error title-h3">
+                            The form was sent but the server transmits an error:
+                            “The form was sent but the server transmits an error”
+                        </h3>
+                    </div>
+
+                    <button class="modal__btn-close modal__btn-close--right-message js-toggleModal" type="button" data-modal="formErrorModal" aria-label="Close modal">
                         <svg class="modal__icon" aria-hidden="true">
                             <use xlink:href="img/sprite.svg#icon-btn-cross"></use>
                         </svg>

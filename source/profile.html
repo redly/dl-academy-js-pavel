@@ -136,6 +136,7 @@
             </div>
         </div>
 
+        <!-- Форма изменения пароля -->
         <div class="modal" id="changePasswordModal">
             <div class="modal__scrollable" tabindex="-1">
                 <div class="modal__content modal__content--width--small" role="dialog" aria-modal="true" aria-labelledby="change-password-modal-title">
@@ -151,6 +152,7 @@
                                     <span class="contacts-form__required">*</span>
                                 </label>
                                 <input class="custom-form-field js-validFormField" type="password" id="old-password-form-first" name="password" required>
+                                <button type="button" class="contacts-form__password-control-btn js-togglePasswordView" data-password="old-password-form-first"></button>
                             </div>
 
                             <div class="contacts-form__group">
@@ -159,6 +161,7 @@
                                     <span class="contacts-form__required">*</span>
                                 </label>
                                 <input class="custom-form-field js-validFormField" type="password" id="new-password-form-first" name="password" required>
+                                <button type="button" class="contacts-form__password-control-btn js-togglePasswordView" data-password="new-password-form-first"></button>
                             </div>
 
                             <div class="contacts-form__group">
@@ -167,6 +170,7 @@
                                     <span class="contacts-form__required">*</span>
                                 </label>
                                 <input class="custom-form-field js-validFormField" type="password" id="repeat-password-form-first" name="password" required>
+                                <button type="button" class="contacts-form__password-control-btn js-togglePasswordView" data-password="repeat-password-form-first"></button>
                             </div>
 
                             <input class="contacts-form__submit-btn btn js-submitBtn" type="submit" value="Change password">
@@ -182,6 +186,7 @@
             </div>
         </div>
 
+        <!-- Форма изменения данных профиля -->
         <div class="modal" id="changeDataModal" aria-hidden="true">
             <div class="modal__scrollable" tabindex="-1">
                 <div class="modal__content" role="dialog" aria-modal="true" aria-labelledby="change-data-modal-title">
@@ -273,7 +278,8 @@
             </div>
         </div>
 
-        <div class="modal modal__successfully" id="formSuccessfullyModal" aria-hidden="true">
+        <!-- Сообщение об успешной отправке формы -->
+        <div class="modal modal__successfully js-toggleModalSuccessfully" id="formSuccessfullyModal" aria-hidden="true">
             <div class="modal__scrollable" tabindex="-1">
                 <div class="modal__content modal__content--width--message-successfully" role="dialog" aria-modal="true" aria-labelledby="form-successfully-modal-title">
                     <h2 class="visually-hidden" id="form-successfully-modal-title">

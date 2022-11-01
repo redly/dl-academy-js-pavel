@@ -654,6 +654,26 @@ signInForm?.addEventListener('submit', (evt) => {
     }
 }());
 
+// Кнопка смены видимости пароля
+
+const passwordViewBtn = document.querySelectorAll('.js-togglePasswordView');
+
+// Скрыть/показать пароль в input
+function togglePasswordView(evt) {
+    evt.target.classList.toggle('contacts-form__password-control-btn--view');
+
+    const passwordInputId = evt.currentTarget.dataset.password;
+    const passwordInput = document.getElementById(passwordInputId);
+
+    passwordInput?.getAttribute('type') === 'password'
+        ? passwordInput?.setAttribute('type', 'text')
+        : passwordInput?.setAttribute('type', 'password');
+}
+
+passwordViewBtn?.forEach((btn) => {
+    btn?.addEventListener('click', togglePasswordView);
+});
+
 // Логика работы кастомных input type="file" для изменения фото профиля
 
 const fileInputs = document.querySelectorAll('.js-setFileName');
