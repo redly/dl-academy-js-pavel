@@ -220,9 +220,9 @@ forms?.forEach((form) => {
                     validateInput(regExpTest.validEmail, messages.email);
                     break;
                 case 'password':
-                    if (input.name === 'password') {
+                    if (input.name === 'password' || input.name === 'oldPassword' || input.name === 'newPassword') {
                         validateInput(regExpTest.validPassword, messages.password.isFalse);
-                    } else if (input.name === 'password-repeat') {
+                    } else if (input.name === 'password-repeat' || input.name === 'newPasswordRepeat') {
                         const password = form.querySelector('.password');
                         const passwordRepeat = form.querySelector('.password-repeat');
 
@@ -262,6 +262,8 @@ forms?.forEach((form) => {
 // Взаимодейсвтие с сервером
 
 const BASE_URL = 'https://academy.directlinedev.com';
+
+// const API_VERS = '?v=1.0';
 const loaderTitle = {
     load: 'Loading',
     send: 'Sending',
@@ -305,6 +307,7 @@ function sendData({ url, method, headers, body }) {
         headers
     };
 
+    // return fetch(`${BASE_URL}/${url}${API_VERS}`, settings);
     return fetch(`${BASE_URL}/${url}`, settings);
 }
 
@@ -344,9 +347,16 @@ function register(evt) {
 }
 
 // Вставка текста ошибки в окно уведомления о результате отправки на сервер
-function errorModalHandler({ response }) {
+function errorModalHandler({ response }, text) {
     const modalErrorTitle = onErrorModal?.querySelector('.modal__title');
-    modalErrorTitle.innerText = `The form was sent but the server transmits an error: ${response.status}, ${response.statusText}`;
+
+    if (response) {
+        modalErrorTitle.innerText = `The form was sent but the server transmits an error: ${response.status} ${response.statusText}`;
+    } else if (text) {
+        modalErrorTitle.innerText = `The form was sent but the server transmits an error "${text}"`;
+    } else {
+        modalErrorTitle.innerText = 'The form was sent but the server transmits an error';
+    }
 }
 
 // Валидация input на стороне сервера
@@ -515,7 +525,7 @@ const menuItems = document.querySelectorAll('.js-toggleMenuItem');
 
 // Обновление токена
 function updateToken() {
-    const token = localStorage.getItem("token");
+    const token = localStorage.getItem('token');
 
     toggleMenuItems(token);
 }
@@ -525,6 +535,8 @@ function toggleMenuItems(token) {
     if (token) {
         menuItems?.forEach((item) => item.classList.toggle('u-hidden'));
     }
+
+    return;
 }
 
 // Обновление токена и перерисовка кнопок меню
@@ -537,18 +549,18 @@ function signIn(evt) {
     const body = formFieldProcessing({form: signInForm});
 
     sendData({
-        url: "api/users/login",
-        method: "POST",
+        url: 'api/users/login',
+        method: 'POST',
         body: JSON.stringify(body),
         headers: {
-            "Content-Type": "application/json",
+            'Content-Type': 'application/json',
         }
     })
     .then((response) => response.json())
     .then((response) => {
         if (response.success) {
-            localStorage.setItem("token", response.data.token);
-            localStorage.setItem("userId", response.data.userId);
+            localStorage.setItem('token', response.data.token);
+            localStorage.setItem('userId', response.data.userId);
             interactionModal(signInModal);
             toggleLoader(sender);
             updateToken();
@@ -583,76 +595,77 @@ signInForm?.addEventListener('submit', (evt) => {
 // Логика отрисовки информации о пользователе на странице профиля
 
 (function renderProfileDataOnPage() {
-    // updateToken();
+    //updateToken();
     toggleLoader(loader);
     getProfileData();
-
-    // Установка данных с сервера в информацию на странице профиля
-    function setProfileData({ photoUrl, name, surname, email, password, location, age }) {
-        const profileData = document.querySelector('.profile__content');
-        const profileDataList = profileData?.querySelectorAll('.js-setProfileData');
-
-        profileDataList?.forEach((item) => {
-            switch (item.dataset.profile) {
-                case 'photoUrl':
-                    item.src = `${BASE_URL}${photoUrl}`;
-                    break;
-                case 'name':
-                    item.innerText = name;
-                    break;
-                case 'surname':
-                    item.innerText = surname;
-                    break;
-                case 'email':
-                    item.innerText = email;
-                    break;
-                case 'password':
-                    // for (let i = 0; i < password.length; i++) {
-                    //     item.innerText += '*';
-                    // }
-
-                    item.innerText = password.replaceAll(/./gm, '*');
-                    break;
-                case 'location':
-                    item.innerText = location;
-                    break;
-                case 'age':
-                    item.innerText = age;
-                    break;
-                default:
-                    item.innerText = '';
-                    break;
-            }
-        });
-    }
-
-    // Получение данных пользователя с сервера
-    function getProfileData() {
-        sendData ({
-            url: `api/users/${localStorage.getItem('userId')}`,
-            method: 'GET',
-            headers: {
-                'x-access-token': localStorage.getItem('token')
-            },
-        })
-        .then((response) => response.json())
-        .then((response) => {
-            if(response.success) {
-                const data  = response.data;
-
-                setProfileData(data);
-                toggleLoader(loader);
-            } else {
-                throw response;
-            }
-        })
-        .catch((err) => {
-            console.error(err)
-            interactionModal(onErrorModal);
-            toggleLoader(loader);
-        })
-    }
 }());
+
+// Установка данных с сервера в информацию на странице профиля
+function setProfileData({ photoUrl, name, surname, email, password, location, age }) {
+    const profileData = document.querySelector('.profile__content');
+    const profileDataList = profileData?.querySelectorAll('.js-setProfileData');
+
+    profileDataList?.forEach((item) => {
+        switch (item.dataset.profile) {
+            case 'photoUrl':
+                item.src = `${BASE_URL}${photoUrl}`;
+                break;
+            case 'name':
+                item.innerText = name;
+                break;
+            case 'surname':
+                item.innerText = surname;
+                break;
+            case 'email':
+                item.innerText = email;
+                break;
+            case 'password':
+                // for (let i = 0; i < password.length; i++) {
+                //     item.innerText += '*';
+                // }
+
+                item.innerText = password.replaceAll(/./gm, '*');
+                break;
+            case 'location':
+                item.innerText = location;
+                break;
+            case 'age':
+                item.innerText = age;
+                break;
+            default:
+                item.innerText = '';
+                break;
+        }
+    });
+}
+
+// Получение данных пользователя с сервера
+function getProfileData() {
+    sendData ({
+        url: `api/users/${localStorage.getItem('userId')}`,
+        method: 'GET',
+        headers: {
+            'Content-Type': 'application/json',
+            'x-access-token': localStorage.getItem('token'),
+        },
+    })
+    .then((response) => response.json())
+    .then((response) => {
+        if(response.success) {
+            const data  = response.data;
+
+            setProfileData(data);
+            toggleLoader(loader);
+        } else {
+            throw response;
+        }
+    })
+    .catch((err) => {
+        console.error(err)
+        interactionModal(onErrorModal);
+        toggleLoader(loader);
+    })
+}
 
 // Кнопка смены видимости пароля
 
@@ -672,6 +685,71 @@ function togglePasswordView(evt) {
 
 passwordViewBtn?.forEach((btn) => {
     btn?.addEventListener('click', togglePasswordView);
+});
+
+// Логика смены пароля в профиле
+
+const changePasswordForm = document.forms.changePasswordForm;
+const changePasswordModal = document.getElementById('changePasswordModal');
+
+function changePassword(evt) {
+    evt.preventDefault();
+    const body = formFieldProcessing({ form: changePasswordForm, type: 'formData' });
+
+    sendData({
+        url: 'api/users',
+        method: 'PUT',
+        body: body,
+        headers: {
+            'x-access-token': localStorage.getItem('token'),
+        }
+    })
+    .then((response) => {
+        if (response.status === 401 || response.status === 403) {
+            localStorage.removeItem('token');
+            localStorage.removeItem('userId');
+            location.pathname = '/';
+
+            return;
+        }
+
+        return response.json()
+    })
+    .then((response) => {
+        if (response.success) {
+            interactionModal(changePasswordModal);
+            interactionModal(onSuccessModal);
+            getProfileData();
+        } else {
+            throw response;
+        }
+    })
+    .catch((err, response) => {
+        if (err.errors) {
+            toggleLoader(sender);
+            errorHandler(err.errors, changePasswordForm);
+        } else if (err._message) {
+            toggleLoader(sender);
+            errorHandler(err._message, changePasswordForm);
+        } else {
+            const errorMessage = 'Check the correctness of the entered data';
+
+            toggleLoader(sender);
+            errorModalHandler({ response }, errorMessage);
+            interactionModal(onErrorModal);
+        }
+    });
+}
+
+// Отправка данных формы changePasswordForm на сервер
+changePasswordForm?.addEventListener('submit', (evt) => {
+    evt.preventDefault();
+
+    if (errorsCounter === 0) {
+        serializeForm(changePasswordForm);
+        toggleLoader(sender);
+        changePassword(evt);
+    }
 });
 
 // Логика работы кастомных input type="file" для изменения фото профиля

@@ -145,13 +145,13 @@
                     </h2>
 
                     <div class="contacts-form contacts-form">
-                        <form class="contacts-form__content js-contactForm" action="https://echo.htmlacademy.ru/" method="post">
+                        <form class="contacts-form__content js-contactForm" name="changePasswordForm" action="https://echo.htmlacademy.ru/" method="post">
                             <div class="contacts-form__group">
                                 <label class="contacts-form__label" for="old-password-form-first">
                                     Old password
                                     <span class="contacts-form__required">*</span>
                                 </label>
-                                <input class="custom-form-field js-validFormField" type="password" id="old-password-form-first" name="password" required>
+                                <input class="custom-form-field js-validFormField" type="password" id="old-password-form-first" name="oldPassword" required>
                                 <button type="button" class="contacts-form__password-control-btn js-togglePasswordView" data-password="old-password-form-first"></button>
                             </div>
 
@@ -160,7 +160,7 @@
                                     New password
                                     <span class="contacts-form__required">*</span>
                                 </label>
-                                <input class="custom-form-field js-validFormField" type="password" id="new-password-form-first" name="password" required>
+                                <input class="custom-form-field password js-validFormField" type="password" id="new-password-form-first" name="newPassword" required>
                                 <button type="button" class="contacts-form__password-control-btn js-togglePasswordView" data-password="new-password-form-first"></button>
                             </div>
 
@@ -169,7 +169,7 @@
                                     Repeat new password
                                     <span class="contacts-form__required">*</span>
                                 </label>
-                                <input class="custom-form-field js-validFormField" type="password" id="repeat-password-form-first" name="password" required>
+                                <input class="custom-form-field password-repeat js-validFormField" type="password" id="repeat-password-form-first" name="newPasswordRepeat" required>
                                 <button type="button" class="contacts-form__password-control-btn js-togglePasswordView" data-password="repeat-password-form-first"></button>
                             </div>
 
