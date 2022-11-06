@@ -81,6 +81,10 @@
         right: 10px;
         transition: background-image 0.2s ease, opacity 0.2s ease;
 
+        &:hover {
+            opacity: 0.6;
+        }
+
         &--view {
             background: url("../img/password-no-view-btn.svg") 0 0 no-repeat;
             opacity: 1;

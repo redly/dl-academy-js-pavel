@@ -811,6 +811,20 @@ if (location.pathname === '/profile.html') {
 
 // Кнопка смены видимости пароля
 
+const passwordInputs = document.querySelectorAll('.js-showPasswordViewBtn');
+
+// Скрыть/показать кнопку раскрытия пароля
+passwordInputs.forEach((input) => {
+    input.addEventListener('input', (evt) => {
+        const dataValue = evt.currentTarget.id;
+        const passwordBtn = document.querySelector(`[data-password="${dataValue}"`);
+
+        !input.value.length
+            ? passwordBtn?.classList.add('u-hidden')
+            : passwordBtn?.classList.remove('u-hidden');
+    });
+});
+
 const passwordViewBtn = document.querySelectorAll('.js-togglePasswordView');
 
 // Скрыть/показать пароль в input

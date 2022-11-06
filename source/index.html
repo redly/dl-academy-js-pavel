@@ -602,11 +602,16 @@
                                     Password
                                     <span class="contacts-form__required">*</span>
                                 </label>
-                                <input class="custom-form-field js-validFormField"
-                                    type="password" id="password-form-first"
+                                <input class="custom-form-field js-validFormField js-showPasswordViewBtn"
+                                    type="password"
+                                    id="password-form-first"
                                     name="password"
                                     required>
-                                <button class="contacts-form__password-control-btn js-togglePasswordView" type="button" data-password="password-form-first"></button>
+                                <button class="contacts-form__password-control-btn u-hidden js-togglePasswordView"
+                                    type="button"
+                                    data-password="password-form-first"
+                                    aria-label="View password">
+                                </button>
                             </div>
 
                             <input class="contacts-form__submit-btn btn js-submitBtn"
@@ -677,12 +682,16 @@
                                         Password
                                         <span class="contacts-form__required">*</span>
                                     </label>
-                                    <input class="custom-form-field password js-validFormField"
+                                    <input class="custom-form-field password js-validFormField js-showPasswordViewBtn"
                                         type="password"
                                         id="password-form-second"
                                         name="password"
                                         required>
-                                    <button class="contacts-form__password-control-btn js-togglePasswordView" type="button" data-password="password-form-second"></button>
+                                    <button class="contacts-form__password-control-btn u-hidden js-togglePasswordView"
+                                        type="button"
+                                        data-password="password-form-second"
+                                        aria-label="View password">
+                                    </button>
                                 </div>
 
                                 <div class="contacts-form__group contacts-form__group--width--half">
@@ -690,12 +699,16 @@
                                         Repeat password
                                         <span class="contacts-form__required">*</span>
                                     </label>
-                                    <input class="custom-form-field password-repeat js-validFormField"
+                                    <input class="custom-form-field password-repeat js-validFormField js-showPasswordViewBtn"
                                         type="password"
                                         id="repeat-password-form-second"
                                         name="password-repeat"
                                         required>
-                                    <button class="contacts-form__password-control-btn js-togglePasswordView" type="button" data-password="repeat-password-form-second"></button>
+                                    <button class="contacts-form__password-control-btn u-hidden js-togglePasswordView"
+                                        type="button"
+                                        data-password="repeat-password-form-second"
+                                        aria-label="View password">
+                                    </button>
                                 </div>
                             </div>
 
