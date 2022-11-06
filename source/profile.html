@@ -113,7 +113,7 @@
                                     <a class="btn js-toggleModal" data-modal="changePasswordModal" href="#changePasswordModal">Change password</a>
                                 </li>
                                 <li class="profile__changes-item">
-                                    <a class="btn js-toggleModal" data-modal="changeDataModal" href="#changeDataModal">Change other data</a>
+                                    <a class="btn js-toggleModal js-setProfileDataToForm" data-modal="changeDataModal" href="#changeDataModal">Change other data</a>
                                 </li>
                                 <li class="profile__changes-item">
                                     <a class="btn" href="">Delete account</a>
@@ -151,8 +151,16 @@
                                     Old password
                                     <span class="contacts-form__required">*</span>
                                 </label>
-                                <input class="custom-form-field js-validFormField" type="password" id="old-password-form-first" name="oldPassword" required>
-                                <button type="button" class="contacts-form__password-control-btn js-togglePasswordView" data-password="old-password-form-first"></button>
+                                <input class="custom-form-field js-validFormField js-showPasswordViewBtn"
+                                    type="password"
+                                    id="old-password-form-first"
+                                    name="oldPassword"
+                                    required>
+                                <button class="contacts-form__password-control-btn u-hidden js-togglePasswordView"
+                                    type="button"
+                                    data-password="old-password-form-first"
+                                    aria-label="View password">
+                                </button>
                             </div>
 
                             <div class="contacts-form__group">
@@ -160,8 +168,16 @@
                                     New password
                                     <span class="contacts-form__required">*</span>
                                 </label>
-                                <input class="custom-form-field password js-validFormField" type="password" id="new-password-form-first" name="newPassword" required>
-                                <button type="button" class="contacts-form__password-control-btn js-togglePasswordView" data-password="new-password-form-first"></button>
+                                <input class="custom-form-field password js-validFormField js-showPasswordViewBtn"
+                                    type="password"
+                                    id="new-password-form-first"
+                                    name="newPassword"
+                                    required>
+                                <button class="contacts-form__password-control-btn u-hidden js-togglePasswordView"
+                                    type="button"
+                                    data-password="new-password-form-first"
+                                    aria-label="View password">
+                                </button>
                             </div>
 
                             <div class="contacts-form__group">
@@ -169,8 +185,16 @@
                                     Repeat new password
                                     <span class="contacts-form__required">*</span>
                                 </label>
-                                <input class="custom-form-field password-repeat js-validFormField" type="password" id="repeat-password-form-first" name="newPasswordRepeat" required>
-                                <button type="button" class="contacts-form__password-control-btn js-togglePasswordView" data-password="repeat-password-form-first"></button>
+                                <input class="custom-form-field password-repeat js-validFormField js-showPasswordViewBtn"
+                                    type="password"
+                                    id="repeat-password-form-first"
+                                    name="newPasswordRepeat"
+                                    required>
+                                <button class="contacts-form__password-control-btn u-hidden js-togglePasswordView"
+                                    type="button"
+                                    data-password="repeat-password-form-first"
+                                    aria-label="View password">
+                                </button>
                             </div>
 
                             <input class="contacts-form__submit-btn btn js-submitBtn" type="submit" value="Change password">
@@ -195,7 +219,7 @@
                     </h2>
 
                     <div class="contacts-form">
-                        <form class="contacts-form__content js-contactForm" action="https://echo.htmlacademy.ru/" method="post">
+                        <form class="contacts-form__content js-contactForm" name="changeDataForm" action="https://echo.htmlacademy.ru/" method="post">
                             <div class="contacts-form__group">
                                 <label class="contacts-form__label" for="email-form-second">
                                     Email
@@ -224,7 +248,7 @@
                                     <input class="custom-form-field js-validFormField"
                                         type="text"
                                         id="surname-form-second"
-                                        name="name">
+                                        name="surname">
                                 </div>
                             </div>
 
@@ -255,7 +279,7 @@
                                     <input class="custom-form-field custom-file js-setFileName"
                                         type="file"
                                         id="picture-form-second"
-                                        name="profile-picture"
+                                        name="avatar"
                                         accept="image/*"
                                         data-img="profilePicture">
                                     <label class="contacts-form__label custom-file__label" for="picture-form-second">
