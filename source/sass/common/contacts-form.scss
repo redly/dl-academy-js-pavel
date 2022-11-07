@@ -7,8 +7,20 @@
         padding: 40px;
     }
 
+    &--delete-account {
+        display: flex;
+        flex-direction: column;
+        text-align: center;
+        gap: 20px;
+    }
+
     &__content {
         display: block;
+
+        &--delete-account {
+            display: flex;
+            justify-content: space-around;
+        }
     }
 
     &__group {

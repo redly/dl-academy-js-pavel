@@ -803,9 +803,54 @@ if (location.pathname === '/profile.html') {
     // Отправка данных формы changePasswordForm на сервер
     changeDataForm?.addEventListener('submit', (evt) => {
         evt.preventDefault();
-
         toggleLoader(sender);
         changeData(evt);
+    });
+
+    // Логика удаления аккаунта
+
+    const deleteAccountForm = document.forms.deleteAccountForm;
+
+    function deleteAccount() {
+        sendData({
+            url: `api/users/${localStorage.getItem('userId')}`,
+            method: 'DELETE',
+            headers: {
+                'x-access-token': localStorage.getItem('token'),
+            }
+        })
+        .then((response) => {
+            if (response.status === 401 || response.status === 403) {
+                localStorage.removeItem('token');
+                localStorage.removeItem('userId');
+                location.pathname = '/';
+
+                return;
+            }
+
+            return response.json()
+        })
+        .then((response) => {
+            if (response.success) {
+                interactionModal(onSuccessModal);
+                localStorage.removeItem('token');
+                localStorage.removeItem('userId');
+                location.pathname = '/';
+
+                return;
+            } else {
+                throw response;
+            }
+        })
+        .catch((response) => {
+            errorModalHandler({ response });
+            interactionModal(onErrorModal);
+        });
+    }
+
+    deleteAccountForm?.addEventListener('submit', (evt) => {
+        evt.preventDefault();
+        deleteAccount();
     });
 }
 

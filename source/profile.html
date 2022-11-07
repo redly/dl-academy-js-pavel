@@ -110,13 +110,19 @@
 
                             <ul class="profile__changes">
                                 <li class="profile__changes-item">
-                                    <a class="btn js-toggleModal" data-modal="changePasswordModal" href="#changePasswordModal">Change password</a>
+                                    <a class="btn js-toggleModal" data-modal="changePasswordModal" href="#changePasswordModal">
+                                        Change password
+                                    </a>
                                 </li>
                                 <li class="profile__changes-item">
-                                    <a class="btn js-toggleModal js-setProfileDataToForm" data-modal="changeDataModal" href="#changeDataModal">Change other data</a>
+                                    <a class="btn js-toggleModal js-setProfileDataToForm" data-modal="changeDataModal" href="#changeDataModal">
+                                        Change other data
+                                    </a>
                                 </li>
                                 <li class="profile__changes-item">
-                                    <a class="btn" href="">Delete account</a>
+                                    <a class="btn js-toggleModal" data-modal="deleteAccountModal" href="#deleteAccountModal">
+                                        Delete account
+                                    </a>
                                 </li>
                             </ul>
                         </div>
@@ -144,7 +150,7 @@
                         Change password modal
                     </h2>
 
-                    <div class="contacts-form contacts-form">
+                    <div class="contacts-form">
                         <form class="contacts-form__content js-contactForm" name="changePasswordForm" action="https://echo.htmlacademy.ru/" method="post">
                             <div class="contacts-form__group">
                                 <label class="contacts-form__label" for="old-password-form-first">
@@ -303,7 +309,7 @@
         </div>
 
         <!-- Сообщение об успешной отправке формы -->
-        <div class="modal modal__successfully js-toggleModalSuccessfully" id="formSuccessfullyModal" aria-hidden="true">
+        <div class="modal modal--sending-form js-toggleModalSuccessfully" id="formSuccessfullyModal" aria-hidden="true">
             <div class="modal__scrollable" tabindex="-1">
                 <div class="modal__content modal__content--width--message-successfully" role="dialog" aria-modal="true" aria-labelledby="form-successfully-modal-title">
                     <h2 class="visually-hidden" id="form-successfully-modal-title">
@@ -341,6 +347,35 @@
                     </div>
 
                     <button class="modal__btn-close modal__btn-close--right-message js-toggleModal" type="button" data-modal="formErrorModal" aria-label="Close modal">
+                        <svg class="modal__icon" aria-hidden="true">
+                            <use xlink:href="img/sprite.svg#icon-btn-cross"></use>
+                        </svg>
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Предупреждение перед удалением аккаунта -->
+        <div class="modal modal--sending-form js-toggleDeleteAccountModal" id="deleteAccountModal" aria-hidden="true">
+            <div class="modal__scrollable" tabindex="-1">
+                <div class="modal__content modal__content--width--small" role="dialog" aria-modal="true" aria-labelledby="delete-account-modal-title">
+                    <h2 class="visually-hidden" id="delete-account-modal-title">
+                        Delete account modal
+                    </h2>
+
+                    <div class="contacts-form contacts-form--delete-account">
+                        <h3 class="title-h3">
+                            Do you want to delete your account?
+                        </h3>
+
+                        <form class="contacts-form__content contacts-form__content--delete-account" name="deleteAccountForm">
+                            <!-- <input class="btn btn--green" type="submit" value="Yes"> -->
+                            <button class="btn btn--green" type="submit" aria-label="Answer yes and delete my account">Yes</button>
+                            <button class="btn btn--red js-toggleModal" type="button" data-modal="deleteAccountModal" aria-label="Answer no and close the modal">No</button>
+                        </form>
+                    </div>
+
+                    <button class="modal__btn-close modal__btn-close--right-message js-toggleModal" type="button" data-modal="deleteAccountModal" aria-label="Close modal">
                         <svg class="modal__icon" aria-hidden="true">
                             <use xlink:href="img/sprite.svg#icon-btn-cross"></use>
                         </svg>
