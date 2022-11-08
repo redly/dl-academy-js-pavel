@@ -299,6 +299,13 @@ function interactionModal(modal) {
     modal?.classList.toggle('modal--is-open');
 }
 
+// Запуск setTimeout() для модалок со статусом отправки формы
+function scheduleCall(modal) {
+    setTimeout(() => {
+        interactionModal(modal);
+    }, 2000);
+}
+
 // Функция обработки серверных запросов
 function sendData({ url, method, headers, body }) {
     const settings = {
@@ -330,6 +337,7 @@ function register(evt) {
             toggleLoader(sender);
             interactionModal(registerModal);
             interactionModal(onSuccessModal);
+            scheduleCall(onSuccessModal);
         } else {
             throw response;
         }
@@ -340,8 +348,9 @@ function register(evt) {
             errorHandler(err.errors, registerForm);
         } else {
             errorModalHandler({ response });
-            interactionModal(onErrorModal);
             toggleLoader(sender);
+            interactionModal(onErrorModal);
+            scheduleCall(onErrorModal);
         }
     });
 }
@@ -490,6 +499,7 @@ function sendMsg(evt) {
             toggleLoader(sender);
             interactionModal(sendMsgModal);
             interactionModal(onSuccessModal);
+            scheduleCall(onSuccessModal);
         } else {
             throw response;
         }
@@ -502,6 +512,7 @@ function sendMsg(evt) {
             errorModalHandler({ response });
             toggleLoader(sender);
             interactionModal(onErrorModal);
+            scheduleCall(onErrorModal);
         }
     });
 }
@@ -568,7 +579,7 @@ function signIn(evt) {
             throw response;
         }
     })
-    .catch((err) => {
+    .catch((err, response) => {
         if (err._message) {
             toggleLoader(sender);
 
@@ -577,6 +588,11 @@ function signIn(evt) {
             };
 
             errorHandler(errorMessage, signInForm);
+        } else {
+            errorModalHandler({ response });
+            toggleLoader(sender);
+            interactionModal(onErrorModal);
+            scheduleCall(onErrorModal);
         }
     });
 }
@@ -673,6 +689,7 @@ if (location.pathname === '/profile.html') {
     const changePasswordForm = document.forms.changePasswordForm;
     const changePasswordModal = document.getElementById('changePasswordModal');
 
+    // Удалание токена и ID пользователя из localStorage и сброс на главную страницу
     function removeItemsFromStorage() {
         localStorage.removeItem('token');
         localStorage.removeItem('userId');
@@ -702,9 +719,10 @@ if (location.pathname === '/profile.html') {
         })
         .then((response) => {
             if (response.success) {
+                getProfileData();
                 interactionModal(changePasswordModal);
                 interactionModal(onSuccessModal);
-                getProfileData();
+                scheduleCall(onSuccessModal);
             } else {
                 throw response;
             }
@@ -722,6 +740,7 @@ if (location.pathname === '/profile.html') {
                 toggleLoader(sender);
                 errorModalHandler({ response }, errorMessage);
                 interactionModal(onErrorModal);
+                scheduleCall(onErrorModal);
             }
         });
     }
@@ -778,9 +797,10 @@ if (location.pathname === '/profile.html') {
         })
         .then((response) => {
             if (response.success) {
+                getProfileData();
                 interactionModal(changeDataModal);
                 interactionModal(onSuccessModal);
-                getProfileData();
+                scheduleCall(onSuccessModal);
             } else {
                 throw response;
             }
@@ -798,6 +818,7 @@ if (location.pathname === '/profile.html') {
                 toggleLoader(sender);
                 errorModalHandler({ response }, errorMessage);
                 interactionModal(onErrorModal);
+                scheduleCall(onErrorModal);
             }
         });
     }
