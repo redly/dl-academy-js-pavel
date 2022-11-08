@@ -673,6 +673,12 @@ if (location.pathname === '/profile.html') {
     const changePasswordForm = document.forms.changePasswordForm;
     const changePasswordModal = document.getElementById('changePasswordModal');
 
+    function removeItemsFromStorage() {
+        localStorage.removeItem('token');
+        localStorage.removeItem('userId');
+        location.pathname = '/';
+    }
+
     function changePassword(evt) {
         evt.preventDefault();
         const body = formFieldProcessing({ form: changePasswordForm, type: 'formData' });
@@ -687,9 +693,7 @@ if (location.pathname === '/profile.html') {
         })
         .then((response) => {
             if (response.status === 401 || response.status === 403) {
-                localStorage.removeItem('token');
-                localStorage.removeItem('userId');
-                location.pathname = '/';
+                removeItemsFromStorage();
 
                 return;
             }
@@ -765,9 +769,7 @@ if (location.pathname === '/profile.html') {
         })
         .then((response) => {
             if (response.status === 401 || response.status === 403) {
-                localStorage.removeItem('token');
-                localStorage.removeItem('userId');
-                location.pathname = '/';
+                removeItemsFromStorage();
 
                 return;
             }
@@ -821,9 +823,7 @@ if (location.pathname === '/profile.html') {
         })
         .then((response) => {
             if (response.status === 401 || response.status === 403) {
-                localStorage.removeItem('token');
-                localStorage.removeItem('userId');
-                location.pathname = '/';
+                removeItemsFromStorage();
 
                 return;
             }
@@ -833,9 +833,7 @@ if (location.pathname === '/profile.html') {
         .then((response) => {
             if (response.success) {
                 interactionModal(onSuccessModal);
-                localStorage.removeItem('token');
-                localStorage.removeItem('userId');
-                location.pathname = '/';
+                removeItemsFromStorage();
 
                 return;
             } else {
@@ -851,6 +849,14 @@ if (location.pathname === '/profile.html') {
     deleteAccountForm?.addEventListener('submit', (evt) => {
         evt.preventDefault();
         deleteAccount();
+    });
+
+    // Логика выхода из профиля
+
+    const signOutBtn = document.querySelector('.js-signOut');
+
+    signOutBtn.addEventListener('click', () => {
+        removeItemsFromStorage();
     });
 }
 
