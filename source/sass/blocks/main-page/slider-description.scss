@@ -29,12 +29,7 @@
 
     &__link {
         color: $color-white;
-        text-decoration: underline dashed 1px;
-        text-underline-offset: 4px;
-
-        &:hover {
-            text-decoration: underline solid 1px;
-        }
+        text-decoration: none;
     }
 
     &__text {

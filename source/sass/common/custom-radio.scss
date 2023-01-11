@@ -1,0 +1,73 @@
+.custom-radio {
+    @include custom-filters-hidden;
+
+    & + label {
+        display: inline-block;
+        cursor: pointer;
+        padding: 3px 0 0 36px;
+        position: relative;
+
+        &::before {
+            @include custom-filters-visible;
+
+            border-radius: 100%;
+            transition: opacity 0.4s;
+        }
+
+        &::after {
+            content: "";
+            background-color: $color-black;
+            border-radius: 100%;
+            opacity: 0.1;
+            height: 13px;
+            width: 13px;
+            position: absolute;
+            top: 6px;
+            left: 6px;
+            transition: opacity 0.4s;
+        }
+    }
+
+    &:disabled + label {
+        cursor: default;
+        opacity: 0.2;
+
+        &::before {
+            opacity: 0.3;
+        }
+
+        &::after {
+            opacity: 0.3;
+        }
+    }
+
+    &:checked + label {
+        &::before {
+            opacity: 1;
+        }
+
+        &::after {
+            opacity: 1;
+        }
+    }
+
+    &:hover:not(.custom-radio:disabled) + label {
+        &::before {
+            opacity: 0.6;
+        }
+
+        &::after {
+            opacity: 0.6;
+        }
+    }
+
+    &:focus + label {
+        &::before {
+            opacity: 0.6;
+        }
+
+        &::after {
+            opacity: 0.6;
+        }
+    }
+}

@@ -30,12 +30,16 @@
 @import "common/header";
 @import "common/menu";
 @import "common/menu-btn";
+@import "common/content";
 @import "common/footer";
 @import "common/modal";
 @import "common/contacts-form";
+@import "common/custom-form-field";
 @import "common/custom-checkbox";
 @import "common/custom-file";
+@import "common/custom-radio";
 @import "common/scroll-btn-up";
+@import "common/underlined-link";
 @import "blocks/main-page/main-slider";
 @import "blocks/main-page/swiper";
 @import "blocks/main-page/about";
@@ -45,3 +49,7 @@
 @import "blocks/main-page/slider-btn";
 @import "blocks/main-page/slider-description";
 @import "blocks/profile-page/profile";
+@import "blocks/blog-page/blog-filters";
+@import "blocks/blog-page/blog-articles";
+@import "blocks/blog-page/blog-article";
+@import "blocks/blog-page/blog-pagination";

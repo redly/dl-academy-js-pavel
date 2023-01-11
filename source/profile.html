@@ -21,7 +21,7 @@
         <header class="header">
             <div class="container">
                 <nav class="header__menu menu" id="navMenu">
-                    <button class="menu__btn-cross menu-btn js-toggleMenu" type="button" data-menu="navMenu">
+                    <button class="menu__btn-cross menu-btn js-toggleMenu" type="button" data-menu="navMenu" aria-label="Close menu">
                         <svg class="menu-btn__icon" aria-hidden="true">
                             <use xlink:href="img/sprite.svg#icon-btn-cross"></use>
                         </svg>
@@ -34,10 +34,10 @@
                                     <a class="menu__link" href="index.html">Home</a>
                                 </li>
                                 <li class="menu__item">
-                                    <a class="menu__link" href="">My blog</a>
+                                    <a class="menu__link" href="blog.html">My blog</a>
                                 </li>
                                 <li class="menu__item">
-                                    <a class="menu__link menu__link--current" href="">My profile</a>
+                                    <span class="menu__link menu__link--current">My profile</span>
                                 </li>
                             </ul>
                         </div>
@@ -47,21 +47,27 @@
         </header>
 
         <main class="content">
+            <div class="content__header">
+                <div class="content__wrapper container">
+                    <h1 class="content__title title-h1">
+                        My profile
+                    </h1>
+
+                    <button class="content__btn-menu menu-btn js-toggleMenu" type="button" data-menu="navMenu" aria-label="Open menu">
+                        <svg class="menu-btn__icon menu-btn__icon--menu" aria-hidden="true">
+                            <use xlink:href="img/sprite.svg#icon-btn-menu"></use>
+                        </svg>
+                    </button>
+                </div>
+            </div>
+
             <section class="profile">
                 <div class="container">
-                    <div class="profile__header">
-                        <h1 class="profile__title title-h1">
-                            My profile
-                        </h1>
-
-                        <button class="profile__btn-menu menu-btn js-toggleMenu" type="button" data-menu="navMenu">
-                            <svg class="menu-btn__icon menu-btn__icon--menu" aria-hidden="true">
-                                <use xlink:href="img/sprite.svg#icon-btn-menu"></use>
-                            </svg>
-                        </button>
-                    </div>
-
                     <div class="profile__content">
+                        <h2 class="visually-hidden">
+                            Profile data
+                        </h2>
+
                         <div class="profile__img">
                             <img src="img/blocks/profile-page/user-picture.jpg"
                                 width="320"
@@ -102,10 +108,10 @@
 
                             <ul class="profile__changes">
                                 <li class="profile__changes-item">
-                                    <a class="btn js-toggleModal" href="" data-modal="changePasswordModal">Change password</a>
+                                    <a class="btn js-toggleModal" data-modal="changePasswordModal" href="#changePasswordModal">Change password</a>
                                 </li>
                                 <li class="profile__changes-item">
-                                    <a class="btn js-toggleModal" href="" data-modal="changeDataModal">Change other data</a>
+                                    <a class="btn js-toggleModal" data-modal="changeDataModal" href="#changeDataModal">Change other data</a>
                                 </li>
                                 <li class="profile__changes-item">
                                     <a class="btn" href="">Delete account</a>
@@ -118,175 +124,183 @@
         </main>
 
         <div class="modal" id="changePasswordModal">
-            <div class="modal__scrollable">
-                <div class="modal__container">
-                    <div class="modal__content modal__content--width--small">
-                        <div class="contacts-form contacts-form">
-                            <form class="contacts-form__content js-contactForm" action="https://echo.htmlacademy.ru/" method="post">
-                                <div class="contacts-form__group">
-                                    <label class="contacts-form__label" for="old-password-form-first">
-                                        Old password
-                                        <span class="contacts-form__required">*</span>
-                                    </label>
-                                    <input class="contacts-form__field js-validFormField" type="password" id="old-password-form-first" name="password" required>
-                                </div>
+            <div class="modal__scrollable" tabindex="-1">
+                <div class="modal__content modal__content--width--small" role="dialog" aria-modal="true" aria-labelledby="change-password-modal-title">
+                    <h2 class="visually-hidden" id="change-password-modal-title">
+                        Change password modal
+                    </h2>
 
-                                <div class="contacts-form__group">
-                                    <label class="contacts-form__label" for="new-password-form-first">
-                                        New password
-                                        <span class="contacts-form__required">*</span>
-                                    </label>
-                                    <input class="contacts-form__field js-validFormField" type="password" id="new-password-form-first" name="password" required>
-                                </div>
+                    <div class="contacts-form contacts-form">
+                        <form class="contacts-form__content js-contactForm" action="https://echo.htmlacademy.ru/" method="post">
+                            <div class="contacts-form__group">
+                                <label class="contacts-form__label" for="old-password-form-first">
+                                    Old password
+                                    <span class="contacts-form__required">*</span>
+                                </label>
+                                <input class="custom-form-field js-validFormField" type="password" id="old-password-form-first" name="password" required>
+                            </div>
 
-                                <div class="contacts-form__group">
-                                    <label class="contacts-form__label" for="repeat-password-form-first">
-                                        Repeat new password
-                                        <span class="contacts-form__required">*</span>
-                                    </label>
-                                    <input class="contacts-form__field js-validFormField" type="password" id="repeat-password-form-first" name="password" required>
-                                </div>
+                            <div class="contacts-form__group">
+                                <label class="contacts-form__label" for="new-password-form-first">
+                                    New password
+                                    <span class="contacts-form__required">*</span>
+                                </label>
+                                <input class="custom-form-field js-validFormField" type="password" id="new-password-form-first" name="password" required>
+                            </div>
 
-                                <input class="contacts-form__submit-btn btn js-submitBtn" type="submit" value="Change password">
-                            </form>
-                        </div>
+                            <div class="contacts-form__group">
+                                <label class="contacts-form__label" for="repeat-password-form-first">
+                                    Repeat new password
+                                    <span class="contacts-form__required">*</span>
+                                </label>
+                                <input class="custom-form-field js-validFormField" type="password" id="repeat-password-form-first" name="password" required>
+                            </div>
 
-                        <a class="modal__btn-close modal__btn-close--right js-toggleModal" href="" data-modal="changePasswordModal">
-                            <svg class="modal__icon" aria-hidden="true">
-                                <use xlink:href="img/sprite.svg#icon-btn-cross"></use>
-                            </svg>
-                        </a>
+                            <input class="contacts-form__submit-btn btn js-submitBtn" type="submit" value="Change password">
+                        </form>
                     </div>
+
+                    <button class="modal__btn-close modal__btn-close--right js-toggleModal" type="button" data-modal="changePasswordModal" aria-label="Close modal">
+                        <svg class="modal__icon" aria-hidden="true">
+                            <use xlink:href="img/sprite.svg#icon-btn-cross"></use>
+                        </svg>
+                    </button>
                 </div>
             </div>
         </div>
 
-        <div class="modal" id="changeDataModal">
-            <div class="modal__scrollable">
-                <div class="modal__container">
-                    <div class="modal__content">
-                        <div class="contacts-form">
-                            <form class="contacts-form__content js-contactForm" action="https://echo.htmlacademy.ru/" method="post">
-                                <div class="contacts-form__group">
-                                    <label class="contacts-form__label" for="email-form-second">
-                                        Email
+        <div class="modal" id="changeDataModal" aria-hidden="true">
+            <div class="modal__scrollable" tabindex="-1">
+                <div class="modal__content" role="dialog" aria-modal="true" aria-labelledby="change-data-modal-title">
+                    <h2 class="visually-hidden" id="change-data-modal-title">
+                        Change data modal
+                    </h2>
+
+                    <div class="contacts-form">
+                        <form class="contacts-form__content js-contactForm" action="https://echo.htmlacademy.ru/" method="post">
+                            <div class="contacts-form__group">
+                                <label class="contacts-form__label" for="email-form-second">
+                                    Email
+                                </label>
+                                <input class="custom-form-field js-validFormField"
+                                    type="email"
+                                    id="email-form-second"
+                                    name="email">
+                            </div>
+
+                            <div class="contacts-form__row">
+                                <div class="contacts-form__group contacts-form__group--width--half">
+                                    <label class="contacts-form__label" for="name-form-second">
+                                        Name
                                     </label>
-                                    <input class="contacts-form__field js-validFormField"
-                                        type="email"
-                                        id="email-form-second"
-                                        name="email">
+                                    <input class="custom-form-field js-validFormField"
+                                        type="text"
+                                        id="name-form-second"
+                                        name="name">
                                 </div>
 
-                                <div class="contacts-form__row">
-                                    <div class="contacts-form__group contacts-form__group--width--half">
-                                        <label class="contacts-form__label" for="name-form-second">
-                                            Name
-                                        </label>
-                                        <input class="contacts-form__field js-validFormField"
-                                            type="text"
-                                            id="name-form-second"
-                                            name="name">
-                                    </div>
+                                <div class="contacts-form__group contacts-form__group--width--half">
+                                    <label class="contacts-form__label" for="surname-form-second">
+                                        Surname
+                                    </label>
+                                    <input class="custom-form-field js-validFormField"
+                                        type="text"
+                                        id="surname-form-second"
+                                        name="name">
+                                </div>
+                            </div>
 
-                                    <div class="contacts-form__group contacts-form__group--width--half">
-                                        <label class="contacts-form__label" for="surname-form-second">
-                                            Surname
-                                        </label>
-                                        <input class="contacts-form__field js-validFormField"
-                                            type="text"
-                                            id="surname-form-second"
-                                            name="name">
-                                    </div>
+                            <div class="contacts-form__row">
+                                <div class="contacts-form__group contacts-form__group--width--half">
+                                    <label class="contacts-form__label" for="location-form-second">
+                                        Location
+                                    </label>
+                                    <input class="custom-form-field js-validFormField"
+                                        type="text"
+                                        id="location-form-second"
+                                        name="location">
                                 </div>
 
-                                <div class="contacts-form__row">
-                                    <div class="contacts-form__group contacts-form__group--width--half">
-                                        <label class="contacts-form__label" for="location-form-second">
-                                            Location
-                                        </label>
-                                        <input class="contacts-form__field js-validFormField"
-                                            type="text"
-                                            id="location-form-second"
-                                            name="location">
-                                    </div>
-
-                                    <div class="contacts-form__group contacts-form__group--width--half">
-                                        <label class="contacts-form__label" for="age-form-second">
-                                            Age
-                                        </label>
-                                        <input class="contacts-form__field contacts-form__field--type--number js-validFormField"
-                                            type="number"
-                                            id="age-form-second"
-                                            name="age">
-                                    </div>
+                                <div class="contacts-form__group contacts-form__group--width--half">
+                                    <label class="contacts-form__label" for="age-form-second">
+                                        Age
+                                    </label>
+                                    <input class="custom-form-field custom-form-field--type--number js-validFormField"
+                                        type="number"
+                                        id="age-form-second"
+                                        name="age">
                                 </div>
+                            </div>
 
-                                <div class="contacts-form__row">
-                                    <div class="contacts-form__group contacts-form__group--width--half">
-                                        <input class="contacts-form__field contacts-form__field--type--file custom-file js-setFileName"
-                                            type="file"
-                                            id="picture-form-second"
-                                            name="profile-picture"
-                                            accept="image/*"
-                                            data-img="profilePicture">
-                                        <label class="contacts-form__label custom-file__label" for="picture-form-second">
-                                            Profile picture
-                                            <span class="custom-file__name">Choose file...</span>
-                                        </label>
-                                    </div>
+                            <div class="contacts-form__row">
+                                <div class="contacts-form__group contacts-form__group--width--half">
+                                    <input class="custom-form-field custom-file js-setFileName"
+                                        type="file"
+                                        id="picture-form-second"
+                                        name="profile-picture"
+                                        accept="image/*"
+                                        data-img="profilePicture">
+                                    <label class="contacts-form__label custom-file__label" for="picture-form-second">
+                                        Profile picture
+                                        <span class="custom-file__name">Choose file...</span>
+                                    </label>
                                 </div>
+                            </div>
 
-                                <input class="contacts-form__submit-btn btn js-submitBtn" type="submit" value="Submit changes">
-                            </form>
-                        </div>
-
-                        <a class="modal__btn-close js-toggleModal" href="" data-modal="changeDataModal">
-                            <svg class="modal__icon" aria-hidden="true">
-                                <use xlink:href="img/sprite.svg#icon-btn-cross"></use>
-                            </svg>
-                        </a>
+                            <input class="contacts-form__submit-btn btn js-submitBtn" type="submit" value="Submit changes">
+                        </form>
                     </div>
+
+                    <button class="modal__btn-close js-toggleModal" type="button" data-modal="changeDataModal" aria-label="Close modal">
+                        <svg class="modal__icon" aria-hidden="true">
+                            <use xlink:href="img/sprite.svg#icon-btn-cross"></use>
+                        </svg>
+                    </button>
                 </div>
             </div>
         </div>
 
-        <div class="modal modal__successfully" id="formSuccessfullyModal">
-            <div class="modal__scrollable">
-                <div class="modal__container">
-                    <div class="modal__content modal__content--width--message-successfully">
-                        <div class="modal__message">
-                            <h3 class="modal__title modal__title--successfully title-h3">
-                                Form has been sent successfully
-                            </h3>
-                        </div>
+        <div class="modal modal__successfully" id="formSuccessfullyModal" aria-hidden="true">
+            <div class="modal__scrollable" tabindex="-1">
+                <div class="modal__content modal__content--width--message-successfully" role="dialog" aria-modal="true" aria-labelledby="form-successfully-modal-title">
+                    <h2 class="visually-hidden" id="form-successfully-modal-title">
+                        Form successfully modal
+                    </h2>
 
-                        <a class="modal__btn-close modal__btn-close--right-message js-toggleModal" href="" data-modal="formSuccessfullyModal">
-                            <svg class="modal__icon" aria-hidden="true">
-                                <use xlink:href="img/sprite.svg#icon-btn-cross"></use>
-                            </svg>
-                        </a>
+                    <div class="modal__message">
+                        <h3 class="modal__title modal__title--successfully title-h3">
+                            Form has been sent successfully
+                        </h3>
                     </div>
+
+                    <button class="modal__btn-close modal__btn-close--right-message js-toggleModal" type="button" data-modal="formSuccessfullyModal" aria-label="Close modal">
+                        <svg class="modal__icon" aria-hidden="true">
+                            <use xlink:href="img/sprite.svg#icon-btn-cross"></use>
+                        </svg>
+                    </button>
                 </div>
             </div>
         </div>
 
-        <div class="modal modal__error" id="formErrorModal">
-            <div class="modal__scrollable">
-                <div class="modal__container">
-                    <div class="modal__content modal__content--width--message-error">
-                        <div class="modal__message">
-                            <h3 class="modal__title modal__title--error title-h3">
-                                The form was sent but the server transmits an error:
-                                “The form was sent but the server transmits an error”
-                            </h3>
-                        </div>
+        <div class="modal modal__error" id="formErrorModal" aria-hidden="true">
+            <div class="modal__scrollable" tabindex="-1">
+                <div class="modal__content modal__content--width--message-error" role="dialog" aria-modal="true" aria-labelledby="form-error-modal-title">
+                    <h2 class="visually-hidden" id="form-error-modal-title">
+                        Form error modal
+                    </h2>
 
-                        <a class="modal__btn-close modal__btn-close--right-message js-toggleModal" href="" data-modal="formErrorModal">
-                            <svg class="modal__icon" aria-hidden="true">
-                                <use xlink:href="img/sprite.svg#icon-btn-cross"></use>
-                            </svg>
-                        </a>
+                    <div class="modal__message">
+                        <h3 class="modal__title modal__title--error title-h3">
+                            The form was sent but the server transmits an error:
+                            “The form was sent but the server transmits an error”
+                        </h3>
                     </div>
+
+                    <button class="modal__btn-close modal__btn-close--right-message js-toggleModal" type="button" data-modal="formErrorModal" aria-label="Close modal">
+                        <svg class="modal__icon" aria-hidden="true">
+                            <use xlink:href="img/sprite.svg#icon-btn-cross"></use>
+                        </svg>
+                    </button>
                 </div>
             </div>
         </div>

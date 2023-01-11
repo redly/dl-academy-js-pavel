@@ -2,43 +2,213 @@
     @include custom-filters-hidden;
 
     & + label {
+        display: inline-block;
         cursor: pointer;
-        opacity: 0.2;
-        padding: 0 0 0 29px;
+        padding: 2px 0 0 36px;
         position: relative;
 
         &::before {
             @include custom-filters-visible;
+
+            transition: opacity 0.4s;
         }
 
-        &:hover {
-            opacity: 0.6;
+        &::after {
+            transition: opacity 0.4s;
         }
-
-        &:checked {
-            opacity: 1;
-        }
-    }
-
-    &--padding + label {
-        padding: 2px 0 0 34px;
     }
 
     &:disabled + label {
         cursor: default;
         opacity: 0.2;
-    }
 
-    &:focus + label {
-        opacity: 0.6;
-    }
-
-    &:checked + label {
-        opacity: 1;
+        &::before {
+            opacity: 0.3;
+        }
     }
 
     &:checked + label::before {
-        background: $color-white url("../img/checkbox-checked.svg") no-repeat 100% 0;
-        background-size: 14px 14px;
+        /*
+        background: $color-white url("../img/checkbox-checked.svg") no-repeat 50% 50%;
+        background-size: 14px 15px;
+        */
+
+        opacity: 1;
+    }
+
+    &:checked + label::after {
+        @include custom-checkbox-checked;
+
+        opacity: 1;
+    }
+
+    &:hover:not(.custom-checkbox:disabled) + label {
+        &::before {
+            opacity: 0.6;
+        }
+
+        &::after {
+            opacity: 0.6;
+        }
+    }
+
+    &:focus + label {
+        &::before {
+            opacity: 0.6;
+        }
+
+        &::after {
+            opacity: 0.6;
+        }
+    }
+
+    &--padding {
+        & + label {
+            opacity: 0.3;
+            padding: 2px 0 0 34px;
+            transition: opacity 0.4s;
+        }
+
+        & + label::before {
+            opacity: 0.3;
+            border-radius: 3px;
+            width: 19px;
+            height: 19px;
+        }
+
+        &:checked + label {
+            opacity: 1;
+        }
+
+        &:checked + label::after {
+            top: 1px;
+            left: 4px;
+        }
+
+        &:hover + label {
+            opacity: 0.7;
+        }
+
+        &:focus + label {
+            opacity: 0.7;
+        }
+    }
+
+    &--tag {
+        & + label {
+            display: block;
+            /*
+                Сделал эти чекбоксы блочными так как элементы ведут себя непредсказуемо в firefox,
+                видимо из за абсолютного позиционирования во флексах
+            */
+        }
+
+        & + label::before {
+            opacity: 1;
+        }
+    }
+
+    &--border-color--blue {
+        & + label::before {
+            border: 2px solid $color-blue;
+        }
+
+        &:checked + label::after {
+            background-color: $color-blue;
+
+            /* @include data-image($background-image: $bg-img-blue); */
+            /* background-image: url("../img/checkbox-checked-azure.svg"); */
+        }
+    }
+
+    &--border-color--azure {
+        & + label::before {
+            border: 2px solid $color-azure;
+        }
+
+        &:checked + label::after {
+            background-color: $color-azure;
+
+            /* @include data-image($background-image: $bg-img-azure); */
+            /* background-image: url("../img/checkbox-checked-azure.svg"); */
+        }
+    }
+
+    &--border-color--yellow {
+        & + label::before {
+            border: 2px solid $color-yellow;
+        }
+
+        &:checked + label::after {
+            background-color: $color-yellow;
+
+            /* @include data-image($background-image: $bg-img-yellow); */
+            /* background-image: url("../img/checkbox-checked-yellow.svg"); */
+        }
+    }
+
+    &--border-color--turquoise {
+        & + label::before {
+            border: 2px solid $color-turquoise;
+        }
+
+        &:checked + label::after {
+            background-color: $color-turquoise;
+
+            /* @include data-image($background-image: $bg-img-turquoise); */
+            /* background-image: url("../img/checkbox-checked-turquoise.svg"); */
+        }
+    }
+
+    &--border-color--orange {
+        & + label::before {
+            border: 2px solid $color-orange;
+        }
+
+        &:checked + label::after {
+            background-color: $color-orange;
+
+            /* @include data-image($background-image: $bg-img-orange); */
+            /* background-image: url("../img/checkbox-checked-orange.svg"); */
+        }
+    }
+
+    &--border-color--pink {
+        & + label::before {
+            border: 2px solid $color-pink;
+        }
+
+        &:checked + label::after {
+            background-color: $color-pink;
+
+            /* @include data-image($background-image: $bg-img-pink); */
+            /* background-image: url("../img/checkbox-checked-pink.svg"); */
+        }
+    }
+
+    &--border-color--violet {
+        & + label::before {
+            border: 2px solid $color-violet;
+        }
+
+        &:checked + label::after {
+            background-color: $color-violet;
+
+            /* @include data-image($background-image: $bg-img-violet); */
+            /* background-image: url("../img/checkbox-checked-violet.svg"); */
+        }
+    }
+
+    &--border-color--green {
+        & + label::before {
+            border: 2px solid $color-green-light;
+        }
+
+        &:checked + label::after {
+            background-color: $color-green-light;
+
+            /* @include data-image($background-image: $bg-img-green-light); */
+            /* background-image: url("../img/checkbox-checked-green-light.svg"); */
+        }
     }
 }

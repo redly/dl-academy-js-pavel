@@ -22,7 +22,7 @@
         <header class="header">
             <div class="container">
                 <nav class="header__menu menu" id="navMenu">
-                    <button class="menu__btn-cross menu-btn js-toggleMenu" type="button" data-menu="navMenu">
+                    <button class="menu__btn-cross menu-btn js-toggleMenu" type="button" data-menu="navMenu" aria-label="Close menu">
                         <svg class="menu-btn__icon" aria-hidden="true">
                             <use xlink:href="img/sprite.svg#icon-btn-cross"></use>
                         </svg>
@@ -32,16 +32,16 @@
                         <div class="menu__container">
                             <ul class="menu__list">
                                 <li class="menu__item">
-                                    <a class="menu__link menu__link--current" href="">Home</a>
+                                    <span class="menu__link menu__link--current">Home</span>
                                 </li>
                                 <li class="menu__item">
-                                    <a class="menu__link" href="">My blog</a>
+                                    <a class="menu__link" href="blog.html">My blog</a>
                                 </li>
                                 <li class="menu__item">
-                                    <a class="menu__link js-toggleModal" data-modal="signInModal" href="">Sign in</a>
+                                    <a class="menu__link js-toggleModal" data-modal="signInModal" href="#signInModal">Sign in</a>
                                 </li>
                                 <li class="menu__item">
-                                    <a class="menu__link js-toggleModal" data-modal="registerModal" href="">Register</a>
+                                    <a class="menu__link js-toggleModal" data-modal="registerModal" href="#registerModal">Register</a>
                                 </li>
                             </ul>
                         </div>
@@ -51,46 +51,52 @@
         </header>
 
         <main class="content">
+            <div class="content__header content__header--main">
+                <div class="content__wrapper content__wrapper--main container">
+                    <h1 class="content__title content__title--main title-h1">
+                        Pavel Krasulin
+                    </h1>
+
+                    <div class="content__row">
+                        <p class="content__text">
+                            Future front-end developer 32 years old, Tolyatti
+                        </p>
+
+                        <button class="content__btn-menu menu-btn js-toggleMenu" type="button" data-menu="navMenu" aria-label="Open menu">
+                            <svg class="menu-btn__icon menu-btn__icon--menu" aria-hidden="true">
+                                <use xlink:href="img/sprite.svg#icon-btn-menu"></use>
+                            </svg>
+                        </button>
+                    </div>
+                </div>
+            </div>
+
             <section class="main-slider">
                 <div class="container">
-                    <div class="main-slider__header">
-                        <h1 class="main-slider__title title-h1">
-                            Pavel Krasulin
-                        </h1>
+                    <h2 class="visually-hidden">
+                        Main slider
+                    </h2>
 
-                        <div class="main-slider__row">
-                            <p class="main-slider__text">
-                                Future front-end developer 32 years old, Tolyatti
-                            </p>
-
-                            <button class="main-slider__btn-menu menu-btn js-toggleMenu" type="button" data-menu="navMenu">
-                                <svg class="menu-btn__icon menu-btn__icon--menu" aria-hidden="true">
-                                    <use xlink:href="img/sprite.svg#icon-btn-menu"></use>
-                                </svg>
-                            </button>
-                        </div>
-                    </div>
-
-                    <div class="main-slider__slider swiper swiper-main-slider">
+                    <div class="swiper swiper-main-slider">
                         <div class="swiper-wrapper">
                             <div class="main-slider__slide swiper-slide">
                                 <picture>
                                     <source srcset="img/blocks/main-page/pavel-gates-mobile@1x.avif, img/blocks/main-page/pavel-gates-mobile@2x.avif 2x"
-                                        media="(max-width: 666px)"
+                                        media="(max-width: 767px)"
                                         type="image/avif">
                                     <source srcset="img/blocks/main-page/pavel-gates-mobile@1x.webp, img/blocks/main-page/pavel-gates-mobile@2x.webp 2x"
-                                        media="(max-width: 666px)"
+                                        media="(max-width: 767px)"
                                         type="image/webp">
                                     <source srcset="img/blocks/main-page/pavel-gates-mobile@1x.jpg, img/blocks/main-page/pavel-gates-mobile@2x.jpg 2x"
-                                        media="(max-width: 666px)">
+                                        media="(max-width: 767px)">
                                     <source srcset="img/blocks/main-page/pavel-gates-tablet@1x.avif 1x, img/blocks/main-page/pavel-gates-tablet@2x.avif 2x"
-                                        media="(max-width: 1023px)"
+                                        media="(max-width: 1280px)"
                                         type="image/avif">
                                     <source srcset="img/blocks/main-page/pavel-gates-tablet@1x.webp 1x, img/blocks/main-page/pavel-gates-tablet@2x.webp 2x"
-                                        media="(max-width: 1023px)"
+                                        media="(max-width: 1280px)"
                                         type="image/webp">
                                     <source srcset="img/blocks/main-page/pavel-gates-tablet@1x.jpg 1x, img/blocks/main-page/pavel-gates-tablet.jpg 2x"
-                                        media="(max-width: 1023px)">
+                                        media="(max-width: 1280px)">
                                     <source srcset="img/blocks/main-page/pavel-gates-desktop@1x.avif 1x, img/blocks/main-page/pavel-gates-desktop@2x.avif 2x"
                                         type="image/avif">
                                     <source srcset="img/blocks/main-page/pavel-gates-desktop@1x.webp 1x, img/blocks/main-page/pavel-gates-desktop.webp 2x"
@@ -107,21 +113,21 @@
                             <div class="main-slider__slide swiper-slide">
                                 <picture>
                                     <source srcset="img/blocks/main-page/pavel-beach-mobile@1x.avif, img/blocks/main-page/pavel-beach-mobile@2x.avif 2x"
-                                        media="(max-width: 666px)"
+                                        media="(max-width: 767px)"
                                         type="image/avif">
                                     <source srcset="img/blocks/main-page/pavel-beach-mobile@1x.webp, img/blocks/main-page/pavel-beach-mobile@2x.webp 2x"
-                                        media="(max-width: 666px)"
+                                        media="(max-width: 767px)"
                                         type="image/webp">
                                     <source srcset="img/blocks/main-page/pavel-beach-mobile@1x.jpg, img/blocks/main-page/pavel-beach-mobile@2x.jpg 2x"
-                                        media="(max-width: 666px)">
+                                        media="(max-width: 767px)">
                                     <source srcset="img/blocks/main-page/pavel-beach-tablet@1x.avif 1x, img/blocks/main-page/pavel-beach-tablet@2x.avif 2x"
-                                        media="(max-width: 1023px)"
+                                        media="(max-width: 1280px)"
                                         type="image/avif">
                                     <source srcset="img/blocks/main-page/pavel-beach-tablet@1x.webp 1x, img/blocks/main-page/pavel-beach-tablet@2x.webp 2x"
-                                        media="(max-width: 1023px)"
+                                        media="(max-width: 1280px)"
                                         type="image/webp">
                                     <source srcset="img/blocks/main-page/pavel-beach-tablet@1x.jpg 1x, img/blocks/main-page/pavel-beach-tablet.jpg 2x"
-                                        media="(max-width: 1023px)">
+                                        media="(max-width: 1280px)">
                                     <source srcset="img/blocks/main-page/pavel-beach-desktop@1x.avif 1x, img/blocks/main-page/pavel-beach-desktop@2x.avif 2x"
                                         type="image/avif">
                                     <source srcset="img/blocks/main-page/pavel-beach-desktop@1x.webp 1x, img/blocks/main-page/pavel-beach-desktop.webp 2x"
@@ -138,21 +144,21 @@
                             <div class="main-slider__slide swiper-slide">
                                 <picture>
                                     <source srcset="img/blocks/main-page/pavel-hill-mobile@1x.avif, img/blocks/main-page/pavel-hill-mobile@2x.avif 2x"
-                                        media="(max-width: 666px)"
+                                        media="(max-width: 767px)"
                                         type="image/avif">
                                     <source srcset="img/blocks/main-page/pavel-hill-mobile@1x.webp, img/blocks/main-page/pavel-hill-mobile@2x.webp 2x"
-                                        media="(max-width: 666px)"
+                                        media="(max-width: 767px)"
                                         type="image/webp">
                                     <source srcset="img/blocks/main-page/pavel-hill-mobile@1x.jpg, img/blocks/main-page/pavel-hill-mobile@2x.jpg 2x"
-                                        media="(max-width: 666px)">
+                                        media="(max-width: 767px)">
                                     <source srcset="img/blocks/main-page/pavel-hill-tablet@1x.avif 1x, img/blocks/main-page/pavel-hill-tablet@2x.avif 2x"
-                                        media="(max-width: 1023px)"
+                                        media="(max-width: 1280px)"
                                         type="image/avif">
                                     <source srcset="img/blocks/main-page/pavel-hill-tablet@1x.webp 1x, img/blocks/main-page/pavel-hill-tablet@2x.webp 2x"
-                                        media="(max-width: 1023px)"
+                                        media="(max-width: 1280px)"
                                         type="image/webp">
                                     <source srcset="img/blocks/main-page/pavel-hill-tablet@1x.jpg 1x, img/blocks/main-page/pavel-hill-tablet.jpg 2x"
-                                        media="(max-width: 1023px)">
+                                        media="(max-width: 1280px)">
                                     <source srcset="img/blocks/main-page/pavel-hill-desktop@1x.avif 1x, img/blocks/main-page/pavel-hill-desktop@2x.avif 2x"
                                         type="image/avif">
                                     <source srcset="img/blocks/main-page/pavel-hill-desktop@1x.webp 1x, img/blocks/main-page/pavel-hill-desktop.webp 2x"
@@ -169,21 +175,21 @@
                             <div class="main-slider__slide swiper-slide">
                                 <picture>
                                     <source srcset="img/blocks/main-page/pavel-books-mobile@1x.avif, img/blocks/main-page/pavel-books-mobile@2x.avif 2x"
-                                        media="(max-width: 666px)"
+                                        media="(max-width: 767px)"
                                         type="image/avif">
                                     <source srcset="img/blocks/main-page/pavel-books-mobile@1x.webp, img/blocks/main-page/pavel-books-mobile@2x.webp 2x"
-                                        media="(max-width: 666px)"
+                                        media="(max-width: 767px)"
                                         type="image/webp">
                                     <source srcset="img/blocks/main-page/pavel-books-mobile@1x.jpg, img/blocks/main-page/pavel-books-mobile@2x.jpg 2x"
-                                        media="(max-width: 666px)">
+                                        media="(max-width: 767px)">
                                     <source srcset="img/blocks/main-page/pavel-books-tablet@1x.avif 1x, img/blocks/main-page/pavel-books-tablet@2x.avif 2x"
-                                        media="(max-width: 1023px)"
+                                        media="(max-width: 1280px)"
                                         type="image/avif">
                                     <source srcset="img/blocks/main-page/pavel-books-tablet@1x.webp 1x, img/blocks/main-page/pavel-books-tablet@2x.webp 2x"
-                                        media="(max-width: 1023px)"
+                                        media="(max-width: 1280px)"
                                         type="image/webp">
                                     <source srcset="img/blocks/main-page/pavel-books-tablet@1x.jpg 1x, img/blocks/main-page/pavel-books-tablet.jpg 2x"
-                                        media="(max-width: 1023px)">
+                                        media="(max-width: 1280px)">
                                     <source srcset="img/blocks/main-page/pavel-books-desktop@1x.avif 1x, img/blocks/main-page/pavel-books-desktop@2x.avif 2x"
                                         type="image/avif">
                                     <source srcset="img/blocks/main-page/pavel-books-desktop@1x.webp 1x, img/blocks/main-page/pavel-books-desktop.webp 2x"
@@ -344,21 +350,21 @@
                             <div class="swiper-slide">
                                 <picture>
                                     <source srcset="img/blocks/main-page/site-main-page-mobile@1x.avif, img/blocks/main-page/site-main-page-mobile@2x.avif 2x"
-                                            media="(max-width: 666px)"
-                                            type="image/avif">
+                                        media="(max-width: 767px)"
+                                        type="image/avif">
                                     <source srcset="img/blocks/main-page/site-main-page-mobile@1x.webp, img/blocks/main-page/site-main-page-mobile@2x.webp 2x"
-                                        media="(max-width: 666px)"
+                                        media="(max-width: 767px)"
                                         type="image/webp">
                                     <source srcset="img/blocks/main-page/site-main-page-mobile@1x.jpg, img/blocks/main-page/site-main-page-mobile@2x.jpg 2x"
-                                        media="(max-width: 666px)">
+                                        media="(max-width: 767px)">
                                     <source srcset="img/blocks/main-page/site-main-page-tablet@1x.avif 1x, img/blocks/main-page/site-main-page-tablet@2x.avif 2x"
-                                        media="(max-width: 1023px)"
+                                        media="(max-width: 1280px)"
                                         type="image/avif">
                                     <source srcset="img/blocks/main-page/site-main-page-tablet@1x.webp 1x, img/blocks/main-page/site-main-page-tablet@2x.webp 2x"
-                                        media="(max-width: 1023px)"
+                                        media="(max-width: 1280px)"
                                         type="image/webp">
                                     <source srcset="img/blocks/main-page/site-main-page-tablet@1x.jpg 1x, img/blocks/main-page/site-main-page-tablet.jpg 2x"
-                                        media="(max-width: 1023px)">
+                                        media="(max-width: 1280px)">
                                     <source srcset="img/blocks/main-page/site-main-page-desktop@1x.avif 1x, img/blocks/main-page/site-main-page-desktop@2x.avif 2x"
                                         type="image/avif">
                                     <source srcset="img/blocks/main-page/site-main-page-desktop@1x.webp 1x, img/blocks/main-page/site-main-page-desktop.webp 2x"
@@ -375,21 +381,21 @@
                             <div class="swiper-slide">
                                 <picture>
                                     <source srcset="img/blocks/main-page/site-toys-page-mobile@1x.avif, img/blocks/main-page/site-toys-page-mobile@2x.avif 2x"
-                                        media="(max-width: 666px)"
+                                        media="(max-width: 767px)"
                                         type="image/avif">
                                     <source srcset="img/blocks/main-page/site-toys-page-mobile@1x.webp, img/blocks/main-page/site-toys-page-mobile@2x.webp 2x"
-                                        media="(max-width: 666px)"
+                                        media="(max-width: 767px)"
                                         type="image/webp">
                                     <source srcset="img/blocks/main-page/site-toys-page-mobile@1x.jpg, img/blocks/main-page/site-toys-page-mobile@2x.jpg 2x"
-                                        media="(max-width: 666px)">
+                                        media="(max-width: 767px)">
                                     <source srcset="img/blocks/main-page/site-toys-page-tablet@1x.avif 1x, img/blocks/main-page/site-toys-page-tablet@2x.avif 2x"
-                                        media="(max-width: 1023px)"
+                                        media="(max-width: 1280px)"
                                         type="image/avif">
                                     <source srcset="img/blocks/main-page/site-toys-page-tablet@1x.webp 1x, img/blocks/main-page/site-toys-page-tablet@2x.webp 2x"
-                                        media="(max-width: 1023px)"
+                                        media="(max-width: 1280px)"
                                         type="image/webp">
                                     <source srcset="img/blocks/main-page/site-toys-page-tablet@1x.jpg 1x, img/blocks/main-page/site-toys-page-tablet.jpg 2x"
-                                        media="(max-width: 1023px)">
+                                        media="(max-width: 1280px)">
                                     <source srcset="img/blocks/main-page/site-toys-page-desktop@1x.avif 1x, img/blocks/main-page/site-toys-page-desktop@2x.avif 2x"
                                         type="image/avif">
                                     <source srcset="img/blocks/main-page/site-toys-page-desktop@1x.webp 1x, img/blocks/main-page/site-toys-page-desktop.webp 2x"
@@ -406,21 +412,21 @@
                             <div class="swiper-slide">
                                 <picture>
                                     <source srcset="img/blocks/main-page/site-blog-page-mobile@1x.avif, img/blocks/main-page/site-blog-page-mobile@2x.avif 2x"
-                                        media="(max-width: 666px)"
+                                        media="(max-width: 767px)"
                                         type="image/avif">
                                     <source srcset="img/blocks/main-page/site-blog-page-mobile@1x.webp, img/blocks/main-page/site-blog-page-mobile@2x.webp 2x"
-                                        media="(max-width: 666px)"
+                                        media="(max-width: 767px)"
                                         type="image/webp">
                                     <source srcset="img/blocks/main-page/site-blog-page-mobile@1x.jpg, img/blocks/main-page/site-blog-page-mobile@2x.jpg 2x"
-                                        media="(max-width: 666px)">
+                                        media="(max-width: 767px)">
                                     <source srcset="img/blocks/main-page/site-blog-page-tablet@1x.avif 1x, img/blocks/main-page/site-blog-page-tablet@2x.avif 2x"
-                                        media="(max-width: 1023px)"
+                                        media="(max-width: 1280px)"
                                         type="image/avif">
                                     <source srcset="img/blocks/main-page/site-blog-page-tablet@1x.webp 1x, img/blocks/main-page/site-blog-page-tablet@2x.webp 2x"
-                                        media="(max-width: 1023px)"
+                                        media="(max-width: 1280px)"
                                         type="image/webp">
                                     <source srcset="img/blocks/main-page/site-blog-page-tablet@1x.jpg 1x, img/blocks/main-page/site-blog-page-tablet.jpg 2x"
-                                        media="(max-width: 1023px)">
+                                        media="(max-width: 1280px)">
                                     <source srcset="img/blocks/main-page/site-blog-page-desktop@1x.avif 1x, img/blocks/main-page/site-blog-page-desktop@2x.avif 2x"
                                         type="image/avif">
                                     <source srcset="img/blocks/main-page/site-blog-page-desktop@1x.webp 1x, img/blocks/main-page/site-blog-page-desktop.webp 2x"
@@ -450,7 +456,12 @@
                         <div class="portfolio-slider__description slider-description">
                             <div class="slider-description__container">
                                 <h3 class="slider-description__title">
-                                    <a class="slider-description__link" href="">Learning site for DL Academy courses</a>
+                                    <a class="slider-description__link underlined-link underlined-link--white"
+                                        href="https://redly.github.io/dl-academy-advanced-pavel/"
+                                        target="_blank"
+                                        rel="noopener nofollow">
+                                        Learning site for DL Academy courses
+                                    </a>
                                 </h3>
 
                                 <p class="slider-description__text">
@@ -475,33 +486,64 @@
                         Want to know more or just chat? You are welcome!
                     </p>
 
-                    <a class="footer__btn btn btn--black-and-long js-toggleModal" data-modal="sendMsgModal" href="">Send message</a>
+                    <a class="footer__btn btn btn--black-and-long js-toggleModal" data-modal="sendMsgModal" href="#sendMsgModal">Send message</a>
 
                     <ul class="footer__list">
                         <li class="footer__item">
-                            <a class="footer__item-link btn" href="https://www.instagram.com/krasulinpavel/" target="_blank" rel="noopener nofollow">Instagram</a>
+                            <a class="footer__item-link btn"
+                                href="https://www.instagram.com/krasulinpavel/"
+                                target="_blank"
+                                rel="noopener nofollow">
+                                Instagram
+                            </a>
                         </li>
                         <li class="footer__item">
-                            <a class="footer__item-link btn" href="https://vk.com/krasulinpavel" target="_blank" rel="noopener nofollow">Vk</a>
+                            <a class="footer__item-link btn"
+                                href="https://vk.com/krasulinpavel"
+                                target="_blank"
+                                rel="noopener nofollow">
+                                Vk
+                            </a>
                         </li>
                         <li class="footer__item">
-                            <a class="footer__item-link btn" href="https://t.me/krasulinpavel" target="_blank" rel="noopener nofollow">Telegram</a>
+                            <a class="footer__item-link btn"
+                                href="https://t.me/krasulinpavel"
+                                target="_blank"
+                                rel="noopener nofollow">
+                                Telegram
+                            </a>
                         </li>
                         <li class="footer__item">
-                            <a class="footer__item-link btn" href="mailto:krasulinpavel@gmail.com">Mail</a>
+                            <a class="footer__item-link btn"
+                                href="mailto:krasulinpavel@gmail.com">
+                                Mail
+                            </a>
                         </li>
                         <li class="footer__item">
-                            <a class="footer__item-link btn" href="https://github.com/nylus-ark" target="_blank" rel="noopener nofollow">GitHub</a>
+                            <a class="footer__item-link btn"
+                                href="https://github.com/nylus-ark"
+                                target="_blank"
+                                rel="noopener nofollow">
+                                GitHub
+                            </a>
                         </li>
                         <li class="footer__item">
-                            <a class="footer__item-link btn" href="tel:89379875332">Phone</a>
+                            <a class="footer__item-link btn"
+                                href="tel:89379875332">
+                                Phone
+                            </a>
                         </li>
                     </ul>
 
                     <div class="footer__bottom">
                         <p class="footer__bottom-text">
                             Design by
-                            <a class="footer__bottom-link" href="https://dlacademy.ru/" target="_blank" rel="noopener nofollow">DL Academy</a>
+                            <a class="footer__bottom-link underlined-link underlined-link--grey-to-black"
+                                href="https://dlacademy.ru/"
+                                target="_blank"
+                                rel="noopener nofollow">
+                                DL Academy
+                            </a>
                         </p>
                         <p class="footer__bottom-text">
                             Program code from Pavel
@@ -511,203 +553,275 @@
             </div>
         </footer>
 
-        <button class="scroll-btn-up js-scrollToUpBtn" type="button">
+        <button class="scroll-btn-up js-scrollToUpBtn" type="button" aria-label="Go to top">
             <svg class="scroll-btn-up__icon" aria-hidden="true">
                 <use xlink:href="img/sprite.svg#icon-btn-up"></use>
             </svg>
         </button>
 
-        <div class="modal" id="signInModal">
-            <div class="modal__scrollable">
-                <div class="modal__container">
-                    <div class="modal__content modal__content--width--small">
-                        <div class="contacts-form">
-                            <form class="contacts-form__content js-contactForm" action="https://echo.htmlacademy.ru/" method="get">
-                                <div class="contacts-form__group">
-                                    <label class="contacts-form__label" for="email-form-first">
-                                        Email
+        <div class="modal" id="signInModal" aria-hidden="true">
+            <div class="modal__scrollable" tabindex="-1">
+                <div class="modal__content modal__content--width--small" role="dialog" aria-modal="true" aria-labelledby="sign-in-modal-title">
+                    <h2 class="visually-hidden" id="sign-in-modal-title">
+                        Sign in modal
+                    </h2>
+
+                    <div class="contacts-form">
+                        <form class="contacts-form__content js-contactForm" action="https://echo.htmlacademy.ru/" method="get">
+                            <div class="contacts-form__group">
+                                <label class="contacts-form__label" for="email-form-first">
+                                    Email
+                                    <span class="contacts-form__required">*</span>
+                                </label>
+                                <input class="custom-form-field js-validFormField"
+                                    type="email"
+                                    id="email-form-first"
+                                    name="email"
+                                    data-pattern="/^[a-zA-Z0-9.!#$%&’*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/"
+                                    data-message="Please enter a valid email address (your entry is not in the format &#34;somebody@example.com&#34; or &#34;somebody@local&#34;)"
+                                    required>
+                            </div>
+
+                            <div class="contacts-form__group">
+                                <label class="contacts-form__label" for="password-form-first">
+                                    Password
+                                    <span class="contacts-form__required">*</span>
+                                </label>
+                                <input class="custom-form-field js-validFormField"
+                                    type="password" id="password-form-first"
+                                    name="password"
+                                    required>
+                            </div>
+
+                            <input class="contacts-form__submit-btn btn js-submitBtn"
+                                type="submit"
+                                value="Log in">
+                        </form>
+                    </div>
+
+                    <button class="modal__btn-close modal__btn-close--right js-toggleModal" type="button" data-modal="signInModal" aria-label="Close modal">
+                        <svg class="modal__icon" aria-hidden="true">
+                            <use xlink:href="img/sprite.svg#icon-btn-cross"></use>
+                        </svg>
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <div class="modal" id="registerModal" aria-hidden="true">
+            <div class="modal__scrollable" tabindex="-1">
+                <div class="modal__content" role="dialog" aria-modal="true" aria-labelledby="register-modal-title">
+                    <h2 class="visually-hidden" id="register-modal-title">
+                        Register modal
+                    </h2>
+
+                    <div class="contacts-form">
+                        <form class="contacts-form__content js-contactForm" action="https://echo.htmlacademy.ru/" method="post">
+                            <div class="contacts-form__group">
+                                <label class="contacts-form__label" for="email-form-second">
+                                    Email
+                                    <span class="contacts-form__required">*</span>
+                                </label>
+                                <input class="custom-form-field js-validFormField"
+                                    type="email"
+                                    id="email-form-second"
+                                    name="email"
+                                    required>
+                            </div>
+
+                            <div class="contacts-form__row">
+                                <div class="contacts-form__group contacts-form__group--width--half">
+                                    <label class="contacts-form__label" for="name-form-second">
+                                        Name
                                         <span class="contacts-form__required">*</span>
                                     </label>
-                                    <input class="contacts-form__field js-validFormField" type="email" id="email-form-first" name="email" required>
+                                    <input class="custom-form-field js-validFormField"
+                                        type="text" id="name-form-second"
+                                        name="name"
+                                        required>
                                 </div>
 
-                                <div class="contacts-form__group">
-                                    <label class="contacts-form__label" for="password-form-first">
+                                <div class="contacts-form__group contacts-form__group--width--half">
+                                    <label class="contacts-form__label" for="surname-form-second">
+                                        Surname
+                                        <span class="contacts-form__required">*</span>
+                                    </label>
+                                    <input class="custom-form-field js-validFormField"
+                                        type="text"
+                                        id="surname-form-second"
+                                        name="surname"
+                                        required>
+                                </div>
+                            </div>
+
+                            <div class="contacts-form__row">
+                                <div class="contacts-form__group contacts-form__group--width--half">
+                                    <label class="contacts-form__label" for="password-form-second">
                                         Password
                                         <span class="contacts-form__required">*</span>
                                     </label>
-                                    <input class="contacts-form__field js-validFormField" type="password" id="password-form-first" name="password" required>
+                                    <input class="custom-form-field password js-validFormField"
+                                        type="password"
+                                        id="password-form-second"
+                                        name="password"
+                                        required>
                                 </div>
 
-                                <input class="contacts-form__submit-btn btn js-submitBtn" type="submit" value="Log in">
-                            </form>
-                        </div>
-
-                        <a class="modal__btn-close modal__btn-close--right js-toggleModal" href="" data-modal="signInModal">
-                            <svg class="modal__icon" aria-hidden="true">
-                                <use xlink:href="img/sprite.svg#icon-btn-cross"></use>
-                            </svg>
-                        </a>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <div class="modal" id="registerModal">
-            <div class="modal__scrollable">
-                <div class="modal__container">
-                    <div class="modal__content">
-                        <div class="contacts-form">
-                            <form class="contacts-form__content js-contactForm" action="https://echo.htmlacademy.ru/" method="post">
-                                <div class="contacts-form__group">
-                                    <label class="contacts-form__label" for="email-form-second">
-                                        Email
+                                <div class="contacts-form__group contacts-form__group--width--half">
+                                    <label class="contacts-form__label" for="repeat-password-form-second">
+                                        Repeat password
                                         <span class="contacts-form__required">*</span>
                                     </label>
-                                    <input class="contacts-form__field js-validFormField" type="email" id="email-form-second" name="email" required>
+                                    <input class="custom-form-field password-repeat js-validFormField"
+                                        type="password"
+                                        id="repeat-password-form-second"
+                                        name="password-repeat"
+                                        required>
                                 </div>
+                            </div>
 
-                                <div class="contacts-form__row">
-                                    <div class="contacts-form__group contacts-form__group--width--half">
-                                        <label class="contacts-form__label" for="name-form-second">
-                                            Name
-                                            <span class="contacts-form__required">*</span>
-                                        </label>
-                                        <input class="contacts-form__field js-validFormField" type="text" id="name-form-second" name="name" required>
-                                    </div>
-
-                                    <div class="contacts-form__group contacts-form__group--width--half">
-                                        <label class="contacts-form__label" for="surname-form-second">
-                                            Surname
-                                            <span class="contacts-form__required">*</span>
-                                        </label>
-                                        <input class="contacts-form__field js-validFormField" type="text" id="surname-form-second" name="name" required>
-                                    </div>
-                                </div>
-
-                                <div class="contacts-form__row">
-                                    <div class="contacts-form__group contacts-form__group--width--half">
-                                        <label class="contacts-form__label" for="password-form-second">
-                                            Password
-                                            <span class="contacts-form__required">*</span>
-                                        </label>
-                                        <input class="contacts-form__field password js-validFormField" type="password" id="password-form-second" name="password" required>
-                                    </div>
-
-                                    <div class="contacts-form__group contacts-form__group--width--half">
-                                        <label class="contacts-form__label" for="repeat-password-form-second">
-                                            Repeat password
-                                            <span class="contacts-form__required">*</span>
-                                        </label>
-                                        <input class="contacts-form__field password-repeat js-validFormField" type="password" id="repeat-password-form-second" name="password-repeat" required>
-                                    </div>
-                                </div>
-
-                                <div class="contacts-form__row">
-                                    <div class="contacts-form__group contacts-form__group--width--half">
-                                        <label class="contacts-form__label" for="location-form-second">
-                                            Location
-                                            <span class="contacts-form__required">*</span>
-                                        </label>
-                                        <input class="contacts-form__field js-validFormField" type="text" id="location-form-second" name="location" required>
-                                    </div>
-
-                                    <div class="contacts-form__group contacts-form__group--width--half">
-                                        <label class="contacts-form__label" for="age-form-second">
-                                            Age
-                                            <span class="contacts-form__required">*</span>
-                                        </label>
-                                        <input class="contacts-form__field contacts-form__field--type--number js-validFormField" type="number" id="age-form-second" name="age" required>
-                                    </div>
-                                </div>
-
-                                <div class="contacts-form__group contacts-form__checkbox">
-                                    <input class="custom-checkbox custom-checkbox--padding js-approvedCheckbox" type="checkbox" id="consent-form-second">
-                                    <label class="contacts-form__label" for="consent-form-second">
-                                        Clicking on the button, you consent to the processing
-                                        of your personal data
+                            <div class="contacts-form__row">
+                                <div class="contacts-form__group contacts-form__group--width--half">
+                                    <label class="contacts-form__label" for="location-form-second">
+                                        Location
+                                        <span class="contacts-form__required">*</span>
                                     </label>
+                                    <input class="custom-form-field js-validFormField"
+                                        type="text"
+                                        id="location-form-second"
+                                        name="location"
+                                        required>
                                 </div>
 
-                                <input class="contacts-form__submit-btn btn js-submitBtn" type="submit" value="Sign up" disabled>
-                            </form>
-                        </div>
+                                <div class="contacts-form__group contacts-form__group--width--half">
+                                    <label class="contacts-form__label" for="age-form-second">
+                                        Age
+                                        <span class="contacts-form__required">*</span>
+                                    </label>
+                                    <input class="custom-form-field custom-form-field--type--number js-validFormField"
+                                        type="number"
+                                        id="age-form-second"
+                                        name="age"
+                                        required>
+                                </div>
+                            </div>
 
-                        <a class="modal__btn-close js-toggleModal" href="" data-modal="registerModal">
-                            <svg class="modal__icon" aria-hidden="true">
-                                <use xlink:href="img/sprite.svg#icon-btn-cross"></use>
-                            </svg>
-                        </a>
+                            <div class="contacts-form__group contacts-form__checkbox">
+                                <input class="custom-checkbox custom-checkbox--padding js-approvedCheckbox"
+                                    type="checkbox"
+                                    id="consent-form-second">
+                                <label class="contacts-form__label" for="consent-form-second">
+                                    Clicking on the button, you consent to the processing
+                                    of your personal data
+                                </label>
+                            </div>
+
+                            <input class="contacts-form__submit-btn btn js-submitBtn"
+                                type="submit"
+                                value="Sign up"
+                                disabled>
+                        </form>
                     </div>
+
+                    <button class="modal__btn-close js-toggleModal" type="button" data-modal="registerModal" aria-label="Close modal">
+                        <svg class="modal__icon" aria-hidden="true">
+                            <use xlink:href="img/sprite.svg#icon-btn-cross"></use>
+                        </svg>
+                    </button>
                 </div>
             </div>
         </div>
 
-        <div class="modal" id="sendMsgModal">
-            <div class="modal__scrollable">
-                <div class="modal__container">
-                    <div class="modal__content">
-                        <div class="contacts-form">
-                            <form class="contacts-form__content js-contactForm" action="https://echo.htmlacademy.ru/" method="post">
-                                <div class="contacts-form__row">
-                                    <div class="contacts-form__group contacts-form__group--width--half">
-                                        <label class="contacts-form__label" for="name-form-third">
-                                            What is your name?
-                                            <span class="contacts-form__required">*</span>
-                                        </label>
-                                        <input class="contacts-form__field js-validFormField" type="text" id="name-form-third" name="name" required>
-                                    </div>
+        <div class="modal" id="sendMsgModal" aria-hidden="true">
+            <div class="modal__scrollable" tabindex="-1">
+                <div class="modal__content" role="dialog" aria-modal="true" aria-labelledby="send-message-modal-title">
+                    <h2 class="visually-hidden" id="send-message-modal-title">
+                        Send message modal
+                    </h2>
 
-                                    <div class="contacts-form__group contacts-form__group--width--half">
-                                        <label class="contacts-form__label" for="subject-form-third">
-                                            Message subject
-                                            <span class="contacts-form__required">*</span>
-                                        </label>
-                                        <input class="contacts-form__field js-validFormField" type="text" id="subject-form-third" name="subject" required>
-                                    </div>
-                                </div>
-
-                                <div class="contacts-form__row">
-                                    <div class="contacts-form__group contacts-form__group--width--half">
-                                        <label class="contacts-form__label" for="email-form-third">
-                                            Your email
-                                            <span class="contacts-form__required">*</span>
-                                        </label>
-                                        <input class="contacts-form__field js-validFormField" type="email" id="email-form-third" name="email" required>
-                                    </div>
-
-                                    <div class="contacts-form__group contacts-form__group--width--half">
-                                        <label class="contacts-form__label" for="phone-form-third">
-                                            Your mobile phone
-                                            <span class="contacts-form__required">*</span>
-                                        </label>
-                                        <input class="contacts-form__field js-validFormField" type="tel" id="phone-form-third" name="phone" required>
-                                    </div>
-                                </div>
-
-                                <div class="contacts-form__group">
-                                    <label class="contacts-form__label" for="message-form-third">What do you want to discuss with me?</label>
-                                    <textarea class="contacts-form__field contacts-form__textarea js-validFormField" id="message-form-third" name="message"></textarea>
-                                </div>
-
-                                <div class="contacts-form__group contacts-form__checkbox">
-                                    <input class="custom-checkbox custom-checkbox--padding js-approvedCheckbox" type="checkbox" id="consent-form-third">
-                                    <label class="contacts-form__label" for="consent-form-third">
-                                        Clicking on the button, you consent to the processing
-                                        of your personal data
+                    <div class="contacts-form">
+                        <form class="contacts-form__content js-contactForm" action="https://echo.htmlacademy.ru/" method="post">
+                            <div class="contacts-form__row">
+                                <div class="contacts-form__group contacts-form__group--width--half">
+                                    <label class="contacts-form__label" for="name-form-third">
+                                        What is your name?
+                                        <span class="contacts-form__required">*</span>
                                     </label>
+                                    <input class="custom-form-field js-validFormField"
+                                        type="text"
+                                        id="name-form-third"
+                                        name="name" required>
                                 </div>
 
-                                <input class="contacts-form__submit-btn btn js-submitBtn" type="submit" value="Send" disabled>
-                            </form>
-                        </div>
+                                <div class="contacts-form__group contacts-form__group--width--half">
+                                    <label class="contacts-form__label" for="subject-form-third">
+                                        Message subject
+                                        <span class="contacts-form__required">*</span>
+                                    </label>
+                                    <input class="custom-form-field js-validFormField"
+                                        type="text"
+                                        id="subject-form-third"
+                                        name="subject"
+                                        required>
+                                </div>
+                            </div>
 
-                        <a class="modal__btn-close js-toggleModal" href="" data-modal="sendMsgModal">
-                            <svg class="modal__icon" aria-hidden="true">
-                                <use xlink:href="img/sprite.svg#icon-btn-cross"></use>
-                            </svg>
-                        </a>
+                            <div class="contacts-form__row">
+                                <div class="contacts-form__group contacts-form__group--width--half">
+                                    <label class="contacts-form__label" for="email-form-third">
+                                        Your email
+                                        <span class="contacts-form__required">*</span>
+                                    </label>
+                                    <input class="custom-form-field js-validFormField"
+                                        type="email"
+                                        id="email-form-third"
+                                        name="email"
+                                        required>
+                                </div>
+
+                                <div class="contacts-form__group contacts-form__group--width--half">
+                                    <label class="contacts-form__label" for="phone-form-third">
+                                        Your mobile phone
+                                        <span class="contacts-form__required">*</span>
+                                    </label>
+                                    <input class="custom-form-field js-validFormField"
+                                        type="tel"
+                                        id="phone-form-third"
+                                        name="phone"
+                                        required>
+                                </div>
+                            </div>
+
+                            <div class="contacts-form__group">
+                                <label class="contacts-form__label" for="message-form-third">What do you want to discuss with me?</label>
+                                <textarea class="custom-form-field custom-form-field--textarea js-validFormField"
+                                    id="message-form-third"
+                                    name="message">
+                                </textarea>
+                            </div>
+
+                            <div class="contacts-form__group contacts-form__checkbox">
+                                <input class="custom-checkbox custom-checkbox--padding js-approvedCheckbox"
+                                    type="checkbox"
+                                    id="consent-form-third">
+                                <label class="contacts-form__label" for="consent-form-third">
+                                    Clicking on the button, you consent to the processing
+                                    of your personal data
+                                </label>
+                            </div>
+
+                            <input class="contacts-form__submit-btn btn js-submitBtn"
+                                type="submit"
+                                value="Send"
+                                disabled>
+                        </form>
                     </div>
+
+                    <button class="modal__btn-close js-toggleModal" type="button" data-modal="sendMsgModal" aria-label="Close modal">
+                        <svg class="modal__icon" aria-hidden="true">
+                            <use xlink:href="img/sprite.svg#icon-btn-cross"></use>
+                        </svg>
+                    </button>
                 </div>
             </div>
         </div>

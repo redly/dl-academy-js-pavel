@@ -9,7 +9,7 @@
     z-index: 5;
 
     @media (min-width: $tablet-min-width) {
-        background-color: $color-white-sand-transparent;
+        background-color: $color-wild-sand-transparent;
     }
 
     &--is-open {
@@ -23,18 +23,10 @@
         flex-direction: column;
         overflow-x: hidden;
         max-height: 100%;
-        padding: 20px 0;
+        padding: 20px;
 
         @media (min-width: $tablet-min-width) {
             padding: 50px 0;
-        }
-    }
-
-    &__container {
-        padding: 0 20px;
-
-        @media (min-width: $tablet-min-width) {
-            display: flex;
             justify-content: center;
         }
     }
@@ -42,13 +34,6 @@
     &__content {
         display: flex;
         flex-direction: column-reverse;
-        /*
-            По дизайну кнопка расположена до формы.
-            Добавил column-reverse что бы
-            при переключении фокуса в форме,
-            кнопка была после нее.
-        */
-
         align-items: center;
         width: 100%;
         max-width: 370px;
@@ -91,6 +76,8 @@
     }
 
     &__btn-close {
+        @include btn-reset;
+
         margin: 0 auto 20px 0;
 
         @media (min-width: $tablet-min-width) {
@@ -131,9 +118,14 @@
         fill: $color-grey;
         width: 25px;
         height: 25px;
+        transition: fill 0.3s;
 
         &:hover {
             fill: $color-black;
+        }
+
+        &:active {
+            fill: $color-mercury;
         }
     }
 }

@@ -5,6 +5,10 @@
         padding: 60px 0;
     }
 
+    &--bg--wild-sand {
+        background-color: $color-wild-sand;
+    }
+
     &__title {
         text-align: center;
         margin: 0 0 10px;
@@ -62,12 +66,6 @@
 
     &__bottom-link {
         color: $color-grey;
-        text-decoration: underline dashed 1px;
-        text-underline-offset: 3px;
-
-        &:hover {
-            color: $color-black;
-            text-decoration: underline solid 1px;
-        }
+        text-decoration: none;
     }
 }

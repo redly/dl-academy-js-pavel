@@ -1,5 +1,5 @@
 .about {
-    background-color: $color-white-sand;
+    background-color: $color-wild-sand;
     padding: 40px 0;
 
     @media (min-width: $tablet-min-width) {
@@ -47,7 +47,7 @@
             content: "";
             border-style: solid;
             border-width: 20px;
-            border-color: $color-white-sand transparent transparent transparent;
+            border-color: $color-wild-sand transparent transparent transparent;
             width: 0;
             height: 0;
             position: absolute;
@@ -70,7 +70,7 @@
         /*
         &::after {
             content: "";
-            background-color: $color-white-sand;
+            background-color: $color-wild-sand;
             border-left: 2px solid $color-black;
             border-bottom: 2px solid $color-black;
             width: 30px;

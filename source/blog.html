@@ -1,0 +1,980 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="description" content="A blog page that includes popular posts on the most unexpected topics">
+
+        <link rel="icon" href="img/favicons/favicon.ico" sizes="any">
+        <link rel="icon" href="img/favicons/icon.svg" type="image/svg+xml">
+        <link rel="apple-touch-icon" href="img/favicons/apple-touch-icon.png">
+        <link rel="manifest" href="img/favicons/manifest.webmanifest">
+
+        <link rel="preload" href="fonts/gilroy/gilroy-medium.woff2" as="font" type="font/woff2" crossorigin="anonymous">
+        <link rel="preload" href="js/script.js" as="script">
+
+        <link rel="stylesheet" href="css/style.min.css">
+
+        <title>My Blog</title>
+    </head>
+    <body>
+        <header class="header">
+            <div class="container">
+                <nav class="header__menu menu" id="navMenu">
+                    <button class="menu__btn-cross menu-btn js-toggleMenu" type="button" data-menu="navMenu">
+                        <svg class="menu-btn__icon" aria-hidden="true">
+                            <use xlink:href="img/sprite.svg#icon-btn-cross"></use>
+                        </svg>
+                    </button>
+
+                    <div class="menu__scrollable">
+                        <div class="menu__container">
+                            <ul class="menu__list">
+                                <li class="menu__item">
+                                    <a class="menu__link" href="index.html">Home</a>
+                                </li>
+                                <li class="menu__item">
+                                    <a class="menu__link menu__link--current" href="">My blog</a>
+                                </li>
+                                <li class="menu__item">
+                                    <a class="menu__link" href="profile.html">My profile</a>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </nav>
+            </div>
+        </header>
+
+        <main class="content">
+            <div class="content__header">
+                <div class="content__wrapper container">
+                    <h1 class="content__title title-h1">
+                        My blog
+                    </h1>
+
+                    <button class="content__btn-menu menu-btn js-toggleMenu" type="button" data-menu="navMenu">
+                        <svg class="menu-btn__icon menu-btn__icon--menu" aria-hidden="true">
+                            <use xlink:href="img/sprite.svg#icon-btn-menu"></use>
+                        </svg>
+                    </button>
+                </div>
+            </div>
+
+            <section class="blog-filters">
+                <div class="container">
+                    <h2 class="visually-hidden">
+                        Blog filters
+                    </h2>
+
+                    <form class="blog-filters__form" action="https://echo.htmlacademy.ru/" method="get">
+                        <div class="blog-filters__col blog-filters__col--comments">
+                            <h3 class="blog-filters__title">
+                                Comments
+                            </h3>
+
+                            <ul class="blog-filters__list">
+                                <li class="blog-filters__item">
+                                    <input class="custom-checkbox" type="checkbox" id="comment-not-single" name="comment" value="not-a-single" checked>
+                                    <label for="comment-not-single">not a single</label>
+                                </li>
+                                <li class="blog-filters__item">
+                                    <input class="custom-checkbox" type="checkbox" id="comment-more-1" name="comment" value="more-1">
+                                    <label for="comment-more-1">more 1</label>
+                                </li>
+                                <li class="blog-filters__item">
+                                    <input class="custom-checkbox" type="checkbox" id="comment-more-50" name="comment" value="more-50">
+                                    <label for="comment-more-50">more 50</label>
+                                </li>
+                            </ul>
+                        </div>
+
+                        <div class="blog-filters__col blog-filters__col--views">
+                            <h3 class="blog-filters__title">
+                                Views
+                            </h3>
+
+                            <ul class="blog-filters__list">
+                                <li class="blog-filters__item">
+                                    <input class="custom-radio" type="radio" id="view-more-100" name="view" value="more-100">
+                                    <label for="view-more-100">more 100</label>
+                                </li>
+                                <li class="blog-filters__item">
+                                    <input class="custom-radio" type="radio" id="view-more-500" name="view" value="more-500" checked>
+                                    <label for="view-more-500">more 500</label>
+                                </li>
+                                <li class="blog-filters__item">
+                                    <input class="custom-radio" type="radio" id="view-more-1000" name="view" value="more-1000">
+                                    <label for="view-more-1000">more 1000</label>
+                                </li>
+                            </ul>
+                        </div>
+
+                        <div class="blog-filters__col blog-filters__col--sort-by">
+                            <h3 class="blog-filters__title">
+                                Sort by
+                            </h3>
+
+                            <ul class="blog-filters__list">
+                                <li class="blog-filters__item">
+                                    <input class="custom-radio" type="radio" id="sort-by-date" name="sort" value="date" checked>
+                                    <label for="sort-by-date">date</label>
+                                </li>
+                                <li class="blog-filters__item">
+                                    <input class="custom-radio" type="radio" id="sort-by-title" name="sort" value="title">
+                                    <label for="sort-by-title">title</label>
+                                </li>
+                                <li class="blog-filters__item">
+                                    <input class="custom-radio" type="radio" id="sort-by-views" name="sort" value="views">
+                                    <label for="sort-by-views">views</label>
+                                </li>
+                            </ul>
+                        </div>
+
+                        <div class="blog-filters__col blog-filters__col--how-show">
+                            <h3 class="blog-filters__title">
+                                How show?
+                            </h3>
+
+                            <ul class="blog-filters__list">
+                                <li class="blog-filters__item">
+                                    <input class="custom-radio" type="radio" id="show-by-5" name="show" value="show-5" checked>
+                                    <label for="show-by-5">show 5</label>
+                                </li>
+                                <li class="blog-filters__item">
+                                    <input class="custom-radio" type="radio" id="show-by-15" name="show" value="show-15">
+                                    <label for="show-by-15">show 15</label>
+                                </li>
+                            </ul>
+                        </div>
+
+                        <div class="blog-filters__col blog-filters__col--tags">
+                            <h3 class="blog-filters__title">
+                                Tags
+                            </h3>
+
+                            <ul class="blog-filters__list blog-filters__list--tags">
+                                <li class="blog-filters__item blog-filters__item--tag">
+                                    <input class="custom-checkbox custom-checkbox--tag custom-checkbox--border-color--blue"
+                                        type="checkbox"
+                                        id="color-blue"
+                                        name="color"
+                                        value="blue"
+                                        checked>
+                                    <label for="color-blue">
+                                        <span class="visually-hidden">blue</span>
+                                    </label>
+                                </li>
+                                <li class="blog-filters__item blog-filters__item--tag">
+                                    <input class="custom-checkbox custom-checkbox--tag custom-checkbox--border-color--azure"
+                                        type="checkbox"
+                                        id="color-azure"
+                                        name="color"
+                                        value="azure">
+                                    <label for="color-azure">
+                                        <span class="visually-hidden">azure</span>
+                                    </label>
+                                </li>
+                                <li class="blog-filters__item blog-filters__item--tag">
+                                    <input class="custom-checkbox custom-checkbox--tag custom-checkbox--border-color--yellow"
+                                        type="checkbox"
+                                        id="color-yellow"
+                                        name="color"
+                                        value="yellow">
+                                    <label for="color-yellow">
+                                        <span class="visually-hidden">yellow</span>
+                                    </label>
+                                </li>
+                                <li class="blog-filters__item blog-filters__item--tag">
+                                    <input class="custom-checkbox custom-checkbox--tag custom-checkbox--border-color--turquoise"
+                                        type="checkbox"
+                                        id="color-turquoise"
+                                        name="color"
+                                        value="turquoise">
+                                    <label for="color-turquoise">
+                                        <span class="visually-hidden">turquoise</span>
+                                    </label>
+                                </li>
+                                <li class="blog-filters__item blog-filters__item--tag">
+                                    <input class="custom-checkbox custom-checkbox--tag custom-checkbox--border-color--orange"
+                                        type="checkbox"
+                                        id="color-orange"
+                                        name="color"
+                                        value="orange">
+                                    <label for="color-orange">
+                                        <span class="visually-hidden">orange</span>
+                                    </label>
+                                </li>
+                                <li class="blog-filters__item blog-filters__item--tag">
+                                    <input class="custom-checkbox custom-checkbox--tag custom-checkbox--border-color--pink"
+                                        type="checkbox"
+                                        id="color-pink"
+                                        name="color"
+                                        value="pink"
+                                        checked>
+                                    <label for="color-pink">
+                                        <span class="visually-hidden">pink</span>
+                                    </label>
+                                </li>
+                                <li class="blog-filters__item blog-filters__item--tag">
+                                    <input class="custom-checkbox custom-checkbox--tag custom-checkbox--border-color--violet"
+                                        type="checkbox"
+                                        id="color-violet"
+                                        name="color"
+                                        value="violet">
+                                    <label for="color-violet">
+                                        <span class="visually-hidden">violet</span>
+                                    </label>
+                                </li>
+                                <li class="blog-filters__item blog-filters__item--tag">
+                                    <input class="custom-checkbox custom-checkbox--tag custom-checkbox--border-color--green"
+                                        type="checkbox"
+                                        id="color-green"
+                                        name="color"
+                                        value="green">
+                                    <label for="color-green">
+                                        <span class="visually-hidden">green</span>
+                                    </label>
+                                </li>
+                            </ul>
+                        </div>
+
+                        <div class="blog-filters__col blog-filters__col--reset">
+                            <div class="blog-filters__reset">
+                                <label class="blog-filters__reset-label" for="btn-reset">reset form</label>
+                                <button class="btn" type="reset" id="btn-reset">Apply</button>
+                            </div>
+                        </div>
+
+                        <div class="blog-filters__col blog-filters__col--search">
+                            <label class="visually-hidden" for="search-field">Search field</label>
+                            <input class="custom-form-field" type="search" id="search-field" name="search">
+                            <button class="btn" type="submit">Search</button>
+                        </div>
+                    </form>
+                </div>
+            </section>
+
+            <section class="blog-articles">
+                <div class="container">
+                    <h2 class="visually-hidden">
+                        Blog articles
+                    </h2>
+
+                    <div class="blog-articles__content">
+                        <article class="blog-article">
+                            <div class="blog-article__img">
+                                <picture>
+                                    <source srcset="img/blocks/blog-page/dog-mobile@1x.avif 1x, img/blocks/blog-page/dog-mobile@2x.avif 2x"
+                                        media="(max-width: 767px)"
+                                        type="image/avif">
+                                    <source srcset="img/blocks/blog-page/dog-mobile@1x.webp 1x, img/blocks/blog-page/dog-mobile@2x.webp 2x"
+                                        media="(max-width: 767px)"
+                                        type="image/webp">
+                                    <source srcset="img/blocks/blog-page/dog-mobile@1x.jpg 1x, img/blocks/blog-page/dog-mobile@2x.jpg 2x"
+                                        media="(max-width: 767px)">
+                                    <source srcset="img/blocks/blog-page/dog-tablet@1x.avif 1x, img/blocks/blog-page/dog-tablet@2x.avif 2x"
+                                        media="(max-width: 1280px)"
+                                        type="image/avif">
+                                    <source srcset="img/blocks/blog-page/dog-tablet@1x.webp 1x, img/blocks/blog-page/dog-tablet@2x.webp 2x"
+                                        media="(max-width: 1280px)"
+                                        type="image/webp">
+                                    <source srcset="img/blocks/blog-page/dog-tablet@1x.jpg 1x, img/blocks/blog-page/dog-tablet@2x.jpg 2x"
+                                        media="(max-width: 1280px)">
+                                    <source srcset="img/blocks/blog-page/dog-desktop@1x.avif 1x, img/blocks/blog-page/dog-desktop@2x.avif 2x"
+                                        type="image/avif">
+                                    <source srcset="img/blocks/blog-page/dog-desktop@1x.webp 1x, img/blocks/blog-page/dog-desktop@2x.webp 2x"
+                                        type="image/webp">
+                                    <img src="img/blocks/blog-page/dog-desktop@1x.jpg"
+                                        srcset="img/blocks/blog-page/dog-desktop@2x.jpg 2x"
+                                        width="320"
+                                        height="236"
+                                        loading="lazy"
+                                        decoding="async"
+                                        alt="Picture with a dog">
+                                </picture>
+                            </div>
+
+                            <div class="blog-article__col">
+                                <div class="blog-article__tags">
+                                    <span class="blog-article__tags-item"></span>
+                                    <span class="blog-article__tags-item"></span>
+                                </div>
+
+                                <div class="blog-article__data">
+                                    <time class="blog-article__data-item" datetime="2020-01-20">
+                                        20.01.2020
+                                    </time>
+                                    <span class="blog-article__data-item">
+                                        223 views
+                                    </span>
+                                    <span class="blog-article__data-item">
+                                        97 comments
+                                    </span>
+                                </div>
+
+                                <h3 class="blog-article__title title-h3">
+                                    This is my new dog.
+                                </h3>
+
+                                <p class="blog-article__text">
+                                    Duis sit odio dui pretium suspendisse malesuada sit leo in.
+                                    Massa nec eget etiam tellus ac.
+                                    Sodales nibh pellentesque donec eu ultrices tortor condimentum massa.
+                                </p>
+
+                                <a class="blog-article__link underlined-link underlined-link--black" href="">Go to this post</a>
+                            </div>
+                        </article>
+
+                        <article class="blog-article">
+                            <div class="blog-article__img">
+                                <picture>
+                                    <source srcset="img/blocks/blog-page/dog-mobile@1x.avif 1x, img/blocks/blog-page/dog-mobile@2x.avif 2x"
+                                        media="(max-width: 767px)"
+                                        type="image/avif">
+                                    <source srcset="img/blocks/blog-page/dog-mobile@1x.webp 1x, img/blocks/blog-page/dog-mobile@2x.webp 2x"
+                                        media="(max-width: 767px)"
+                                        type="image/webp">
+                                    <source srcset="img/blocks/blog-page/dog-mobile@1x.jpg 1x, img/blocks/blog-page/dog-mobile@2x.jpg 2x"
+                                        media="(max-width: 767px)">
+                                    <source srcset="img/blocks/blog-page/dog-tablet@1x.avif 1x, img/blocks/blog-page/dog-tablet@2x.avif 2x"
+                                        media="(max-width: 1280px)"
+                                        type="image/avif">
+                                    <source srcset="img/blocks/blog-page/dog-tablet@1x.webp 1x, img/blocks/blog-page/dog-tablet@2x.webp 2x"
+                                        media="(max-width: 1280px)"
+                                        type="image/webp">
+                                    <source srcset="img/blocks/blog-page/dog-tablet@1x.jpg 1x, img/blocks/blog-page/dog-tablet@2x.jpg 2x"
+                                        media="(max-width: 1280px)">
+                                    <source srcset="img/blocks/blog-page/dog-desktop@1x.avif 1x, img/blocks/blog-page/dog-desktop@2x.avif 2x"
+                                        type="image/avif">
+                                    <source srcset="img/blocks/blog-page/dog-desktop@1x.webp 1x, img/blocks/blog-page/dog-desktop@2x.webp 2x"
+                                        type="image/webp">
+                                    <img src="img/blocks/blog-page/dog-desktop@1x.jpg"
+                                        srcset="img/blocks/blog-page/dog-desktop@2x.jpg 2x"
+                                        width="320"
+                                        height="236"
+                                        loading="lazy"
+                                        decoding="async"
+                                        alt="Picture with a dog">
+                                </picture>
+                            </div>
+
+                            <div class="blog-article__col">
+                                <div class="blog-article__tags">
+                                    <span class="blog-article__tags-item"></span>
+                                    <span class="blog-article__tags-item"></span>
+                                </div>
+
+                                <div class="blog-article__data">
+                                    <time class="blog-article__data-item" datetime="2020-01-20">
+                                        20.01.2020
+                                    </time>
+                                    <span class="blog-article__data-item">
+                                        223 views
+                                    </span>
+                                    <span class="blog-article__data-item">
+                                        97 comments
+                                    </span>
+                                </div>
+
+                                <h3 class="blog-article__title title-h3">
+                                    This is my new dog.
+                                </h3>
+
+                                <p class="blog-article__text">
+                                    Duis sit odio dui pretium suspendisse malesuada sit leo in.
+                                    Massa nec eget etiam tellus ac.
+                                    Sodales nibh pellentesque donec eu ultrices tortor condimentum massa.
+                                </p>
+
+                                <a class="blog-article__link underlined-link underlined-link--black" href="">Go to this post</a>
+                            </div>
+                        </article>
+
+                        <article class="blog-article">
+                            <div class="blog-article__img">
+                                <picture>
+                                    <source srcset="img/blocks/blog-page/dog-mobile@1x.avif 1x, img/blocks/blog-page/dog-mobile@2x.avif 2x"
+                                        media="(max-width: 767px)"
+                                        type="image/avif">
+                                    <source srcset="img/blocks/blog-page/dog-mobile@1x.webp 1x, img/blocks/blog-page/dog-mobile@2x.webp 2x"
+                                        media="(max-width: 767px)"
+                                        type="image/webp">
+                                    <source srcset="img/blocks/blog-page/dog-mobile@1x.jpg 1x, img/blocks/blog-page/dog-mobile@2x.jpg 2x"
+                                        media="(max-width: 767px)">
+                                    <source srcset="img/blocks/blog-page/dog-tablet@1x.avif 1x, img/blocks/blog-page/dog-tablet@2x.avif 2x"
+                                        media="(max-width: 1280px)"
+                                        type="image/avif">
+                                    <source srcset="img/blocks/blog-page/dog-tablet@1x.webp 1x, img/blocks/blog-page/dog-tablet@2x.webp 2x"
+                                        media="(max-width: 1280px)"
+                                        type="image/webp">
+                                    <source srcset="img/blocks/blog-page/dog-tablet@1x.jpg 1x, img/blocks/blog-page/dog-tablet@2x.jpg 2x"
+                                        media="(max-width: 1280px)">
+                                    <source srcset="img/blocks/blog-page/dog-desktop@1x.avif 1x, img/blocks/blog-page/dog-desktop@2x.avif 2x"
+                                        type="image/avif">
+                                    <source srcset="img/blocks/blog-page/dog-desktop@1x.webp 1x, img/blocks/blog-page/dog-desktop@2x.webp 2x"
+                                        type="image/webp">
+                                    <img src="img/blocks/blog-page/dog-desktop@1x.jpg"
+                                        srcset="img/blocks/blog-page/dog-desktop@2x.jpg 2x"
+                                        width="320"
+                                        height="236"
+                                        loading="lazy"
+                                        decoding="async"
+                                        alt="Picture with a dog">
+                                </picture>
+                            </div>
+
+                            <div class="blog-article__col">
+                                <div class="blog-article__tags">
+                                    <span class="blog-article__tags-item"></span>
+                                    <span class="blog-article__tags-item"></span>
+                                </div>
+
+                                <div class="blog-article__data">
+                                    <time class="blog-article__data-item" datetime="2020-01-20">
+                                        20.01.2020
+                                    </time>
+                                    <span class="blog-article__data-item">
+                                        223 views
+                                    </span>
+                                    <span class="blog-article__data-item">
+                                        97 comments
+                                    </span>
+                                </div>
+
+                                <h3 class="blog-article__title title-h3">
+                                    This is my new dog.
+                                </h3>
+
+                                <p class="blog-article__text">
+                                    Duis sit odio dui pretium suspendisse malesuada sit leo in.
+                                    Massa nec eget etiam tellus ac.
+                                    Sodales nibh pellentesque donec eu ultrices tortor condimentum massa.
+                                </p>
+
+                                <a class="blog-article__link underlined-link underlined-link--black" href="">Go to this post</a>
+                            </div>
+                        </article>
+
+                        <article class="blog-article">
+                            <div class="blog-article__img">
+                                <picture>
+                                    <source srcset="img/blocks/blog-page/dog-mobile@1x.avif 1x, img/blocks/blog-page/dog-mobile@2x.avif 2x"
+                                        media="(max-width: 767px)"
+                                        type="image/avif">
+                                    <source srcset="img/blocks/blog-page/dog-mobile@1x.webp 1x, img/blocks/blog-page/dog-mobile@2x.webp 2x"
+                                        media="(max-width: 767px)"
+                                        type="image/webp">
+                                    <source srcset="img/blocks/blog-page/dog-mobile@1x.jpg 1x, img/blocks/blog-page/dog-mobile@2x.jpg 2x"
+                                        media="(max-width: 767px)">
+                                    <source srcset="img/blocks/blog-page/dog-tablet@1x.avif 1x, img/blocks/blog-page/dog-tablet@2x.avif 2x"
+                                        media="(max-width: 1280px)"
+                                        type="image/avif">
+                                    <source srcset="img/blocks/blog-page/dog-tablet@1x.webp 1x, img/blocks/blog-page/dog-tablet@2x.webp 2x"
+                                        media="(max-width: 1280px)"
+                                        type="image/webp">
+                                    <source srcset="img/blocks/blog-page/dog-tablet@1x.jpg 1x, img/blocks/blog-page/dog-tablet@2x.jpg 2x"
+                                        media="(max-width: 1280px)">
+                                    <source srcset="img/blocks/blog-page/dog-desktop@1x.avif 1x, img/blocks/blog-page/dog-desktop@2x.avif 2x"
+                                        type="image/avif">
+                                    <source srcset="img/blocks/blog-page/dog-desktop@1x.webp 1x, img/blocks/blog-page/dog-desktop@2x.webp 2x"
+                                        type="image/webp">
+                                    <img src="img/blocks/blog-page/dog-desktop@1x.jpg"
+                                        srcset="img/blocks/blog-page/dog-desktop@2x.jpg 2x"
+                                        width="320"
+                                        height="236"
+                                        loading="lazy"
+                                        decoding="async"
+                                        alt="Picture with a dog">
+                                </picture>
+                            </div>
+
+                            <div class="blog-article__col">
+                                <div class="blog-article__tags">
+                                    <span class="blog-article__tags-item"></span>
+                                    <span class="blog-article__tags-item"></span>
+                                </div>
+
+                                <div class="blog-article__data">
+                                    <time class="blog-article__data-item" datetime="2020-01-20">
+                                        20.01.2020
+                                    </time>
+                                    <span class="blog-article__data-item">
+                                        223 views
+                                    </span>
+                                    <span class="blog-article__data-item">
+                                        97 comments
+                                    </span>
+                                </div>
+
+                                <h3 class="blog-article__title title-h3">
+                                    This is my new dog.
+                                </h3>
+
+                                <p class="blog-article__text">
+                                    Duis sit odio dui pretium suspendisse malesuada sit leo in.
+                                    Massa nec eget etiam tellus ac.
+                                    Sodales nibh pellentesque donec eu ultrices tortor condimentum massa.
+                                </p>
+
+                                <a class="blog-article__link underlined-link underlined-link--black" href="">Go to this post</a>
+                            </div>
+                        </article>
+
+                        <article class="blog-article">
+                            <div class="blog-article__img">
+                                <picture>
+                                    <source srcset="img/blocks/blog-page/dog-mobile@1x.avif 1x, img/blocks/blog-page/dog-mobile@2x.avif 2x"
+                                        media="(max-width: 767px)"
+                                        type="image/avif">
+                                    <source srcset="img/blocks/blog-page/dog-mobile@1x.webp 1x, img/blocks/blog-page/dog-mobile@2x.webp 2x"
+                                        media="(max-width: 767px)"
+                                        type="image/webp">
+                                    <source srcset="img/blocks/blog-page/dog-mobile@1x.jpg 1x, img/blocks/blog-page/dog-mobile@2x.jpg 2x"
+                                        media="(max-width: 767px)">
+                                    <source srcset="img/blocks/blog-page/dog-tablet@1x.avif 1x, img/blocks/blog-page/dog-tablet@2x.avif 2x"
+                                        media="(max-width: 1280px)"
+                                        type="image/avif">
+                                    <source srcset="img/blocks/blog-page/dog-tablet@1x.webp 1x, img/blocks/blog-page/dog-tablet@2x.webp 2x"
+                                        media="(max-width: 1280px)"
+                                        type="image/webp">
+                                    <source srcset="img/blocks/blog-page/dog-tablet@1x.jpg 1x, img/blocks/blog-page/dog-tablet@2x.jpg 2x"
+                                        media="(max-width: 1280px)">
+                                    <source srcset="img/blocks/blog-page/dog-desktop@1x.avif 1x, img/blocks/blog-page/dog-desktop@2x.avif 2x"
+                                        type="image/avif">
+                                    <source srcset="img/blocks/blog-page/dog-desktop@1x.webp 1x, img/blocks/blog-page/dog-desktop@2x.webp 2x"
+                                        type="image/webp">
+                                    <img src="img/blocks/blog-page/dog-desktop@1x.jpg"
+                                        srcset="img/blocks/blog-page/dog-desktop@2x.jpg 2x"
+                                        width="320"
+                                        height="236"
+                                        loading="lazy"
+                                        decoding="async"
+                                        alt="Picture with a dog">
+                                </picture>
+                            </div>
+
+                            <div class="blog-article__col">
+                                <div class="blog-article__tags">
+                                    <span class="blog-article__tags-item"></span>
+                                    <span class="blog-article__tags-item"></span>
+                                </div>
+
+                                <div class="blog-article__data">
+                                    <time class="blog-article__data-item" datetime="2020-01-20">
+                                        20.01.2020
+                                    </time>
+                                    <span class="blog-article__data-item">
+                                        223 views
+                                    </span>
+                                    <span class="blog-article__data-item">
+                                        97 comments
+                                    </span>
+                                </div>
+
+                                <h3 class="blog-article__title title-h3">
+                                    This is my new dog.
+                                </h3>
+
+                                <p class="blog-article__text">
+                                    Duis sit odio dui pretium suspendisse malesuada sit leo in.
+                                    Massa nec eget etiam tellus ac.
+                                    Sodales nibh pellentesque donec eu ultrices tortor condimentum massa.
+                                </p>
+
+                                <a class="blog-article__link underlined-link underlined-link--black" href="">Go to this post</a>
+                            </div>
+                        </article>
+                    </div>
+
+                    <div class="blog-pagination">
+                        <a class="blog-pagination__arrow" href="">
+                            <svg class="blog-pagination__arrow-icon" aria-hidden="true">
+                                <use xlink:href="img/sprite.svg#icon-btn-prev"></use>
+                            </svg>
+                        </a>
+
+                        <ul class="blog-pagination__list">
+                            <li class="blog-pagination__item">
+                                <a class="blog-pagination__link blog-pagination__link--current" href="" title="">1</a>
+                            </li>
+                            <li class="blog-pagination__item">
+                                <a class="blog-pagination__link" href="" title="To page 2">2</a>
+                            </li>
+                            <li class="blog-pagination__item">
+                                <a class="blog-pagination__link" href="" title="To page 3">3</a>
+                            </li>
+                            <li class="blog-pagination__item">
+                                <a class="blog-pagination__link" href="" title="To page 4">4</a>
+                            </li>
+                            <li class="blog-pagination__item">
+                                <a class="blog-pagination__link" href="" title="To page 5">5</a>
+                            </li>
+                            <li class="blog-pagination__item">
+                                <a class="blog-pagination__link" href="" title="To page 6">6</a>
+                            </li>
+                            <li class="blog-pagination__item">
+                                <a class="blog-pagination__link" href="" title="To page 7">7</a>
+                            </li>
+                            <li class="blog-pagination__item">
+                                <a class="blog-pagination__link" href="" title="To page 8">8</a>
+                            </li>
+                        </ul>
+
+                        <a class="blog-pagination__arrow" href="">
+                            <svg class="blog-pagination__arrow-icon" aria-hidden="true">
+                                <use xlink:href="img/sprite.svg#icon-btn-next"></use>
+                            </svg>
+                        </a>
+                    </div>
+                </div>
+            </section>
+        </main>
+
+        <footer class="footer footer--bg--wild-sand">
+            <div class="container">
+                <h2 class="footer__title title-h2">
+                    Contacts
+                </h2>
+
+                <div class="footer__col">
+                    <p class="footer__text">
+                        Want to know more or just chat? You are welcome!
+                    </p>
+
+                    <a class="footer__btn btn btn--black-and-long js-toggleModal" data-modal="sendMsgModal" href="#signInModal">Send message</a>
+
+                    <ul class="footer__list">
+                        <li class="footer__item">
+                            <a class="footer__item-link btn"
+                                href="https://www.instagram.com/krasulinpavel/"
+                                target="_blank"
+                                rel="noopener nofollow">
+                                Instagram
+                            </a>
+                        </li>
+                        <li class="footer__item">
+                            <a class="footer__item-link btn"
+                                href="https://vk.com/krasulinpavel"
+                                target="_blank"
+                                rel="noopener nofollow">
+                                Vk
+                            </a>
+                        </li>
+                        <li class="footer__item">
+                            <a class="footer__item-link btn"
+                                href="https://t.me/krasulinpavel"
+                                target="_blank"
+                                rel="noopener nofollow">
+                                Telegram
+                            </a>
+                        </li>
+                        <li class="footer__item">
+                            <a class="footer__item-link btn"
+                                href="mailto:krasulinpavel@gmail.com">
+                                Mail
+                            </a>
+                        </li>
+                        <li class="footer__item">
+                            <a class="footer__item-link btn"
+                                href="https://github.com/nylus-ark"
+                                target="_blank"
+                                rel="noopener nofollow">
+                                GitHub
+                            </a>
+                        </li>
+                        <li class="footer__item">
+                            <a class="footer__item-link btn"
+                                href="tel:89379875332">
+                                Phone
+                            </a>
+                        </li>
+                    </ul>
+
+                    <div class="footer__bottom">
+                        <p class="footer__bottom-text">
+                            Design by
+                            <a class="footer__bottom-link underlined-link underlined-link--grey-to-black"
+                                href="https://dlacademy.ru/"
+                                target="_blank"
+                                rel="noopener nofollow">
+                                DL Academy
+                            </a>
+                        </p>
+                        <p class="footer__bottom-text">
+                            Program code from Pavel
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </footer>
+
+        <!-- <div class="modal" id="signInModal" aria-hidden="true">
+            <div class="modal__scrollable" tabindex="-1">
+                <div class="modal__content modal__content--width--small" role="dialog" aria-modal="true" aria-labelledby="sign-in-modal-title">
+                    <h2 class="visually-hidden" id="sign-in-modal-title">
+                        Sign in modal
+                    </h2>
+
+                    <div class="contacts-form">
+                        <form class="contacts-form__content js-contactForm" action="https://echo.htmlacademy.ru/" method="get">
+                            <div class="contacts-form__group">
+                                <label class="contacts-form__label" for="email-form-first">
+                                    Email
+                                    <span class="contacts-form__required">*</span>
+                                </label>
+                                <input class="custom-form-field js-validFormField"
+                                    type="email"
+                                    id="email-form-first"
+                                    name="email"
+                                    required>
+                            </div>
+
+                            <div class="contacts-form__group">
+                                <label class="contacts-form__label" for="password-form-first">
+                                    Password
+                                    <span class="contacts-form__required">*</span>
+                                </label>
+                                <input class="custom-form-field js-validFormField"
+                                    type="password" id="password-form-first"
+                                    name="password"
+                                    required>
+                            </div>
+
+                            <input class="contacts-form__submit-btn btn js-submitBtn"
+                                type="submit"
+                                value="Log in">
+                        </form>
+                    </div>
+
+                    <button class="modal__btn-close modal__btn-close--right js-toggleModal" type="button" data-modal="signInModal" aria-label="Close modal">
+                        <svg class="modal__icon" aria-hidden="true">
+                            <use xlink:href="img/sprite.svg#icon-btn-cross"></use>
+                        </svg>
+                    </button>
+                </div>
+            </div>
+        </div> -->
+
+        <!-- <div class="modal" id="registerModal" aria-hidden="true">
+            <div class="modal__scrollable" tabindex="-1">
+                <div class="modal__content" role="dialog" aria-modal="true" aria-labelledby="register-modal-title">
+                    <h2 class="visually-hidden" id="register-modal-title">
+                        Register modal
+                    </h2>
+
+                    <div class="contacts-form">
+                        <form class="contacts-form__content js-contactForm" action="https://echo.htmlacademy.ru/" method="post">
+                            <div class="contacts-form__group">
+                                <label class="contacts-form__label" for="email-form-second">
+                                    Email
+                                    <span class="contacts-form__required">*</span>
+                                </label>
+                                <input class="custom-form-field js-validFormField"
+                                    type="email"
+                                    id="email-form-second"
+                                    name="email"
+                                    required>
+                            </div>
+
+                            <div class="contacts-form__row">
+                                <div class="contacts-form__group contacts-form__group--width--half">
+                                    <label class="contacts-form__label" for="name-form-second">
+                                        Name
+                                        <span class="contacts-form__required">*</span>
+                                    </label>
+                                    <input class="custom-form-field js-validFormField"
+                                        type="text" id="name-form-second"
+                                        name="name"
+                                        required>
+                                </div>
+
+                                <div class="contacts-form__group contacts-form__group--width--half">
+                                    <label class="contacts-form__label" for="surname-form-second">
+                                        Surname
+                                        <span class="contacts-form__required">*</span>
+                                    </label>
+                                    <input class="custom-form-field js-validFormField"
+                                        type="text"
+                                        id="surname-form-second"
+                                        name="surname"
+                                        required>
+                                </div>
+                            </div>
+
+                            <div class="contacts-form__row">
+                                <div class="contacts-form__group contacts-form__group--width--half">
+                                    <label class="contacts-form__label" for="password-form-second">
+                                        Password
+                                        <span class="contacts-form__required">*</span>
+                                    </label>
+                                    <input class="custom-form-field password js-validFormField"
+                                        type="password"
+                                        id="password-form-second"
+                                        name="password"
+                                        required>
+                                </div>
+
+                                <div class="contacts-form__group contacts-form__group--width--half">
+                                    <label class="contacts-form__label" for="repeat-password-form-second">
+                                        Repeat password
+                                        <span class="contacts-form__required">*</span>
+                                    </label>
+                                    <input class="custom-form-field password-repeat js-validFormField"
+                                        type="password"
+                                        id="repeat-password-form-second"
+                                        name="password-repeat"
+                                        required>
+                                </div>
+                            </div>
+
+                            <div class="contacts-form__row">
+                                <div class="contacts-form__group contacts-form__group--width--half">
+                                    <label class="contacts-form__label" for="location-form-second">
+                                        Location
+                                        <span class="contacts-form__required">*</span>
+                                    </label>
+                                    <input class="custom-form-field js-validFormField"
+                                        type="text"
+                                        id="location-form-second"
+                                        name="location"
+                                        required>
+                                </div>
+
+                                <div class="contacts-form__group contacts-form__group--width--half">
+                                    <label class="contacts-form__label" for="age-form-second">
+                                        Age
+                                        <span class="contacts-form__required">*</span>
+                                    </label>
+                                    <input class="custom-form-field custom-form-field--type--number js-validFormField"
+                                        type="number"
+                                        id="age-form-second"
+                                        name="age"
+                                        required>
+                                </div>
+                            </div>
+
+                            <div class="contacts-form__group contacts-form__checkbox">
+                                <input class="custom-checkbox custom-checkbox--padding js-approvedCheckbox"
+                                    type="checkbox"
+                                    id="consent-form-second">
+                                <label class="contacts-form__label" for="consent-form-second">
+                                    Clicking on the button, you consent to the processing
+                                    of your personal data
+                                </label>
+                            </div>
+
+                            <input class="contacts-form__submit-btn btn js-submitBtn"
+                                type="submit"
+                                value="Sign up"
+                                disabled>
+                        </form>
+                    </div>
+
+                    <button class="modal__btn-close js-toggleModal" type="button" data-modal="registerModal" aria-label="Close modal">
+                        <svg class="modal__icon" aria-hidden="true">
+                            <use xlink:href="img/sprite.svg#icon-btn-cross"></use>
+                        </svg>
+                    </button>
+                </div>
+            </div>
+        </div> -->
+
+        <div class="modal" id="sendMsgModal" aria-hidden="true">
+            <div class="modal__scrollable" tabindex="-1">
+                <div class="modal__content" role="dialog" aria-modal="true" aria-labelledby="send-message-modal-title">
+                    <h2 class="visually-hidden" id="send-message-modal-title">
+                        Send message modal
+                    </h2>
+
+                    <div class="contacts-form">
+                        <form class="contacts-form__content js-contactForm" action="https://echo.htmlacademy.ru/" method="post">
+                            <div class="contacts-form__row">
+                                <div class="contacts-form__group contacts-form__group--width--half">
+                                    <label class="contacts-form__label" for="name-form-third">
+                                        What is your name?
+                                        <span class="contacts-form__required">*</span>
+                                    </label>
+                                    <input class="custom-form-field js-validFormField"
+                                        type="text"
+                                        id="name-form-third"
+                                        name="name" required>
+                                </div>
+
+                                <div class="contacts-form__group contacts-form__group--width--half">
+                                    <label class="contacts-form__label" for="subject-form-third">
+                                        Message subject
+                                        <span class="contacts-form__required">*</span>
+                                    </label>
+                                    <input class="custom-form-field js-validFormField"
+                                        type="text"
+                                        id="subject-form-third"
+                                        name="subject"
+                                        required>
+                                </div>
+                            </div>
+
+                            <div class="contacts-form__row">
+                                <div class="contacts-form__group contacts-form__group--width--half">
+                                    <label class="contacts-form__label" for="email-form-third">
+                                        Your email
+                                        <span class="contacts-form__required">*</span>
+                                    </label>
+                                    <input class="custom-form-field js-validFormField"
+                                        type="email"
+                                        id="email-form-third"
+                                        name="email"
+                                        required>
+                                </div>
+
+                                <div class="contacts-form__group contacts-form__group--width--half">
+                                    <label class="contacts-form__label" for="phone-form-third">
+                                        Your mobile phone
+                                        <span class="contacts-form__required">*</span>
+                                    </label>
+                                    <input class="custom-form-field js-validFormField"
+                                        type="tel"
+                                        id="phone-form-third"
+                                        name="phone"
+                                        required>
+                                </div>
+                            </div>
+
+                            <div class="contacts-form__group">
+                                <label class="contacts-form__label" for="message-form-third">What do you want to discuss with me?</label>
+                                <textarea class="custom-form-field custom-form-field--textarea js-validFormField"
+                                    id="message-form-third"
+                                    name="message">
+                                </textarea>
+                            </div>
+
+                            <div class="contacts-form__group contacts-form__checkbox">
+                                <input class="custom-checkbox custom-checkbox--padding js-approvedCheckbox"
+                                    type="checkbox"
+                                    id="consent-form-third">
+                                <label class="contacts-form__label" for="consent-form-third">
+                                    Clicking on the button, you consent to the processing
+                                    of your personal data
+                                </label>
+                            </div>
+
+                            <input class="contacts-form__submit-btn btn js-submitBtn"
+                                type="submit"
+                                value="Send"
+                                disabled>
+                        </form>
+                    </div>
+
+                    <button class="modal__btn-close js-toggleModal" type="button" data-modal="sendMsgModal" aria-label="Close modal">
+                        <svg class="modal__icon" aria-hidden="true">
+                            <use xlink:href="img/sprite.svg#icon-btn-cross"></use>
+                        </svg>
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <script src="js/script.js"></script>
+    </body>
+</html>
