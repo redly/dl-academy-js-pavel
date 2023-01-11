@@ -166,6 +166,14 @@ forms?.forEach((form) => {
                 }
             }
 
+            function isNumber(num) {
+                if (isNaN(num) || num === '' || num <= 0) {
+                    return false;
+                }
+
+                return true;
+            }
+
             const messages = {
                 right: 'All right',
                 empty: 'This field is required',
@@ -248,4 +256,47 @@ window.addEventListener('scroll', () => {
 
 scrollBtn?.addEventListener('click', () => {
     window.scrollTo(0, 0);
+});
+
+// Input file name
+
+const fileInputs = document.querySelectorAll('.js-setFileName');
+
+fileInputs?.forEach((input) => {
+    input.addEventListener('change', (evt) => {
+        const file = input.files[0];
+        const fileName = file?.name;
+        const fileNameElement = document.querySelector('.custom-file__name');
+
+        function checkName(name) {
+            if (!name) {
+                const errorMsg = 'File is not chosen!';
+
+                return errorMsg;
+            }
+
+            return;
+        }
+
+        function sliceName(name) {
+            if (name.length > 20) {
+                const shortName = name.slice(0, 15) + "..." + name.split('.').pop();
+
+                return shortName;
+            }
+
+            return name;
+        }
+
+        fileNameElement.innerText = checkName(fileName) || sliceName(fileName);
+
+        /*
+        if (file) {
+            const imageId = evt.currentTarget.dataset?.img;
+            const image = document.getElementById(imageId);
+
+            image.src = window.URL.createObjectURL(file);
+        }
+        */
+    });
 });

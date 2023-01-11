@@ -1,0 +1,296 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="description" content="Profile page with general information about the user">
+
+        <link rel="icon" href="img/favicons/favicon.ico" sizes="any">
+        <link rel="icon" href="img/favicons/icon.svg" type="image/svg+xml">
+        <link rel="apple-touch-icon" href="img/favicons/apple-touch-icon.png">
+        <link rel="manifest" href="img/favicons/manifest.webmanifest">
+
+        <link rel="preload" href="fonts/gilroy/gilroy-medium.woff2" as="font" type="font/woff2" crossorigin="anonymous">
+        <link rel="preload" href="js/script.js" as="script">
+
+        <link rel="stylesheet" href="css/style.min.css">
+
+        <title>My Profile</title>
+    </head>
+    <body>
+        <header class="header">
+            <div class="container">
+                <nav class="header__menu menu" id="navMenu">
+                    <button class="menu__btn-cross menu-btn js-toggleMenu" type="button" data-menu="navMenu">
+                        <svg class="menu-btn__icon" aria-hidden="true">
+                            <use xlink:href="img/sprite.svg#icon-btn-cross"></use>
+                        </svg>
+                    </button>
+
+                    <div class="menu__scrollable">
+                        <div class="menu__container">
+                            <ul class="menu__list">
+                                <li class="menu__item">
+                                    <a class="menu__link" href="index.html">Home</a>
+                                </li>
+                                <li class="menu__item">
+                                    <a class="menu__link" href="">My blog</a>
+                                </li>
+                                <li class="menu__item">
+                                    <a class="menu__link menu__link--current" href="">My profile</a>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </nav>
+            </div>
+        </header>
+
+        <main class="content">
+            <section class="profile">
+                <div class="container">
+                    <div class="profile__header">
+                        <h1 class="profile__title title-h1">
+                            My profile
+                        </h1>
+
+                        <button class="profile__btn-menu menu-btn js-toggleMenu" type="button" data-menu="navMenu">
+                            <svg class="menu-btn__icon menu-btn__icon--menu" aria-hidden="true">
+                                <use xlink:href="img/sprite.svg#icon-btn-menu"></use>
+                            </svg>
+                        </button>
+                    </div>
+
+                    <div class="profile__content">
+                        <div class="profile__img">
+                            <img src="img/blocks/profile-page/user-picture.jpg"
+                                width="320"
+                                height="450"
+                                loading="lazy"
+                                decoding="async"
+                                alt="User picture"
+                                id="profilePicture">
+                        </div>
+
+                        <div class="profile__col">
+                            <ul class="profile__data">
+                                <li class="profile__data-item">
+                                    <span class="profile__data-key">Name:</span>
+                                    <span class="profile__data-value"></span>
+                                </li>
+                                <li class="profile__data-item">
+                                    <span class="profile__data-key">Surname:</span>
+                                    <span class="profile__data-value"></span>
+                                </li>
+                                <li class="profile__data-item">
+                                    <span class="profile__data-key">Email:</span>
+                                    <span class="profile__data-value"></span>
+                                </li>
+                                <li class="profile__data-item">
+                                    <span class="profile__data-key">Password:</span>
+                                    <span class="profile__data-value"></span>
+                                </li>
+                                <li class="profile__data-item">
+                                    <span class="profile__data-key">Location:</span>
+                                    <span class="profile__data-value"></span>
+                                </li>
+                                <li class="profile__data-item">
+                                    <span class="profile__data-key">Age:</span>
+                                    <span class="profile__data-value"></span>
+                                </li>
+                            </ul>
+
+                            <ul class="profile__changes">
+                                <li class="profile__changes-item">
+                                    <a class="btn js-toggleModal" href="" data-modal="changePasswordModal">Change password</a>
+                                </li>
+                                <li class="profile__changes-item">
+                                    <a class="btn js-toggleModal" href="" data-modal="changeDataModal">Change other data</a>
+                                </li>
+                                <li class="profile__changes-item">
+                                    <a class="btn" href="">Delete account</a>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </main>
+
+        <div class="modal" id="changePasswordModal">
+            <div class="modal__scrollable">
+                <div class="modal__container">
+                    <div class="modal__content modal__content--width--small">
+                        <div class="contacts-form contacts-form">
+                            <form class="contacts-form__content js-contactForm" action="https://echo.htmlacademy.ru/" method="post">
+                                <div class="contacts-form__group">
+                                    <label class="contacts-form__label" for="old-password-form-first">
+                                        Old password
+                                        <span class="contacts-form__required">*</span>
+                                    </label>
+                                    <input class="contacts-form__field js-validFormField" type="password" id="old-password-form-first" name="password" required>
+                                </div>
+
+                                <div class="contacts-form__group">
+                                    <label class="contacts-form__label" for="new-password-form-first">
+                                        New password
+                                        <span class="contacts-form__required">*</span>
+                                    </label>
+                                    <input class="contacts-form__field js-validFormField" type="password" id="new-password-form-first" name="password" required>
+                                </div>
+
+                                <div class="contacts-form__group">
+                                    <label class="contacts-form__label" for="repeat-password-form-first">
+                                        Repeat new password
+                                        <span class="contacts-form__required">*</span>
+                                    </label>
+                                    <input class="contacts-form__field js-validFormField" type="password" id="repeat-password-form-first" name="password" required>
+                                </div>
+
+                                <input class="contacts-form__submit-btn btn js-submitBtn" type="submit" value="Change password">
+                            </form>
+                        </div>
+
+                        <a class="modal__btn-close modal__btn-close--right js-toggleModal" href="" data-modal="changePasswordModal">
+                            <svg class="modal__icon" aria-hidden="true">
+                                <use xlink:href="img/sprite.svg#icon-btn-cross"></use>
+                            </svg>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="modal" id="changeDataModal">
+            <div class="modal__scrollable">
+                <div class="modal__container">
+                    <div class="modal__content">
+                        <div class="contacts-form">
+                            <form class="contacts-form__content js-contactForm" action="https://echo.htmlacademy.ru/" method="post">
+                                <div class="contacts-form__group">
+                                    <label class="contacts-form__label" for="email-form-second">
+                                        Email
+                                    </label>
+                                    <input class="contacts-form__field js-validFormField"
+                                        type="email"
+                                        id="email-form-second"
+                                        name="email">
+                                </div>
+
+                                <div class="contacts-form__row">
+                                    <div class="contacts-form__group contacts-form__group--width--half">
+                                        <label class="contacts-form__label" for="name-form-second">
+                                            Name
+                                        </label>
+                                        <input class="contacts-form__field js-validFormField"
+                                            type="text"
+                                            id="name-form-second"
+                                            name="name">
+                                    </div>
+
+                                    <div class="contacts-form__group contacts-form__group--width--half">
+                                        <label class="contacts-form__label" for="surname-form-second">
+                                            Surname
+                                        </label>
+                                        <input class="contacts-form__field js-validFormField"
+                                            type="text"
+                                            id="surname-form-second"
+                                            name="name">
+                                    </div>
+                                </div>
+
+                                <div class="contacts-form__row">
+                                    <div class="contacts-form__group contacts-form__group--width--half">
+                                        <label class="contacts-form__label" for="location-form-second">
+                                            Location
+                                        </label>
+                                        <input class="contacts-form__field js-validFormField"
+                                            type="text"
+                                            id="location-form-second"
+                                            name="location">
+                                    </div>
+
+                                    <div class="contacts-form__group contacts-form__group--width--half">
+                                        <label class="contacts-form__label" for="age-form-second">
+                                            Age
+                                        </label>
+                                        <input class="contacts-form__field contacts-form__field--type--number js-validFormField"
+                                            type="number"
+                                            id="age-form-second"
+                                            name="age">
+                                    </div>
+                                </div>
+
+                                <div class="contacts-form__row">
+                                    <div class="contacts-form__group contacts-form__group--width--half">
+                                        <input class="contacts-form__field contacts-form__field--type--file custom-file js-setFileName"
+                                            type="file"
+                                            id="picture-form-second"
+                                            name="profile-picture"
+                                            accept="image/*"
+                                            data-img="profilePicture">
+                                        <label class="contacts-form__label custom-file__label" for="picture-form-second">
+                                            Profile picture
+                                            <span class="custom-file__name">Choose file...</span>
+                                        </label>
+                                    </div>
+                                </div>
+
+                                <input class="contacts-form__submit-btn btn js-submitBtn" type="submit" value="Submit changes">
+                            </form>
+                        </div>
+
+                        <a class="modal__btn-close js-toggleModal" href="" data-modal="changeDataModal">
+                            <svg class="modal__icon" aria-hidden="true">
+                                <use xlink:href="img/sprite.svg#icon-btn-cross"></use>
+                            </svg>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="modal modal__successfully" id="formSuccessfullyModal">
+            <div class="modal__scrollable">
+                <div class="modal__container">
+                    <div class="modal__content modal__content--width--message-successfully">
+                        <div class="modal__message">
+                            <h3 class="modal__title modal__title--successfully title-h3">
+                                Form has been sent successfully
+                            </h3>
+                        </div>
+
+                        <a class="modal__btn-close modal__btn-close--right-message js-toggleModal" href="" data-modal="formSuccessfullyModal">
+                            <svg class="modal__icon" aria-hidden="true">
+                                <use xlink:href="img/sprite.svg#icon-btn-cross"></use>
+                            </svg>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="modal modal__error" id="formErrorModal">
+            <div class="modal__scrollable">
+                <div class="modal__container">
+                    <div class="modal__content modal__content--width--message-error">
+                        <div class="modal__message">
+                            <h3 class="modal__title modal__title--error title-h3">
+                                The form was sent but the server transmits an error:
+                                “The form was sent but the server transmits an error”
+                            </h3>
+                        </div>
+
+                        <a class="modal__btn-close modal__btn-close--right-message js-toggleModal" href="" data-modal="formErrorModal">
+                            <svg class="modal__icon" aria-hidden="true">
+                                <use xlink:href="img/sprite.svg#icon-btn-cross"></use>
+                            </svg>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <script src="js/script.js"></script>
+    </body>
+</html>
