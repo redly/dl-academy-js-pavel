@@ -48,6 +48,8 @@
     }
 
     &__arrow {
+        @include btn-reset;
+
         transition: opacity 0.3s;
 
         &:hover {
@@ -56,6 +58,12 @@
 
         &:active {
             opacity: 0.3;
+        }
+
+        &:disabled {
+            cursor: default;
+            pointer-events: none;
+            opacity: 0.2;
         }
     }
 

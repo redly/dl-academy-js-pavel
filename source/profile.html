@@ -70,6 +70,8 @@
 
                         <div class="profile__img">
                             <img src="img/blocks/profile-page/user-picture.jpg"
+                                class="js-setProfileData"
+                                data-profile="photoUrl"
                                 width="320"
                                 height="450"
                                 loading="lazy"
@@ -82,39 +84,50 @@
                             <ul class="profile__data">
                                 <li class="profile__data-item">
                                     <span class="profile__data-key">Name:</span>
-                                    <span class="profile__data-value"></span>
+                                    <span class="profile__data-value js-setProfileData" data-profile="name"></span>
                                 </li>
                                 <li class="profile__data-item">
                                     <span class="profile__data-key">Surname:</span>
-                                    <span class="profile__data-value"></span>
+                                    <span class="profile__data-value js-setProfileData" data-profile="surname"></span>
                                 </li>
                                 <li class="profile__data-item">
                                     <span class="profile__data-key">Email:</span>
-                                    <span class="profile__data-value"></span>
+                                    <span class="profile__data-value js-setProfileData" data-profile="email"></span>
                                 </li>
                                 <li class="profile__data-item">
                                     <span class="profile__data-key">Password:</span>
-                                    <span class="profile__data-value"></span>
+                                    <span class="profile__data-value js-setProfileData" data-profile="password"></span>
                                 </li>
                                 <li class="profile__data-item">
                                     <span class="profile__data-key">Location:</span>
-                                    <span class="profile__data-value"></span>
+                                    <span class="profile__data-value js-setProfileData" data-profile="location"></span>
                                 </li>
                                 <li class="profile__data-item">
                                     <span class="profile__data-key">Age:</span>
-                                    <span class="profile__data-value"></span>
+                                    <span class="profile__data-value js-setProfileData" data-profile="age"></span>
                                 </li>
                             </ul>
 
                             <ul class="profile__changes">
                                 <li class="profile__changes-item">
-                                    <a class="btn js-toggleModal" data-modal="changePasswordModal" href="#changePasswordModal">Change password</a>
+                                    <a class="btn js-toggleModal" data-modal="changePasswordModal" href="#changePasswordModal">
+                                        Change password
+                                    </a>
                                 </li>
                                 <li class="profile__changes-item">
-                                    <a class="btn js-toggleModal" data-modal="changeDataModal" href="#changeDataModal">Change other data</a>
+                                    <a class="btn js-toggleModal js-setProfileDataToForm" data-modal="changeDataModal" href="#changeDataModal">
+                                        Change other data
+                                    </a>
                                 </li>
                                 <li class="profile__changes-item">
-                                    <a class="btn" href="">Delete account</a>
+                                    <a class="btn js-toggleModal" data-modal="deleteAccountModal" href="#deleteAccountModal">
+                                        Delete account
+                                    </a>
+                                </li>
+                                <li class="profile__changes-item">
+                                    <a class="btn js-signOut" href="index.html">
+                                        Sign out
+                                    </a>
                                 </li>
                             </ul>
                         </div>
@@ -123,6 +136,18 @@
             </section>
         </main>
 
+        <div class="preloader preloader--is-hidden js-preloader" aria-hidden="true">
+            <div class="preloader__wrapper">
+                <span class="js-setPreloaderTitle"></span>
+                <div class="preloader__dots">
+                    <span class="preloader__dot"></span>
+                    <span class="preloader__dot"></span>
+                    <span class="preloader__dot"></span>
+                </div>
+            </div>
+        </div>
+
+        <!-- Форма изменения пароля -->
         <div class="modal" id="changePasswordModal">
             <div class="modal__scrollable" tabindex="-1">
                 <div class="modal__content modal__content--width--small" role="dialog" aria-modal="true" aria-labelledby="change-password-modal-title">
@@ -130,14 +155,23 @@
                         Change password modal
                     </h2>
 
-                    <div class="contacts-form contacts-form">
-                        <form class="contacts-form__content js-contactForm" action="https://echo.htmlacademy.ru/" method="post">
+                    <div class="contacts-form">
+                        <form class="contacts-form__content js-contactForm" name="changePasswordForm" action="https://echo.htmlacademy.ru/" method="post">
                             <div class="contacts-form__group">
                                 <label class="contacts-form__label" for="old-password-form-first">
                                     Old password
                                     <span class="contacts-form__required">*</span>
                                 </label>
-                                <input class="custom-form-field js-validFormField" type="password" id="old-password-form-first" name="password" required>
+                                <input class="custom-form-field js-validFormField js-showPasswordViewBtn"
+                                    type="password"
+                                    id="old-password-form-first"
+                                    name="oldPassword"
+                                    required>
+                                <button class="contacts-form__password-control-btn u-hidden js-togglePasswordView"
+                                    type="button"
+                                    data-password="old-password-form-first"
+                                    aria-label="View password">
+                                </button>
                             </div>
 
                             <div class="contacts-form__group">
@@ -145,7 +179,16 @@
                                     New password
                                     <span class="contacts-form__required">*</span>
                                 </label>
-                                <input class="custom-form-field js-validFormField" type="password" id="new-password-form-first" name="password" required>
+                                <input class="custom-form-field password js-validFormField js-showPasswordViewBtn"
+                                    type="password"
+                                    id="new-password-form-first"
+                                    name="newPassword"
+                                    required>
+                                <button class="contacts-form__password-control-btn u-hidden js-togglePasswordView"
+                                    type="button"
+                                    data-password="new-password-form-first"
+                                    aria-label="View password">
+                                </button>
                             </div>
 
                             <div class="contacts-form__group">
@@ -153,7 +196,16 @@
                                     Repeat new password
                                     <span class="contacts-form__required">*</span>
                                 </label>
-                                <input class="custom-form-field js-validFormField" type="password" id="repeat-password-form-first" name="password" required>
+                                <input class="custom-form-field password-repeat js-validFormField js-showPasswordViewBtn"
+                                    type="password"
+                                    id="repeat-password-form-first"
+                                    name="newPasswordRepeat"
+                                    required>
+                                <button class="contacts-form__password-control-btn u-hidden js-togglePasswordView"
+                                    type="button"
+                                    data-password="repeat-password-form-first"
+                                    aria-label="View password">
+                                </button>
                             </div>
 
                             <input class="contacts-form__submit-btn btn js-submitBtn" type="submit" value="Change password">
@@ -169,6 +221,7 @@
             </div>
         </div>
 
+        <!-- Форма изменения данных профиля -->
         <div class="modal" id="changeDataModal" aria-hidden="true">
             <div class="modal__scrollable" tabindex="-1">
                 <div class="modal__content" role="dialog" aria-modal="true" aria-labelledby="change-data-modal-title">
@@ -177,7 +230,7 @@
                     </h2>
 
                     <div class="contacts-form">
-                        <form class="contacts-form__content js-contactForm" action="https://echo.htmlacademy.ru/" method="post">
+                        <form class="contacts-form__content js-contactForm" name="changeDataForm" action="https://echo.htmlacademy.ru/" method="post">
                             <div class="contacts-form__group">
                                 <label class="contacts-form__label" for="email-form-second">
                                     Email
@@ -206,7 +259,7 @@
                                     <input class="custom-form-field js-validFormField"
                                         type="text"
                                         id="surname-form-second"
-                                        name="name">
+                                        name="surname">
                                 </div>
                             </div>
 
@@ -237,7 +290,7 @@
                                     <input class="custom-form-field custom-file js-setFileName"
                                         type="file"
                                         id="picture-form-second"
-                                        name="profile-picture"
+                                        name="avatar"
                                         accept="image/*"
                                         data-img="profilePicture">
                                     <label class="contacts-form__label custom-file__label" for="picture-form-second">
@@ -260,7 +313,8 @@
             </div>
         </div>
 
-        <div class="modal modal__successfully" id="formSuccessfullyModal" aria-hidden="true">
+        <!-- Сообщение об успешной отправке формы -->
+        <div class="modal modal--sending-form js-toggleModalSuccessfully" id="formSuccessfullyModal" aria-hidden="true">
             <div class="modal__scrollable" tabindex="-1">
                 <div class="modal__content modal__content--width--message-successfully" role="dialog" aria-modal="true" aria-labelledby="form-successfully-modal-title">
                     <h2 class="visually-hidden" id="form-successfully-modal-title">
@@ -282,7 +336,8 @@
             </div>
         </div>
 
-        <div class="modal modal__error" id="formErrorModal" aria-hidden="true">
+        <!-- Сообщение об ошибке при отправке формы -->
+        <div class="modal modal--sending-form js-toggleModalError" id="formErrorModal" aria-hidden="true">
             <div class="modal__scrollable" tabindex="-1">
                 <div class="modal__content modal__content--width--message-error" role="dialog" aria-modal="true" aria-labelledby="form-error-modal-title">
                     <h2 class="visually-hidden" id="form-error-modal-title">
@@ -297,6 +352,35 @@
                     </div>
 
                     <button class="modal__btn-close modal__btn-close--right-message js-toggleModal" type="button" data-modal="formErrorModal" aria-label="Close modal">
+                        <svg class="modal__icon" aria-hidden="true">
+                            <use xlink:href="img/sprite.svg#icon-btn-cross"></use>
+                        </svg>
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Предупреждение перед удалением аккаунта -->
+        <div class="modal modal--sending-form js-toggleDeleteAccountModal" id="deleteAccountModal" aria-hidden="true">
+            <div class="modal__scrollable" tabindex="-1">
+                <div class="modal__content modal__content--width--small" role="dialog" aria-modal="true" aria-labelledby="delete-account-modal-title">
+                    <h2 class="visually-hidden" id="delete-account-modal-title">
+                        Delete account modal
+                    </h2>
+
+                    <div class="contacts-form contacts-form--delete-account">
+                        <h3 class="title-h3">
+                            Do you want to delete your account?
+                        </h3>
+
+                        <form class="contacts-form__content contacts-form__content--delete-account" name="deleteAccountForm">
+                            <!-- <input class="btn btn--green" type="submit" value="Yes"> -->
+                            <button class="btn btn--green" type="submit" aria-label="Answer yes and delete my account">Yes</button>
+                            <button class="btn btn--red js-toggleModal" type="button" data-modal="deleteAccountModal" aria-label="Answer no and close the modal">No</button>
+                        </form>
+                    </div>
+
+                    <button class="modal__btn-close modal__btn-close--right-message js-toggleModal" type="button" data-modal="deleteAccountModal" aria-label="Close modal">
                         <svg class="modal__icon" aria-hidden="true">
                             <use xlink:href="img/sprite.svg#icon-btn-cross"></use>
                         </svg>

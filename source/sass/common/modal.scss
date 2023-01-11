@@ -18,6 +18,10 @@
         justify-content: center;
     }
 
+    &--sending-form {
+        z-index: 7;
+    }
+
     &__scrollable {
         display: flex;
         flex-direction: column;

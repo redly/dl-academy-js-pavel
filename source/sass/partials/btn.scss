@@ -41,17 +41,39 @@
         }
     }
 
+    &--green {
+        border: 2px solid $color-green;
+        color: $color-green;
+
+        &:hover:not(.btn:disabled, .btn--black-and-long),
+        &:focus:not(.btn--black-and-long) {
+            background-color: $color-green;
+            color: $color-white;
+        }
+    }
+
+    &--red {
+        border: 2px solid $color-red;
+        color: $color-red;
+
+        &:hover:not(.btn:disabled, .btn--black-and-long),
+        &:focus:not(.btn--black-and-long) {
+            background-color: $color-red;
+            color: $color-white;
+        }
+    }
+
     &--bg--wild-sand {
         background-color: $color-wild-sand;
     }
 
-    &:hover:not(.btn:disabled, .btn--black-and-long),
-    &:focus:not(.btn--black-and-long) {
+    &:hover:not(.btn:disabled, .btn--black-and-long, .btn--green, .btn--red),
+    &:focus:not(.btn--black-and-long, .btn--green, .btn--red) {
         background-color: $color-black;
         color: $color-white;
     }
 
-    &:active {
+    &:active:not(.btn:disabled, .btn--black-and-long) {
         opacity: 0.7;
     }
 

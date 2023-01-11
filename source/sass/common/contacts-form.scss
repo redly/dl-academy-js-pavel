@@ -7,14 +7,27 @@
         padding: 40px;
     }
 
+    &--delete-account {
+        display: flex;
+        flex-direction: column;
+        text-align: center;
+        gap: 20px;
+    }
+
     &__content {
         display: block;
+
+        &--delete-account {
+            display: flex;
+            justify-content: space-around;
+        }
     }
 
     &__group {
         display: block;
         width: 100%;
         margin: 0 0 20px;
+        position: relative;
 
         &--width--half {
             @media (min-width: $tablet-min-width) {
@@ -66,5 +79,27 @@
 
     &__submit-btn {
         margin: 10px 0 0;
+    }
+
+    &__password-control-btn {
+        @include btn-reset;
+
+        background: url("../img/password-view-btn.svg") 0 0 no-repeat;
+        opacity: 0.4;
+        width: 20px;
+        height: 20px;
+        position: absolute;
+        top: 38px;
+        right: 10px;
+        transition: background-image 0.2s ease, opacity 0.2s ease;
+
+        &:hover {
+            opacity: 0.6;
+        }
+
+        &--view {
+            background: url("../img/password-no-view-btn.svg") 0 0 no-repeat;
+            opacity: 1;
+        }
     }
 }

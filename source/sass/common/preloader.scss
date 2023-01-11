@@ -1,0 +1,51 @@
+.preloader {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    background: ($color-wild-sand + e6);
+    color: $color-black;
+    font-size: $font-size-title-one;
+    font-weight: $font-weight-bold;
+    position: fixed;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    z-index: 6;
+
+    &--is-hidden {
+        display: none;
+    }
+
+    &__wrapper {
+        display: flex;
+        align-items: flex-end;
+    }
+
+    &__dots {
+        display: flex;
+        margin: 0 0 12px;
+    }
+
+    &__dot {
+        background-color: $color-black;
+        border-radius: 50%;
+        width: 10px;
+        height: 10px;
+        margin: 0 3px;
+        animation: preloader 3s infinite ease;
+
+        &:nth-child(1) {
+            animation-delay: 0.5s;
+        }
+
+        &:nth-child(2) {
+            animation-delay: 1s;
+        }
+
+        &:nth-child(3) {
+            animation-delay: 1.5s;
+        }
+    }
+}

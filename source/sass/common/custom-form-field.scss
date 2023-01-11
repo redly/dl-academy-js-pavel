@@ -55,4 +55,8 @@
             opacity: 1;
         }
     }
+
+    &::-ms-reveal {
+        display: none;
+    }
 }
